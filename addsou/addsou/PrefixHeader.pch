@@ -1,0 +1,339 @@
+//
+//  PrefixHeader.pch
+//  addsou
+//
+//  Created by 杨兆欣 on 2016/12/30.
+//  Copyright © 2016年 杨兆欣. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define LOCAL_READ_FIRSTOPEN            @"firstopen"    // 是否为第一次打开 存储版本号和build号的拼接
+#define LOCAL_READ_LOCALTION            @"localtion"    // 定位状态 如果未开启，每增加3提示一次
+
+#define LOCAL_READ_ISLOGIN              @"islogin"      // 登录状态
+#define LOCAL_READ_USERTYPE             @"usertype"     // 是否注册过，1为手机注册  2为匿名用户
+#define LOCAL_READ_FIRST                @"isfirst"      // 是否第一次登陆  是为1  不是为空
+#define LOCAL_READ_USERID               @"userid"       // 用户ID
+#define LOCAL_READ_USERNAME             @"username"     // 账号
+#define LOCAL_READ_USERMOBILE           @"usermobile"   // 用户手机号
+#define LOCAL_READ_PASSWORD             @"password"     // 密码
+#define LOCAL_READ_MOBILE               @"moblie"       // 手机号
+#define LOCAL_READ_TOKEN                @"token"        // token
+#define LOCAL_READ_RECORD               @"record"       // 底部信息
+#define LOCAL_READ_HEADERURL            @"headerurl"    // logo地址
+#define LOCAL_READ_LEGAL                @"legal"        // 法律条款
+
+#define LOCAL_READ_SAVESEARCH           @"savesearch"   // 搜索关键字保存在本地
+
+#define LOCAL_READ_COMPANYID            @"1"            //公司ID
+
+#define PHONELOGIN                      @"1"    //手机号登录
+#define WXLOGIN                         @"2"    // 微信登录
+#define QQLOGIN                         @"3"    // QQ登录
+#define NOLOGIN                         @"100"  // 未登录
+
+
+#define LOCAL_READ_SKIN                 @"skinName"         // 选中皮肤名称
+
+#define LOCAL_READ_PLACEIMAGE           @"s"     // 图标默认图片
+
+#define LOCAL_READ_PLACESKIN            @"pic_nor"          // 皮肤默认图片
+
+
+#define LOCAL_READ_MD5                  @"-EF5T83H61CDX2B68"        //MD5加密拼接字符串
+
+#define LOCAL_READ_UUID (NSString *)[SSKeychain passwordForService:BUNDLEID account:BUNDLEID]
+
+// QQ
+#define QQAPPID @"1105872746"
+#define QQAPPKEY @"cQcHaKcT4F3FwPZ1"
+
+// 微信
+//#define WXAPPKEY @"wxb958621a3a540480"                                  // 微信APPkey
+#define WXAPPKEY @"wx38c5f8ad36572780"
+#define WXSECRET @"b42e30b5a85f6695615cfc3a1235af03"                    // 微信密匙
+
+// 微博
+#define WBAPPKEY @"1245459821"                                          // 微博APPkey
+//#define WBAPPKEY @"4036025500"
+#define WBSECRET @"bc142d4432fd286be454d9e6fffb9384"                    // 微博密匙
+//#define WBSECRET @"42d420a535a890530028fff907834153"
+#define KREADIRECTURL @"https://api.weibo.com/oauth2/default.html"      // 微博回调页URL地址
+
+
+// 友盟
+#define UMAPPKEY @"586b53ec65b6d634b90001b2"                            // 友盟appkey
+
+#define BUNDLEID [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"] //项目包名
+#define APPNAME [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"] //APP名称
+#define APPVERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"] //APP应用版本
+#define APPBUILDVERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"] //APP bundle版本
+#define APPUUID [[UIDevice currentDevice] identifierForVendor].UUIDString // 设备的UUID
+
+
+
+// 服务器地址
+//#define URLPATH @"http://www.ironhide.top:8266"  // 线下
+//#define URLPATH @"http://60.205.170.90:8081"    // 线上
+//#define URLPATH @"https://app.addsou.com"          //线上https
+#define URLPATH @"http://app.addsou.com"        // 线上http
+
+
+#define SJ_ADAPTER_WIDTH(NUM) (NUM * kWindowW / 375.0)    // 布局宽度自适应
+
+#define SJ_ADAPTER_HEIGHT(NUM) (NUM * kWindowH / 667.0)    // 布局高度自适应
+
+#define HOMEPAGE_CELL_HEIGHT  SJ_ADAPTER_HEIGHT(123)      // 首页推荐cell高度
+
+#define HOMEPAGE_CELL_WIDTH  SJ_ADAPTER_WIDTH(100)        // 首页推荐cell宽度
+
+#define QDR_APP_HEIGHT 69                                       // APP图标高度
+
+#define QDR_HOME_HEADER_HEIGHT 205                              // 首页头部高度
+
+#define QDR_HOME_CONTENTOFFSET (QDR_HOME_HEADER_HEIGHT - 84)    // 首页头部偏移量
+
+#define QDR_FIRST_COLOR kRGBColor(255,98,81)                    // 主色
+
+#define QDR_HISTORY_HEIGHT 36                                   // 历史记录cell高度
+
+//通过RGB设置颜色
+#define kRGBColor(R, G, B) [UIColor colorWithRed:(R)/255.0 green:(G)/255.0 blue:(B)/255.0 alpha:(1.0)]
+#define kRGBAColor(R, G, B, A) [UIColor colorWithRed:(R)/255.0f green:(G)/255.0f blue:(B)/255.0f alpha:(A)]
+
+#define kWindowH  [UIScreen mainScreen].bounds.size.height //应用程序的屏幕高度
+#define kWindowW  [UIScreen mainScreen].bounds.size.width  //应用程序的屏幕宽度
+#define kTabBarH        49.0f
+#define kStatusBarH     20.0f
+#define kNavigationBarH 44.0f
+#define SCREEN_POINT (float)SCREEN_WIDTH/320.f
+#define SCREEN_H_POINT (float)SCREEN_HEIGHT/480.f
+
+
+// 首页滚动图片用到的宏
+#define LLLabelFont [UIFont systemFontOfSize:12]
+#define LLTBMargin 12 //signalScrollView顶部和底部间距
+#define LLLRMargin 13 //signalScrollView左右边界间距
+#define LLhorizontalMargin 10  //signalScrollView水平间距
+#define LLverticalMargin 15  //signalScrollView竖直间
+
+
+#define kAppDelegate ((AppDelegate*)([UIApplication sharedApplication].delegate))
+
+#define kStoryboard(StoryboardName) [UIStoryboard storyboardWithName:StoryboardName bundle:nil]
+
+//通过Storyboard ID 在对应Storyboard中获取场景对象
+#define kVCFromSb(storyboardId, storyboardName)     [[UIStoryboard storyboardWithName:storyboardName bundle:nil] \
+instantiateViewControllerWithIdentifier:storyboardId]
+
+//移除iOS7之后，cell默认左侧的分割线边距
+#define kRemoveCellSeparator \
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{\
+cell.separatorInset = UIEdgeInsetsZero;\
+cell.layoutMargins = UIEdgeInsetsZero; \
+cell.preservesSuperviewLayoutMargins = NO; \
+}
+
+//Docment文件夹目录
+#define kDocumentPath NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject
+
+
+/** 判断是否为iPhone */
+#define isiPhone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+
+/** 判断是否是iPad */
+#define isiPad (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+
+/** 判断是否为iPod */
+#define isiPod ([[[UIDevice currentDevice] model] isEqualToString:@"iPod touch"])
+
+
+//Get the OS version.       判断操作系统版本
+#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+#define CurrentSystemVersion ([[UIDevice currentDevice] systemVersion])
+#define CurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
+/** 是否为iOS6 */
+#define iOS6 (([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) ? YES : NO)
+
+/** 是否为iOS7 */
+#define iOS7 (([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) ? YES : NO)
+
+/** 是否为iOS8 */
+#define iOS8 (([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) ? YES : NO)
+
+/** 是否为iOS9 */
+#define iOS9 (([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) ? YES : NO)
+
+/** 获取当前语言 */
+#define kCurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
+
+//----------------------ABOUT PRINTING LOG 打印日志 ----------------------------
+//Using dlog to print while in debug model.        调试状态下打印日志
+#ifdef DEBUG
+# define DLog(fmt, ...) NSLog((@"\n[文件名: %s]\n" "[函数名: %s]\n" "[行号: %d]\n" fmt), __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+# define DLog(...);
+#endif
+
+//Printing while in the debug model and pop an alert.       模式下打印日志,当前行 并弹出一个警告
+#ifdef DEBUG
+#   define ULog(fmt, ...)  { UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%s\n [Line %d] ", __PRETTY_FUNCTION__, __LINE__] message:[NSString stringWithFormat:fmt, ##__VA_ARGS__]  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]; [alert show]; }
+#else
+#   define ULog(...)
+#endif
+
+/** print 打印rect,size,point */
+#ifdef DEBUG
+#define kLogPoint(point)    NSLog(@"%s = { x:%.4f, y:%.4f }", #point, point.x, point.y)
+#define kLogSize(size)      NSLog(@"%s = { w:%.4f, h:%.4f }", #size, size.width, size.height)
+#define kLogRect(rect)      NSLog(@"%s = { x:%.4f, y:%.4f, w:%.4f, h:%.4f }", #rect, rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
+#endif
+
+//----------------------SOMETHING ELSE 其他 ----------------------------
+
+#define intToStr(S)    [NSString stringWithFormat:@"%d",S]
+
+
+
+//NSUserDefaults 实例化
+#define USER_DEFAULT [NSUserDefaults standardUserDefaults]
+
+/**
+ *  the saving objects      存储对象
+ *
+ *  @param __VALUE__ V
+ *  @param __KEY__   K
+ *
+ *  @return
+ */
+#define UserDefaultSetObjectForKey(__VALUE__,__KEY__) \
+{\
+[[NSUserDefaults standardUserDefaults] setObject:__VALUE__ forKey:__KEY__];\
+[[NSUserDefaults standardUserDefaults] synchronize];\
+}
+
+/**
+ *  get the saved objects       获得存储的对象
+ */
+#define UserDefaultObjectForKey(__KEY__)  [[NSUserDefaults standardUserDefaults] objectForKey:__KEY__]
+
+/**
+ *  delete objects      删除对象
+ */
+#define UserDefaultRemoveObjectForKey(__KEY__) \
+{\
+[[NSUserDefaults standardUserDefaults] removeObjectForKey:__KEY__];\
+[[NSUserDefaults standardUserDefaults] synchronize];\
+}
+
+#define PLIST_TICKET_INFO_EDIT [NSHomeDirectory() stringByAppendingString:@"/Documents/data.plist"] //edit the plist
+
+#define TableViewCellDequeueInit(__INDETIFIER__) [tableView dequeueReusableCellWithIdentifier:(__INDETIFIER__)];
+
+#define TableViewCellDequeue(__CELL__,__CELLCLASS__,__INDETIFIER__) \
+{\
+if (__CELL__ == nil) {\
+__CELL__ = [[__CELLCLASS__ alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:__INDETIFIER__];\
+}\
+}
+
+#define KEYWINDOW [UIApplication sharedApplication].keyWindow   //窗口
+
+
+/** 快速查询一段代码的执行时间 */
+/** 用法
+ TICK
+ do your work here
+ TOCK
+ */
+
+#define TICK NSDate *startTime = [NSDate date];
+#define TOCK NSLog(@"Time:%f", -[startTime timeIntervalSinceNow]);
+
+//define an API 定义一个API
+#define APIURL                @"http://www.google.com"
+//login the API 登陆API
+#define APILogin              [APIURL stringByAppendingString:@"Login"]
+
+//GCD
+#define GCDWithGlobal(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
+#define GCDWithMain(block) dispatch_async(dispatch_get_main_queue(),block)
+
+//单例化 一个类
+#define SYNTHESIZE_SINGLETON_FOR_CLASS(classname) \
+\
+static classname *shared##classname = nil; \
+\
++ (classname *)shared##classname \
+{ \
+@synchronized(self) \
+{ \
+if (shared##classname == nil) \
+{ \
+shared##classname = [[self alloc] init]; \
+} \
+} \
+\
+return shared##classname; \
+} \
+\
++ (id)allocWithZone:(NSZone *)zone \
+{ \
+@synchronized(self) \
+{ \
+if (shared##classname == nil) \
+{ \
+shared##classname = [super allocWithZone:zone]; \
+return shared##classname; \
+} \
+} \
+\
+return nil; \
+} \
+\
+- (id)copyWithZone:(NSZone *)zone \
+{ \
+return self; \
+}
+
+
+
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
+
+#import <MBProgressHUD.h>
+#import <FMDatabase.h>
+#import <MJExtension.h>
+#import <Masonry.h>
+#import <MJRefresh.h>
+#import <RESideMenu.h>
+#import <UIImageView+WebCache.h>
+#import <SSKeychain.h>
+#import <SSKeychainQuery.h>
+#import "UMMobClick/MobClick.h"
+#import <AFNetworking.h>
+#import "NSString+Common.h"
+#import "NSObject+Common.h"
+#import "SJModel.h"
+#import "SJNetManager.h"
+#import "SJTool.h"
+#import "LxDBAnything.h"
+#import "QDRBookViewModel.h"
+#import "FMDBManager.h"
+#import "UILabel+LabelHeightAndWidth.h"
+#import "UIButton+ImageTitleSpacing.h"
+#import "SJNavcView.h"
+#import "WeiboSDK.h"
+
+
+#endif
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */
