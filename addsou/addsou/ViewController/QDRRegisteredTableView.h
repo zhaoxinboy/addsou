@@ -28,12 +28,6 @@
 
 @property (nonatomic, strong) UITextField *confirmPWTF;         // 确认密码输入框
 
-@property (nonatomic, strong) UIButton *readBtn;                // 阅读并接受
-
-@property (nonatomic, assign) NSInteger KVOreadNum;                // KVO监听，弹出条款
-
-@property (nonatomic, strong) UIButton *termsBtn;                   // 法律条款
-
 @property (nonatomic, strong) UIButton *loginBtn;                   // 登录按钮
 
 @property (nonatomic, assign) NSInteger KVOlogin;                   // KVO登录监听

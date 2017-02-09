@@ -330,8 +330,6 @@
         [self showErrorMsg:@"两次输入密码不一致，请重新输入"];
     }else if (_passWordTF.text.length < 8 || _confirmPWTF.text.length < 8) {
         [self showErrorMsg:@"密码长度不够，请重新输入"];
-    }else if (!_readBtn.selected) {
-        [self showErrorMsg:@"阅读并接受条款"];
     }else{
         self.KVOlogin += 1;
     }
@@ -342,12 +340,6 @@
     sender.backgroundColor = [UIColor grayColor];
 }
 
-//阅读条款
-- (void)readterms
-{
-    // KVO监听
-    self.KVOreadNum += 1;
-}
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     if (![[touches anyObject].view isEqual:self.passWordTF]) {
@@ -381,8 +373,6 @@
             [self showErrorMsg:@"两次输入密码不一致，请重新输入"];
         }else if (_passWordTF.text.length < 8 || _confirmPWTF.text.length < 8) {
             [self showErrorMsg:@"密码长度不够，请重新输入"];
-        }else if (!_readBtn.selected) {
-            [self showErrorMsg:@"阅读并接受条款"];
         }else{
             self.KVOlogin += 1;
         }

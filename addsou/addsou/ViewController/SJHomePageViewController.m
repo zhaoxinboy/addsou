@@ -20,6 +20,7 @@
 #import <AddressBook/AddressBook.h>
 #import "QDRClearCacheView.h"
 #import "SJNoNetView.h"
+#import "SJGuideViewController.h"
 
 
 
@@ -109,9 +110,11 @@
             make.size.mas_equalTo(CGSizeMake(SJ_ADAPTER_HEIGHT(44), SJ_ADAPTER_HEIGHT(44)));
             make.bottom.mas_equalTo(-SJ_ADAPTER_HEIGHT(26));
         }];
+        
     }
     return _bookBtn;
 }
+
 - (void)jump2book{
     
     SJBookMarksViewController *vc = [[SJBookMarksViewController alloc] init];
@@ -133,6 +136,8 @@
             make.size.mas_equalTo(CGSizeMake(SJ_ADAPTER_HEIGHT(44), SJ_ADAPTER_HEIGHT(44)));
             make.bottom.mas_equalTo(-SJ_ADAPTER_HEIGHT(26));
         }];
+        // 把要展示的按钮的位置传入，用于绘制贝塞尔曲线
+        [SJManager sharedManager].searchFrame = CGRectMake(kWindowW - SJ_ADAPTER_WIDTH(70) - SJ_ADAPTER_HEIGHT(44), kWindowH - SJ_ADAPTER_HEIGHT(26) - SJ_ADAPTER_HEIGHT(44), SJ_ADAPTER_HEIGHT(44), SJ_ADAPTER_HEIGHT(44));
     }
     return _searchBtn;
 }
@@ -285,6 +290,9 @@
         }else if (comps.hour > 22 && comps.hour < 5){
             _optimizationView.titleLabel.text = @"嗨, 深夜啦";
             str = @"5";
+        }else{
+            _optimizationView.titleLabel.text = @"哈喽~";
+            str = @"1";
         }
         [self.recommendVM getshowDocByUserid:UserDefaultObjectForKey(LOCAL_READ_USERID) soupType:str CompleteHandle:^(NSError *error) {
             _optimizationView.textLabel.text = self.recommendVM.contentStr;
@@ -327,6 +335,28 @@
                                 [locationManager startUpdatingLocation];
                                 
                                 isrelodfocusView = 1;
+                                
+                                // 进入引导流程图
+                                if (![[NSString stringWithFormat:@"%@%@", APPVERSION, APPBUILDVERSION] isEqualToString:UserDefaultObjectForKey(LOCAL_READ_FIRSTOPEN)]){
+                                    [wself.optimizationView setNeedsLayout];
+                                    [wself.optimizationView layoutIfNeeded];
+                                    // 把要展示的按钮的位置传入，用于绘制贝塞尔曲线
+                                    CGRect changeFrame = _optimizationView.changeBtn.frame;
+                                    changeFrame.origin.x = changeFrame.origin.x + SJ_ADAPTER_WIDTH(10);
+                                    changeFrame.origin.y = changeFrame.origin.y + 64 + 20 +SJ_ADAPTER_HEIGHT(15);
+                                    [SJManager sharedManager].changeFrame = changeFrame;
+                                    
+                                    [self.view setNeedsLayout];
+                                    [self.view layoutIfNeeded];
+                                    // 把要展示的按钮的位置传入，用于绘制贝塞尔曲线
+                                    [SJManager sharedManager].bookFrame = _bookBtn.frame;
+                                    [SJManager sharedManager].searchFrame = _searchBtn.frame;
+                                    
+                                    SJGuideViewController *vc=[[SJGuideViewController alloc] init];
+                                    vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+                                    
+                                    [wself presentViewController:vc animated:NO completion:nil];
+                                }
                             });
                         }
                         
@@ -363,11 +393,13 @@
                                 [wself.focusView.homeCollectionV reloadData];
                                 [wself collectionView];
                                 // 定位
-                                [self InitLocation];
+                                [wself InitLocation];
                                 [locationManager requestWhenInUseAuthorization];
                                 [locationManager startUpdatingLocation];
                                 
                                 isrelodfocusView = 1;
+                                
+                                
                             });
                         }
                     }];
@@ -427,7 +459,6 @@
     //1.创建网络状态监测管理者
     AFNetworkReachabilityManager *manger = [AFNetworkReachabilityManager sharedManager];
     //2.监听改变
-    __weak typeof (self) wself = self;
     [manger setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         switch (status) {
             case AFNetworkReachabilityStatusUnknown:
@@ -474,6 +505,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(focusViewRefresh:) name:@"focusViewRefresh" object:nil];
     
+    
+    
     // Do any additional setup after loading the view.
 }
 
@@ -505,7 +538,7 @@
         
     }];
     // 跳转
-    SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:model.appurl andAppImageUrlStr:[NSString stringWithFormat:@"%@%@", URLPATH, model.applogopath] andSuperCode:model.supercode];
+    SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:model.appurl andAppImageUrlStr:[NSString stringWithFormat:@"%@%@", URLPATH, model.applogopath] andSuperCode:model.supercode withAppName:model.appname];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -518,7 +551,7 @@
         
     }];
     // 跳转
-    SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:model.appurl andAppImageUrlStr:[NSString stringWithFormat:@"%@%@", URLPATH, model.applogopath] andSuperCode:model.supercode];
+    SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:model.appurl andAppImageUrlStr:[NSString stringWithFormat:@"%@%@", URLPATH, model.applogopath] andSuperCode:model.supercode withAppName:model.appname];
     [self.navigationController pushViewController:vc animated:YES];
 }
 //- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{

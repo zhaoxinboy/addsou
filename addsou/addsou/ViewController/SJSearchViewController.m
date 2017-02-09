@@ -120,7 +120,7 @@
         if ([str includeChinese]) {
             str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         }
-        SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:[NSString keywordWithSearchWebUrl:str searchWebUrlStyle:SearchWebUrlStyleBaiDu] andAppImageUrlStr:nil andSuperCode:nil];
+        SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:[NSString keywordWithSearchWebUrl:str searchWebUrlStyle:SearchWebUrlStyleBaiDu] andAppImageUrlStr:nil andSuperCode:nil withAppName:@"百度搜索"];
         [self.navigationController pushViewController:vc animated:YES];
         DLog(@"点击了搜索");
     }
@@ -180,7 +180,7 @@
     if ([str includeChinese]) {
         str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }
-    SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:str andAppImageUrlStr:model.searchImageStr andSuperCode:nil];
+    SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:str andAppImageUrlStr:model.searchImageStr andSuperCode:nil withAppName:model.searchTitle];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -195,7 +195,7 @@
 // collectionview点击代理方法
 - (void)searchCollectionIndexPathRow:(NSInteger)index model:(SJHomeAddressDataModel *)model{
     [self saveSearchAction];
-    SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:model.appurl andAppImageUrlStr:[NSString stringWithFormat:@"%@%@", URLPATH, model.applogopath] andSuperCode:model.supercode];
+    SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:model.appurl andAppImageUrlStr:[NSString stringWithFormat:@"%@%@", URLPATH, model.applogopath] andSuperCode:model.supercode withAppName:model.appname];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

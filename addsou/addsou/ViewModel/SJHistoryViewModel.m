@@ -69,4 +69,24 @@
     return superCode;
 }
 
+
+- (void)postDeleteHistoryAppByUserid:(NSString *)userid CompleteHandle:(CompletionHandle)completionHandle{
+    NSString *path = [NSString stringWithFormat:@"%@/deleteHistoryAppByUserid", URLPATH];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithCapacity:1];
+    [params setObject:userid forKey:@"userid"];
+    __weak typeof (self)wself = self;
+    self.dataTask = [SJNetManager POST:path parameters:params completionHandle:^(id responseObj, NSError *error) {
+        NSMutableDictionary *dic = (NSMutableDictionary *)responseObj;
+        NSString *status = [dic objectForKey:@"status"];
+        DLog(@"历史记录:  %@\n清空历史记录网络请求返回码:  %@", dic, status)
+        if ([status isEqualToString:@"0"]) {
+            [wself showSuccessMsg:@"清除成功"];
+            wself.clearStatus = status;
+        }else{
+            [wself showErrorMsg:@"清除失败，请检查网络后重试!"];
+        }
+        completionHandle(error);
+    }];
+}
+
 @end

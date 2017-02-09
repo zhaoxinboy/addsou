@@ -20,4 +20,9 @@
 - (NSInteger)appIdForRow:(NSInteger)row;
 - (NSString *)superCodeForRow:(NSInteger)row;
 
+
+// 删除历史记录
+- (void)postDeleteHistoryAppByUserid:(NSString *)userid CompleteHandle:(CompletionHandle)completionHandle;
+@property (nonatomic, strong) NSString *clearStatus;
+
 @end

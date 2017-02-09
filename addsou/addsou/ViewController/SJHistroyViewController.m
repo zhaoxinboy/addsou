@@ -10,8 +10,11 @@
 #import "ULBCollectionViewFlowLayout.h"
 #import "QDRHistoryCollectionViewCell.h"
 #import "SJWebViewController.h"
+#import "QDRClearCacheView.h"
 
-@interface SJHistroyViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ULBCollectionViewDelegateFlowLayout>
+@interface SJHistroyViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, ULBCollectionViewDelegateFlowLayout, removeDelegate>
+
+@property (nonatomic, strong) QDRClearCacheView *clearView;
 
 @property (nonatomic, strong) SJNavcView *navcView;   // 自定义导航
 
@@ -22,6 +25,35 @@
 @end
 
 @implementation SJHistroyViewController
+
+- (QDRClearCacheView *)clearView{
+    if (!_clearView) {
+        _clearView = [[QDRClearCacheView alloc] initWithTarget:self];
+        _clearView.clearCacheLabel.text = @"清除记录";
+        _clearView.isClearLabel.text = @"是否清除记录";
+        [_clearView.determineBtn addTarget:self action:@selector(cleanHistroy) forControlEvents:UIControlEventTouchUpInside];
+        _clearView.delegate = self;
+    }
+    return _clearView;
+}
+
+// 清空历史记录
+- (void)cleanHistroy{
+    __weak typeof(self)wself = self;
+    [self.historyVM postDeleteHistoryAppByUserid:UserDefaultObjectForKey(LOCAL_READ_USERID) CompleteHandle:^(NSError *error) {
+        if ([wself.historyVM.clearStatus isEqualToString:@"0"]) {
+            [wself.historyVM.dataArr removeAllObjects];
+            [wself.collectionView reloadData];
+            [_clearView closeSelf];
+        }
+    }];
+}
+
+- (void)removeClearView{
+    [self setClearView:nil];
+}
+
+
 // section背景颜色
 - (UIColor *)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout colorForSectionAtIndex:(NSInteger)section{
     return [UIColor whiteColor];
@@ -96,7 +128,7 @@
     [self.homeVM postAddHistoryToUserFromNetWithUrlId:[self.historyVM appIdForRow:indexPath.row] andUserID:[[NSUserDefaults standardUserDefaults] objectForKey:LOCAL_READ_USERID] CompleteHandle:^(NSError *error) {
     }];
     SJHistoryArrModel *model = (SJHistoryArrModel *)self.historyVM.dataArr[indexPath.row];
-    SJWebViewController *webvc = [[SJWebViewController alloc] initWithUrlStr:model.appurl andAppImageUrlStr:[NSString stringWithFormat:@"%@%@", URLPATH, model.applogopath] andSuperCode:model.supercode];
+    SJWebViewController *webvc = [[SJWebViewController alloc] initWithUrlStr:model.appurl andAppImageUrlStr:[NSString stringWithFormat:@"%@%@", URLPATH, model.applogopath] andSuperCode:model.supercode withAppName:model.appname];
     [self.navigationController pushViewController:webvc animated:YES];
 }
 
@@ -117,8 +149,11 @@
     if ([[NSUserDefaults standardUserDefaults] objectForKey:LOCAL_READ_USERID]) {
         [self.historyVM getHistoryByUseridWithUserid:[[NSUserDefaults standardUserDefaults] objectForKey:LOCAL_READ_USERID] CompleteHandle:^(NSError *error) {
             if (wself.historyVM.rowNumber > 0) {
+                wself.navcView.rightBtn.alpha = 1;
                 // 回到主线程刷新UI
                 [wself.collectionView reloadData];
+            }else{
+                wself.navcView.rightBtn.alpha = 0;
             }
         }];
     }
@@ -134,9 +169,20 @@
         _navcView = [[SJNavcView alloc] init];
         [_navcView.goBackBtn addTarget:self action:@selector(go2Back) forControlEvents:UIControlEventTouchUpInside];
         _navcView.titleLabel.text = @"浏览记录";
+        _navcView.rightBtn.alpha = 1;
+        [_navcView.rightBtn setTitle:@"清除记录" forState:UIControlStateNormal];
+        _navcView.rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_navcView.rightBtn setTitleColor:kRGBColor(51, 51, 51) forState:UIControlStateNormal];
+        [_navcView.rightBtn addTarget:self action:@selector(deleteHistroy) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:_navcView];
     }
     return _navcView;
+}
+
+// 清除记录
+- (void)deleteHistroy{
+    [self clearView];
+    [_clearView openSelf];
 }
 
 - (void)go2Back{
@@ -149,9 +195,10 @@
     self.view.backgroundColor = kRGBColor(227, 227, 227);
     
     [self collectionView];
+    [self navcView];
     [self getNetWorking];
     
-    [self navcView];
+    
     // Do any additional setup after loading the view.
 }
 

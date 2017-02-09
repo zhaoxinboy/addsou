@@ -9,6 +9,7 @@
 #import "QDRRegisteredViewController.h"
 #import "QDRRegisteredTableView.h"
 #import "QDRUserFeedbackViewController.h"
+#import "QDRLoginViewController.h"
 
 @interface QDRRegisteredViewController ()
 
@@ -68,7 +69,6 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    
     // 注册KVO监听  注册页面  用户反馈
     [self.registeredTableView addObserver:self forKeyPath:@"KVOreadNum" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
     [self.registeredTableView addObserver:self forKeyPath:@"KVOlogin" options:NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
@@ -111,14 +111,28 @@
                 [self.loginVM postDataFromWithUserName:self.registeredTableView.phoneLabel.text passWord:self.registeredTableView.passWordTF.text mobile:self.registeredTableView.phoneLabel.text verfycode:self.registeredTableView.verificationCodeTF.text serialnumber:LOCAL_READ_UUID codeid:wself.registeredTableView.verificationCodeStr NetCompleteHandle:^(NSError *error) {
                     if ([wself.loginVM.status isEqualToString:@"0"]) {
                         [wself showSuccessMsg:@"注册成功"];
-                        [wself.navigationController popToRootViewControllerAnimated:YES];
+                        UINavigationController *navVC = wself.navigationController;
+                        UIViewController *vc = nil;
+                        for (vc in [navVC viewControllers]) {
+                            if ([vc isKindOfClass:[QDRLoginViewController class]]) {
+                                break;
+                            }
+                        }
+                        [wself.navigationController popToViewController:(QDRLoginViewController *)vc animated:YES];
                     }
                 }];
             }else if([self.titleText isEqualToString:@"重置密码"]){
                 [self.loginVM postResetPasswordWithPassWord:self.registeredTableView.passWordTF.text mobile:self.registeredTableView.phoneLabel.text verfycode:self.registeredTableView.verificationCodeTF.text codeid:self.registeredTableView.verificationCodeStr NetCompleteHandle:^(NSError *error) {
                     if ([wself.loginVM.status isEqualToString:@"0"]) {
                         [wself showSuccessMsg:@"密码修改成功"];
-                        [wself.navigationController popViewControllerAnimated:YES];
+                        UINavigationController *navVC = wself.navigationController;
+                        UIViewController *vc = nil;
+                        for (vc in [navVC viewControllers]) {
+                            if ([vc isKindOfClass:[QDRLoginViewController class]]) {
+                                break;
+                            }
+                        }
+                        [wself.navigationController popToViewController:(QDRLoginViewController *)vc animated:YES];
                     }else{
                         [wself showErrorMsg:@"密码修改失败"];
                     }

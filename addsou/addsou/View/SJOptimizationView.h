@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "JiKeScrollView.h"
 
+
+
 @interface SJOptimizationView : UIView
 
 @property (nonatomic, strong) UILabel *titleLabel;   /* 标题 */
@@ -30,5 +32,6 @@
 @property (nonatomic,strong) JiKeScrollView *myJikeScrollView;
 
 @property (nonatomic, assign) NSInteger dataShowIndex;   /* 刷新 */
+
 
 @end

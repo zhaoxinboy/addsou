@@ -77,11 +77,6 @@
     //    self.pageControl.currentPage = 0;
 }
 - (void)buttonToNextView{
-    
-    NSString *str = [NSString stringWithFormat:@"%@%@", APPVERSION, APPBUILDVERSION];
-    UserDefaultSetObjectForKey(str, LOCAL_READ_FIRSTOPEN)
-    UserDefaultSetObjectForKey(@"1", LOCAL_READ_FIRST)
-    
     //创建动画
     CATransition *animation = [CATransition animation];
     //设置运动轨迹的速度

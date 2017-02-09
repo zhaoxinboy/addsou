@@ -401,13 +401,14 @@
     return _naviView;
 }
 
-- (instancetype)initWithUrlStr:(NSString *)urlStr andAppImageUrlStr:(NSString *)appImageUrlStr andSuperCode:(NSString *)superCode
+- (instancetype)initWithUrlStr:(NSString *)urlStr andAppImageUrlStr:(NSString *)appImageUrlStr andSuperCode:(NSString *)superCode withAppName:(NSString *)appName
 {
     self = [super init];
     if (self) {
         _urlStr = urlStr;
         _appImageUrlStr = appImageUrlStr;
         _superCode = superCode;
+        _appName = appName;
     }
     return self;
 }
@@ -427,6 +428,7 @@
     
     [_webView.configuration.userContentController removeScriptMessageHandlerForName:@"timefor"];
     
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 - (void)viewDidLoad {
@@ -655,6 +657,7 @@
     if (!_naviView.rightBtn.selected) {
         // 添加一个书签
         QDRBookViewModel *model = [[QDRBookViewModel alloc] init];
+        model.appName = _appName;
         model.titlestr = _naviView.naviTitleLabel.text;
         model.url = [self.webView.URL absoluteString];
         model.userUUID = LOCAL_READ_UUID;

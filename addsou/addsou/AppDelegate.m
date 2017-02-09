@@ -113,7 +113,7 @@
     [self.window makeKeyAndVisible];
     
     
-    // 启动图片延时: 1秒
+    // 启动图片延时: 2秒
     [NSThread sleepForTimeInterval:2];
     
     return YES;
@@ -313,6 +313,7 @@
 //    QDRHistoryViewController *leftVC = (QDRHistoryViewController *)sideMenu.leftMenuViewController;
 //    [leftVC getNetWorking];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"SJUserViewController" object:nil];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];// 菜单栏字体颜色
     DLog(@"willShowMenuViewController: %@", NSStringFromClass([menuViewController class]));
 }
 
@@ -323,6 +324,7 @@
 
 - (void)sideMenu:(RESideMenu *)sideMenu willHideMenuViewController:(UIViewController *)menuViewController
 {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];//菜单栏字体颜色
     SJUserViewController *userVC = (SJUserViewController *)menuViewController;
     SJBaseNavigationViewController *vc = (SJBaseNavigationViewController *)sideMenu.contentViewController;
     if (userVC.intBtn == 1) {//注册登录

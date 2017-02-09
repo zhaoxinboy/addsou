@@ -11,11 +11,14 @@
 #import "SJBookMarksHomeCollectionViewCell.h"
 #import "SJWebViewController.h"
 #import "SJNoBookView.h"
+#import "CardLayout.h"
 
-@interface SJBookMarksViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, UIScrollViewDelegate>
+@interface SJBookMarksViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, UIScrollViewDelegate, CardLayoutDelegate>
 
 
 @property (nonatomic, strong) UICollectionView *collectionView;   /* 展示卡片 */
+
+@property (nonatomic, strong) CardLayout* cardLayout;   // 布局
 
 @property (nonatomic, strong) UIButton *closeBtn;   /* 关闭按钮 */
 
@@ -41,7 +44,7 @@
 - (UIButton *)closeBtn{
     if (!_closeBtn) {
         _closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_closeBtn setImage:[UIImage imageNamed:@"label_button_close"] forState:UIControlStateNormal];
+        [_closeBtn setImage:[UIImage imageNamed:@"back_button"] forState:UIControlStateNormal];
         _closeBtn.layer.cornerRadius = 30;
         _closeBtn.layer.masksToBounds = YES;
         [_closeBtn addTarget:self action:@selector(closeSelf) forControlEvents:UIControlEventTouchUpInside];
@@ -77,16 +80,30 @@
     return _dataArray;
 }
 
+-(void)updateBlur:(CGFloat) blur ForRow:(NSInteger)row
+{
+    if (![self.cardLayout isKindOfClass:[CardLayout class]]) {
+        return;
+    }
+    SJBookMarksHomeCollectionViewCell* cell = (SJBookMarksHomeCollectionViewCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
+    [cell setBlur:blur];
+}
+
 - (UICollectionView *)collectionView{
     if (!_collectionView) {
         SJHomePageLayout *layout = [[SJHomePageLayout alloc] init];
         layout.itemSize = CGSizeMake(SJ_ADAPTER_WIDTH(300), SJ_ADAPTER_HEIGHT(480));
         layout.minimumLineSpacing = SJ_ADAPTER_WIDTH(18);//设置cell的间距
         layout.sectionInset = UIEdgeInsetsMake(SJ_ADAPTER_HEIGHT(32), SJ_ADAPTER_WIDTH(38), SJ_ADAPTER_HEIGHT(88), SJ_ADAPTER_WIDTH(38));//设置四周的间距
-        _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+        
+        
+        
+        self.cardLayout =  [[CardLayout alloc]initWithOffsetY:400];
+        self.cardLayout.delegate = self;
+        _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:self.cardLayout];
         [_collectionView registerClass:[SJBookMarksHomeCollectionViewCell class] forCellWithReuseIdentifier:@"SJBookMarksHomeCollectionViewCell"];
-        _collectionView.alwaysBounceHorizontal = YES;
-        _collectionView.alwaysBounceVertical = NO;
+        _collectionView.alwaysBounceHorizontal = NO;
+        _collectionView.alwaysBounceVertical = YES;
         _collectionView.showsVerticalScrollIndicator = FALSE;
         _collectionView.showsHorizontalScrollIndicator = FALSE;
         _collectionView.bounces = YES;
@@ -129,7 +146,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = kRGBColor(51, 51, 51);
+    self.view.backgroundColor = [UIColor blackColor];
     [self.dataArray removeAllObjects];
     self.dataArray = [[FMDBManager sharedFMDBManager] getAllBookView];
     NSEnumerator *enumerator = [self.dataArray reverseObjectEnumerator];
@@ -164,8 +181,9 @@
         UIImage *image = [self Base64StrToUIImage:model.imageData];
         cell.titleContentView.image = image;
     }
+    cell.title.text = model.appName;
     cell.titleLabel.text = model.titlestr;
-    cell.deleteImage.image = [UIImage imageNamed:@"label_icon_delete"];
+    [cell.headerImageView sd_setImageWithURL:[NSURL URLWithString:model.titleData] placeholderImage:[UIImage imageNamed:LOCAL_READ_PLACEIMAGE]];
     cell.deleteBtn.tag = indexPath.item + 1000;
     [cell.deleteBtn addTarget:self action:@selector(deleteCell:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -175,7 +193,7 @@
 //UICollectionView 被选中时调用的方法
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     QDRBookViewModel *model = self.dataArray[indexPath.row];
-    SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:model.url andAppImageUrlStr:model.titleData andSuperCode:model.superCode];
+    SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:model.url andAppImageUrlStr:model.titleData andSuperCode:model.superCode withAppName:model.appName];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -186,7 +204,8 @@
     if ([[FMDBManager sharedFMDBManager] deleteBookView:deleModel]){
         [self showSuccessMsg:@"删除书签成功"];
         [self.dataArray removeObjectAtIndex:indexPath.item];
-        [self.collectionView reloadData];
+        
+        [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
         
         if (self.dataArray.count == 0) {
             self.collectionView.alpha = 0;
@@ -194,7 +213,6 @@
         }else{
             self.noBookView.alpha = 0;
             self.collectionView.alpha = 1;
-            [self.collectionView reloadData];
         }
     }else{
         [self showSuccessMsg:@"删除书签失败，请重试"];

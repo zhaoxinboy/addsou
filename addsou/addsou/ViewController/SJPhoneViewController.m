@@ -59,21 +59,11 @@
 
 - (void)go2next{
     if ([self.phoneText.text isMobilePhoneNumber]) {
-        if ([self.titleStr isEqualToString:@"手机注册"]) {
-            QDRRegisteredViewController *vc = [[QDRRegisteredViewController alloc] initWithPhone:self.phoneText.text titleText:self.titleStr];
-            [self.navigationController pushViewController:vc animated:YES];
-        }else{
-            QDRRegisteredViewController *vc = [[QDRRegisteredViewController alloc] initWithPhone:self.phoneText.text titleText:self.titleStr];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-        
+        QDRRegisteredViewController *vc = [[QDRRegisteredViewController alloc] initWithPhone:self.phoneText.text titleText:self.titleStr];
+        [self.navigationController pushViewController:vc animated:YES];
     }else{
         [self showErrorMsg:@"请输入正确的手机号"];
     }
-    
-    
-    
-    
     DLog(@"下一个页面")
 }
 

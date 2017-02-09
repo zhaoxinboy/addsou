@@ -75,15 +75,15 @@ static FMDBManager *manager = nil;
 
 - (BOOL)addBookView:(QDRBookViewModel *)model{
     [_db open];
-//    if (![_db columnExists:@"QDRBookViewModel_superCode" inTableWithName:@"QDRBookViewModel"]){
-//        NSString *alertStr = [NSString stringWithFormat:@"ALTER TABLE %@ ADD %@ INTEGER",@"QDRBookViewModel",@"QDRBookViewModel_superCode"];
-//        BOOL worked = [_db executeUpdate:alertStr];
-//        if(worked){
-//            NSLog(@"QDRBookViewModel_superCode 插入成功");
-//        }else{
-//            NSLog(@"QDRBookViewModel_superCode 插入失败");
-//        }
-//    }
+    if (![_db columnExists:@"QDRBookViewModel_appName" inTableWithName:@"QDRBookViewModel"]){
+        NSString *alertStr = [NSString stringWithFormat:@"ALTER TABLE %@ ADD %@ INTEGER",@"QDRBookViewModel",@"QDRBookViewModel_appName"];
+        BOOL worked = [_db executeUpdate:alertStr];
+        if(worked){
+            NSLog(@"QDRBookViewModel_appName 插入成功");
+        }else{
+            NSLog(@"QDRBookViewModel_appName 插入失败");
+        }
+    }
     NSNumber *maxID = @(0);
     FMResultSet *res = [_db executeQuery:@"SELECT * FROM QDRBookViewModel"];
     //获取数据库中最大的ID
@@ -93,7 +93,7 @@ static FMDBManager *manager = nil;
         }
     }
     maxID = @([maxID integerValue] + 1);
-    BOOL judge = [_db executeUpdate:@"INSERT INTO QDRBookViewModel(QDRBookViewModel_id,QDRBookViewModel_userUUID,QDRBookViewModel_url,QDRBookViewModel_imageData,QDRBookViewModel_titleData,QDRBookViewModel_titlestr,QDRBookViewModel_superCode)VALUES(?,?,?,?,?,?,?)",maxID, model.userUUID, model.url, model.imageData, model.titleData, model.titlestr, model.superCode];
+    BOOL judge = [_db executeUpdate:@"INSERT INTO QDRBookViewModel(QDRBookViewModel_id,QDRBookViewModel_userUUID,QDRBookViewModel_url,QDRBookViewModel_imageData,QDRBookViewModel_titleData,QDRBookViewModel_titlestr,QDRBookViewModel_superCode,QDRBookViewModel_appName)VALUES(?,?,?,?,?,?,?,?)",maxID, model.userUUID, model.url, model.imageData, model.titleData, model.titlestr, model.superCode, model.appName];
     NSLog(@"向数据库中添加元素 %d", judge);
     [_db close];
     return judge;
@@ -116,6 +116,7 @@ static FMDBManager *manager = nil;
     judge = [_db executeUpdate:@"UPDATE 'QDRBookViewModel' SET QDRBookViewModel_titleData = ?  WHERE QDRBookViewModel_id = ? ",model.titleData,model.ID];
     judge = [_db executeUpdate:@"UPDATE 'QDRBookViewModel' SET QDRBookViewModel_titlestr = ?  WHERE QDRBookViewModel_id = ? ",model.titlestr,model.ID];
     judge = [_db executeUpdate:@"UPDATE 'QDRBookViewModel' SET QDRBookViewModel_superCode = ?  WHERE QDRBookViewModel_id = ? ",model.superCode,model.ID];
+    judge = [_db executeUpdate:@"UPDATE 'QDRBookViewModel' SET QDRBookViewModel_appName = ?  WHERE QDRBookViewModel_id = ? ",model.appName,model.ID];
     [_db close];
     return judge;
 }
@@ -133,6 +134,7 @@ static FMDBManager *manager = nil;
         model.titleData = [res stringForColumn:@"QDRBookViewModel_titleData"];
         model.titlestr = [res stringForColumn:@"QDRBookViewModel_titlestr"];
         model.superCode = [res stringForColumn:@"QDRBookViewModel_superCode"];
+        model.appName = [res stringForColumn:@"QDRBookViewModel_appName"];
         [dataArray addObject:model];
     }
     

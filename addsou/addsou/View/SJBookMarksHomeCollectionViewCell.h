@@ -10,14 +10,16 @@
 
 @interface SJBookMarksHomeCollectionViewCell : UICollectionViewCell
 
-@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UIImageView *headerImageView;      // 链接头像
 
-@property (nonatomic, strong) UIImageView *titleContentView;
+@property (nonatomic, strong) UILabel *title;      // 链接名称
 
-@property (nonatomic, strong) UIImageView *deleteImage;   /* 删除背景图 */
+@property (nonatomic, strong) UILabel *titleLabel;  // 链接题目
 
-@property (nonatomic, strong) UIButton *deleteBtn;
+@property (nonatomic, strong) UIImageView *titleContentView;  // 链接截图
 
+@property (nonatomic, strong) UIButton *deleteBtn;   // 删除按钮
 
+-(void)setBlur:(CGFloat)ratio; //设置毛玻璃效果
 
 @end

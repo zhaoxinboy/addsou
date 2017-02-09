@@ -14,14 +14,16 @@
 
 @property (nonatomic, strong) NSString *userUUID;
 
-@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSString *url;// 地址
 
-@property (nonatomic, strong) NSString *titlestr;
+@property (nonatomic, strong) NSString *titlestr;  // 标题
 
-@property (nonatomic, strong) NSString *imageData;
+@property (nonatomic, strong) NSString *imageData;  // 截图data
 
-@property (nonatomic, strong) NSString *titleData;
+@property (nonatomic, strong) NSString *titleData;   // logo地址
 
-@property (nonatomic, strong) NSString *superCode;
+@property (nonatomic, strong) NSString *superCode;  //去广告JS代码
+
+@property (nonatomic, strong) NSString *appName;      // 链接名称
 
 @end
