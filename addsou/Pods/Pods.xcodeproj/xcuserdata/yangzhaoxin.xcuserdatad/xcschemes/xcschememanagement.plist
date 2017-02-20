@@ -54,55 +54,65 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>iCarousel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3599CA9B30759FE01FC433BFA110E8C3</key>
+		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>53480ED0BE09FF49E34B1702D485CAAB</key>
+		<key>358D44A6C9FA1BE25B0828AB19D32B19</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5F644A7ACD31715F3B61258987657309</key>
+		<key>586F2DFA9BDCC6675C2546793A69E5CC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>70BC44266C6FFE30D2C57129458E070B</key>
+		<key>8642CC820CE8C5B88C113D7F47AF4BC3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>901FD894F4C57D4A774ACFBA1056D730</key>
+		<key>9DC8D9E02903E93BD0B2FEC9D846EA20</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>928353533005A4198EBDA5B700D37B64</key>
+		<key>9E033EDB5EC0819481B0546434FA577B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9EAB3E42EF957541E6C3C76D35FD008E</key>
+		<key>A316B54C67E947D23CECD230FA5BFAEF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9F12FB4A63E20F601CFB2E64A65B57C1</key>
+		<key>B41629CF72E4969B36BEB0E13A5D962A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D058B89EB3B3DF45457A2DCD3971AFFE</key>
+		<key>D4619E4297903A721FA5CD50B34534A8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D9C0D4A13AE93FCAF5F8C30A183EF784</key>
+		<key>DC7A51F0B370F9976D21032BDDB7222E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E3EEF672C4A6114786A1892D3DFBDF63</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -81,6 +81,8 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
+    DLog(@"%@", self.dataAll)
+    DLog(@"%lu", (unsigned long)self.dataAll.count)
     return self.dataAll.count;
 }
 

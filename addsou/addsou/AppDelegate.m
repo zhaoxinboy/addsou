@@ -333,10 +333,12 @@
     }else if (userVC.indexPath.row == 0) {//浏览记录
         SJHistroyViewController *histroyVC = [[SJHistroyViewController alloc] init];
         [vc pushViewController:histroyVC animated:NO];
-    }else if (userVC.indexPath.row == 1){
+    }else if (userVC.indexPath.row == 1){ // 搜索引擎
+        
+    }else if (userVC.indexPath.row == 2){
         QDRUserFeedbackViewController *feedVC = [[QDRUserFeedbackViewController alloc] init];
         [vc pushViewController:feedVC animated:NO];
-    }else if (userVC.indexPath.row == 3){
+    }else if (userVC.indexPath.row == 4){
         QDRAboutUsViewController *aboutVC = [[QDRAboutUsViewController alloc] init];
         [vc pushViewController:aboutVC animated:NO];
     }

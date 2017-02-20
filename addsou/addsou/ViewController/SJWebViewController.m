@@ -513,7 +513,7 @@
         [_webView addSubview:progress];
         CALayer *layer = [CALayer layer];
         layer.frame = CGRectMake(0, 0, 0, 2.5);
-        layer.backgroundColor = kRGBColor(255, 75, 59).CGColor;
+        layer.backgroundColor = kRGBColor(51, 51, 51).CGColor;
         [progress.layer addSublayer:layer];
         progresslayer = layer;
         // 标题监听

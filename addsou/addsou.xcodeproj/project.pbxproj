@@ -50,6 +50,7 @@
 		E20B50501E1CE00F002C006B /* SJBaseNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20B504F1E1CE00F002C006B /* SJBaseNavigationViewController.m */; };
 		E20B50521E1CE24B002C006B /* ironhide.cer in Resources */ = {isa = PBXBuildFile; fileRef = E20B50511E1CE24B002C006B /* ironhide.cer */; };
 		E20B50561E1CEF8E002C006B /* SJHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20B50551E1CEF8E002C006B /* SJHomePageViewController.m */; };
+		E20D7B9F1E515B1200020CF4 /* SJBookMarksLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E20D7B9E1E515B1200020CF4 /* SJBookMarksLayout.m */; };
 		E20DC2A51E23D49500D5E282 /* SJSearchTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20DC2A41E23D49500D5E282 /* SJSearchTableView.m */; };
 		E20DCCDF1E1E4EE6003AB27B /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = E20DCCDE1E1E4EE6003AB27B /* UIView+Frame.m */; };
 		E20DCCEA1E1E4F27003AB27B /* JiKeScrollImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20DCCE31E1E4F27003AB27B /* JiKeScrollImageView.m */; };
@@ -103,6 +104,8 @@
 		E252957A1E49B3C900D29542 /* SJGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E25295791E49B3C900D29542 /* SJGuideViewController.m */; };
 		E252957E1E49D1C300D29542 /* SJManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E252957D1E49D1C300D29542 /* SJManager.m */; };
 		E25295811E4B01FD00D29542 /* CardLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E25295801E4B01FD00D29542 /* CardLayout.m */; };
+		E25295851E4C511400D29542 /* SJBookMarksVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E25295841E4C511400D29542 /* SJBookMarksVC.m */; };
+		E25295881E4C53BB00D29542 /* SJBookMarksHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E25295871E4C53BB00D29542 /* SJBookMarksHomeView.m */; };
 		E2A40FE21E16067F002A733E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A40FE11E16067F002A733E /* main.m */; };
 		E2A40FE51E16067F002A733E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A40FE41E16067F002A733E /* AppDelegate.m */; };
 		E2A40FED1E16067F002A733E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2A40FEC1E16067F002A733E /* Assets.xcassets */; };
@@ -218,6 +221,8 @@
 		E20B50511E1CE24B002C006B /* ironhide.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = ironhide.cer; sourceTree = "<group>"; };
 		E20B50541E1CEF8E002C006B /* SJHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJHomePageViewController.h; sourceTree = "<group>"; };
 		E20B50551E1CEF8E002C006B /* SJHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJHomePageViewController.m; sourceTree = "<group>"; };
+		E20D7B9D1E515B1200020CF4 /* SJBookMarksLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJBookMarksLayout.h; sourceTree = "<group>"; };
+		E20D7B9E1E515B1200020CF4 /* SJBookMarksLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJBookMarksLayout.m; sourceTree = "<group>"; };
 		E20DC2A31E23D49500D5E282 /* SJSearchTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJSearchTableView.h; sourceTree = "<group>"; };
 		E20DC2A41E23D49500D5E282 /* SJSearchTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJSearchTableView.m; sourceTree = "<group>"; };
 		E20DCCDD1E1E4EE6003AB27B /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
@@ -322,6 +327,10 @@
 		E252957D1E49D1C300D29542 /* SJManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJManager.m; sourceTree = "<group>"; };
 		E252957F1E4B01FD00D29542 /* CardLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardLayout.h; sourceTree = "<group>"; };
 		E25295801E4B01FD00D29542 /* CardLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardLayout.m; sourceTree = "<group>"; };
+		E25295831E4C511400D29542 /* SJBookMarksVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJBookMarksVC.h; sourceTree = "<group>"; };
+		E25295841E4C511400D29542 /* SJBookMarksVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJBookMarksVC.m; sourceTree = "<group>"; };
+		E25295861E4C53BB00D29542 /* SJBookMarksHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJBookMarksHomeView.h; sourceTree = "<group>"; };
+		E25295871E4C53BB00D29542 /* SJBookMarksHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJBookMarksHomeView.m; sourceTree = "<group>"; };
 		E2A40FDD1E16067F002A733E /* addsou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = addsou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A40FE11E16067F002A733E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E2A40FE31E16067F002A733E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -536,6 +545,8 @@
 			children = (
 				E2068D8A1E236EA50020803A /* SJBookMarksViewController.h */,
 				E2068D8B1E236EA50020803A /* SJBookMarksViewController.m */,
+				E25295831E4C511400D29542 /* SJBookMarksVC.h */,
+				E25295841E4C511400D29542 /* SJBookMarksVC.m */,
 			);
 			name = "首页书签";
 			sourceTree = "<group>";
@@ -549,6 +560,10 @@
 				E2068D8F1E236FAE0020803A /* SJBookMarksHomeCollectionViewCell.m */,
 				E21227141E2CB8BE00E89A7C /* SJNoBookView.h */,
 				E21227151E2CB8BE00E89A7C /* SJNoBookView.m */,
+				E25295861E4C53BB00D29542 /* SJBookMarksHomeView.h */,
+				E25295871E4C53BB00D29542 /* SJBookMarksHomeView.m */,
+				E20D7B9D1E515B1200020CF4 /* SJBookMarksLayout.h */,
+				E20D7B9E1E515B1200020CF4 /* SJBookMarksLayout.m */,
 			);
 			name = "首页书签";
 			sourceTree = "<group>";
@@ -1347,6 +1362,7 @@
 			files = (
 				E2087AD51E1DEBD8005D025F /* SJHomePageLayout.m in Sources */,
 				E2068D981E237F8D0020803A /* SJSearchView.m in Sources */,
+				E25295851E4C511400D29542 /* SJBookMarksVC.m in Sources */,
 				E2068D561E20D47F0020803A /* SJGuidePageViewController.m in Sources */,
 				E21137B61E27123E00AF78D0 /* SJUserTableViewCell.m in Sources */,
 				E2068D7A1E2355990020803A /* FMDBManager.m in Sources */,
@@ -1374,10 +1390,12 @@
 				E20DCCDF1E1E4EE6003AB27B /* UIView+Frame.m in Sources */,
 				E21137DB1E27602D00AF78D0 /* JKCountDownButton.m in Sources */,
 				E2068D821E2355C10020803A /* CYLineLayout.m in Sources */,
+				E20D7B9F1E515B1200020CF4 /* SJBookMarksLayout.m in Sources */,
 				E20B50561E1CEF8E002C006B /* SJHomePageViewController.m in Sources */,
 				E20A6E081E28C274000D080D /* QDRAboutUsViewController.m in Sources */,
 				E21137D31E275FD100AF78D0 /* QDRUserFeedbackTableView.m in Sources */,
 				E21227161E2CB8BE00E89A7C /* SJNoBookView.m in Sources */,
+				E25295881E4C53BB00D29542 /* SJBookMarksHomeView.m in Sources */,
 				E21137DF1E2765EB00AF78D0 /* QDRLoginViewController.m in Sources */,
 				E21137C11E27537300AF78D0 /* SJNavcView.m in Sources */,
 				E2A410221E1645D8002A733E /* SJNetManager.m in Sources */,

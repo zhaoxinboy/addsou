@@ -149,16 +149,30 @@
         cell.leftLabel.text = @"浏览记录";
         cell.rightLabel.text = @"";
     }else if (indexPath.row == 1){
+        cell.leftLabel.text = @"搜索引擎";
+        if (UserDefaultObjectForKey(LOCAL_READ_SEARCH)) {
+            UserDefaultSetObjectForKey(BAIDUSEARCH, LOCAL_READ_SEARCH)
+        }
+        if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:BAIDUSEARCH]) {
+            cell.rightLabel.text = @"百度";
+        }else if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:SOUGOUSEARCH]){
+            cell.rightLabel.text = @"搜狗";
+        }else if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:BIYINGSEARCH]){
+            cell.rightLabel.text = @"必应";
+        }else if([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:QIHUSEARCH]){
+            cell.rightLabel.text = @"360";
+        }
+    }else if (indexPath.row == 2){
         cell.leftLabel.text = @"用户反馈";
     }else if (indexPath.row == 3){
-        cell.leftLabel.text = @"关于搜加";
-        cell.rightLabel.text = [NSString stringWithFormat:@"v%@", APPVERSION];
-    }else if (indexPath.row == 2){
         cell.leftLabel.text = @"赞我一下";
     }else if (indexPath.row == 4){
+        cell.leftLabel.text = @"关于搜加";
+        cell.rightLabel.text = [NSString stringWithFormat:@"v%@", APPVERSION];
+    }else if (indexPath.row == 5){
         cell.leftLabel.text = @"清除缓存";
         cell.rightLabel.text = [NSString stringWithFormat:@"%0.2f M", [self sdFolderSize]];
-    }else if (indexPath.row == 5){
+    }else if (indexPath.row == 6){
         cell.leftLabel.text = @"退出登录";
         cell.rightLabel.text = @"";
     }

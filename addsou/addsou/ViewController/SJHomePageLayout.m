@@ -10,7 +10,7 @@
 
 @implementation SJHomePageLayout
 
--(id)init{
+- (id)init{
     self = [super init];
     if (self) {
         
@@ -18,7 +18,7 @@
     return self;
 }
 
--(void)prepareLayout
+- (void)prepareLayout
 {
     [super prepareLayout];//需要调用super方法
     
@@ -27,7 +27,7 @@
     
 }
 
--(CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity{
+- (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset withScrollingVelocity:(CGPoint)velocity{
     
     CGFloat offsetAdjustment = MAXFLOAT;
     CGFloat horizontalCenter = proposedContentOffset.x + (CGRectGetWidth(self.collectionView.bounds) / 2.0);//collectionView落在屏幕中点的x坐标
@@ -45,7 +45,7 @@
 static CGFloat const ActiveDistance = 350;
 static CGFloat const ScaleFactor = 0.05;
 
--(NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect
+- (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect
 {
     NSArray *array = [super layoutAttributesForElementsInRect:rect];
     CGRect visibleRect;
@@ -56,7 +56,7 @@ static CGFloat const ScaleFactor = 0.05;
         CGFloat distance = CGRectGetMidX(visibleRect) - attributes.center.x;
 //        DLog(@"%f",distance);
         CGFloat normalizedDistance = distance / ActiveDistance;
-        CGFloat zoom = 1 + ScaleFactor*(1 - ABS(normalizedDistance));
+        CGFloat zoom = 1 + ScaleFactor * (1 - ABS(normalizedDistance));
 //        DLog(@"%f", zoom)
         attributes.transform3D = CATransform3DMakeScale(1.0, 1.0, 1.0);
         attributes.zIndex = 1;

@@ -15,12 +15,12 @@ static CGFloat cellHeight;  //卡片高度
 @interface CardLayout()
 
 //公式2
-@property(nonatomic, assign)CGFloat screenHeight;
-@property(nonatomic, assign)CGFloat m0;         //是指当第0个cell从初始位置，往上滑m0个点时卡片会移动到最顶点
-@property(nonatomic, assign)CGFloat n0;         //当contentOffset.y为0时，第0个cell的y坐标为n0
-@property(nonatomic, assign)CGFloat deltaOffsetY;//每个cell之间的偏移量间距，即第0个cell往下滑动deltaOffsetY个点时会到达第1个cell的位置
+@property(nonatomic, assign) CGFloat screenHeight;
+@property(nonatomic, assign) CGFloat m0;         //是指当第0个cell从初始位置，往上滑m0个点时卡片会移动到最顶点
+@property(nonatomic, assign) CGFloat n0;         //当contentOffset.y为0时，第0个cell的y坐标为n0
+@property(nonatomic, assign) CGFloat deltaOffsetY;//每个cell之间的偏移量间距，即第0个cell往下滑动deltaOffsetY个点时会到达第1个cell的位置
 
-@property(nonatomic, strong)NSMutableArray* cellLayoutList;
+@property(nonatomic, strong) NSMutableArray* cellLayoutList;
 
 @end
 
@@ -58,27 +58,29 @@ static CGFloat cellHeight;  //卡片高度
     
     NSInteger rowCount = [self.collectionView numberOfItemsInSection:0];
     for (NSInteger row = 0 ; row < rowCount; row++) {
-        UICollectionViewLayoutAttributes* attribute = [self layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
+        UICollectionViewLayoutAttributes *attribute = [self layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
         [self.cellLayoutList addObject:attribute];
     }
 }
 
-- (CGSize)collectionViewContentSize
-{
-    return CGSizeMake(self.collectionView.frame.size.width,[self getContentSizeY]);
+//  内容区域大小
+- (CGSize)collectionViewContentSize{
+    NSInteger rowCount = [self.collectionView numberOfItemsInSection:0];
+    CGFloat scrollY =  self.deltaOffsetY * (rowCount - 1);
+    self.contentSizeHeight = scrollY + self.screenHeight;
+    return CGSizeMake(self.collectionView.frame.size.width, self.contentSizeHeight);
 }
 
-//目标offset，在应用layout的时候会调用这个回调来设置collectionView的contentOffset
--(CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset
-{
+//  目标offset，在应用layout的时候会调用这个回调来设置collectionView的contentOffset
+- (CGPoint)targetContentOffsetForProposedContentOffset:(CGPoint)proposedContentOffset{
+    NSLog(@"%f", self.offsetY);
     return CGPointMake(0, self.offsetY);
 }
 
 // 屏幕可见部分cell的布局
-- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
-{
+- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect{
     NSMutableArray *array = [NSMutableArray array];
-    for (UICollectionViewLayoutAttributes* attribute in self.cellLayoutList) {
+    for (UICollectionViewLayoutAttributes *attribute in self.cellLayoutList) {
         // 是否重叠
         if (CGRectIntersectsRect(attribute.frame, rect)) {
             [array addObject:attribute];
@@ -88,7 +90,7 @@ static CGFloat cellHeight;  //卡片高度
 }
 
 //每次手指滑动时，都会调用这个方法来返回每个cell的布局
--(UICollectionViewLayoutAttributes*)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
+-(UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger rowCount = [self.collectionView numberOfItemsInSection:0];
     
@@ -164,12 +166,6 @@ static CGFloat cellHeight;  //卡片高度
     return _blurList;
 }
 
--(CGFloat)getContentSizeY
-{
-    self.contentSizeHeight = [self getSizeY];
-    return  self.contentSizeHeight;
-}
-
 #pragma mark -- 公式
 //根据下标、当前偏移量来获取对应的y坐标
 -(CGFloat)getOriginYWithOffsetY:(CGFloat)offsetY row:(NSInteger)row
@@ -196,7 +192,7 @@ static CGFloat cellHeight;  //卡片高度
 {
     CGFloat x0 = 0;     //初始状态
     CGFloat xi = x0 - self.deltaOffsetY * row;
-    CGFloat ni = powf((self.m0 - xi)/self.m0, 4) * self.n0;
+    CGFloat ni = powf((self.m0 - xi) / self.m0, 4) * self.n0;
 //    NSLog(@"defaultY-%d: %f",(int)row,ni);
     return ni;
 }
@@ -213,13 +209,5 @@ static CGFloat cellHeight;  //卡片高度
     CGFloat ratio = powf(originY/range, 0.04);
     return ratio;
 }
--(CGFloat)getSizeY
-{
-    NSInteger rowCount = [self.collectionView numberOfItemsInSection:0];
-    if (rowCount < 2) {
-        return self.collectionView.frame.size.height;
-    }
-    CGFloat scrollY =  self.deltaOffsetY * (rowCount - 1);
-    return scrollY + self.screenHeight;
-}
+
 @end

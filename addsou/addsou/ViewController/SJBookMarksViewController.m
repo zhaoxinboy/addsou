@@ -12,6 +12,7 @@
 #import "SJWebViewController.h"
 #import "SJNoBookView.h"
 #import "CardLayout.h"
+#import "SJBookMarksLayout.h"
 
 @interface SJBookMarksViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, UIScrollViewDelegate, CardLayoutDelegate>
 
@@ -80,7 +81,7 @@
     return _dataArray;
 }
 
--(void)updateBlur:(CGFloat) blur ForRow:(NSInteger)row
+-(void)updateBlur:(CGFloat)blur ForRow:(NSInteger)row
 {
     if (![self.cardLayout isKindOfClass:[CardLayout class]]) {
         return;
@@ -95,7 +96,6 @@
         layout.itemSize = CGSizeMake(SJ_ADAPTER_WIDTH(300), SJ_ADAPTER_HEIGHT(480));
         layout.minimumLineSpacing = SJ_ADAPTER_WIDTH(18);//设置cell的间距
         layout.sectionInset = UIEdgeInsetsMake(SJ_ADAPTER_HEIGHT(32), SJ_ADAPTER_WIDTH(38), SJ_ADAPTER_HEIGHT(88), SJ_ADAPTER_WIDTH(38));//设置四周的间距
-        
         
         
         self.cardLayout =  [[CardLayout alloc]initWithOffsetY:400];
@@ -124,8 +124,8 @@
     if (_collectionView) {
         [self.dataArray removeAllObjects];
         self.dataArray = [[FMDBManager sharedFMDBManager] getAllBookView];
-        NSEnumerator *enumerator = [self.dataArray reverseObjectEnumerator];
-        self.dataArray = (NSMutableArray*)[enumerator allObjects];
+//        NSEnumerator *enumerator = [self.dataArray reverseObjectEnumerator];
+//        self.dataArray = (NSMutableArray*)[enumerator allObjects];
         if (self.dataArray.count == 0) {
             self.collectionView.alpha = 0;
             self.noBookView.alpha = 1;
@@ -149,15 +149,48 @@
     self.view.backgroundColor = [UIColor blackColor];
     [self.dataArray removeAllObjects];
     self.dataArray = [[FMDBManager sharedFMDBManager] getAllBookView];
-    NSEnumerator *enumerator = [self.dataArray reverseObjectEnumerator];
-    self.dataArray = (NSMutableArray*)[enumerator allObjects];
+//    NSEnumerator *enumerator = [self.dataArray reverseObjectEnumerator];
+//    self.dataArray = (NSMutableArray*)[enumerator allObjects];
     [self collectionView];
     
     
     [self noBookView];
     
     [self closeBtn];
+    
+    // 删除cell的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(collectionViewdeleteCell:) name:@"deleteBookMarksCell" object:nil];
     // Do any additional setup after loading the view.
+    
+}
+
+- (void)collectionViewdeleteCell:(NSNotification*)noti{
+    SJBookMarksHomeCollectionViewCell *cell = noti.object;
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    
+    QDRBookViewModel *deleModel = self.dataArray[indexPath.item];
+    if ([[FMDBManager sharedFMDBManager] deleteBookView:deleModel]){
+        [self showSuccessMsg:@"删除书签成功"];
+        [self.dataArray removeObjectAtIndex:indexPath.item];
+        
+        ///Animation
+        [self.collectionView performBatchUpdates:^{
+            [self.collectionView deleteItemsAtIndexPaths:@[indexPath,]];
+        } completion:^(BOOL finished) {
+            
+        }];
+        
+        if (self.dataArray.count == 0) {
+            self.collectionView.alpha = 0;
+            self.noBookView.alpha = 1;
+        }
+    }else{
+        [self showSuccessMsg:@"删除书签失败，请重试"];
+    }
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"deleteBookMarksCell" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -184,8 +217,6 @@
     cell.title.text = model.appName;
     cell.titleLabel.text = model.titlestr;
     [cell.headerImageView sd_setImageWithURL:[NSURL URLWithString:model.titleData] placeholderImage:[UIImage imageNamed:LOCAL_READ_PLACEIMAGE]];
-    cell.deleteBtn.tag = indexPath.item + 1000;
-    [cell.deleteBtn addTarget:self action:@selector(deleteCell:) forControlEvents:UIControlEventTouchUpInside];
     
     return cell;
 }
@@ -197,29 +228,6 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-
-- (void)deleteCell:(UIButton *)sender{
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(sender.tag - 1000) inSection:0];
-    QDRBookViewModel *deleModel = self.dataArray[indexPath.item];
-    if ([[FMDBManager sharedFMDBManager] deleteBookView:deleModel]){
-        [self showSuccessMsg:@"删除书签成功"];
-        [self.dataArray removeObjectAtIndex:indexPath.item];
-        
-        [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
-        
-        if (self.dataArray.count == 0) {
-            self.collectionView.alpha = 0;
-            self.noBookView.alpha = 1;
-        }else{
-            self.noBookView.alpha = 0;
-            self.collectionView.alpha = 1;
-        }
-    }else{
-        [self showSuccessMsg:@"删除书签失败，请重试"];
-    }
-    
-    
-}
 
 /*
 #pragma mark - Navigation

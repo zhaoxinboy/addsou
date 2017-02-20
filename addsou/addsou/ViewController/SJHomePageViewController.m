@@ -14,6 +14,7 @@
 #import "SJTransitionManager.h"
 #import "SJWebViewController.h"
 #import "SJBookMarksViewController.h"
+#import "SJBookMarksVC.h"
 #import "SJSearchViewController.h"
 #import <CoreLocation/CoreLocation.h>
 #import <CoreLocation/CLLocationManagerDelegate.h>
@@ -117,6 +118,8 @@
 
 - (void)jump2book{
     
+//    SJBookMarksVC *vc = [[SJBookMarksVC alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
     SJBookMarksViewController *vc = [[SJBookMarksViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
     DLog(@"跳转到书签页面")
