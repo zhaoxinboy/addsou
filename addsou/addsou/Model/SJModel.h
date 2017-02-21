@@ -411,6 +411,8 @@
 
 @property (nonatomic, copy) NSString *searchImageStr;   /* 对应图片 */
 
+@property (nonatomic, copy) NSString *searchEngine;      // 引擎对应的字段
+
 @end
 /*--------------------end--------------------*/
 

@@ -37,7 +37,16 @@
 // 搜索结果
 - (void)getSearchResultFromNetWithStr:(NSString *)str CompleteHandle:(CompletionHandle)completionHandle{
     __weak typeof (self) wself = self;
-    NSString *path = [NSString stringWithFormat:@"%@/getSearchResult?key=%@", URLPATH, str];
+    NSString *searchstr = str.copy;
+    if ([searchstr includeChinese]) {//是否包含中文
+        //        searchstr = [searchstr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        searchstr = [searchstr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    }
+    NSRange range = [searchstr rangeOfString:@" "];
+    if (range.location != NSNotFound) {
+        searchstr = [searchstr stringByReplacingOccurrencesOfString:@" " withString:@""];
+    }
+    NSString *path = [NSString stringWithFormat:@"%@/getSearchResult?key=%@", URLPATH, searchstr];
     self.dataTask = [SJNetManager GET:path parameters:nil completionHandle:^(id responseObj, NSError *error) {
         if (responseObj) {
             NSMutableDictionary *dic = (NSMutableDictionary *)responseObj;

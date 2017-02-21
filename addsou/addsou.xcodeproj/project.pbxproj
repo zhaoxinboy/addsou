@@ -98,7 +98,6 @@
 		E21848811E1B93D2006FB866 /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E21848801E1B93D2006FB866 /* BaseViewModel.m */; };
 		E21848841E1B9433006FB866 /* SJHistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E21848831E1B9433006FB866 /* SJHistoryViewModel.m */; };
 		E218489C1E1CA73D006FB866 /* SJHomePageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E218489B1E1CA73D006FB866 /* SJHomePageViewModel.m */; };
-		E223B1D61E23EE8B009B0FE4 /* SJSearchCollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E223B1D51E23EE8B009B0FE4 /* SJSearchCollView.m */; };
 		E223B1DD1E248F1D009B0FE4 /* SJKeywordsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E223B1DC1E248F1D009B0FE4 /* SJKeywordsCollectionView.m */; };
 		E223B1E01E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = E223B1DF1E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.m */; };
 		E252957A1E49B3C900D29542 /* SJGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E25295791E49B3C900D29542 /* SJGuideViewController.m */; };
@@ -116,6 +115,8 @@
 		E2A410261E1647CB002A733E /* NSObject+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A410251E1647CB002A733E /* NSObject+Common.m */; };
 		E2A410291E1647F2002A733E /* NSString+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A410281E1647F2002A733E /* NSString+Common.m */; };
 		E2A410301E16568C002A733E /* SJProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A4102F1E16568C002A733E /* SJProgressHUD.m */; };
+		E2D203271E5AE60700E1FC19 /* SJSearchCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D203261E5AE60700E1FC19 /* SJSearchCollectionView.m */; };
+		E2D2032B1E5C04FB00E1FC19 /* SJChooseSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2032A1E5C04FB00E1FC19 /* SJChooseSearchViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -315,8 +316,6 @@
 		E21848831E1B9433006FB866 /* SJHistoryViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJHistoryViewModel.m; sourceTree = "<group>"; };
 		E218489A1E1CA73D006FB866 /* SJHomePageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJHomePageViewModel.h; sourceTree = "<group>"; };
 		E218489B1E1CA73D006FB866 /* SJHomePageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJHomePageViewModel.m; sourceTree = "<group>"; };
-		E223B1D41E23EE8B009B0FE4 /* SJSearchCollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJSearchCollView.h; sourceTree = "<group>"; };
-		E223B1D51E23EE8B009B0FE4 /* SJSearchCollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJSearchCollView.m; sourceTree = "<group>"; };
 		E223B1DB1E248F1D009B0FE4 /* SJKeywordsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJKeywordsCollectionView.h; sourceTree = "<group>"; };
 		E223B1DC1E248F1D009B0FE4 /* SJKeywordsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJKeywordsCollectionView.m; sourceTree = "<group>"; };
 		E223B1DE1E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+LabelHeightAndWidth.h"; sourceTree = "<group>"; };
@@ -354,6 +353,10 @@
 		E2A410281E1647F2002A733E /* NSString+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Common.m"; sourceTree = "<group>"; };
 		E2A4102E1E16568C002A733E /* SJProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJProgressHUD.h; sourceTree = "<group>"; };
 		E2A4102F1E16568C002A733E /* SJProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJProgressHUD.m; sourceTree = "<group>"; };
+		E2D203251E5AE60700E1FC19 /* SJSearchCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJSearchCollectionView.h; sourceTree = "<group>"; };
+		E2D203261E5AE60700E1FC19 /* SJSearchCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJSearchCollectionView.m; sourceTree = "<group>"; };
+		E2D203291E5C04FB00E1FC19 /* SJChooseSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJChooseSearchViewController.h; sourceTree = "<group>"; };
+		E2D2032A1E5C04FB00E1FC19 /* SJChooseSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJChooseSearchViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -703,6 +706,7 @@
 		E21137AF1E27115600AF78D0 /* 注册登录界面 */ = {
 			isa = PBXGroup;
 			children = (
+				E2D203281E5C04D900E1FC19 /* 选择搜索引擎 */,
 				E20A6E051E28C266000D080D /* 关于我们 */,
 				E21138111E27825200AF78D0 /* 手机注册 */,
 				E21137DC1E2765E300AF78D0 /* 登录页面 */,
@@ -896,10 +900,10 @@
 		E223B1D91E248EE3009B0FE4 /* 快速搜索 */ = {
 			isa = PBXGroup;
 			children = (
-				E223B1D41E23EE8B009B0FE4 /* SJSearchCollView.h */,
-				E223B1D51E23EE8B009B0FE4 /* SJSearchCollView.m */,
 				E21227211E30C3CF00E89A7C /* SJKeywordsCollectionViewCell.h */,
 				E21227221E30C3CF00E89A7C /* SJKeywordsCollectionViewCell.m */,
+				E2D203251E5AE60700E1FC19 /* SJSearchCollectionView.h */,
+				E2D203261E5AE60700E1FC19 /* SJSearchCollectionView.m */,
 			);
 			name = "快速搜索";
 			sourceTree = "<group>";
@@ -1145,6 +1149,15 @@
 			name = "自定义控件";
 			sourceTree = "<group>";
 		};
+		E2D203281E5C04D900E1FC19 /* 选择搜索引擎 */ = {
+			isa = PBXGroup;
+			children = (
+				E2D203291E5C04FB00E1FC19 /* SJChooseSearchViewController.h */,
+				E2D2032A1E5C04FB00E1FC19 /* SJChooseSearchViewController.m */,
+			);
+			name = "选择搜索引擎";
+			sourceTree = "<group>";
+		};
 		F42996F9A3ECB3A4A5138A77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1380,7 +1393,6 @@
 				E21848751E1B4F3F006FB866 /* SJModel.m in Sources */,
 				E25295811E4B01FD00D29542 /* CardLayout.m in Sources */,
 				E20B50451E1CB9FB002C006B /* SJSearchViewModel.m in Sources */,
-				E223B1D61E23EE8B009B0FE4 /* SJSearchCollView.m in Sources */,
 				E20A6E101E28CC56000D080D /* QDRSwipeView.m in Sources */,
 				E2068D4A1E1F8D1F0020803A /* UIView+SetRect.m in Sources */,
 				E2068D941E237EC80020803A /* SJSearchViewController.m in Sources */,
@@ -1393,6 +1405,7 @@
 				E20D7B9F1E515B1200020CF4 /* SJBookMarksLayout.m in Sources */,
 				E20B50561E1CEF8E002C006B /* SJHomePageViewController.m in Sources */,
 				E20A6E081E28C274000D080D /* QDRAboutUsViewController.m in Sources */,
+				E2D203271E5AE60700E1FC19 /* SJSearchCollectionView.m in Sources */,
 				E21137D31E275FD100AF78D0 /* QDRUserFeedbackTableView.m in Sources */,
 				E21227161E2CB8BE00E89A7C /* SJNoBookView.m in Sources */,
 				E25295881E4C53BB00D29542 /* SJBookMarksHomeView.m in Sources */,
@@ -1414,6 +1427,7 @@
 				E21848721E1B4EE7006FB866 /* BaseModel.m in Sources */,
 				E2087ADF1E1E281C005D025F /* SJNavigationBar.m in Sources */,
 				E21227201E30BA4700E89A7C /* SJNoNetView.m in Sources */,
+				E2D2032B1E5C04FB00E1FC19 /* SJChooseSearchViewController.m in Sources */,
 				E21137C61E27574500AF78D0 /* ULBCollectionViewFlowLayout.m in Sources */,
 				E2068D9E1E23CF280020803A /* SJSearchTableViewCell.m in Sources */,
 				E2068D5E1E231B580020803A /* SJWebViewController.m in Sources */,

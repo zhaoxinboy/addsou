@@ -38,18 +38,18 @@
     return _titleLabel;
 }
 
-- (UILabel *)rightLabel{
-    if (!_rightLabel) {
-        _rightLabel = [UILabel new];
-        _rightLabel.textColor = kRGBColor(153, 153, 153);
-        _rightLabel.font = [UIFont systemFontOfSize:12];
-        [self.contentView addSubview:_rightLabel];
-        [_rightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+- (UIButton *)rightBtn{
+    if (!_rightBtn) {
+        _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_rightBtn setImage:[UIImage imageNamed:@"page_Focus_cover_sel"] forState:UIControlStateSelected];
+        [self.contentView addSubview:_rightBtn];
+        [_rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(SJ_ADAPTER_WIDTH(-15));
+            make.size.mas_equalTo(CGSizeMake(15, 15));
             make.centerY.mas_equalTo(0);
         }];
     }
-    return _rightLabel;
+    return _rightBtn;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -58,9 +58,14 @@
     if (self) {
         [self searchImageView];
         [self titleLabel];
-        [self rightLabel];
+        [self rightBtn];
     }
     return self;
+}
+
+
+- (void)UpdateCellWithState:(BOOL)select{
+    self.rightBtn.selected = select;
 }
 
 - (void)awakeFromNib {

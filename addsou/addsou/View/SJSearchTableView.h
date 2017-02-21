@@ -8,18 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol searchIndexPathDelegate <NSObject>
-
-- (void)searchIndexPathRow:(NSInteger)index searchAllStr:(NSString *)searchAllStr model:(SJSearchModel *)model;
-
-- (void)jumpToHomePage;
-
-@end
-
 @interface SJSearchTableView : UITableView
-
-@property (nonatomic, assign) id<searchIndexPathDelegate> searchDelegate;   /* 搜索代理 */
-
 
 @property (nonatomic, strong) NSString *searchStr;   /* 搜索字段 */
 

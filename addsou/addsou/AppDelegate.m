@@ -17,6 +17,7 @@
 #import "QDRUserFeedbackViewController.h"
 #import "QDRLoginViewController.h"
 #import "QDRAboutUsViewController.h"
+#import "SJChooseSearchViewController.h"
 
 @interface AppDelegate ()
 
@@ -334,8 +335,9 @@
         SJHistroyViewController *histroyVC = [[SJHistroyViewController alloc] init];
         [vc pushViewController:histroyVC animated:NO];
     }else if (userVC.indexPath.row == 1){ // 搜索引擎
-        
-    }else if (userVC.indexPath.row == 2){
+        SJChooseSearchViewController *chooseVC = [[SJChooseSearchViewController alloc] init];
+        [vc pushViewController:chooseVC animated:NO];
+    }else if (userVC.indexPath.row == 2){  // 用户反馈
         QDRUserFeedbackViewController *feedVC = [[QDRUserFeedbackViewController alloc] init];
         [vc pushViewController:feedVC animated:NO];
     }else if (userVC.indexPath.row == 4){

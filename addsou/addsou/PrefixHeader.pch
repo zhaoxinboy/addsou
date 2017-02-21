@@ -26,10 +26,10 @@
 #define LOCAL_READ_LEGAL                @"legal"        // 法律条款
 
 #define LOCAL_READ_SEARCH               @"search"       // 搜索引擎
-#define BAIDUSEARCH                     @"1"            // 百度搜索
-#define QIHUSEARCH                      @"2"            // 360搜索
-#define SOUGOUSEARCH                    @"3"            // 搜狗搜索
-#define BIYINGSEARCH                    @"4"            // 必应搜索
+#define BAIDUSEARCH                     @"0"            // 百度搜索
+#define BIYINGSEARCH                    @"1"            // 必应搜索
+#define SOUGOUSEARCH                    @"2"            // 搜狗搜索
+#define QIHUSEARCH                      @"3"            // 360搜索
 
 
 
@@ -340,6 +340,7 @@ return self; \
 #import "WeiboSDK.h"
 #import "SJManager.h"
 #import <iCarousel.h>
+#import "UIView+Frame.h"
 
 
 #endif

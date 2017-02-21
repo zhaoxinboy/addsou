@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) UILabel *titleLabel;   /* 搜索结果 */
 
-@property (nonatomic, strong) UILabel *rightLabel;   /* 右侧 */
+@property (nonatomic, strong) UIButton *rightBtn;   /* 右侧 */
+
+-(void)UpdateCellWithState:(BOOL)select;
 
 @end

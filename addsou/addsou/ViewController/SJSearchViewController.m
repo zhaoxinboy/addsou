@@ -8,11 +8,10 @@
 
 #import "SJSearchViewController.h"
 #import "SJSearchView.h"
-#import "SJSearchTableView.h"
 #import "SJWebViewController.h"
 #import "SJKeywordsCollectionView.h"
 
-@interface SJSearchViewController ()<UITextFieldDelegate, searchIndexPathDelegate, searchCollectionIndexPathDelegate, keyWordsDelegate, UISearchBarDelegate>
+@interface SJSearchViewController ()<UITextFieldDelegate, searchCollectionIndexPathDelegate, keyWordsDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) NSString *searchStr;   /* 搜索字段 */
 
@@ -42,16 +41,38 @@
 
 - (SJSearchView *)searchView{
     if (!_searchView) {
-        _searchView = [[SJSearchView alloc] initWithFrame:CGRectMake(0, kWindowH / 2, kWindowW, kWindowH)];
+        _searchView = [[SJSearchView alloc] initWithFrame:CGRectMake(0, 0, kWindowW, kWindowH)];
         _searchView.searchBar.delegate = self;
-        _searchView.tabbleView.searchDelegate = self;
         _searchView.searchCollectionView.clickDelegate = self;
         _searchView.keyCollection.keyDelegate = self;
         [_searchView.keyCollection.removeBtn addTarget:self action:@selector(removeKeyWrod:) forControlEvents:UIControlEventTouchUpInside];
+        if (!UserDefaultObjectForKey(LOCAL_READ_SEARCH)) {
+            UserDefaultSetObjectForKey(BAIDUSEARCH, LOCAL_READ_SEARCH)
+        }
+        NSString *imageStr = nil;
+        if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:BAIDUSEARCH]) { //百度
+            imageStr = [NSString stringWithFormat:@"%@/media/tmp/icon_baidu@3x.png", URLPATH];
+        }else if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:SOUGOUSEARCH]){ // 搜狗
+            imageStr = [NSString stringWithFormat:@"%@/media/tmp/icon_sougou@3x.png", URLPATH];
+        }else if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:BIYINGSEARCH]){ // 必应
+            imageStr = [NSString stringWithFormat:@"%@/media/tmp/icon_biying@3x.png", URLPATH];
+        }else if([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:QIHUSEARCH]){ // 360
+            imageStr = [NSString stringWithFormat:@"%@/media/tmp/icon_360@3x.png", URLPATH];
+        }
+        [_searchView.searchImageView sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:[UIImage imageNamed:LOCAL_READ_PLACEIMAGE]];
         [self.view addSubview:_searchView];
     }
     return _searchView;
 }
+
+//点击collectionview关闭键盘
+- (void)jumpToHomePage{
+    if ([_searchView.searchBar isFirstResponder]) {
+        [_searchView.searchBar resignFirstResponder];
+    }
+}
+
+
 
 // 关键词页面代理方法，关闭键盘
 - (void)takeTheKeyboard{
@@ -70,6 +91,9 @@
 // 关键词代理方法更改关键词
 - (void)keyWordsIndexPathRow:(NSInteger)index str:(NSString *)str{
     self.searchView.searchBar.text = str;
+    if (![_searchView.searchBar isFirstResponder]) {
+        [_searchView.searchBar becomeFirstResponder];
+    }
     [self searchWithStr:str];
 }
 
@@ -110,7 +134,7 @@
     }
 }
 
-//搜索按钮点击的回调
+//搜索按钮点击的回调  (右下角按钮)
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     if ((self.searchStr == nil || self.searchStr == NULL) || [self.searchStr isKindOfClass:[NSNull class]] || [[self.searchStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) {
         
@@ -120,7 +144,15 @@
         if ([str includeChinese]) {
             str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         }
-        SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:[NSString keywordWithSearchWebUrl:str searchWebUrlStyle:SearchWebUrlStyleBaiDu] andAppImageUrlStr:nil andSuperCode:nil withAppName:@"百度搜索"];
+        SJSearchModel *model = [SJSearchModel new];
+        for (int i = 0; i < self.searchArr.count; i++) {
+            model = nil;
+            model = self.searchArr[i];
+            if ([model.searchEngine isEqualToString:UserDefaultObjectForKey(LOCAL_READ_SEARCH)]){
+                break;
+            }
+        }
+        SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:[NSString keywordWithSearchWebUrl:str searchWebUrlStyle:[model.searchEngine integerValue]] andAppImageUrlStr:model.searchImageStr andSuperCode:nil withAppName:model.searchTitle];
         [self.navigationController pushViewController:vc animated:YES];
         DLog(@"点击了搜索");
     }
@@ -166,31 +198,15 @@
             make.bottom.mas_equalTo(-180);
         }];
         sender.tag = 100001;
-        UserDefaultRemoveObjectForKey(LOCAL_READ_SAVESEARCH)
-        [self.searchView.keyCollection.dataArr removeAllObjects];
-        [self.searchView.keyCollection.collectionView reloadData];
-        self.searchView.keyCollection.alpha = 0;
+        [UIView animateWithDuration:0.2 animations:^{
+            self.searchView.keyCollection.alpha = 0;
+        } completion:^(BOOL finished) {
+            UserDefaultRemoveObjectForKey(LOCAL_READ_SAVESEARCH)
+            [self.searchView.keyCollection.dataArr removeAllObjects];
+            [self.searchView.keyCollection reloadCollectionView];
+        }];
     }
 }
-
-// tabbleview点击事件代理方法
-- (void)searchIndexPathRow:(NSInteger)index searchAllStr:(NSString *)searchAllStr model:(SJSearchModel *)model{
-    [self saveSearchAction];
-    NSString *str = searchAllStr;
-    if ([str includeChinese]) {
-        str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    }
-    SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:str andAppImageUrlStr:model.searchImageStr andSuperCode:nil withAppName:model.searchTitle];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-// 搜索结果tabbleview页面关闭键盘
-- (void)jumpToHomePage{
-    if ([_searchView.searchBar isFirstResponder]) {
-        [_searchView.searchBar resignFirstResponder];
-    }
-}
-
 
 // collectionview点击代理方法
 - (void)searchCollectionIndexPathRow:(NSInteger)index model:(SJHomeAddressDataModel *)model{
@@ -211,7 +227,6 @@
 - (void)dealloc{
     
     self.searchView.keyCollection.keyDelegate = nil;
-    self.searchView.tabbleView.searchDelegate = nil;
     self.searchView.searchBar.delegate = nil;
     self.searchView.searchCollectionView.clickDelegate = nil;
     
@@ -255,34 +270,41 @@
 
 // 键盘位置即将改变时
 - (void)UIKeyboardWillChangeFrame:(NSNotification *)Notification{
-    CGRect frame = [Notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    CGFloat durtion = [Notification.userInfo[UIKeyboardAnimationDurationUserInfoKey]floatValue];
-    if (frame.origin.y == self.view.bounds.size.height){ //收起
-        [UIView animateWithDuration:durtion animations:^{
-            CGRect sFrame = self.searchView.frame;
-            sFrame.origin.y = frame.origin.y - sFrame.size.height;
-            self.searchView.frame = sFrame;
-            //在这里进行弹键盘收起时对界面移动的处理
-        }];
-    }else{            //弹出
-        CGRect sFrame = self.searchView.frame;
-        sFrame.origin.y = frame.origin.y - sFrame.size.height;
-        [UIView animateWithDuration:durtion animations:^{
-            //在这里进行弹出时对界面移动的处理
-            self.searchView.frame = sFrame;
-        }];
+    
+    CGRect begin = [[[Notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+    CGRect end = [[[Notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat duration = [[Notification.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    [UIView animateWithDuration:0.25 animations:^{
+        if(begin.size.height > 0 && (begin.origin.y - end.origin.y > 0)){
+            // 键盘弹起 (包括，第三方键盘回调三次问题，监听仅执行最后一次)
+            CGFloat searchHight = kWindowH - end.size.height;
+            self.searchView.frame = CGRectMake(0, 0, kWindowW, searchHight);
+        }
+        else if (end.origin.y == kWindowH && begin.origin.y != end.origin.y && duration > 0){
+            //键盘收起
+            self.searchView.frame = CGRectMake(0, 0, kWindowW, kWindowH);
+        }
+        else if ((begin.origin.y - end.origin.y < 0) && duration == 0){
+            //键盘切换
+            CGFloat searchHight = kWindowH - end.size.height;
+            self.searchView.frame = CGRectMake(0, 0, kWindowW, searchHight);
+        }
         
-        if ([self.searchView.searchBar.text isEqualToString:@""] && [NSString extractKeyWord]) {
-            self.keyArr = [NSString extractKeyWord];
-            if (self.keyArr) {
-                self.searchView.keyCollection.dataArr = self.keyArr;
-                [self.searchView.keyCollection.collectionView reloadData];
+    }];
+    if ([self.searchView.searchBar.text isEqualToString:@""] && [NSString extractKeyWord]) {
+        self.keyArr = [NSString extractKeyWord];
+        if (self.keyArr) {
+            self.searchView.keyCollection.dataArr = self.keyArr;
+            [self.searchView.keyCollection reloadCollectionView];
+            [UIView animateWithDuration:0.2 animations:^{
                 _searchView.keyCollection.alpha = 1;
-            }
+            }];
         }
-        if(self.searchView.searchBar.text && ![self.searchView.searchBar.text isEqualToString:@""]){
+    }
+    if(self.searchView.searchBar.text && ![self.searchView.searchBar.text isEqualToString:@""]){
+        [UIView animateWithDuration:0.2 animations:^{
             _searchView.keyCollection.alpha = 0;
-        }
+        }];
     }
 }
 
@@ -293,12 +315,20 @@
         self.keyArr = [NSString extractKeyWord];
         if (self.keyArr) {
             self.searchView.keyCollection.dataArr = self.keyArr;
-            [self.searchView.keyCollection.collectionView reloadData];
-            _searchView.keyCollection.alpha = 1;
+            [self.searchView.keyCollection reloadCollectionView];
+            [self.searchView.searchCollectionView.dataArr removeAllObjects];
+            [self.searchView.searchCollectionView reloadCollectionView];
+            [UIView animateWithDuration:0.2 animations:^{
+                _searchView.keyCollection.alpha = 1;
+                _searchView.searchCollectionView.alpha = 0;
+            }];
         }
     }
     if(str && ![str isEqualToString:@""]){
-        _searchView.keyCollection.alpha = 0;
+        [UIView animateWithDuration:0.2 animations:^{
+            _searchView.keyCollection.alpha = 0;
+            _searchView.searchCollectionView.alpha = 1;
+        }];
     }
     
     // 保存需要搜索的字段
@@ -309,48 +339,43 @@
     for (int i = 0; i < 4; i++) {
         SJSearchModel *model = [SJSearchModel new];
         if (i == 0) {
-            model.searchTitle = @"百度";
+            model.searchTitle = @"百度搜索";
             model.searchField = str;
             model.searchImageStr = [NSString stringWithFormat:@"%@/media/tmp/icon_baidu@3x.png", URLPATH];
+            model.searchEngine = BAIDUSEARCH;
         }else if (i == 1){
-            model.searchTitle = @"必应";
+            model.searchTitle = @"必应搜索";
             model.searchField = str;
             model.searchImageStr = [NSString stringWithFormat:@"%@/media/tmp/icon_biying@3x.png", URLPATH];
+            model.searchEngine = BIYINGSEARCH;
         }else if (i == 2){
-            model.searchTitle = @"搜狗";
+            model.searchTitle = @"搜狗搜索";
             model.searchField = str;
             model.searchImageStr = [NSString stringWithFormat:@"%@/media/tmp/icon_sougou@3x.png", URLPATH];
+            model.searchEngine = SOUGOUSEARCH;
         }else{
-            model.searchTitle = @"360";
+            model.searchTitle = @"360搜索";
             model.searchField = str;
             model.searchImageStr = [NSString stringWithFormat:@"%@/media/tmp/icon_360@3x.png", URLPATH];
+            model.searchEngine = QIHUSEARCH;
         }
         [self.searchArr addObject:model];
     }
     if ((self.searchStr == nil || self.searchStr == NULL) || [self.searchStr isKindOfClass:[NSNull class]] || [[self.searchStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) {
         [self.searchArr removeAllObjects];
     }
-    [_searchView.tabbleView.searchArr removeAllObjects];
-    [_searchView.tabbleView.searchArr addObjectsFromArray:self.searchArr];
-    _searchView.tabbleView.searchStr = [self.searchStr mutableCopy];
-    [_searchView.tabbleView reloadData];
     
-    __weak typeof (self) wself = self;
-    NSString *searchstr = str.copy;
-    if ([searchstr includeChinese]) {//是否包含中文
-//        searchstr = [searchstr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        searchstr = [searchstr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    
+    if (![str isEqualToString:@""]) {       // 当字符串不为空时，调用搜索接口
+        __weak typeof (self) wself = self;
+        // 获取搜索结果
+        [self.searchVM getSearchResultFromNetWithStr:str CompleteHandle:^(NSError *error) {
+            [wself.searchView.searchCollectionView.dataArr removeAllObjects];
+            [wself.searchView.searchCollectionView.dataArr addObjectsFromArray:wself.searchVM.dataArr];
+            DLog(@"%@", wself.searchView.searchCollectionView.dataArr)
+            [wself.searchView.searchCollectionView reloadCollectionView];
+        }];
     }
-    NSRange range = [searchstr rangeOfString:@" "];
-    if (range.location != NSNotFound) {
-        searchstr = [searchstr stringByReplacingOccurrencesOfString:@" " withString:@""];
-    }
-    // 获取搜索结果
-    [self.searchVM getSearchResultFromNetWithStr:searchstr CompleteHandle:^(NSError *error) {
-        [wself.searchView.searchCollectionView.dataArr removeAllObjects];
-        [wself.searchView.searchCollectionView.dataArr addObjectsFromArray:wself.searchVM.dataArr];
-        [wself.searchView.searchCollectionView reloadCollectionView];
-    }];
 }
 
 

@@ -92,6 +92,11 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         [self collectionView];
+        if (self.dataArr.count > 0) {
+            self.removeBtn.hidden = NO;
+        }else{
+            self.removeBtn.hidden = YES;
+        }
     }
     return self;
 }
@@ -184,6 +189,17 @@
     [arr addObject:kRGBColor(65, 175, 255)];
     return arr[x];
 }
+
+
+- (void)reloadCollectionView{
+    if (self.dataArr.count > 0) {
+        self.removeBtn.hidden = NO;
+    }else{
+        self.removeBtn.hidden = YES;
+    }
+    [self.collectionView reloadData];
+}
+
 
 
 

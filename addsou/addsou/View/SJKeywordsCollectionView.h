@@ -26,4 +26,6 @@
 
 @property (nonatomic, strong) UIButton *removeBtn;   /* 删除关键词按钮 */
 
+- (void)reloadCollectionView;  // 刷新
+
 @end

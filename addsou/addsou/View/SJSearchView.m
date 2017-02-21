@@ -10,29 +10,45 @@
 
 @implementation SJSearchView
 
-- (SJSearchCollView *)searchCollectionView{
+- (SJSearchCollectionView *)searchCollectionView{
     if (!_searchCollectionView) {
-        _searchCollectionView = [[SJSearchCollView alloc] init];
-        _searchCollectionView.frame = CGRectMake(0, self.frame.size.height - 51, kWindowW, 51);
+        UICollectionViewFlowLayout *myLayout = [[UICollectionViewFlowLayout alloc] init];
+        //设置CollectionViewCell的大小和布局
+        CGFloat width = SJ_ADAPTER_WIDTH(82);
+        //设置元素大小
+        CGFloat height = SJ_ADAPTER_HEIGHT(100);
+        if (kWindowW <= 320) {
+            height = SJ_ADAPTER_HEIGHT(115);
+        }
+        myLayout.itemSize = CGSizeMake(width, height);
+        //四周边距
+        myLayout.sectionInset = UIEdgeInsetsMake(60, 10, 40, 10);
+        //        myLayout.minimumInteritemSpacing = (kWindowW - 280) / 2;  // 同一列中间隔的cell最小间距
+        myLayout.minimumLineSpacing = 40;       // 最小行间距
+        myLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        _searchCollectionView = [[SJSearchCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:myLayout];
         [self addSubview:_searchCollectionView];
+        [_searchCollectionView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.mas_equalTo(0);
+            make.bottom.mas_equalTo(-44);
+        }];
     }
     return _searchCollectionView;
 }
 
-- (instancetype)init
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self = [super init];
+    self = [super initWithFrame:frame];
     if (self) {
-        self.frame = CGRectMake(0, kWindowH - 90, kWindowW, 90);
-        self.backgroundColor = kRGBColor(235, 235, 235);
+        [self searchCollectionView];
+        [self keyCollection];
         [self topView];
         [self searchBar];
-        [self searchCollectionView];
-        [self tabbleView];
-        [self keyCollection];
     }
     return self;
 }
+
+
 
 - (UIView *)topView{
     if (!_topView) {
@@ -41,16 +57,33 @@
         [self addSubview:_topView];
         [_topView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.mas_equalTo(0);
-            make.bottom.mas_equalTo(-51);
+            make.bottom.mas_equalTo(0);
             make.height.mas_equalTo(44);
         }];
+        _topView.layer.shadowColor = [UIColor lightGrayColor].CGColor;
+        _topView.layer.shadowOffset = CGSizeMake(0, 0);
+        _topView.layer.shadowOpacity = 1;
     }
     return _topView;
 }
 
+- (UIImageView *)searchImageView{
+    if (!_searchImageView) {
+        _searchImageView = [[UIImageView alloc] init];
+        _searchImageView.contentMode = UIViewContentModeScaleAspectFill;
+        [_topView addSubview:_searchImageView];
+        [_searchImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.mas_equalTo(0);
+            make.left.mas_equalTo(15);
+            make.size.mas_equalTo(CGSizeMake(20, 20));
+        }];
+    }
+    return _searchImageView;
+}
+
 - (UISearchBar *)searchBar{
     if (!_searchBar) {
-        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(10, 0, kWindowW - 10 - 10, 44)];
+        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(50, 0, kWindowW - 10 - 50, 44)];
         _searchBar.searchBarStyle = UISearchBarStyleMinimal;
         _searchBar.showsCancelButton = YES;
         _searchBar.barTintColor = [UIColor blackColor];
@@ -60,61 +93,15 @@
     return _searchBar;
 }
 
-//- (UITextField *)searchField{
-//    if (!_searchField) {
-//        _searchField = [[UITextField alloc] initWithFrame:CGRectMake(15, 5, kWindowW - 15 - 60, 34)];
-//        _searchField.placeholder = @"关键词或网址";
-//        [_searchField setValue:kRGBColor(153, 153, 153) forKeyPath:@"_placeholderLabel.color"];
-//        [_searchField setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
-//        _searchField.backgroundColor = kRGBColor(245, 245, 245);
-//        _searchField.font = [UIFont systemFontOfSize:14];
-//        _searchField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 0)];
-//        _searchField.leftViewMode = UITextFieldViewModeAlways;
-////        [_searchField customWithPlaceholder:@"关键词或网址" color:kRGBColor(153, 153, 153) font:[UIFont systemFontOfSize:14]];
-//        _searchField.returnKeyType = UIReturnKeyDone;
-//        _searchField.borderStyle = UITextBorderStyleNone;
-//        _searchField.textAlignment = NSTextAlignmentLeft;
-////        _searchField.keyboardType = UIKeyboardTypeDefault;
-//        _searchField.autocorrectionType = UITextAutocorrectionTypeYes;
-//        _searchField.clearButtonMode = UITextFieldViewModeWhileEditing;
-//        _searchField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-//        _searchField.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-//        _searchField.layer.cornerRadius = 3;
-//        _searchField.layer.masksToBounds = YES;
-////        _searchField.secureTextEntry = NO;
-//        [_topView addSubview:_searchField];
-//    }
-//    return _searchField;
-//}
-
-//- (UIButton *)cancelBtn{
-//    if (!_cancelBtn) {
-//        _cancelBtn = [UIButton new];
-//        [_cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
-//        [_cancelBtn setTitle:@"取消" forState:UIControlStateHighlighted];
-//        [_cancelBtn setTitleColor:kRGBColor(51, 51, 51) forState:UIControlStateNormal];
-//        [_cancelBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-//        [_topView addSubview:_cancelBtn];
-//        [_cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.top.right.mas_equalTo(0);
-//            make.size.mas_equalTo(CGSizeMake(60, 44));
-//        }];
-//    }
-//    return _cancelBtn;
-//}
-
-- (SJSearchTableView *)tabbleView{
-    if (!_tabbleView) {
-        _tabbleView = [[SJSearchTableView alloc] initWithFrame:CGRectMake(0, 0, kWindowW, self.frame.size.height - 95) style:UITableViewStylePlain];
-        [self addSubview:_tabbleView];
-    }
-    return _tabbleView;
-}
-
 - (SJKeywordsCollectionView *)keyCollection{
     if (!_keyCollection) {
-        _keyCollection = [[SJKeywordsCollectionView alloc] initWithFrame:CGRectMake(0, 0, kWindowW, self.frame.size.height - 95)];
+        _keyCollection = [[SJKeywordsCollectionView alloc] initWithFrame:CGRectZero];
+        _keyCollection.backgroundColor = [UIColor whiteColor];
         [self addSubview:_keyCollection];
+        [_keyCollection mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.mas_equalTo(0);
+            make.bottom.mas_equalTo(-44);
+        }];
     }
     return _keyCollection;
 }

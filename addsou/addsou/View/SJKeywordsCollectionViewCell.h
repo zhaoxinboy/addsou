@@ -22,8 +22,6 @@ static NSString *KeywordsAddCell = @"KeywordsAddCellNotification";
 
 @property (nonatomic, strong) UIButton *stateBtn;   /* 状态按钮 */
 
-- (void)shake;
-
 - (void)stopShake;
 
 @end

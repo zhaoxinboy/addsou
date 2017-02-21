@@ -290,11 +290,8 @@
             return arr;
         }
         NSMutableArray *arr = (NSMutableArray *)[UserDefaultObjectForKey(LOCAL_READ_SAVESEARCH) componentsSeparatedByString:@","];
-        if (arr.count > 40) {
-            NSString *lastStr = (NSString *)arr.lastObject;
-            NSRange range = [UserDefaultObjectForKey(LOCAL_READ_SAVESEARCH) rangeOfString:lastStr];
-            NSString *newStr = [UserDefaultObjectForKey(LOCAL_READ_SAVESEARCH) substringWithRange:range];
-            arr = (NSMutableArray *)[newStr componentsSeparatedByString:@","];
+        if (arr.count > 40) {   // 当字符串过长时，删除最后一个  保持在四十个之内
+            [arr removeLastObject];
         }
         return arr;
     }

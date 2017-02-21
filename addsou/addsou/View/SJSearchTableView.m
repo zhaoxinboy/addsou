@@ -13,41 +13,60 @@
 
 @end
 
-@implementation SJSearchTableView
+@implementation SJSearchTableView{
+    NSIndexPath *selectIndexPath;
+    NSInteger selectInt;
+}
 
 - (NSMutableArray *)searchArr{
     if (!_searchArr) {
         _searchArr = [[NSMutableArray alloc] init];
+        [_searchArr removeAllObjects];
+        for (int i = 0; i < 4; i++) {
+            SJSearchModel *model = [SJSearchModel new];
+            if (i == 0) {
+                model.searchTitle = @"百度引擎";
+                model.searchField = @"";
+                model.searchImageStr = [NSString stringWithFormat:@"%@/media/tmp/icon_baidu@3x.png", URLPATH];
+                model.searchEngine = BAIDUSEARCH;
+            }else if (i == 1){
+                model.searchTitle = @"必应引擎";
+                model.searchField = @"";
+                model.searchImageStr = [NSString stringWithFormat:@"%@/media/tmp/icon_biying@3x.png", URLPATH];
+                model.searchEngine = BIYINGSEARCH;
+            }else if (i == 2){
+                model.searchTitle = @"搜狗引擎";
+                model.searchField = @"";
+                model.searchImageStr = [NSString stringWithFormat:@"%@/media/tmp/icon_sougou@3x.png", URLPATH];
+                model.searchEngine = SOUGOUSEARCH;
+            }else{
+                model.searchTitle = @"360引擎";
+                model.searchField = @"";
+                model.searchImageStr = [NSString stringWithFormat:@"%@/media/tmp/icon_360@3x.png", URLPATH];
+                model.searchEngine = QIHUSEARCH;
+            }
+            [_searchArr addObject:model];
+        }
     }
     return _searchArr;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
     if (self = [super initWithFrame:frame style:style]) {
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor whiteColor];
         self.delegate = self;
         self.dataSource = self;
         // 隐藏cell分割线
-        self.separatorStyle = NO;
+//        self.separatorStyle = NO;
+        // 去掉多余cell
+        self.tableFooterView = [UIView new];
         [self registerClass:[SJSearchTableViewCell class] forCellReuseIdentifier:@"SJSearchTableViewCell"];
-        self.transform = CGAffineTransformMakeRotation(-M_PI);
         [self searchArr];
     }
     return self;
 }
 
-// 点击tabbleview关闭键盘并跳转回主页
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
-    id view = [super hitTest:point withEvent:event];
-    if ([view isKindOfClass:[self class]]) {
-        if (self.searchDelegate && [self.searchDelegate respondsToSelector:@selector(jumpToHomePage)]) {
-            [self.searchDelegate jumpToHomePage];
-        }
-        return self;
-    }else{
-        return view;
-    }
-}
+
 
 
 #pragma mark - Table view data source
@@ -63,21 +82,41 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SJSearchTableViewCell *cell = (SJSearchTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"SJSearchTableViewCell" forIndexPath:indexPath];
-    cell.contentView.transform = CGAffineTransformMakeRotation(M_PI); //倒置
     SJSearchModel *model = self.searchArr[indexPath.row];
     [cell.searchImageView sd_setImageWithURL:[NSURL URLWithString:model.searchImageStr] placeholderImage:[UIImage imageNamed:LOCAL_READ_PLACEIMAGE]];
-    cell.titleLabel.text = self.searchStr;
-    cell.rightLabel.text = model.searchTitle;
+    cell.titleLabel.text = model.searchTitle;
     
+    if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:model.searchEngine]) {
+        cell.rightBtn.selected = YES;
+    }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;    // 选中不变色
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.searchDelegate && [self.searchDelegate respondsToSelector:@selector(searchIndexPathRow:searchAllStr:model:)]) {
-        SJSearchModel *model = self.searchArr[indexPath.row];
-        [self.searchDelegate searchIndexPathRow:indexPath.row searchAllStr:[NSString keywordWithSearchWebUrl:self.searchStr searchWebUrlStyle:indexPath.row] model:model];
+    if (selectIndexPath == nil) {
+        for (int i = 0; i < self.searchArr.count; i++) {
+            SJSearchModel *model = self.searchArr[i];
+            if ([model.searchEngine isEqualToString:UserDefaultObjectForKey(LOCAL_READ_SEARCH)]) {
+                selectInt = i;
+                NSIndexPath *index = [NSIndexPath indexPathForRow:selectInt inSection:0];
+                SJSearchTableViewCell * cell = (SJSearchTableViewCell *)[tableView cellForRowAtIndexPath:index];
+                [cell UpdateCellWithState:NO];
+            }
+        }
     }
+    if (selectIndexPath != nil && selectIndexPath != indexPath) {
+        SJSearchTableViewCell * cell = (SJSearchTableViewCell *)[tableView cellForRowAtIndexPath:selectIndexPath];
+        [cell UpdateCellWithState:NO];
+    }
+    SJSearchTableViewCell * cell = (SJSearchTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    [cell UpdateCellWithState:YES];
+    selectIndexPath = indexPath;
+    SJSearchModel *model = self.searchArr[indexPath.row];
+    UserDefaultSetObjectForKey(model.searchEngine, LOCAL_READ_SEARCH);
+    [self showSuccessMsg:[NSString stringWithFormat:@"已选%@", model.searchTitle]];
 }
 
 

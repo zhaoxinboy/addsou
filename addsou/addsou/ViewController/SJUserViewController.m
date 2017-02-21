@@ -129,9 +129,9 @@
 
 #pragma mark - <UITableViewDelegate, UITableViewDataSource>
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger i = 5;
+    NSInteger i = 6;
     if (![UserDefaultObjectForKey(LOCAL_READ_ISLOGIN) isEqualToString:NOLOGIN]) {
-        i = 6;
+        i = 7;
     }
     return i;
 }
@@ -150,7 +150,7 @@
         cell.rightLabel.text = @"";
     }else if (indexPath.row == 1){
         cell.leftLabel.text = @"搜索引擎";
-        if (UserDefaultObjectForKey(LOCAL_READ_SEARCH)) {
+        if (!UserDefaultObjectForKey(LOCAL_READ_SEARCH)) {
             UserDefaultSetObjectForKey(BAIDUSEARCH, LOCAL_READ_SEARCH)
         }
         if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:BAIDUSEARCH]) {
@@ -184,7 +184,7 @@
 // 点击方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     self.indexPath = indexPath;
-    if (indexPath.row == 4) {
+    if (indexPath.row == 5) {
         if ([self sdFolderSize] == 0) {
             [self showSuccessMsg:@"已经清理的很干净了"];
         }else{
@@ -192,10 +192,10 @@
             [self clearView];
             [_clearView openSelf];
         }
-    }else if(indexPath.row == 5){
+    }else if(indexPath.row == 6){
         [self goOutView];
         [_goOutView openSelf];
-    }else if (indexPath.row == 2){
+    }else if (indexPath.row == 3){
         // 跳转到APPSTORE
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1195055909?mt=8"]];
     }else{
