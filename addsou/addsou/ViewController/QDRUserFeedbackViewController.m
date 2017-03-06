@@ -48,7 +48,10 @@
 //  登录按钮普通状态下的背景色及点击事件
 - (void)button1BackGroundNormal:(UIButton *)sender
 {
-    sender.backgroundColor = kRGBColor(51, 51, 51);
+    
+    sender.backgroundColor = [UIColor grayColor];
+    [sender setTitle:@"正在提交，请等待" forState:UIControlStateNormal];
+    sender.userInteractionEnabled = NO;
     
      __weak typeof (self) wself = self;
     [self.loginVM postResetPasswordWithUserID:[[NSUserDefaults standardUserDefaults] objectForKey:LOCAL_READ_USERID] content:self.QDRUserTableView.adviceTextView.text NetCompleteHandle:^(NSError *error) {
@@ -57,7 +60,9 @@
         }else{
             [wself showErrorMsg:@"反馈失败，请检查网络"];
         }
-        
+        [sender setTitle:@"提交" forState:UIControlStateNormal];
+        sender.backgroundColor = kRGBColor(51, 51, 51);
+        sender.userInteractionEnabled = YES;
     }];
     
     

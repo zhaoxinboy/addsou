@@ -91,6 +91,7 @@
 		E21227161E2CB8BE00E89A7C /* SJNoBookView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21227151E2CB8BE00E89A7C /* SJNoBookView.m */; };
 		E21227201E30BA4700E89A7C /* SJNoNetView.m in Sources */ = {isa = PBXBuildFile; fileRef = E212271F1E30BA4700E89A7C /* SJNoNetView.m */; };
 		E21227231E30C3CF00E89A7C /* SJKeywordsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E21227221E30C3CF00E89A7C /* SJKeywordsCollectionViewCell.m */; };
+		E213B8181E681491007E37F3 /* SJAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E213B8171E681491007E37F3 /* SJAgreementViewController.m */; };
 		E21848721E1B4EE7006FB866 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E21848711E1B4EE7006FB866 /* BaseModel.m */; };
 		E21848751E1B4F3F006FB866 /* SJModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E21848741E1B4F3F006FB866 /* SJModel.m */; };
 		E218487B1E1B7A61006FB866 /* addsou.cer in Resources */ = {isa = PBXBuildFile; fileRef = E218487A1E1B7A61006FB866 /* addsou.cer */; };
@@ -304,6 +305,8 @@
 		E212271F1E30BA4700E89A7C /* SJNoNetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJNoNetView.m; sourceTree = "<group>"; };
 		E21227211E30C3CF00E89A7C /* SJKeywordsCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJKeywordsCollectionViewCell.h; sourceTree = "<group>"; };
 		E21227221E30C3CF00E89A7C /* SJKeywordsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJKeywordsCollectionViewCell.m; sourceTree = "<group>"; };
+		E213B8161E681491007E37F3 /* SJAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJAgreementViewController.h; sourceTree = "<group>"; };
+		E213B8171E681491007E37F3 /* SJAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJAgreementViewController.m; sourceTree = "<group>"; };
 		E21848701E1B4EE7006FB866 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		E21848711E1B4EE7006FB866 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		E21848731E1B4F3F006FB866 /* SJModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJModel.h; sourceTree = "<group>"; };
@@ -618,6 +621,8 @@
 			children = (
 				E20A6E061E28C274000D080D /* QDRAboutUsViewController.h */,
 				E20A6E071E28C274000D080D /* QDRAboutUsViewController.m */,
+				E213B8161E681491007E37F3 /* SJAgreementViewController.h */,
+				E213B8171E681491007E37F3 /* SJAgreementViewController.m */,
 			);
 			name = "关于我们";
 			sourceTree = "<group>";
@@ -1413,6 +1418,7 @@
 				E21137C11E27537300AF78D0 /* SJNavcView.m in Sources */,
 				E2A410221E1645D8002A733E /* SJNetManager.m in Sources */,
 				E21137BD1E2752AA00AF78D0 /* SJHistroyViewController.m in Sources */,
+				E213B8181E681491007E37F3 /* SJAgreementViewController.m in Sources */,
 				E2068D4B1E1F8D1F0020803A /* XWDragCellCollectionView.m in Sources */,
 				E2068D491E1F8D1F0020803A /* SubCollectionViewCell.m in Sources */,
 				E20DC2A51E23D49500D5E282 /* SJSearchTableView.m in Sources */,

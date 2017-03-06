@@ -10,6 +10,7 @@
 #define PrefixHeader_pch
 
 #define LOCAL_READ_FIRSTOPEN            @"firstopen"    // 是否为第一次打开 存储版本号和build号的拼接
+#define LOCAL_READ_FIRSTGUIDE           @"guide"        // 是否需要打开引导流程  是为1   不是为空
 #define LOCAL_READ_LOCALTION            @"localtion"    // 定位状态 如果未开启，每增加3提示一次
 
 #define LOCAL_READ_ISLOGIN              @"islogin"      // 登录状态

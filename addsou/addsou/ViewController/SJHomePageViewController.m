@@ -340,7 +340,7 @@
                                 isrelodfocusView = 1;
                                 
                                 // 进入引导流程图
-                                if (![[NSString stringWithFormat:@"%@%@", APPVERSION, APPBUILDVERSION] isEqualToString:UserDefaultObjectForKey(LOCAL_READ_FIRSTOPEN)]){
+                                if (!UserDefaultObjectForKey(LOCAL_READ_FIRSTGUIDE)){
                                     [wself.optimizationView setNeedsLayout];
                                     [wself.optimizationView layoutIfNeeded];
                                     // 把要展示的按钮的位置传入，用于绘制贝塞尔曲线

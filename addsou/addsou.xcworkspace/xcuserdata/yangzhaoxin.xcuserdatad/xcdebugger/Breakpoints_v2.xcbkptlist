@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "addsou/ViewController/QDRUserFeedbackViewController.m"
-            timestampString = "505903481.286001"
+            timestampString = "510230370.115428"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "-button1BackGroundNormal:"
             landmarkType = "7">
          </BreakpointContent>
@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "addsou/ViewController/QDRUserFeedbackViewController.m"
-            timestampString = "505903482.43992"
+            timestampString = "510230388.068003"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-button1BackGroundHighlighted:"
             landmarkType = "7">
          </BreakpointContent>
@@ -84,11 +84,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "addsou/Util/NSObject+Common.m"
-            timestampString = "506253076.061671"
+            timestampString = "510218278.684444"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "+loadRequestWithUrlString:"
             landmarkType = "7">
          </BreakpointContent>
@@ -148,12 +148,12 @@
                   moduleName = "addsou"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangzhaoxin/Documents/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81/addsou/addsou/addsou/ViewModel/SJSearchViewModel.m"
-                  timestampString = "509356135.567418"
+                  timestampString = "510223661.666278"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "71"
                   endingLineNumber = "71"
-                  offsetFromSymbolStart = "236">
+                  offsetFromSymbolStart = "214">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -163,12 +163,12 @@
                   moduleName = "addsou"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangzhaoxin/Documents/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81/addsou/addsou/addsou/ViewModel/SJSearchViewModel.m"
-                  timestampString = "509356135.568857"
+                  timestampString = "510223661.668281"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "56">
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "45">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -244,12 +244,12 @@
                   moduleName = "addsou"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangzhaoxin/Documents/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81/addsou/addsou/addsou/NetManager/SJNetManager.m"
-                  timestampString = "509356135.579028"
+                  timestampString = "510223661.684505"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "158"
                   endingLineNumber = "158"
-                  offsetFromSymbolStart = "952">
+                  offsetFromSymbolStart = "1041">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -259,12 +259,12 @@
                   moduleName = "addsou"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangzhaoxin/Documents/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81/addsou/addsou/addsou/NetManager/SJNetManager.m"
-                  timestampString = "509356135.580355"
+                  timestampString = "510223661.686836"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "159"
                   endingLineNumber = "159"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -308,12 +308,12 @@
                   moduleName = "addsou"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangzhaoxin/Documents/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81/addsou/addsou/addsou/NetManager/SJNetManager.m"
-                  timestampString = "509356135.585658"
+                  timestampString = "510223661.695024"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "163"
                   endingLineNumber = "163"
-                  offsetFromSymbolStart = "188">
+                  offsetFromSymbolStart = "189">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -323,12 +323,12 @@
                   moduleName = "addsou"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangzhaoxin/Documents/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81/addsou/addsou/addsou/NetManager/SJNetManager.m"
-                  timestampString = "509356135.586997"
+                  timestampString = "510223661.696836"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "164"
                   endingLineNumber = "164"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "22">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -692,12 +692,12 @@
                   moduleName = "addsou"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangzhaoxin/Documents/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81/addsou/addsou/addsou/ViewController/SJHomePageViewController.m"
-                  timestampString = "509356135.649364"
+                  timestampString = "510223661.782122"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "530"
                   endingLineNumber = "530"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "20">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -707,12 +707,12 @@
                   moduleName = "addsou"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yangzhaoxin/Documents/%E6%9C%AC%E5%9C%B0%E4%BB%A3%E7%A0%81/addsou/addsou/addsou/ViewController/SJHomePageViewController.m"
-                  timestampString = "509356135.651555"
+                  timestampString = "510223661.784605"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "531"
                   endingLineNumber = "531"
-                  offsetFromSymbolStart = "48">
+                  offsetFromSymbolStart = "38">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -739,13 +739,61 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "addsou/ViewController/SJSearchViewController.m"
-            timestampString = "509355874.632282"
+            filePath = "addsou/ViewController/SJGuideViewController.m"
+            timestampString = "510136976.816639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "265"
-            endingLineNumber = "265"
-            landmarkName = "-keyboardWasShown:"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "-dealloc"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "addsou/ViewController/SJGuideViewController.m"
+            timestampString = "510136348.734539"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "-dealloc"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "addsou/ViewController/SJHomePageViewController.m"
+            timestampString = "510137016.677424"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "343"
+            endingLineNumber = "343"
+            landmarkName = "-getNetWork"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "addsou/ViewController/SJHomePageViewController.m"
+            timestampString = "510137046.366772"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "345"
+            endingLineNumber = "345"
+            landmarkName = "-getNetWork"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

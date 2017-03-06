@@ -7,7 +7,7 @@
 //
 
 #import "QDRAboutUsViewController.h"
-
+#import "SJAgreementViewController.h"
 
 @interface QDRAboutUsViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -18,6 +18,8 @@
 @property (nonatomic, strong) UITextView *textView;
 
 @property (nonatomic, strong) SJNavcView *navcView;   /* 自定义导航 */
+
+@property (nonatomic, strong) UIButton *agreementBtn;      // 法律按钮
 
 
 @end
@@ -79,6 +81,27 @@
     return _headerImageView;
 }
 
+- (UIButton *)agreementBtn{
+    if (!_agreementBtn) {
+        _agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_agreementBtn setTitle:@"搜加法律条款" forState:UIControlStateNormal];
+        [_agreementBtn addTarget:self action:@selector(goAgreement) forControlEvents:UIControlEventTouchUpInside];
+        [_agreementBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        [self.view addSubview:_agreementBtn];
+        [_agreementBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(-10);
+            make.centerX.mas_equalTo(0);
+        }];
+    }
+    return _agreementBtn;
+}
+
+- (void)goAgreement{
+    SJAgreementViewController *vc = [[SJAgreementViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 - (void)go2Back{
     [self.navigationController popViewControllerAnimated:YES];
@@ -98,6 +121,8 @@
     [self textView];
     [self headerImageView];
     [self tableView];
+    
+    [self agreementBtn];
     // Do any additional setup after loading the view.
 }
 

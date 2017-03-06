@@ -91,6 +91,12 @@
     [[UIApplication sharedApplication].keyWindow.layer addAnimation:animation forKey:nil];
     
     AppDelegate *myDelegate =(AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    
+    NSString *str = [NSString stringWithFormat:@"%@%@", APPVERSION, APPBUILDVERSION];
+    UserDefaultSetObjectForKey(str, LOCAL_READ_FIRSTOPEN)
+    
+    
     [self presentViewController:myDelegate.sideMenuViewController animated:NO completion:nil];
     
 }

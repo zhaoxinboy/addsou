@@ -210,7 +210,6 @@
         }
         //清理缓存
         [[SDImageCache sharedImageCache] cleanDisk];
-        [self showSuccessMsg:@"清理完成!"];
     }
 }
 
@@ -273,8 +272,32 @@
         NSString *str = [NSString stringWithFormat:@"%@%@", text, LOCAL_READ_UUID];
         UserDefaultSetObjectForKey(str, LOCAL_READ_SAVESEARCH)
     }else{
-        NSString *str = [NSString stringWithFormat:@"%@%@,%@", text, LOCAL_READ_UUID, UserDefaultObjectForKey(LOCAL_READ_SAVESEARCH)];
-        UserDefaultSetObjectForKey(str, LOCAL_READ_SAVESEARCH)
+        NSString *arrStr = UserDefaultObjectForKey(LOCAL_READ_SAVESEARCH);
+        if ([arrStr rangeOfString:[NSString stringWithFormat:@"%@,", LOCAL_READ_UUID]].location == NSNotFound) {
+            if ([arrStr rangeOfString:text].location == NSNotFound) {
+                NSString *str = [NSString stringWithFormat:@"%@%@,%@", text, LOCAL_READ_UUID, UserDefaultObjectForKey(LOCAL_READ_SAVESEARCH)];
+                UserDefaultSetObjectForKey(str, LOCAL_READ_SAVESEARCH)
+            }
+        }else{
+            NSMutableArray *arr = (NSMutableArray *)[UserDefaultObjectForKey(LOCAL_READ_SAVESEARCH) componentsSeparatedByString:@","];
+            BOOL isChange = NO;
+            for (int i = 0; i < arr.count; i++) {
+                if ([arr[i] rangeOfString:text].location != NSNotFound) {
+                    [arr removeObjectAtIndex:i];
+                    isChange = YES;
+                }
+            }
+            if (isChange) {
+                NSString *saveStr = [arr componentsJoinedByString:@","];
+                UserDefaultSetObjectForKey(saveStr, LOCAL_READ_SAVESEARCH)
+            }
+            NSString *str = [NSString stringWithFormat:@"%@%@,%@", text, LOCAL_READ_UUID, UserDefaultObjectForKey(LOCAL_READ_SAVESEARCH)];
+            UserDefaultSetObjectForKey(str, LOCAL_READ_SAVESEARCH)
+            if (arr.count > 40) {   // 当字符串过长时，删除最后一个  保持在四十个之内
+                [arr removeLastObject];
+            }
+        }
+        
     }
 }
 
@@ -285,15 +308,15 @@
     }else{
         NSString *str = UserDefaultObjectForKey(LOCAL_READ_SAVESEARCH);
         if ([str rangeOfString:[NSString stringWithFormat:@"%@,", LOCAL_READ_UUID]].location == NSNotFound) {
-            
             NSMutableArray *arr = [[NSMutableArray alloc] initWithObjects:UserDefaultObjectForKey(LOCAL_READ_SAVESEARCH), nil];
             return arr;
+        }else{
+            NSMutableArray *arr = (NSMutableArray *)[UserDefaultObjectForKey(LOCAL_READ_SAVESEARCH) componentsSeparatedByString:@","];
+            if (arr.count > 40) {   // 当字符串过长时，删除最后一个  保持在四十个之内
+                [arr removeLastObject];
+            }
+            return arr;
         }
-        NSMutableArray *arr = (NSMutableArray *)[UserDefaultObjectForKey(LOCAL_READ_SAVESEARCH) componentsSeparatedByString:@","];
-        if (arr.count > 40) {   // 当字符串过长时，删除最后一个  保持在四十个之内
-            [arr removeLastObject];
-        }
-        return arr;
     }
 }
 

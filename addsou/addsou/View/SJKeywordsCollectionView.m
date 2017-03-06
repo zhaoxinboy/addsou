@@ -82,6 +82,11 @@
             make.right.mas_equalTo(-15);
             make.bottom.mas_equalTo(-180);
         }];
+        if (self.dataArr.count > 0) {
+            _removeBtn.hidden = NO;
+        }else{
+            _removeBtn.hidden = YES;
+        }
     }
     return _removeBtn;
 }
@@ -92,15 +97,10 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         [self collectionView];
-        if (self.dataArr.count > 0) {
-            self.removeBtn.hidden = NO;
-        }else{
-            self.removeBtn.hidden = YES;
-        }
+        
     }
     return self;
 }
-
 
 //每一组有多少个cell
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -168,7 +168,7 @@
 
 //cell的最小列间距
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
-    return 10;
+    return 20;
 }
 
 //cell被选择时被调用
@@ -198,6 +198,7 @@
         self.removeBtn.hidden = YES;
     }
     [self.collectionView reloadData];
+    
 }
 
 

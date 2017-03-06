@@ -64,9 +64,7 @@
         _determineBtn = [UIButton new];
         _determineBtn.titleLabel.font = [UIFont systemFontOfSize:15];
         [_determineBtn setTitle:@"确定" forState:UIControlStateNormal];
-        [_determineBtn setTitle:@"确定" forState:UIControlStateHighlighted];
         [_determineBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [_determineBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         [_btnView addSubview:_determineBtn];
         [_determineBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.mas_equalTo(-30);
@@ -82,9 +80,7 @@
         _cancelBtn = [UIButton new];
         _cancelBtn.titleLabel.font = [UIFont systemFontOfSize:15];
         [_cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
-        [_cancelBtn setTitle:@"取消" forState:UIControlStateHighlighted];
         [_cancelBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [_cancelBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         [_cancelBtn addTarget:self action:@selector(closeSelf) forControlEvents:UIControlEventTouchUpInside];
         [_btnView addSubview:_cancelBtn];
         [_cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {

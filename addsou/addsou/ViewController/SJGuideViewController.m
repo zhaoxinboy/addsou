@@ -37,6 +37,7 @@
     NSString *str = [NSString stringWithFormat:@"%@%@", APPVERSION, APPBUILDVERSION];
     UserDefaultSetObjectForKey(str, LOCAL_READ_FIRSTOPEN)
     UserDefaultSetObjectForKey(@"1", LOCAL_READ_FIRST)
+    UserDefaultSetObjectForKey(@"1", LOCAL_READ_FIRSTGUIDE)
 }
 
 - (UIBezierPath *)bezierPathChange{
@@ -155,6 +156,11 @@
 }
 
 - (void)go2Back{
+    // 设置状态为不是第一次打开，在不升级的情况下不再进入引导图和引导流程
+    NSString *str = [NSString stringWithFormat:@"%@%@", APPVERSION, APPBUILDVERSION];
+    UserDefaultSetObjectForKey(str, LOCAL_READ_FIRSTOPEN)
+    UserDefaultSetObjectForKey(@"1", LOCAL_READ_FIRST)
+    UserDefaultSetObjectForKey(@"1", LOCAL_READ_FIRSTGUIDE)
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 

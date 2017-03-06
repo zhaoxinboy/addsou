@@ -80,7 +80,7 @@
     [self.searchView.keyCollection.removeBtn mas_updateConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(32, 32));
         make.right.mas_equalTo(-15);
-        make.bottom.mas_equalTo(-180);
+        make.bottom.mas_equalTo(-(_searchView.keyCollection.collectionView.contentSize.height < 50 ? 180 : _searchView.keyCollection.collectionView.contentSize.height));
     }];
     _searchView.keyCollection.removeBtn.tag = 100001;
     if ([_searchView.searchBar isFirstResponder]) {
@@ -186,7 +186,7 @@
         [self.searchView.keyCollection.removeBtn mas_updateConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(100, 32));
             make.right.mas_equalTo(-15);
-            make.bottom.mas_equalTo(-180);
+            make.bottom.mas_equalTo(-(_searchView.keyCollection.collectionView.contentSize.height < 50 ? 180 : _searchView.keyCollection.collectionView.contentSize.height));
         }];
         
         sender.tag = 100002;
@@ -195,7 +195,7 @@
         [self.searchView.keyCollection.removeBtn mas_updateConstraints:^(MASConstraintMaker *make) {
             make.size.mas_equalTo(CGSizeMake(32, 32));
             make.right.mas_equalTo(-15);
-            make.bottom.mas_equalTo(-180);
+            make.bottom.mas_equalTo(-(_searchView.keyCollection.collectionView.contentSize.height < 50 ? 180 : _searchView.keyCollection.collectionView.contentSize.height));
         }];
         sender.tag = 100001;
         [UIView animateWithDuration:0.2 animations:^{
@@ -204,6 +204,11 @@
             UserDefaultRemoveObjectForKey(LOCAL_READ_SAVESEARCH)
             [self.searchView.keyCollection.dataArr removeAllObjects];
             [self.searchView.keyCollection reloadCollectionView];
+            [self.searchView.keyCollection.removeBtn mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.size.mas_equalTo(CGSizeMake(32, 32));
+                make.right.mas_equalTo(-15);
+                make.bottom.mas_equalTo(-(_searchView.keyCollection.collectionView.contentSize.height < 50 ? 180 : _searchView.keyCollection.collectionView.contentSize.height));
+            }];
         }];
     }
 }
@@ -316,6 +321,11 @@
         if (self.keyArr) {
             self.searchView.keyCollection.dataArr = self.keyArr;
             [self.searchView.keyCollection reloadCollectionView];
+            [self.searchView.keyCollection.removeBtn mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.size.mas_equalTo(CGSizeMake(32, 32));
+                make.right.mas_equalTo(-15);
+                make.bottom.mas_equalTo(-(_searchView.keyCollection.collectionView.contentSize.height < 50 ? 180 : _searchView.keyCollection.collectionView.contentSize.height));
+            }];
             [self.searchView.searchCollectionView.dataArr removeAllObjects];
             [self.searchView.searchCollectionView reloadCollectionView];
             [UIView animateWithDuration:0.2 animations:^{

@@ -27,8 +27,6 @@
             DLog(@"首次打开  %@", dic)
             
             _firstModel = [SJFirstModel mj_objectWithKeyValues:[dic objectForKey:@"data"]];
-            // 保存用户已经打开第一次
-            UserDefaultSetObjectForKey(@"1", LOCAL_READ_FIRST)
             DLog(@"LOCAL_READ_USERID  %@", [NSString stringWithFormat:@"%@", _firstModel.userid])
             [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@", _firstModel.userid] forKey:LOCAL_READ_USERID];
             [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%@", _firstModel.token] forKey:LOCAL_READ_TOKEN];

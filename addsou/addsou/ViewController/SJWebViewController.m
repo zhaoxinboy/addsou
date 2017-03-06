@@ -413,6 +413,11 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES; // 使右滑返回手势不可用
+}
+
 - (void)dealloc
 {
     _webView.navigationDelegate = nil;

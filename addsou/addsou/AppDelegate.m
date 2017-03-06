@@ -35,6 +35,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    
     // 状态栏字体颜色为黑色
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     
@@ -105,6 +106,10 @@
     SJGuidePageViewController *pageVC = [[SJGuidePageViewController alloc] init];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    NSLog(@"%@", [NSString stringWithFormat:@"%@%@", APPVERSION, APPBUILDVERSION]);
+    NSLog(@"%@", UserDefaultObjectForKey(LOCAL_READ_FIRSTOPEN));
+
     
     if (![[NSString stringWithFormat:@"%@%@", APPVERSION, APPBUILDVERSION] isEqualToString:UserDefaultObjectForKey(LOCAL_READ_FIRSTOPEN)]){
         self.window.rootViewController = pageVC;
