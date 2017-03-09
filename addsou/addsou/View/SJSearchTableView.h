@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol chooseSearchSmallDelegate <NSObject>
+
+- (void)jumpToSearch;
+
+@end
+
 @interface SJSearchTableView : UITableView
+
+@property (nonatomic, assign) id<chooseSearchSmallDelegate> chooseDelegate;      // 选择后的代理跳转
 
 @property (nonatomic, strong) NSString *searchStr;   /* 搜索字段 */
 

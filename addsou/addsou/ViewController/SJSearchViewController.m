@@ -10,6 +10,7 @@
 #import "SJSearchView.h"
 #import "SJWebViewController.h"
 #import "SJKeywordsCollectionView.h"
+#import "SJChooseSmallSearchViewController.h"
 
 @interface SJSearchViewController ()<UITextFieldDelegate, searchCollectionIndexPathDelegate, keyWordsDelegate, UISearchBarDelegate>
 
@@ -39,9 +40,25 @@
     return _searchArr;
 }
 
+// 切换搜索引擎
+- (void)chooseSearch{
+    // 如果键盘开启，则先关闭键盘
+    if ([_searchView.searchBar isFirstResponder]) {
+        [_searchView.searchBar resignFirstResponder];
+    }
+    
+    SJChooseSmallSearchViewController *vc=[[SJChooseSmallSearchViewController alloc] init];
+    vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    
+    [self presentViewController:vc animated:NO completion:nil];
+    
+    
+}
+
 - (SJSearchView *)searchView{
     if (!_searchView) {
         _searchView = [[SJSearchView alloc] initWithFrame:CGRectMake(0, 0, kWindowW, kWindowH)];
+        [_searchView.searchImageBtn addTarget:self action:@selector(chooseSearch) forControlEvents:UIControlEventTouchUpInside];
         _searchView.searchBar.delegate = self;
         _searchView.searchCollectionView.clickDelegate = self;
         _searchView.keyCollection.keyDelegate = self;
@@ -67,9 +84,10 @@
 
 //点击collectionview关闭键盘
 - (void)jumpToHomePage{
-    if ([_searchView.searchBar isFirstResponder]) {
-        [_searchView.searchBar resignFirstResponder];
-    }
+//    if ([_searchView.searchBar isFirstResponder]) {
+//        [_searchView.searchBar resignFirstResponder];
+//    }
+    DLog(@"点击空白处，暂时不隐藏键盘")
 }
 
 
@@ -83,9 +101,10 @@
         make.bottom.mas_equalTo(-(_searchView.keyCollection.collectionView.contentSize.height < 50 ? 180 : _searchView.keyCollection.collectionView.contentSize.height));
     }];
     _searchView.keyCollection.removeBtn.tag = 100001;
-    if ([_searchView.searchBar isFirstResponder]) {
-        [_searchView.searchBar resignFirstResponder];
-    }
+//    if ([_searchView.searchBar isFirstResponder]) {
+//        [_searchView.searchBar resignFirstResponder];
+//    }
+    DLog(@"点击空白处，暂时不隐藏键盘")
 }
 
 // 关键词代理方法更改关键词
@@ -223,9 +242,10 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    if ([_searchView.searchBar isFirstResponder]) {
-        [_searchView.searchBar resignFirstResponder];
-    }
+//    if ([_searchView.searchBar isFirstResponder]) {
+//        [_searchView.searchBar resignFirstResponder];
+//    }
+     DLog(@"点击空白处，暂时不隐藏键盘")
 }
 
 
@@ -237,17 +257,23 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"chooseSearchSmall" object:nil];
 }
+
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
+    if (![_searchView.searchBar isFirstResponder]) {
+        [_searchView.searchBar becomeFirstResponder];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    if (![_searchView.searchBar isFirstResponder]) {
+        [_searchView.searchBar becomeFirstResponder];
+    }
     
-    [self.searchView.searchBar becomeFirstResponder];
 }
 
 - (void)viewDidLoad {
@@ -256,6 +282,7 @@
     [self searchView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(UIKeyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(chooseSearchSmall:) name:@"chooseSearchSmall" object:nil]; // 选择搜索引擎的通知
     
 //    [self  performSelector:@selector(delayMethod) withObject:nil afterDelay:0.0001f];
 //    [self.searchView.searchField sendActionsForControlEvents:UIControlEventTouchUpInside];
@@ -263,10 +290,30 @@
     // Do any additional setup after loading the view.
 }
 
+// 选择完毕搜索引擎后该做的事
+- (void)chooseSearchSmall:(NSNotification *)notification{
+    if (![_searchView.searchBar isFirstResponder]) {
+        [_searchView.searchBar becomeFirstResponder];
+    }
+    NSString *imageStr = nil;
+    if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:BAIDUSEARCH]) { //百度
+        imageStr = [NSString stringWithFormat:@"%@/media/tmp/icon_baidu@3x.png", URLPATH];
+    }else if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:SOUGOUSEARCH]){ // 搜狗
+        imageStr = [NSString stringWithFormat:@"%@/media/tmp/icon_sougou@3x.png", URLPATH];
+    }else if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:BIYINGSEARCH]){ // 必应
+        imageStr = [NSString stringWithFormat:@"%@/media/tmp/icon_biying@3x.png", URLPATH];
+    }else if([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:QIHUSEARCH]){ // 360
+        imageStr = [NSString stringWithFormat:@"%@/media/tmp/icon_360@3x.png", URLPATH];
+    }
+    [_searchView.searchImageView sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:[UIImage imageNamed:LOCAL_READ_PLACEIMAGE]];
+}
+
 // 键盘即将出现时
 - (void)keyboardWasShown:(NSNotification*)aNotification{
     //键盘高度
     CGRect keyBoardFrame = [[[aNotification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat searchHight = kWindowH - keyBoardFrame.size.height;
+    self.searchView.frame = CGRectMake(0, 0, kWindowW, searchHight);
 }
 
 - (void)delayMethod{
@@ -286,6 +333,8 @@
             self.searchView.frame = CGRectMake(0, 0, kWindowW, searchHight);
         }
         else if (end.origin.y == kWindowH && begin.origin.y != end.origin.y && duration > 0){
+            NSLog(@"%f", end.origin.y);
+            NSLog(@"%f", kWindowH);
             //键盘收起
             self.searchView.frame = CGRectMake(0, 0, kWindowW, kWindowH);
         }

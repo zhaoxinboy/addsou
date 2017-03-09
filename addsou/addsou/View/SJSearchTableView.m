@@ -57,7 +57,7 @@
         self.delegate = self;
         self.dataSource = self;
         // 隐藏cell分割线
-//        self.separatorStyle = NO;
+        self.separatorStyle = NO;
         // 去掉多余cell
         self.tableFooterView = [UIView new];
         [self registerClass:[SJSearchTableViewCell class] forCellReuseIdentifier:@"SJSearchTableViewCell"];
@@ -117,6 +117,12 @@
     SJSearchModel *model = self.searchArr[indexPath.row];
     UserDefaultSetObjectForKey(model.searchEngine, LOCAL_READ_SEARCH);
     [self showSuccessMsg:[NSString stringWithFormat:@"已选%@", model.searchTitle]];
+    
+    
+    
+    if (self.chooseDelegate && [self.chooseDelegate respondsToSelector:@selector(jumpToSearch)]) {
+        [self.chooseDelegate jumpToSearch];
+    }
 }
 
 

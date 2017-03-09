@@ -67,6 +67,19 @@
     return _topView;
 }
 
+- (UIButton *)searchImageBtn{
+    if (!_searchImageBtn) {
+        _searchImageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_topView addSubview:_searchImageBtn];
+        [_searchImageBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(0);
+            make.centerY.mas_equalTo(0);
+            make.size.mas_equalTo(CGSizeMake(40, 40));
+        }];
+    }
+    return _searchImageBtn;
+}
+
 - (UIImageView *)searchImageView{
     if (!_searchImageView) {
         _searchImageView = [[UIImageView alloc] init];

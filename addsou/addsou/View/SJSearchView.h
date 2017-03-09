@@ -17,6 +17,8 @@
 
 @property (nonatomic, strong) UIView *topView;   /* 盛放搜索框和取消按钮的视图 */
 
+@property (nonatomic, strong) UIButton *searchImageBtn;      // 搜索引擎图标按钮
+
 @property (nonatomic, strong) UIImageView *searchImageView;      // 搜索引擎图标
 
 @property (nonatomic, strong) UISearchBar *searchBar;   /* 搜索框 */

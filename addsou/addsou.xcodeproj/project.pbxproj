@@ -88,6 +88,7 @@
 		E211380E1E276C8F00AF78D0 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E211380D1E276C8F00AF78D0 /* libsqlite3.tbd */; };
 		E21138101E276C9E00AF78D0 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E211380F1E276C9E00AF78D0 /* libstdc++.tbd */; };
 		E21138141E27827200AF78D0 /* SJPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E21138131E27827200AF78D0 /* SJPhoneViewController.m */; };
+		E2117F771E7009A500AD1C35 /* SJChooseSmallSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2117F761E7009A500AD1C35 /* SJChooseSmallSearchViewController.m */; };
 		E21227161E2CB8BE00E89A7C /* SJNoBookView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21227151E2CB8BE00E89A7C /* SJNoBookView.m */; };
 		E21227201E30BA4700E89A7C /* SJNoNetView.m in Sources */ = {isa = PBXBuildFile; fileRef = E212271F1E30BA4700E89A7C /* SJNoNetView.m */; };
 		E21227231E30C3CF00E89A7C /* SJKeywordsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E21227221E30C3CF00E89A7C /* SJKeywordsCollectionViewCell.m */; };
@@ -299,6 +300,8 @@
 		E211380F1E276C9E00AF78D0 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		E21138121E27827200AF78D0 /* SJPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJPhoneViewController.h; sourceTree = "<group>"; };
 		E21138131E27827200AF78D0 /* SJPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJPhoneViewController.m; sourceTree = "<group>"; };
+		E2117F751E7009A500AD1C35 /* SJChooseSmallSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJChooseSmallSearchViewController.h; sourceTree = "<group>"; };
+		E2117F761E7009A500AD1C35 /* SJChooseSmallSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJChooseSmallSearchViewController.m; sourceTree = "<group>"; };
 		E21227141E2CB8BE00E89A7C /* SJNoBookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJNoBookView.h; sourceTree = "<group>"; };
 		E21227151E2CB8BE00E89A7C /* SJNoBookView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJNoBookView.m; sourceTree = "<group>"; };
 		E212271E1E30BA4700E89A7C /* SJNoNetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJNoNetView.h; sourceTree = "<group>"; };
@@ -579,6 +582,8 @@
 			children = (
 				E2068D921E237EC80020803A /* SJSearchViewController.h */,
 				E2068D931E237EC80020803A /* SJSearchViewController.m */,
+				E2117F751E7009A500AD1C35 /* SJChooseSmallSearchViewController.h */,
+				E2117F761E7009A500AD1C35 /* SJChooseSmallSearchViewController.m */,
 			);
 			name = "搜索界面";
 			sourceTree = "<group>";
@@ -1396,6 +1401,7 @@
 				E20B50491E1CC96A002C006B /* SJLoginViewModel.m in Sources */,
 				E2A40FE51E16067F002A733E /* AppDelegate.m in Sources */,
 				E21848751E1B4F3F006FB866 /* SJModel.m in Sources */,
+				E2117F771E7009A500AD1C35 /* SJChooseSmallSearchViewController.m in Sources */,
 				E25295811E4B01FD00D29542 /* CardLayout.m in Sources */,
 				E20B50451E1CB9FB002C006B /* SJSearchViewModel.m in Sources */,
 				E20A6E101E28CC56000D080D /* QDRSwipeView.m in Sources */,
