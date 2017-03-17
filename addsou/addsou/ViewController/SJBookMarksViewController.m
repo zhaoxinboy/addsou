@@ -92,12 +92,6 @@
 
 - (UICollectionView *)collectionView{
     if (!_collectionView) {
-        SJHomePageLayout *layout = [[SJHomePageLayout alloc] init];
-        layout.itemSize = CGSizeMake(SJ_ADAPTER_WIDTH(300), SJ_ADAPTER_HEIGHT(480));
-        layout.minimumLineSpacing = SJ_ADAPTER_WIDTH(18);//设置cell的间距
-        layout.sectionInset = UIEdgeInsetsMake(SJ_ADAPTER_HEIGHT(32), SJ_ADAPTER_WIDTH(38), SJ_ADAPTER_HEIGHT(88), SJ_ADAPTER_WIDTH(38));//设置四周的间距
-        
-        
         self.cardLayout =  [[CardLayout alloc]initWithOffsetY:400];
         self.cardLayout.delegate = self;
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:self.cardLayout];

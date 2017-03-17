@@ -209,7 +209,7 @@
             [manager removeItemAtPath:filePath error:&error];
         }
         //清理缓存
-        [[SDImageCache sharedImageCache] cleanDisk];
+        [[SDImageCache sharedImageCache] clearMemory];
     }
 }
 

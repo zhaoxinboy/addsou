@@ -93,6 +93,7 @@
 		E21227201E30BA4700E89A7C /* SJNoNetView.m in Sources */ = {isa = PBXBuildFile; fileRef = E212271F1E30BA4700E89A7C /* SJNoNetView.m */; };
 		E21227231E30C3CF00E89A7C /* SJKeywordsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E21227221E30C3CF00E89A7C /* SJKeywordsCollectionViewCell.m */; };
 		E213B8181E681491007E37F3 /* SJAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E213B8171E681491007E37F3 /* SJAgreementViewController.m */; };
+		E217DF931E7B7F3D00DECCBA /* UIImage+InsetEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = E217DF921E7B7F3D00DECCBA /* UIImage+InsetEdge.m */; };
 		E21848721E1B4EE7006FB866 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E21848711E1B4EE7006FB866 /* BaseModel.m */; };
 		E21848751E1B4F3F006FB866 /* SJModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E21848741E1B4F3F006FB866 /* SJModel.m */; };
 		E218487B1E1B7A61006FB866 /* addsou.cer in Resources */ = {isa = PBXBuildFile; fileRef = E218487A1E1B7A61006FB866 /* addsou.cer */; };
@@ -310,6 +311,8 @@
 		E21227221E30C3CF00E89A7C /* SJKeywordsCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJKeywordsCollectionViewCell.m; sourceTree = "<group>"; };
 		E213B8161E681491007E37F3 /* SJAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJAgreementViewController.h; sourceTree = "<group>"; };
 		E213B8171E681491007E37F3 /* SJAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJAgreementViewController.m; sourceTree = "<group>"; };
+		E217DF911E7B7F3D00DECCBA /* UIImage+InsetEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+InsetEdge.h"; sourceTree = "<group>"; };
+		E217DF921E7B7F3D00DECCBA /* UIImage+InsetEdge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+InsetEdge.m"; sourceTree = "<group>"; };
 		E21848701E1B4EE7006FB866 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		E21848711E1B4EE7006FB866 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		E21848731E1B4F3F006FB866 /* SJModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJModel.h; sourceTree = "<group>"; };
@@ -1142,6 +1145,8 @@
 				E2068D641E23253F0020803A /* UIButton+ImageTitleSpacing.m */,
 				E223B1DE1E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.h */,
 				E223B1DF1E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.m */,
+				E217DF911E7B7F3D00DECCBA /* UIImage+InsetEdge.h */,
+				E217DF921E7B7F3D00DECCBA /* UIImage+InsetEdge.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -1403,6 +1408,7 @@
 				E21848751E1B4F3F006FB866 /* SJModel.m in Sources */,
 				E2117F771E7009A500AD1C35 /* SJChooseSmallSearchViewController.m in Sources */,
 				E25295811E4B01FD00D29542 /* CardLayout.m in Sources */,
+				E217DF931E7B7F3D00DECCBA /* UIImage+InsetEdge.m in Sources */,
 				E20B50451E1CB9FB002C006B /* SJSearchViewModel.m in Sources */,
 				E20A6E101E28CC56000D080D /* QDRSwipeView.m in Sources */,
 				E2068D4A1E1F8D1F0020803A /* UIView+SetRect.m in Sources */,

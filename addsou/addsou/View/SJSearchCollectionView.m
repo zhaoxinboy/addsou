@@ -117,33 +117,6 @@
         [self.clickDelegate searchCollectionIndexPathRow:indexPath.row model:model];
     }
     
-    if (cell.stateBtn.selected) {
-        SJHomeAddressDataModel *model = self.dataArr[indexPath.item];
-        __weak typeof (self) wself = self;
-        if (!cell.stateBtn.selected) {
-            // 添加应用
-            [self.searchVM postAddAppInfoToUserFromNetWithUrlId:[model.qdrid integerValue] andUserID:UserDefaultObjectForKey(LOCAL_READ_USERID) CompleteHandle:^(NSError *error) {
-                if ([wself.searchVM.successStr isEqualToString:@"success"]) {
-                    model.iscollected = @"1";
-                    // 更改本地数据防止数据错乱
-                    [self.dataArr replaceObjectAtIndex:indexPath.item withObject:model];
-                    cell.stateBtn.selected = YES;
-                }
-            }];
-        }else{
-            // 删除应用
-            [self.searchVM postDeleteCollectAppByUserid:UserDefaultObjectForKey(LOCAL_READ_USERID) appid:[NSString stringWithFormat:@"%@", model.qdrid] CompleteHandle:^(NSError *error) {
-                if ([wself.searchVM.deleStr isEqualToString:@"success"]) {
-                    model.iscollected = @"0";
-                    // 更改本地数据防止数据错乱
-                    [self.dataArr replaceObjectAtIndex:indexPath.item withObject:model];
-                    cell.stateBtn.selected = NO;
-                }
-            }];
-        }
-    }else{
-        
-    }
 }
 
 //返回UICollectionView 是否可以被选择

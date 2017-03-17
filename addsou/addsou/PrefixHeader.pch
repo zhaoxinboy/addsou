@@ -34,6 +34,9 @@
 
 
 
+// 极光推送ID
+#define APSJPUSH                        @"fe3475d65dcfd02ee6696a9b"
+
 
 #define LOCAL_READ_SAVESEARCH           @"savesearch"   // 搜索关键字保存在本地
 
@@ -342,6 +345,7 @@ return self; \
 #import "SJManager.h"
 #import <iCarousel.h>
 #import "UIView+Frame.h"
+#import "UIImage+InsetEdge.h"
 
 
 #endif

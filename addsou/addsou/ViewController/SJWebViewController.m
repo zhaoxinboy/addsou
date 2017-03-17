@@ -15,7 +15,7 @@
 #import "WXApi.h"
 #import "AppDelegate.h"
 
-@interface SJWebViewController ()<WKNavigationDelegate, WKUIDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, deleteUrlDelegate, WXApiDelegate, WKScriptMessageHandler>
+@interface SJWebViewController ()<WKNavigationDelegate, WKUIDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, deleteUrlDelegate, WXApiDelegate, WKScriptMessageHandler, UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) WKWebView *webView;   /* 网页 */
 
@@ -42,6 +42,10 @@
 @implementation SJWebViewController{
     CALayer *progresslayer;  // 网页进度条
     CGFloat marginOffset;  // 上下滑动距离
+    
+    UIImage *_saveImage;      //网页长按保存图片
+    NSString *_qrCodeString;    // 二维码识别信息
+    
 }
 
 - (UIView *)shareView{
@@ -480,29 +484,7 @@
         _webView.navigationDelegate = self;
         _webView.UIDelegate = self;
         _webView.scrollView.delegate = self;
-//        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:self.urlStr]];
-//        [request addValue:[NSString loadRequestWithUrlString:self.urlStr] forHTTPHeaderField:@"Cookie"];
-        
-//        NSMutableString *cookies = [NSMutableString string];
         NSMutableURLRequest *requestObj = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:self.urlStr] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
-//        // 一般都只需要同步JSESSIONID,可视不同需求自己做更改
-//        NSString * JSESSIONID;
-//        // 获取本地所有的Cookie
-//        NSArray *tmp = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
-//        for (NSHTTPCookie * cookie in tmp) {
-//            if ([cookie.name isEqualToString:@"JSESSIONID"]) {
-//                JSESSIONID = cookie.value;
-//                break;
-//            }
-//        }
-//        if (JSESSIONID.length) {
-//            // 格式化Cookie
-//            [cookies appendFormat:@"JSESSIONID=%@;",JSESSIONID];
-//        }
-//        NSLog(@"%@", cookies);
-        // 注入Cookie
-//        [requestObj setValue:cookies forHTTPHeaderField:@"Cookie"];
-        
         [_webView loadRequest:requestObj];
         
         [self.view addSubview:self.webView];
@@ -527,9 +509,78 @@
         
         UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePan:)];
         [_webView addGestureRecognizer:panGestureRecognizer]; // 添加托移手势
+        
+        
+        // 添加长按手势，用于屏蔽广告
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+        longPress.minimumPressDuration = 1;
+        longPress.delegate = self;
+        [_webView addGestureRecognizer:longPress];
     }
     return _webView;
 }
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    return YES;
+}
+
+// 判断图片是否为二维码
+- (BOOL)isAvailableQRcodeIn:(UIImage *)img{
+    UIImage *image = [img imageByInsetEdge:UIEdgeInsetsMake(-20, -20, -20, -20) withColor:[UIColor lightGrayColor]];
+    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:nil options:@{}];
+    NSArray *features = [detector featuresInImage:[CIImage imageWithCGImage:image.CGImage]];
+    if (features.count >= 1) {
+        CIQRCodeFeature *feature = [features objectAtIndex:0];
+        _qrCodeString = [feature.messageString copy];
+        DLog(@"二维码信息:%@", _qrCodeString);
+        return YES;
+    } else {
+        DLog(@"无可识别的二维码");
+        return NO;
+    }
+}
+
+// 长按手势实现方法
+- (void)handleLongPress:(UILongPressGestureRecognizer *)longPress{
+    if (longPress.state != UIGestureRecognizerStateBegan) {
+        return;
+    }
+    
+    CGPoint touchPoint = [longPress locationInView:_webView];
+    // 获取长按位置对应的图片url的JS代码
+    NSString *imgJS = [NSString stringWithFormat:@"document.elementFromPoint(%f, %f).src", touchPoint.x, touchPoint.y];
+    // 执行对应的JS代码 获取url
+    [_webView evaluateJavaScript:imgJS completionHandler:^(id _Nullable imgUrl, NSError * _Nullable error) {
+        if (imgUrl) {
+            NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imgUrl]];
+            UIImage *image = [UIImage imageWithData:data];
+            if (!image) {
+                DLog(@"读取图片失败");
+                return;
+            }
+            _saveImage = image;
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
+                                                                                     message:nil
+                                                                              preferredStyle:UIAlertControllerStyleActionSheet];
+            //取消:style:UIAlertActionStyleCancel
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            [alertController addAction:cancelAction];
+            UIAlertAction *moreAction = [UIAlertAction actionWithTitle:@"保存图片" style:UIAlertActionStyleDefault handler:nil];
+            [alertController addAction:moreAction];
+            if ([self isAvailableQRcodeIn:image]) {
+                UIAlertAction *moreAction = [UIAlertAction actionWithTitle:@"识别图中二维码" style:UIAlertActionStyleDefault handler:nil];
+                [alertController addAction:moreAction];
+            }
+            UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"屏蔽广告" style:UIAlertActionStyleDefault handler:nil];
+            [alertController addAction:OKAction];
+            
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+        
+    }];
+}
+     
+    
 
 // 左右滑动手势方法
 - (void)handlePan:(UIPanGestureRecognizer *)recognizer{
@@ -720,6 +771,11 @@
     }
     [self judgeRightBtnText];
     [self barButtonEnable];
+    
+    // 不执行前段界面弹出列表的JS代码
+    [_webView evaluateJavaScript:@"document.documentElement.style.webkitTouchCallout='none';" completionHandler:^(id _Nullable i, NSError * _Nullable error) {
+        DLog(@"Error -> %@", error);
+    }];
 }
 // 页面加载完成之后调用
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
@@ -728,6 +784,10 @@
     [_webView evaluateJavaScript:self.superCode completionHandler:^(id _Nullable i, NSError * _Nullable error) {
         DLog(@"Error -> %@", error);
     }];
+    
+    
+    
+    
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 // 页面加载失败时调用
@@ -751,6 +811,17 @@
         [webView loadRequest:navigationAction.request];
     }
     decisionHandler(WKNavigationActionPolicyAllow);
+}
+
+#pragma mark - WKUIDelegate
+- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler();
+    }]];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 
