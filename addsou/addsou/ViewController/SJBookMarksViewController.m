@@ -113,7 +113,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     
     if (_collectionView) {
         [self.dataArray removeAllObjects];
@@ -123,7 +122,11 @@
         if (self.dataArray.count == 0) {
             self.collectionView.alpha = 0;
             self.noBookView.alpha = 1;
+            self.view.backgroundColor = [UIColor whiteColor];
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
         }else{
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+            self.view.backgroundColor = [UIColor blackColor];
             self.noBookView.alpha = 0;
             self.collectionView.alpha = 1;
             [self.collectionView reloadData];
@@ -134,13 +137,12 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.dataArray removeAllObjects];
     self.dataArray = [[FMDBManager sharedFMDBManager] getAllBookView];
 //    NSEnumerator *enumerator = [self.dataArray reverseObjectEnumerator];
@@ -175,8 +177,10 @@
         }];
         
         if (self.dataArray.count == 0) {
+            self.view.backgroundColor = [UIColor whiteColor];
             self.collectionView.alpha = 0;
             self.noBookView.alpha = 1;
+            [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
         }
     }else{
         [self showSuccessMsg:@"删除书签失败，请重试"];
@@ -184,6 +188,9 @@
 }
 
 - (void)dealloc{
+    if (self.dataArray.count == 0) {
+        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+    }
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"deleteBookMarksCell" object:nil];
 }
 

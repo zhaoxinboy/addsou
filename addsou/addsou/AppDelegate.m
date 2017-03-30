@@ -18,6 +18,7 @@
 #import "QDRLoginViewController.h"
 #import "QDRAboutUsViewController.h"
 #import "SJChooseSearchViewController.h"
+#import "SJAdvertisingViewController.h"
 
 @interface AppDelegate ()
 
@@ -34,6 +35,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // 初始化过滤广告
+    if (!UserDefaultObjectForKey(LOCAL_READ_ISFILTERAD)){
+        UserDefaultSetObjectForKey(@"1", LOCAL_READ_ISFILTERAD);
+    }
     
     
     // 状态栏字体颜色为黑色
@@ -110,7 +116,7 @@
     NSLog(@"%@", [NSString stringWithFormat:@"%@%@", APPVERSION, APPBUILDVERSION]);
     NSLog(@"%@", UserDefaultObjectForKey(LOCAL_READ_FIRSTOPEN));
 
-    
+//    self.window.rootViewController = pageVC;
     if (![[NSString stringWithFormat:@"%@%@", APPVERSION, APPBUILDVERSION] isEqualToString:UserDefaultObjectForKey(LOCAL_READ_FIRSTOPEN)]){
         self.window.rootViewController = pageVC;
     }else{
@@ -342,10 +348,13 @@
     }else if (userVC.indexPath.row == 1){ // 搜索引擎
         SJChooseSearchViewController *chooseVC = [[SJChooseSearchViewController alloc] init];
         [vc pushViewController:chooseVC animated:NO];
-    }else if (userVC.indexPath.row == 2){  // 用户反馈
+    }else if (userVC.indexPath.row == 2){  // 广告相关
+        SJAdvertisingViewController *adVC = [[SJAdvertisingViewController alloc] init];
+        [vc pushViewController:adVC animated:NO];
+    }else if (userVC.indexPath.row == 3){  // 用户反馈
         QDRUserFeedbackViewController *feedVC = [[QDRUserFeedbackViewController alloc] init];
         [vc pushViewController:feedVC animated:NO];
-    }else if (userVC.indexPath.row == 4){
+    }else if (userVC.indexPath.row == 5){
         QDRAboutUsViewController *aboutVC = [[QDRAboutUsViewController alloc] init];
         [vc pushViewController:aboutVC animated:NO];
     }

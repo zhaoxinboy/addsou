@@ -57,6 +57,7 @@
     [self.loginVM postResetPasswordWithUserID:[[NSUserDefaults standardUserDefaults] objectForKey:LOCAL_READ_USERID] content:self.QDRUserTableView.adviceTextView.text NetCompleteHandle:^(NSError *error) {
         if ([wself.loginVM.isSuccess isEqualToString:@"success"]) {
             [wself showSuccessMsg:@"反馈成功，我们会尽快解决"];
+            [self.navigationController popViewControllerAnimated:YES];
         }else{
             [wself showErrorMsg:@"反馈失败，请检查网络"];
         }

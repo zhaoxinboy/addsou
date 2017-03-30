@@ -9,6 +9,8 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+#define LOCAL_READ_ISFILTERAD           @"isfilterad"   //是否过滤广告，是为1，否为0
+
 #define LOCAL_READ_FIRSTOPEN            @"firstopen"    // 是否为第一次打开 存储版本号和build号的拼接
 #define LOCAL_READ_FIRSTGUIDE           @"guide"        // 是否需要打开引导流程  是为1   不是为空
 #define LOCAL_READ_LOCALTION            @"localtion"    // 定位状态 如果未开启，每增加3提示一次
@@ -346,6 +348,7 @@ return self; \
 #import <iCarousel.h>
 #import "UIView+Frame.h"
 #import "UIImage+InsetEdge.h"
+#import "FMDBURLManager.h"
 
 
 #endif

@@ -7,6 +7,8 @@
 //
 
 #import "SJBaseViewController.h"
+#import "SJWebView.h"
+#import "SJContextMenuHelper.h"
 
 @interface SJWebViewController : SJBaseViewController
 
@@ -19,6 +21,13 @@
 @property (nonatomic, strong) NSString *superCode;   /* 去广告代码 */
 
 @property (nonatomic, strong) NSString *appName;      // 应用名称
+
+
+
+@property (nonatomic, strong) SJWebView *sjWebView;      // 网页
+
+
+
 
 
 @end

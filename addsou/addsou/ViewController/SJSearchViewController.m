@@ -160,9 +160,7 @@
     }else{
         [self saveSearchAction];
         NSString *str = self.searchStr;
-        if ([str includeChinese]) {
-            str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        }
+        str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         SJSearchModel *model = [SJSearchModel new];
         for (int i = 0; i < self.searchArr.count; i++) {
             model = nil;
@@ -171,6 +169,9 @@
                 break;
             }
         }
+        
+        NSString *str1 = [NSString keywordWithSearchWebUrl:str searchWebUrlStyle:[model.searchEngine integerValue]];
+        
         SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:[NSString keywordWithSearchWebUrl:str searchWebUrlStyle:[model.searchEngine integerValue]] andAppImageUrlStr:model.searchImageStr andSuperCode:nil withAppName:model.searchTitle];
         [self.navigationController pushViewController:vc animated:YES];
         DLog(@"点击了搜索");

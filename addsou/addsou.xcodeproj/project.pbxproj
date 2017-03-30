@@ -59,6 +59,7 @@
 		E20DCCED1E1E4F27003AB27B /* JiKeSignalScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20DCCE91E1E4F27003AB27B /* JiKeSignalScrollView.m */; };
 		E20DCCF11E1E4FF6003AB27B /* SJTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E20DCCF01E1E4FF6003AB27B /* SJTool.m */; };
 		E20DCD1B1E1F4417003AB27B /* SJImageViewAndButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E20DCD1A1E1F4417003AB27B /* SJImageViewAndButton.m */; };
+		E21019DE1E88E4200088DE79 /* SJContextMenuHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E21019DD1E88E4200088DE79 /* SJContextMenuHelper.m */; };
 		E21137B21E27120E00AF78D0 /* SJUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E21137B11E27120E00AF78D0 /* SJUserViewController.m */; };
 		E21137B61E27123E00AF78D0 /* SJUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E21137B51E27123E00AF78D0 /* SJUserTableViewCell.m */; };
 		E21137B91E27126900AF78D0 /* SJUserTableHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21137B81E27126900AF78D0 /* SJUserTableHeaderFooterView.m */; };
@@ -103,11 +104,15 @@
 		E218489C1E1CA73D006FB866 /* SJHomePageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E218489B1E1CA73D006FB866 /* SJHomePageViewModel.m */; };
 		E223B1DD1E248F1D009B0FE4 /* SJKeywordsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E223B1DC1E248F1D009B0FE4 /* SJKeywordsCollectionView.m */; };
 		E223B1E01E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = E223B1DF1E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.m */; };
+		E251A4381E84B9D200A246C8 /* sjtool.js in Resources */ = {isa = PBXBuildFile; fileRef = E251A4371E84B9D200A246C8 /* sjtool.js */; };
 		E252957A1E49B3C900D29542 /* SJGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E25295791E49B3C900D29542 /* SJGuideViewController.m */; };
 		E252957E1E49D1C300D29542 /* SJManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E252957D1E49D1C300D29542 /* SJManager.m */; };
 		E25295811E4B01FD00D29542 /* CardLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E25295801E4B01FD00D29542 /* CardLayout.m */; };
 		E25295851E4C511400D29542 /* SJBookMarksVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E25295841E4C511400D29542 /* SJBookMarksVC.m */; };
 		E25295881E4C53BB00D29542 /* SJBookMarksHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E25295871E4C53BB00D29542 /* SJBookMarksHomeView.m */; };
+		E27AA37D1E823DA60001C763 /* SJWebSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E27AA37C1E823DA60001C763 /* SJWebSettingViewController.m */; };
+		E29D84D31E80DF5400CB5F20 /* SJWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E29D84D21E80DF5400CB5F20 /* SJWebView.m */; };
+		E29D84D61E80E40B00CB5F20 /* SJTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = E29D84D51E80E40B00CB5F20 /* SJTabView.m */; };
 		E2A40FE21E16067F002A733E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A40FE11E16067F002A733E /* main.m */; };
 		E2A40FE51E16067F002A733E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A40FE41E16067F002A733E /* AppDelegate.m */; };
 		E2A40FED1E16067F002A733E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2A40FEC1E16067F002A733E /* Assets.xcassets */; };
@@ -120,6 +125,10 @@
 		E2A410301E16568C002A733E /* SJProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A4102F1E16568C002A733E /* SJProgressHUD.m */; };
 		E2D203271E5AE60700E1FC19 /* SJSearchCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D203261E5AE60700E1FC19 /* SJSearchCollectionView.m */; };
 		E2D2032B1E5C04FB00E1FC19 /* SJChooseSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2032A1E5C04FB00E1FC19 /* SJChooseSearchViewController.m */; };
+		E2D2A3731E8A186700D0424C /* removejs.js in Resources */ = {isa = PBXBuildFile; fileRef = E2D2A3721E8A186700D0424C /* removejs.js */; };
+		E2D2A3761E8A61B300D0424C /* FMDBURLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2A3751E8A61B300D0424C /* FMDBURLManager.m */; };
+		E2D2A37A1E8A6DAC00D0424C /* SJAdvertisingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2A3791E8A6DAC00D0424C /* SJAdvertisingViewController.m */; };
+		E2D2A37D1E8A6FC600D0424C /* SJAdvertisingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2A37C1E8A6FC600D0424C /* SJAdvertisingTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -245,6 +254,8 @@
 		E20DCCF21E1E50D8003AB27B /* LxDBAnything.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LxDBAnything.h; sourceTree = "<group>"; };
 		E20DCD191E1F4417003AB27B /* SJImageViewAndButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJImageViewAndButton.h; sourceTree = "<group>"; };
 		E20DCD1A1E1F4417003AB27B /* SJImageViewAndButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJImageViewAndButton.m; sourceTree = "<group>"; };
+		E21019DC1E88E4200088DE79 /* SJContextMenuHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJContextMenuHelper.h; sourceTree = "<group>"; };
+		E21019DD1E88E4200088DE79 /* SJContextMenuHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJContextMenuHelper.m; sourceTree = "<group>"; };
 		E21137B01E27120E00AF78D0 /* SJUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJUserViewController.h; sourceTree = "<group>"; };
 		E21137B11E27120E00AF78D0 /* SJUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJUserViewController.m; sourceTree = "<group>"; };
 		E21137B41E27123E00AF78D0 /* SJUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJUserTableViewCell.h; sourceTree = "<group>"; };
@@ -329,6 +340,7 @@
 		E223B1DC1E248F1D009B0FE4 /* SJKeywordsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJKeywordsCollectionView.m; sourceTree = "<group>"; };
 		E223B1DE1E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+LabelHeightAndWidth.h"; sourceTree = "<group>"; };
 		E223B1DF1E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LabelHeightAndWidth.m"; sourceTree = "<group>"; };
+		E251A4371E84B9D200A246C8 /* sjtool.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjtool.js; sourceTree = "<group>"; };
 		E25295781E49B3C900D29542 /* SJGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJGuideViewController.h; sourceTree = "<group>"; };
 		E25295791E49B3C900D29542 /* SJGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJGuideViewController.m; sourceTree = "<group>"; };
 		E252957C1E49D1C300D29542 /* SJManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJManager.h; sourceTree = "<group>"; };
@@ -339,6 +351,12 @@
 		E25295841E4C511400D29542 /* SJBookMarksVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJBookMarksVC.m; sourceTree = "<group>"; };
 		E25295861E4C53BB00D29542 /* SJBookMarksHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJBookMarksHomeView.h; sourceTree = "<group>"; };
 		E25295871E4C53BB00D29542 /* SJBookMarksHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJBookMarksHomeView.m; sourceTree = "<group>"; };
+		E27AA37B1E823DA60001C763 /* SJWebSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJWebSettingViewController.h; sourceTree = "<group>"; };
+		E27AA37C1E823DA60001C763 /* SJWebSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJWebSettingViewController.m; sourceTree = "<group>"; };
+		E29D84D11E80DF5400CB5F20 /* SJWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJWebView.h; sourceTree = "<group>"; };
+		E29D84D21E80DF5400CB5F20 /* SJWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJWebView.m; sourceTree = "<group>"; };
+		E29D84D41E80E40B00CB5F20 /* SJTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJTabView.h; sourceTree = "<group>"; };
+		E29D84D51E80E40B00CB5F20 /* SJTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJTabView.m; sourceTree = "<group>"; };
 		E2A40FDD1E16067F002A733E /* addsou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = addsou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A40FE11E16067F002A733E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E2A40FE31E16067F002A733E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -366,6 +384,13 @@
 		E2D203261E5AE60700E1FC19 /* SJSearchCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJSearchCollectionView.m; sourceTree = "<group>"; };
 		E2D203291E5C04FB00E1FC19 /* SJChooseSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJChooseSearchViewController.h; sourceTree = "<group>"; };
 		E2D2032A1E5C04FB00E1FC19 /* SJChooseSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJChooseSearchViewController.m; sourceTree = "<group>"; };
+		E2D2A3721E8A186700D0424C /* removejs.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = removejs.js; sourceTree = "<group>"; };
+		E2D2A3741E8A61B300D0424C /* FMDBURLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBURLManager.h; sourceTree = "<group>"; };
+		E2D2A3751E8A61B300D0424C /* FMDBURLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBURLManager.m; sourceTree = "<group>"; };
+		E2D2A3781E8A6DAC00D0424C /* SJAdvertisingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJAdvertisingViewController.h; sourceTree = "<group>"; };
+		E2D2A3791E8A6DAC00D0424C /* SJAdvertisingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJAdvertisingViewController.m; sourceTree = "<group>"; };
+		E2D2A37B1E8A6FC600D0424C /* SJAdvertisingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJAdvertisingTableViewCell.h; sourceTree = "<group>"; };
+		E2D2A37C1E8A6FC600D0424C /* SJAdvertisingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJAdvertisingTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,8 +491,17 @@
 		E2068D5B1E231B3F0020803A /* 网页 */ = {
 			isa = PBXGroup;
 			children = (
+				E21019DF1E88E4270088DE79 /* 网页帮助类 */,
 				E2068D5C1E231B580020803A /* SJWebViewController.h */,
 				E2068D5D1E231B580020803A /* SJWebViewController.m */,
+				E29D84D11E80DF5400CB5F20 /* SJWebView.h */,
+				E29D84D21E80DF5400CB5F20 /* SJWebView.m */,
+				E29D84D41E80E40B00CB5F20 /* SJTabView.h */,
+				E29D84D51E80E40B00CB5F20 /* SJTabView.m */,
+				E27AA37B1E823DA60001C763 /* SJWebSettingViewController.h */,
+				E27AA37C1E823DA60001C763 /* SJWebSettingViewController.m */,
+				E251A4371E84B9D200A246C8 /* sjtool.js */,
+				E2D2A3721E8A186700D0424C /* removejs.js */,
 			);
 			name = "网页";
 			sourceTree = "<group>";
@@ -539,6 +573,8 @@
 			children = (
 				E2068D781E2355990020803A /* FMDBManager.h */,
 				E2068D791E2355990020803A /* FMDBManager.m */,
+				E2D2A3741E8A61B300D0424C /* FMDBURLManager.h */,
+				E2D2A3751E8A61B300D0424C /* FMDBURLManager.m */,
 			);
 			name = "管理者";
 			sourceTree = "<group>";
@@ -716,9 +752,19 @@
 			name = "工具";
 			sourceTree = "<group>";
 		};
+		E21019DF1E88E4270088DE79 /* 网页帮助类 */ = {
+			isa = PBXGroup;
+			children = (
+				E21019DC1E88E4200088DE79 /* SJContextMenuHelper.h */,
+				E21019DD1E88E4200088DE79 /* SJContextMenuHelper.m */,
+			);
+			name = "网页帮助类";
+			sourceTree = "<group>";
+		};
 		E21137AF1E27115600AF78D0 /* 注册登录界面 */ = {
 			isa = PBXGroup;
 			children = (
+				E2D2A3771E8A6D7100D0424C /* 广告开关 */,
 				E2D203281E5C04D900E1FC19 /* 选择搜索引擎 */,
 				E20A6E051E28C266000D080D /* 关于我们 */,
 				E21138111E27825200AF78D0 /* 手机注册 */,
@@ -1173,6 +1219,17 @@
 			name = "选择搜索引擎";
 			sourceTree = "<group>";
 		};
+		E2D2A3771E8A6D7100D0424C /* 广告开关 */ = {
+			isa = PBXGroup;
+			children = (
+				E2D2A3781E8A6DAC00D0424C /* SJAdvertisingViewController.h */,
+				E2D2A3791E8A6DAC00D0424C /* SJAdvertisingViewController.m */,
+				E2D2A37B1E8A6FC600D0424C /* SJAdvertisingTableViewCell.h */,
+				E2D2A37C1E8A6FC600D0424C /* SJAdvertisingTableViewCell.m */,
+			);
+			name = "广告开关";
+			sourceTree = "<group>";
+		};
 		F42996F9A3ECB3A4A5138A77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1312,8 +1369,10 @@
 				E2A40FF01E16067F002A733E /* LaunchScreen.storyboard in Resources */,
 				E21137F71E27672D00AF78D0 /* WeiboSDK.bundle in Resources */,
 				E2A40FED1E16067F002A733E /* Assets.xcassets in Resources */,
+				E2D2A3731E8A186700D0424C /* removejs.js in Resources */,
 				E20B50521E1CE24B002C006B /* ironhide.cer in Resources */,
 				E218487B1E1B7A61006FB866 /* addsou.cer in Resources */,
+				E251A4381E84B9D200A246C8 /* sjtool.js in Resources */,
 				E21137FC1E27673400AF78D0 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				E2068D6D1E2327660020803A /* iconfont.ttf in Resources */,
 			);
@@ -1399,6 +1458,7 @@
 				E20DCCEA1E1E4F27003AB27B /* JiKeScrollImageView.m in Sources */,
 				E2068D841E2355C10020803A /* QDRBookMarkView.m in Sources */,
 				E21137B21E27120E00AF78D0 /* SJUserViewController.m in Sources */,
+				E27AA37D1E823DA60001C763 /* SJWebSettingViewController.m in Sources */,
 				E2A410261E1647CB002A733E /* NSObject+Common.m in Sources */,
 				E21138141E27827200AF78D0 /* SJPhoneViewController.m in Sources */,
 				E21137D71E27602100AF78D0 /* BRPlaceholderTextView.m in Sources */,
@@ -1410,6 +1470,7 @@
 				E25295811E4B01FD00D29542 /* CardLayout.m in Sources */,
 				E217DF931E7B7F3D00DECCBA /* UIImage+InsetEdge.m in Sources */,
 				E20B50451E1CB9FB002C006B /* SJSearchViewModel.m in Sources */,
+				E2D2A37D1E8A6FC600D0424C /* SJAdvertisingTableViewCell.m in Sources */,
 				E20A6E101E28CC56000D080D /* QDRSwipeView.m in Sources */,
 				E2068D4A1E1F8D1F0020803A /* UIView+SetRect.m in Sources */,
 				E2068D941E237EC80020803A /* SJSearchViewController.m in Sources */,
@@ -1434,7 +1495,9 @@
 				E2068D4B1E1F8D1F0020803A /* XWDragCellCollectionView.m in Sources */,
 				E2068D491E1F8D1F0020803A /* SubCollectionViewCell.m in Sources */,
 				E20DC2A51E23D49500D5E282 /* SJSearchTableView.m in Sources */,
+				E29D84D31E80DF5400CB5F20 /* SJWebView.m in Sources */,
 				E2068D711E233C6E0020803A /* SJWebTabbar.m in Sources */,
+				E21019DE1E88E4200088DE79 /* SJContextMenuHelper.m in Sources */,
 				E2068D471E1F8D1F0020803A /* CircleLayout.m in Sources */,
 				E20DCCEB1E1E4F27003AB27B /* JiKeScrollLabel.m in Sources */,
 				E21137E21E27663000AF78D0 /* QDRLoginView.m in Sources */,
@@ -1461,9 +1524,12 @@
 				E223B1DD1E248F1D009B0FE4 /* SJKeywordsCollectionView.m in Sources */,
 				E2A40FE21E16067F002A733E /* main.m in Sources */,
 				E2A410291E1647F2002A733E /* NSString+Common.m in Sources */,
+				E2D2A3761E8A61B300D0424C /* FMDBURLManager.m in Sources */,
 				E2A410301E16568C002A733E /* SJProgressHUD.m in Sources */,
+				E2D2A37A1E8A6DAC00D0424C /* SJAdvertisingViewController.m in Sources */,
 				E2068D4E1E1F8D9C0020803A /* SJFocusView.m in Sources */,
 				E20DCCEC1E1E4F27003AB27B /* JiKeScrollView.m in Sources */,
+				E29D84D61E80E40B00CB5F20 /* SJTabView.m in Sources */,
 				E2068D761E23557E0020803A /* QDRBookViewModel.m in Sources */,
 				E218489C1E1CA73D006FB866 /* SJHomePageViewModel.m in Sources */,
 				E20DCCED1E1E4F27003AB27B /* JiKeSignalScrollView.m in Sources */,
@@ -1617,6 +1683,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = addsou/addsou.entitlements;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 4A7RJ4UA42;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

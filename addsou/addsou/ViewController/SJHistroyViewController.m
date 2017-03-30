@@ -20,11 +20,26 @@
 
 @property (nonatomic, strong) UICollectionView *collectionView;
 
+@property (nonatomic, strong) UIImageView *noHistroyImage;      // 无浏览记录提示图
+
 
 
 @end
 
 @implementation SJHistroyViewController
+
+- (UIImageView *)noHistroyImage{
+    if (!_noHistroyImage) {
+        _noHistroyImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wuliulanlilu"]];
+        _noHistroyImage.contentMode = UIViewContentModeScaleAspectFill;
+        _noHistroyImage.alpha = 0;
+        [self.view addSubview:_noHistroyImage];
+        [_noHistroyImage mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(0);
+        }];
+    }
+    return _noHistroyImage;
+}
 
 - (QDRClearCacheView *)clearView{
     if (!_clearView) {
@@ -44,6 +59,8 @@
         if ([wself.historyVM.clearStatus isEqualToString:@"0"]) {
             [wself.historyVM.dataArr removeAllObjects];
             [wself.collectionView reloadData];
+            wself.noHistroyImage.alpha = 1;
+            wself.navcView.rightBtn.alpha = 0;
             [_clearView closeSelf];
         }
     }];
@@ -154,6 +171,7 @@
                 [wself.collectionView reloadData];
             }else{
                 wself.navcView.rightBtn.alpha = 0;
+                wself.noHistroyImage.alpha = 1;
             }
         }];
     }
@@ -192,8 +210,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = kRGBColor(227, 227, 227);
+    self.view.backgroundColor = [UIColor whiteColor];
     
+    [self noHistroyImage];
     [self collectionView];
     [self navcView];
     [self getNetWorking];

@@ -428,3 +428,35 @@
 @property (nonatomic, strong) UIImage *thumbImage;   /* 图片 */
 
 @end
+
+@interface Elements : NSObject
+
+@property (nonatomic, copy) NSURL *link;      //
+
+@property (nonatomic, copy) NSURL *image;      //
+
+@property (nonatomic, copy) NSString *className;
+
+@property (nonatomic, copy) NSString *strid;      //
+
+@end
+
+@interface SJUrlModel : NSObject
+
+@property (nonatomic, copy) NSNumber *ID;      //
+
+@property (nonatomic, copy) NSString *urlName;      // 链接名称
+
+@property (nonatomic, copy) NSString *isOpen;      // 
+
+@property (nonatomic, copy) NSString *url;      //
+
+@property (nonatomic, copy) NSString *imgUrl;      //
+
+@property (nonatomic, copy) NSString *href;      //
+
+@property (nonatomic, copy) NSString *className;      //
+
+@property (nonatomic, copy) NSString *strid;      //
+
+@end

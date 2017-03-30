@@ -129,9 +129,9 @@
 
 #pragma mark - <UITableViewDelegate, UITableViewDataSource>
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger i = 6;
+    NSInteger i = 7;
     if (![UserDefaultObjectForKey(LOCAL_READ_ISLOGIN) isEqualToString:NOLOGIN]) {
-        i = 7;
+        i = 8;
     }
     return i;
 }
@@ -163,16 +163,18 @@
             cell.rightLabel.text = @"360";
         }
     }else if (indexPath.row == 2){
-        cell.leftLabel.text = @"用户反馈";
+        cell.leftLabel.text = @"广告过滤";
     }else if (indexPath.row == 3){
-        cell.leftLabel.text = @"赞我一下";
+        cell.leftLabel.text = @"用户反馈";
     }else if (indexPath.row == 4){
+        cell.leftLabel.text = @"赞我一下";
+    }else if (indexPath.row == 5){
         cell.leftLabel.text = @"关于搜加";
         cell.rightLabel.text = [NSString stringWithFormat:@"v%@", APPVERSION];
-    }else if (indexPath.row == 5){
+    }else if (indexPath.row == 6){
         cell.leftLabel.text = @"清除缓存";
         cell.rightLabel.text = [NSString stringWithFormat:@"%0.2f M", [self sdFolderSize]];
-    }else if (indexPath.row == 6){
+    }else if (indexPath.row == 7){
         cell.leftLabel.text = @"退出登录";
         cell.rightLabel.text = @"";
     }
@@ -184,7 +186,7 @@
 // 点击方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     self.indexPath = indexPath;
-    if (indexPath.row == 5) {
+    if (indexPath.row == 6) {
         if ([self sdFolderSize] == 0) {
             [self showSuccessMsg:@"已经清理的很干净了"];
         }else{
@@ -192,10 +194,10 @@
             [self clearView];
             [_clearView openSelf];
         }
-    }else if(indexPath.row == 6){
+    }else if(indexPath.row == 7){
         [self goOutView];
         [_goOutView openSelf];
-    }else if (indexPath.row == 3){
+    }else if (indexPath.row == 4){
         // 跳转到APPSTORE
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1195055909?mt=8"]];
     }else{

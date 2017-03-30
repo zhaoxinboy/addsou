@@ -14,7 +14,7 @@
     if (!_noBookImageView) {
         _noBookImageView = [[UIImageView alloc] init];
         _noBookImageView.contentMode = UIViewContentModeScaleAspectFill;
-        _noBookImageView.image = [UIImage imageNamed:@"zhinengduixiang"];
+        _noBookImageView.image = [UIImage imageNamed:@"wu"];
         [self addSubview:_noBookImageView];
         [_noBookImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.mas_equalTo(0);
@@ -28,8 +28,8 @@
 - (UILabel *)noBookLabel{
     if (!_noBookLabel) {
         _noBookLabel = [UILabel new];
-        _noBookLabel.textColor = [UIColor whiteColor];
-        _noBookLabel.text = @"无内容真可怕!!!";
+        _noBookLabel.textColor = [UIColor blackColor];
+        _noBookLabel.text = @"快去添加标签吧!";
         _noBookLabel.textAlignment = NSTextAlignmentCenter;
         _noBookLabel.font = [UIFont systemFontOfSize:18];
         [self addSubview:_noBookLabel];
