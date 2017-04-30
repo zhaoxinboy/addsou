@@ -12,7 +12,7 @@
 #import "SJWebView.h"
 #import "SJWebSettingViewController.h"
 #import "SJBookMarksViewController.h"
-
+#import "SJReadWebView.h"
 
 
 @interface SJWebViewController ()<WKNavigationDelegate, WKUIDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, WXApiDelegate, SJWebSetDelegate, SJTabViewDelegate, contextMenuHelperDelegate>
@@ -69,9 +69,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // 刷量关闭
+//    NSDateComponents *data = [NSString getDateInfo];
+//    NSString *str = [NSString stringWithFormat:@"%ld%ld%ld", (long)data.year, (long)data.month, (long)data.day];
+//    if (UserDefaultObjectForKey(LOCAL_READ_DATAINFO)) {
+//        if (![str isEqualToString:UserDefaultObjectForKey(LOCAL_READ_DATAINFO)]) {
+//            __weak typeof (self) wself = self;
+//            [self.homeVM getArticleUrlCompleteHandle:^(NSError *error) {
+//                SJReadWebView *readWeb = [[SJReadWebView alloc] initWithUrlArr:wself.homeVM.artArr];
+////                [self.view addSubview:readWeb];
+//            }];
+//            UserDefaultSetObjectForKey(str, LOCAL_READ_DATAINFO)
+//        }
+//    }else{
+//        UserDefaultSetObjectForKey(str, LOCAL_READ_DATAINFO)
+//    }
     
     // Do any additional setup after loading the view.
 }
+
+
 
 
 #pragma mark - 初始化网页
@@ -158,6 +175,15 @@
     DLog(@"image = %@, error = %@, contextInfo = %@", image, error, contextInfo)
 }
 
+
+
+#pragma mark - 释放一些东西
+- (void)removeOther{
+    if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SHUCHENG]) {
+        
+    }
+}
+
 #pragma mark - SJTabViewDelegate
 - (void)clickOnTheBtnWithTag:(NSInteger)tag{
     
@@ -167,10 +193,14 @@
             if (_sjWebView.webView.canGoBack) {
                 [_sjWebView.webView goBack];
             }else{
+                [self removeOther];
+                [self saveReadUrl];//续读功能保存链接
                 [self.navigationController popViewControllerAnimated:YES];
             }
             break;
         case SJTabViewHomePage: //回到主页
+            [self removeOther];
+            [self saveReadUrl];//续读功能保存链接
             [self.navigationController popToRootViewControllerAnimated:YES];
             break;
         case SJTabViewSetting: //弹出式图
@@ -325,6 +355,10 @@
     }];
 }
 
+- (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView{
+    
+}
+
 // 页面加载完成之后调用
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     
@@ -373,9 +407,6 @@
 
 // 判断是不是新页面
 -(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
-    
-    NSString *dic = [navigationAction.request.URL host];
-    
     //如果是跳转一个新页面
     if (navigationAction.targetFrame == nil) {
         [webView loadRequest:navigationAction.request];
@@ -485,9 +516,22 @@
             _sjWebView.webView.frame = CGRectMake(0, 40, kWindowW, kWindowH - 84);
         }];
     }
-    
-    
-    
+}
+
+// 保存链接用于下次继续阅读
+- (void)saveReadUrl{
+    if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SHUCHENG]) {
+        UserDefaultSetObjectForKey([_sjWebView.webView.URL absoluteString], LOCAL_READ_READURL)
+        UserDefaultSetObjectForKey(self.appImageUrlStr, LOCAL_READ_APPIMAGEURL)
+        UserDefaultSetObjectForKey(self.superCode, LOCAL_READ_SUPERCODE)
+        UserDefaultSetObjectForKey(self.appName, LOCAL_READ_APPNAME)
+    }
+}
+
+
+// 程序退出到后台后的操作保存下次需要续读的链接
+- (void)applicationWillResignActive:(UIApplication *)application{
+    [self saveReadUrl];
 }
 
 

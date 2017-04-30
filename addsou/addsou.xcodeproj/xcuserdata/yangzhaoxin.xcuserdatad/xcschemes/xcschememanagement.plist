@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>addsouVoice.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>E21BB76D1EA87F37006CE7A8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E2A40FDC1E16067F002A733E</key>
 		<dict>
 			<key>primary</key>

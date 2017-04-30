@@ -55,7 +55,11 @@
         _textView.backgroundColor = [UIColor clearColor];
         _textView.font = [UIFont systemFontOfSize:13];
         _textView.textColor = [UIColor grayColor];
-        _textView.text = @"      北京大文明时代信息技术有限公司，专注为手机容量“瘦身”，特此推出一款轻量级的工具类APP搜加。搜加汇集了时下最实用的各类H5应用，让用户真正做到打开一款应用，使用千款应用。您在使用搜加提供的各项服务之前，请您务必审慎阅读，充分理解本协议各条款内容，包括但不限于免除或者限制责任的条款。如您不同意本服务协议及/或随时对其的修改，您可以主动停止使用搜加提供的服务；您一旦使用搜加的服务，即视为您已了解并完全同意本服务协议各项内容，包括搜加对服务协议随时所做的任何修改，并成为搜加的用户。";
+        if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SOUJIA]) {
+            _textView.text = @"      北京大文明时代信息技术有限公司，专注为手机容量“瘦身”，特此推出一款轻量级的工具类APP搜加。搜加汇集了时下最实用的各类H5应用，让用户真正做到打开一款应用，使用千款应用。您在使用搜加提供的各项服务之前，请您务必审慎阅读，充分理解本协议各条款内容，包括但不限于免除或者限制责任的条款。如您不同意本服务协议及/或随时对其的修改，您可以主动停止使用搜加提供的服务；您一旦使用搜加的服务，即视为您已了解并完全同意本服务协议各项内容，包括搜加对服务协议随时所做的任何修改，并成为搜加的用户。";
+        }else{
+            _textView.text = @"      阅览室- 一款拥有智能推荐的阅读器，集合国内多数阅读平台。智能搜索等多项人性化功能，让您追书不再愁！在这里可以找到时下最热门资讯，无论是娱乐头条，还是武侠历史，各类丰富独特的书籍资源，应有尽有！手机阅读的时代已经到来，我们为您准备了最新、最热门、最经典的文化盛宴。";
+        }
         _textView.userInteractionEnabled = NO;
     }
     return _textView;
@@ -67,7 +71,13 @@
         [self.view addSubview:_navcView];
         [_navcView.goBackBtn setImage:[UIImage imageNamed:@"nav_icon_back"] forState:UIControlStateNormal];
         [_navcView.goBackBtn addTarget:self action:@selector(go2Back) forControlEvents:UIControlEventTouchUpInside];
-        _navcView.titleLabel.text = @"关于搜加";
+        if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SOUJIA]) {
+            _navcView.titleLabel.text = @"关于搜加";
+        }else if(VERSIONS == 2){
+            _navcView.titleLabel.text = @"关于语搜";
+        }else{
+            _navcView.titleLabel.text = @"关于阅览室";
+        }
     }
     return _navcView;
 }
@@ -85,7 +95,13 @@
     if (!_agreementBtn) {
         _agreementBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _agreementBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [_agreementBtn setTitle:@"搜加法律条款" forState:UIControlStateNormal];
+        if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SOUJIA]) {
+            [_agreementBtn setTitle:@"搜加法律条款" forState:UIControlStateNormal];
+        }else if (VERSIONS == 2){
+            [_agreementBtn setTitle:@"语搜法律条款" forState:UIControlStateNormal];
+        }else{
+            [_agreementBtn setTitle:@"阅览室法律条款" forState:UIControlStateNormal];
+        }
         [_agreementBtn addTarget:self action:@selector(goAgreement) forControlEvents:UIControlEventTouchUpInside];
         [_agreementBtn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         [self.view addSubview:_agreementBtn];

@@ -19,6 +19,9 @@
 #import "QDRAboutUsViewController.h"
 #import "SJChooseSearchViewController.h"
 #import "SJAdvertisingViewController.h"
+#import "SJVoiceHomeViewController.h"
+#import "iflyMSC/IFlyMSC.h"
+
 
 @interface AppDelegate ()
 
@@ -35,6 +38,29 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    
+    
+    if (VERSIONS == 2) {
+        //设置sdk的log等级，log保存在下面设置的工作路径中
+        [IFlySetting setLogFile:LVL_ALL];
+        
+        //打开输出在console的log开关
+        [IFlySetting showLogcat:NO];
+        
+        //设置sdk的工作路径
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+        NSString *cachePath = [paths objectAtIndex:0];
+        [IFlySetting setLogFilePath:cachePath];
+        
+        //创建语音配置,appid必须要传入，仅执行一次则可
+        NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@", XUNFEIID];
+        
+        //所有服务启动前，需要确保执行createUtility
+        [IFlySpeechUtility createUtility:initString];
+    }
+    
+    
     
     // 初始化过滤广告
     if (!UserDefaultObjectForKey(LOCAL_READ_ISFILTERAD)){
@@ -66,6 +92,7 @@
     DLog(@"%@", LOCAL_READ_UUID)
     if (!LOCAL_READ_UUID) {
         [SSKeychain setPassword:APPUUID forService:BUNDLEID account:BUNDLEID];
+        DLog(@"首次打开APP");
     }
     DLog(@"%@", LOCAL_READ_UUID)
     /*--------------------end--------------------*/
@@ -78,23 +105,16 @@
     [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
     /*--------------------end--------------------*/
     
-//    id vc = nil;
-//    if (![[NSString stringWithFormat:@"%@%@", APPVERSION, APPBUILDVERSION] isEqualToString:UserDefaultObjectForKey(LOCAL_READ_FIRSTOPEN)]){
-//        vc = (SJGuidePageViewController *)[[SJGuidePageViewController alloc] init];
-//        NSString *str = [NSString stringWithFormat:@"%@%@", APPVERSION, APPBUILDVERSION];
-//        UserDefaultSetObjectForKey(str, LOCAL_READ_FIRSTOPEN)
-//        UserDefaultSetObjectForKey(@"1", LOCAL_READ_FIRST)
-//    }else{
-//        vc = (SJHomePageViewController *)[[SJHomePageViewController alloc] init];
-//    }
-//    SJBaseNavigationViewController *navc = [[SJBaseNavigationViewController alloc] initWithRootViewController:vc];
-//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    self.window.rootViewController = navc;
-//    [self.window makeKeyAndVisible];
     
+    SJBaseNavigationViewController *navc = nil;
+    if (VERSIONS == 1) {
+        SJHomePageViewController *vc = [[SJHomePageViewController alloc] init];
+        navc = [[SJBaseNavigationViewController alloc] initWithRootViewController:vc];
+    }else if (VERSIONS == 2){
+        SJVoiceHomeViewController *vc = [[SJVoiceHomeViewController alloc] init];
+        navc = [[SJBaseNavigationViewController alloc] initWithRootViewController:vc];
+    }
     
-    SJHomePageViewController *vc = [[SJHomePageViewController alloc] init];
-    SJBaseNavigationViewController *navc = [[SJBaseNavigationViewController alloc] initWithRootViewController:vc];
     SJUserViewController *userVC = [[SJUserViewController alloc] init];
     
     self.sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navc leftMenuViewController:userVC rightMenuViewController:nil];
@@ -339,24 +359,43 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];//菜单栏字体颜色
     SJUserViewController *userVC = (SJUserViewController *)menuViewController;
     SJBaseNavigationViewController *vc = (SJBaseNavigationViewController *)sideMenu.contentViewController;
-    if (userVC.intBtn == 1) {//注册登录
-        QDRLoginViewController *loginVC = [[QDRLoginViewController alloc] init];
-        [vc pushViewController:loginVC animated:NO];
-    }else if (userVC.indexPath.row == 0) {//浏览记录
-        SJHistroyViewController *histroyVC = [[SJHistroyViewController alloc] init];
-        [vc pushViewController:histroyVC animated:NO];
-    }else if (userVC.indexPath.row == 1){ // 搜索引擎
-        SJChooseSearchViewController *chooseVC = [[SJChooseSearchViewController alloc] init];
-        [vc pushViewController:chooseVC animated:NO];
-    }else if (userVC.indexPath.row == 2){  // 广告相关
-        SJAdvertisingViewController *adVC = [[SJAdvertisingViewController alloc] init];
-        [vc pushViewController:adVC animated:NO];
-    }else if (userVC.indexPath.row == 3){  // 用户反馈
-        QDRUserFeedbackViewController *feedVC = [[QDRUserFeedbackViewController alloc] init];
-        [vc pushViewController:feedVC animated:NO];
-    }else if (userVC.indexPath.row == 5){
-        QDRAboutUsViewController *aboutVC = [[QDRAboutUsViewController alloc] init];
-        [vc pushViewController:aboutVC animated:NO];
+    if (VERSIONS == 1) {
+        if (userVC.intBtn == 1) {//注册登录
+            QDRLoginViewController *loginVC = [[QDRLoginViewController alloc] init];
+            [vc pushViewController:loginVC animated:NO];
+        }else if (userVC.indexPath.row == 0) {//浏览记录
+            SJHistroyViewController *histroyVC = [[SJHistroyViewController alloc] init];
+            [vc pushViewController:histroyVC animated:NO];
+        }else if (userVC.indexPath.row == 1){ // 搜索引擎
+            SJChooseSearchViewController *chooseVC = [[SJChooseSearchViewController alloc] init];
+            [vc pushViewController:chooseVC animated:NO];
+        }else if (userVC.indexPath.row == 2){  // 广告相关
+            SJAdvertisingViewController *adVC = [[SJAdvertisingViewController alloc] init];
+            [vc pushViewController:adVC animated:NO];
+        }else if (userVC.indexPath.row == 3){  // 用户反馈
+            QDRUserFeedbackViewController *feedVC = [[QDRUserFeedbackViewController alloc] init];
+            [vc pushViewController:feedVC animated:NO];
+        }else if (userVC.indexPath.row == 5){
+            QDRAboutUsViewController *aboutVC = [[QDRAboutUsViewController alloc] init];
+            [vc pushViewController:aboutVC animated:NO];
+        }
+    }else if (VERSIONS == 2){
+        if (userVC.intBtn == 1) {//注册登录
+            QDRLoginViewController *loginVC = [[QDRLoginViewController alloc] init];
+            [vc pushViewController:loginVC animated:NO];
+        }else if (userVC.indexPath.row == 0){ // 搜索引擎
+            SJChooseSearchViewController *chooseVC = [[SJChooseSearchViewController alloc] init];
+            [vc pushViewController:chooseVC animated:NO];
+        }else if (userVC.indexPath.row == 1){  // 广告相关
+            SJAdvertisingViewController *adVC = [[SJAdvertisingViewController alloc] init];
+            [vc pushViewController:adVC animated:NO];
+        }else if (userVC.indexPath.row == 2){  // 用户反馈
+            QDRUserFeedbackViewController *feedVC = [[QDRUserFeedbackViewController alloc] init];
+            [vc pushViewController:feedVC animated:NO];
+        }else if (userVC.indexPath.row == 4){
+            QDRAboutUsViewController *aboutVC = [[QDRAboutUsViewController alloc] init];
+            [vc pushViewController:aboutVC animated:NO];
+        }
     }
     
     DLog(@"willHideMenuViewController: %@", NSStringFromClass([menuViewController class]));

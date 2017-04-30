@@ -43,6 +43,36 @@
 
 /*--------------------end--------------------*/
 
+/*--------------------文章链接--------------------*/
+@interface SJArticleModel : BaseModel
+
+@property (nonatomic, copy) NSString *uid;      //
+
+@property (nonatomic, copy) NSString *accessToken;      //
+
+@property (nonatomic, copy) NSString *imei;      //
+
+@property (nonatomic, strong) NSMutableArray *data;      //
+
+@property (nonatomic, copy) NSString *code;      //
+
+@property (nonatomic, copy) NSString *msg;      //
+
+@end
+
+@interface SJArticleUrlModel : BaseModel
+
+@property (nonatomic, copy) NSNumber *urlid;      //
+
+@property (nonatomic, copy) NSString *name;      //
+
+@property (nonatomic, copy) NSString *url;      //
+
+
+@end
+
+
+/*--------------------end--------------------*/
 
 /*--------------------链接信息--------------------*/
 

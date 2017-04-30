@@ -7,6 +7,7 @@
 //
 
 #import "NSObject+Common.h"
+#import "LSStatusBarHUD.h"
 
 #define kToastDuration     1
 
@@ -14,20 +15,29 @@
 
 //显示失败提示
 - (void)showErrorMsg:(NSObject *)msg{
-    [self hideProgress];
-    MBProgressHUD *progressHUD = [MBProgressHUD showHUDAddedTo:[self currentView] animated:YES];
-    progressHUD.mode = MBProgressHUDModeText;
-    progressHUD.label.text = msg.description;
-    [progressHUD hideAnimated:YES afterDelay:kToastDuration];
+//    [self hideProgress];
+//    MBProgressHUD *progressHUD = [MBProgressHUD showHUDAddedTo:[self currentView] animated:YES];
+//    progressHUD.mode = MBProgressHUDModeText;
+//    progressHUD.label.text = msg.description;
+//    [progressHUD hideAnimated:YES afterDelay:kToastDuration];
+    
+    
+    NSMutableAttributedString *a= [LSStatusBarHUD createAttributedText:[NSString stringWithFormat:@"%@", msg] color:[UIColor whiteColor] font:[UIFont systemFontOfSize:16]];
+    
+    [LSStatusBarHUD showMessage:a backgroundColor:kRGBColor(32, 34, 36)];
 }
 
 //显示成功提示
 - (void)showSuccessMsg:(NSObject *)msg{
-    [self hideProgress];
-    MBProgressHUD *progressHUD = [MBProgressHUD showHUDAddedTo:[self currentView] animated:YES];
-    progressHUD.mode = MBProgressHUDModeText;
-    progressHUD.label.text = msg.description;
-    [progressHUD hideAnimated:YES afterDelay:kToastDuration];
+//    [self hideProgress];
+//    MBProgressHUD *progressHUD = [MBProgressHUD showHUDAddedTo:[self currentView] animated:YES];
+//    progressHUD.mode = MBProgressHUDModeText;
+//    progressHUD.label.text = msg.description;
+//    [progressHUD hideAnimated:YES afterDelay:kToastDuration];
+    
+    NSMutableAttributedString *a= [LSStatusBarHUD createAttributedText:[NSString stringWithFormat:@"%@", msg] color:[UIColor whiteColor] font:[UIFont systemFontOfSize:16]];
+    
+    [LSStatusBarHUD showMessage:a backgroundColor:kRGBColor(32, 34, 36)];
 }
 
 //显示忙
@@ -318,6 +328,11 @@
             return arr;
         }
     }
+}
+
+// 获取一个随机数   包含from to
+-(NSInteger)getRandomNumber:(NSInteger)from to:(NSInteger)to{
+    return (int)(from + (arc4random() % (to - from + 1)));
 }
 
 @end

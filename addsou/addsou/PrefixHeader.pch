@@ -9,6 +9,9 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+
+#define LOCAL_READ_DATAINFO             @"datainfo"     //日期，用于判断是否执行刷阅读量操作
+
 #define LOCAL_READ_ISFILTERAD           @"isfilterad"   //是否过滤广告，是为1，否为0
 
 #define LOCAL_READ_FIRSTOPEN            @"firstopen"    // 是否为第一次打开 存储版本号和build号的拼接
@@ -50,6 +53,11 @@
 #define NOLOGIN                         @"100"  // 未登录
 
 
+#define ISVOICE                         (VERSION = 2)      // 判断是否是语音版本
+
+#define XUNFEIID                        @"58f98390"         //科大讯飞ID
+
+
 #define LOCAL_READ_SKIN                 @"skinName"         // 选中皮肤名称
 
 #define LOCAL_READ_PLACEIMAGE           @"s"     // 图标默认图片
@@ -77,9 +85,27 @@
 //#define WBSECRET @"42d420a535a890530028fff907834153"
 #define KREADIRECTURL @"https://api.weibo.com/oauth2/default.html"      // 微博回调页URL地址
 
+//乐飞横幅广告id
+#define AFP_IPHONE_APPID @"2540BE658"
+
+// 开屏广告id
+#define AFP_SPLASHS_ID @"2553D1359"
+
+#define LOCAL_READ_ISOTHER  @"soujia"         // 分包必须字段，书城为“shucheng” 搜加为“soujia”
+
+#define LOCAL_READ_SOUJIA @"soujia"
+
+#define LOCAL_READ_SHUCHENG @"shucheng"
+
+#define LOCAL_READ_READURL              @"readurl"      // 继续阅读
+#define LOCAL_READ_APPIMAGEURL          @"appImageUrl"  // 继续阅读图标
+#define LOCAL_READ_SUPERCODE            @"supercode"    // 继续阅读去广告代码
+#define LOCAL_READ_APPNAME              @"appname"      // 继续阅读应用名称
+
 
 // 友盟
 #define UMAPPKEY @"586b53ec65b6d634b90001b2"                            // 友盟appkey
+//#define UMAPPKEY @"58a2950e7f2c742fda000778"                                //书城 友盟appkey
 
 #define BUNDLEID [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"] //项目包名
 #define APPNAME [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"] //APP名称
@@ -94,6 +120,8 @@
 //#define URLPATH @"http://60.205.170.90:8081"    // 线上
 //#define URLPATH @"https://app.addsou.com"          //线上https
 #define URLPATH @"http://app.addsou.com"        // 线上http
+
+#define URLACTICLE  @"http://120.27.27.204/url/l"   // 获取文章接口
 
 
 #define SJ_ADAPTER_WIDTH(NUM) (NUM * kWindowW / 375.0)    // 布局宽度自适应
@@ -349,7 +377,8 @@ return self; \
 #import "UIView+Frame.h"
 #import "UIImage+InsetEdge.h"
 #import "FMDBURLManager.h"
-
+#import "UIButton+runtime.h"
+#import <objc/runtime.h>
 
 #endif
 

@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>LSStatusBarHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -35,6 +40,11 @@
 			<false/>
 		</dict>
 		<key>Pods-addsou.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-addsouVoice.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -67,7 +77,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>358D44A6C9FA1BE25B0828AB19D32B19</key>
+		<key>1E4E86BDD63835199097171FB9FC1A03</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>274DED40A9D958A91608D95FA9518B64</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>349A871B0CA75EDBB4D2D7E5991FE1DE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>350B941400C9896C97077872104609D4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -78,6 +103,11 @@
 			<true/>
 		</dict>
 		<key>8642CC820CE8C5B88C113D7F47AF4BC3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>954E2CD6774AC7E9AFE2EA132B5C3315</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,22 +127,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B41629CF72E4969B36BEB0E13A5D962A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D4619E4297903A721FA5CD50B34534A8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>DC7A51F0B370F9976D21032BDDB7222E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E3EEF672C4A6114786A1892D3DFBDF63</key>
+		<key>E257BFF0EBC100DF556CBE1D65CB09C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

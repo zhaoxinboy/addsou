@@ -131,6 +131,9 @@
                   longPressTimeout = setTimeout(function () {
                                                 touchHandled = true;
                                                 cancel();
+//                                                alert(typeof(element));
+//                                                removeElement(element);
+//                                                element.parentNode.removeChild(element));
                                                 webkit.messageHandlers.contextMenuMessageHandler.postMessage(data);
                                                 }, 500);
                   
@@ -143,3 +146,20 @@
  addEventListener("scroll", cancel);
  
  }) ();
+ 
+ function removeElement(_element){
+    var _parentElement = _element.parentNode;
+    if(_parentElement){
+        _parentElement.removeChild(_element);
+    }
+}
+ function displayProp(obj){
+    var names="";
+    for(var name in obj){
+        names+=name+": "+obj[name]+", ";
+    }
+    alert(names);
+}
+ 
+ 
+ 

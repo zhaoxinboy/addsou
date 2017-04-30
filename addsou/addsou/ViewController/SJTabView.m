@@ -7,6 +7,7 @@
 //
 
 #import "SJTabView.h"
+#import "UIButton+runtime.h"
 
 
 @implementation SJTabView
@@ -35,8 +36,11 @@
         _barGoBack = [UIButton buttonWithType:UIButtonTypeCustom];
         _barGoBack.tag = SJTabViewGoBack;
         [_barGoBack setImage:[UIImage imageNamed:@"icon_tab_back"] forState:UIControlStateNormal];
+        [_barGoBack tapWithEvent:UIControlEventAllEvents withBlock:^(UIButton *sender) {
+            [self clickOn:sender];
+        }];
         
-        [_barGoBack addTarget:self action:@selector(clickOn:) forControlEvents:UIControlEventTouchUpInside];
+//        [_barGoBack addTarget:self action:@selector(clickOn:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_barGoBack];
         [_barGoBack mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.centerY.mas_equalTo(0);

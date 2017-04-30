@@ -18,6 +18,7 @@ PODS:
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
   - iCarousel (1.8.3)
+  - LSStatusBarHUD (1.0.1)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - MJExtension (3.0.13)
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - AFNetworking
   - FMDB
   - iCarousel
+  - LSStatusBarHUD
   - Masonry
   - MBProgressHUD
   - MJExtension
@@ -46,6 +48,7 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   iCarousel: d782f635afac190c49bb8ee455882284cff8b85f
+  LSStatusBarHUD: c87fc71f288c16cd777045fa74652125207ac65f
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
@@ -55,6 +58,6 @@ SPEC CHECKSUMS:
   SSKeychain: 55cc80f66f5c73da827e3077f02e43528897db41
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
 
-PODFILE CHECKSUM: 5c8dd37a1f2fb7991b2b75c6b6b3261dc3c0287b
+PODFILE CHECKSUM: 952e0331fd40c98dd9bf2435016dcea7f364ec1e
 
 COCOAPODS: 1.1.1

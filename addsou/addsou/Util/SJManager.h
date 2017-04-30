@@ -17,6 +17,15 @@
 @property (nonatomic, assign) CGRect bookFrame;      // 书签按钮的位置，用于绘制贝塞尔曲线
 
 
+
+@property (nonatomic, assign) CGRect voiceFrame;      // 语音按钮位置
+
+
+@property (nonatomic, strong) NSMutableArray *searchArr;      // 搜索引擎数组
+
+
+
+
 + (SJManager *)sharedManager;
 
 @end

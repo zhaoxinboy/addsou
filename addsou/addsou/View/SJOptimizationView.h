@@ -8,16 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import "JiKeScrollView.h"
+@protocol xuduDelegate <NSObject>
 
+- (void)xuduJump2Web;
+
+@end
 
 
 @interface SJOptimizationView : UIView
+
+@property (nonatomic, assign) id<xuduDelegate> xuduDelegate;      // 续读按钮点击跳转代理
 
 @property (nonatomic, strong) UILabel *titleLabel;   /* 标题 */
 
 @property (nonatomic, strong) UILabel *textLabel;   /* 一段话 */
 
 @property (nonatomic, strong) UIImageView *logoIamgeView;   /* logo */
+
+@property (nonatomic, strong) UIButton *xuduBtn;      // 续读按钮
 
 @property (nonatomic, strong) UIView *lineView;   /* 虚线 */
 

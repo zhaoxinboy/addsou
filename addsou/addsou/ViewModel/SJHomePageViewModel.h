@@ -35,6 +35,11 @@
 - (void)postAddLocationByUserid:(NSString *)userID itude:(NSString *)itude location:(NSString *)location CompleteHandle:(CompletionHandle)completionHandle;
 
 
+// 获取文章链接
+- (void)getArticleUrlCompleteHandle:(CompletionHandle)completionHandle;
+@property (nonatomic, strong) SJArticleModel *articleModel;      // 文章模型
+@property (nonatomic, strong) NSMutableArray *artArr;      // 文章数组
+
 
 
 @end

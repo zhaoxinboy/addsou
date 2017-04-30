@@ -123,5 +123,24 @@
 }
 
 
+// 获取文章链接
+- (void)getArticleUrlCompleteHandle:(CompletionHandle)completionHandle{
+    self.dataTask = [SJNetManager GET:URLACTICLE parameters:nil completionHandle:^(id responseObj, NSError *error) {
+        if (responseObj) {
+            NSMutableDictionary *dic = (NSMutableDictionary *)responseObj;
+            DLog(@"阅读文章 %@", dic)
+            _articleModel = [SJArticleModel mj_objectWithKeyValues:responseObj];
+            _artArr = [_articleModel.data copy];
+        }
+        completionHandle(error);
+    }];
+}
+
+- (NSMutableArray *)artArr{
+    if (!_artArr) {
+        _artArr = [[NSMutableArray alloc] init];
+    }
+    return _artArr;
+}
 
 @end

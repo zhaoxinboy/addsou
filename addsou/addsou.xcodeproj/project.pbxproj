@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6E229D094702789128006845 /* libPods-addsou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ED304D9AC38470A828CFA5B /* libPods-addsou.a */; };
+		86DB9B32AB6337322EFF31E1 /* libPods-addsou.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ED304D9AC38470A828CFA5B /* libPods-addsou.a */; };
 		E20559311E2789A3003D1E28 /* QDRRegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20559301E2789A3003D1E28 /* QDRRegisteredViewController.m */; };
 		E20559341E2789D6003D1E28 /* QDRRegisteredTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20559331E2789D6003D1E28 /* QDRRegisteredTableView.m */; };
 		E2068D471E1F8D1F0020803A /* CircleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D3E1E1F8D1F0020803A /* CircleLayout.m */; };
@@ -50,6 +51,7 @@
 		E20B50501E1CE00F002C006B /* SJBaseNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20B504F1E1CE00F002C006B /* SJBaseNavigationViewController.m */; };
 		E20B50521E1CE24B002C006B /* ironhide.cer in Resources */ = {isa = PBXBuildFile; fileRef = E20B50511E1CE24B002C006B /* ironhide.cer */; };
 		E20B50561E1CEF8E002C006B /* SJHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20B50551E1CEF8E002C006B /* SJHomePageViewController.m */; };
+		E20C434E1E9E0B61009AB38F /* SJReadWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20C434D1E9E0B61009AB38F /* SJReadWebView.m */; };
 		E20D7B9F1E515B1200020CF4 /* SJBookMarksLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E20D7B9E1E515B1200020CF4 /* SJBookMarksLayout.m */; };
 		E20DC2A51E23D49500D5E282 /* SJSearchTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20DC2A41E23D49500D5E282 /* SJSearchTableView.m */; };
 		E20DCCDF1E1E4EE6003AB27B /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = E20DCCDE1E1E4EE6003AB27B /* UIView+Frame.m */; };
@@ -102,6 +104,160 @@
 		E21848811E1B93D2006FB866 /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E21848801E1B93D2006FB866 /* BaseViewModel.m */; };
 		E21848841E1B9433006FB866 /* SJHistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E21848831E1B9433006FB866 /* SJHistoryViewModel.m */; };
 		E218489C1E1CA73D006FB866 /* SJHomePageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E218489B1E1CA73D006FB866 /* SJHomePageViewModel.m */; };
+		E21BB7691EA5CAD1006CE7A8 /* UIButton+runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB7681EA5CAD1006CE7A8 /* UIButton+runtime.m */; };
+		E21BB7701EA87F37006CE7A8 /* SJHomePageLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E2087AD41E1DEBD8005D025F /* SJHomePageLayout.m */; };
+		E21BB7711EA87F37006CE7A8 /* SJSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D971E237F8D0020803A /* SJSearchView.m */; };
+		E21BB7721EA87F37006CE7A8 /* SJBookMarksVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E25295841E4C511400D29542 /* SJBookMarksVC.m */; };
+		E21BB7731EA87F37006CE7A8 /* SJGuidePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D551E20D47F0020803A /* SJGuidePageViewController.m */; };
+		E21BB7741EA87F37006CE7A8 /* SJUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E21137B51E27123E00AF78D0 /* SJUserTableViewCell.m */; };
+		E21BB7751EA87F37006CE7A8 /* FMDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D791E2355990020803A /* FMDBManager.m */; };
+		E21BB7761EA87F37006CE7A8 /* SJHomePageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2087AD81E1DEF4C005D025F /* SJHomePageCollectionViewCell.m */; };
+		E21BB7771EA87F37006CE7A8 /* SJHistoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E21848831E1B9433006FB866 /* SJHistoryViewModel.m */; };
+		E21BB7781EA87F37006CE7A8 /* JiKeScrollImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20DCCE31E1E4F27003AB27B /* JiKeScrollImageView.m */; };
+		E21BB7791EA87F37006CE7A8 /* QDRBookMarkView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D811E2355C10020803A /* QDRBookMarkView.m */; };
+		E21BB77A1EA87F37006CE7A8 /* SJUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E21137B11E27120E00AF78D0 /* SJUserViewController.m */; };
+		E21BB77B1EA87F37006CE7A8 /* SJWebSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E27AA37C1E823DA60001C763 /* SJWebSettingViewController.m */; };
+		E21BB77C1EA87F37006CE7A8 /* NSObject+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A410251E1647CB002A733E /* NSObject+Common.m */; };
+		E21BB77D1EA87F37006CE7A8 /* SJPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E21138131E27827200AF78D0 /* SJPhoneViewController.m */; };
+		E21BB77E1EA87F37006CE7A8 /* BRPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21137D61E27602100AF78D0 /* BRPlaceholderTextView.m */; };
+		E21BB77F1EA87F37006CE7A8 /* SJUserTableHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21137B81E27126900AF78D0 /* SJUserTableHeaderFooterView.m */; };
+		E21BB7801EA87F37006CE7A8 /* SJLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E20B50481E1CC96A002C006B /* SJLoginViewModel.m */; };
+		E21BB7811EA87F37006CE7A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A40FE41E16067F002A733E /* AppDelegate.m */; };
+		E21BB7821EA87F37006CE7A8 /* SJModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E21848741E1B4F3F006FB866 /* SJModel.m */; };
+		E21BB7831EA87F37006CE7A8 /* SJChooseSmallSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2117F761E7009A500AD1C35 /* SJChooseSmallSearchViewController.m */; };
+		E21BB7841EA87F37006CE7A8 /* CardLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E25295801E4B01FD00D29542 /* CardLayout.m */; };
+		E21BB7851EA87F37006CE7A8 /* UIImage+InsetEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = E217DF921E7B7F3D00DECCBA /* UIImage+InsetEdge.m */; };
+		E21BB7861EA87F37006CE7A8 /* SJSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E20B50441E1CB9FB002C006B /* SJSearchViewModel.m */; };
+		E21BB7871EA87F37006CE7A8 /* SJAdvertisingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2A37C1E8A6FC600D0424C /* SJAdvertisingTableViewCell.m */; };
+		E21BB7881EA87F37006CE7A8 /* QDRSwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20A6E0F1E28CC56000D080D /* QDRSwipeView.m */; };
+		E21BB7891EA87F37006CE7A8 /* UIView+SetRect.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D441E1F8D1F0020803A /* UIView+SetRect.m */; };
+		E21BB78A1EA87F37006CE7A8 /* SJSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D931E237EC80020803A /* SJSearchViewController.m */; };
+		E21BB78B1EA87F37006CE7A8 /* SJDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2087ADB1E1E1BDB005D025F /* SJDateView.m */; };
+		E21BB78C1EA87F37006CE7A8 /* UIButton+runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB7681EA5CAD1006CE7A8 /* UIButton+runtime.m */; };
+		E21BB78D1EA87F37006CE7A8 /* SJBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20B504B1E1CD0FF002C006B /* SJBaseViewController.m */; };
+		E21BB78E1EA87F37006CE7A8 /* SJShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D871E2359560020803A /* SJShareView.m */; };
+		E21BB78F1EA87F37006CE7A8 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = E20DCCDE1E1E4EE6003AB27B /* UIView+Frame.m */; };
+		E21BB7901EA87F37006CE7A8 /* JKCountDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E21137DA1E27602D00AF78D0 /* JKCountDownButton.m */; };
+		E21BB7911EA87F37006CE7A8 /* CYLineLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D7D1E2355C10020803A /* CYLineLayout.m */; };
+		E21BB7921EA87F37006CE7A8 /* SJBookMarksLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E20D7B9E1E515B1200020CF4 /* SJBookMarksLayout.m */; };
+		E21BB7931EA87F37006CE7A8 /* SJHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20B50551E1CEF8E002C006B /* SJHomePageViewController.m */; };
+		E21BB7941EA87F37006CE7A8 /* QDRAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20A6E071E28C274000D080D /* QDRAboutUsViewController.m */; };
+		E21BB7951EA87F37006CE7A8 /* SJSearchCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D203261E5AE60700E1FC19 /* SJSearchCollectionView.m */; };
+		E21BB7961EA87F37006CE7A8 /* QDRUserFeedbackTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21137D21E275FD100AF78D0 /* QDRUserFeedbackTableView.m */; };
+		E21BB7971EA87F37006CE7A8 /* SJNoBookView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21227151E2CB8BE00E89A7C /* SJNoBookView.m */; };
+		E21BB7981EA87F37006CE7A8 /* SJBookMarksHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E25295871E4C53BB00D29542 /* SJBookMarksHomeView.m */; };
+		E21BB7991EA87F37006CE7A8 /* QDRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E21137DE1E2765EB00AF78D0 /* QDRLoginViewController.m */; };
+		E21BB79A1EA87F37006CE7A8 /* SJNavcView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21137C01E27537300AF78D0 /* SJNavcView.m */; };
+		E21BB79B1EA87F37006CE7A8 /* SJNetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A410211E1645D8002A733E /* SJNetManager.m */; };
+		E21BB79C1EA87F37006CE7A8 /* SJHistroyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E21137BC1E2752AA00AF78D0 /* SJHistroyViewController.m */; };
+		E21BB79D1EA87F37006CE7A8 /* SJAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E213B8171E681491007E37F3 /* SJAgreementViewController.m */; };
+		E21BB79E1EA87F37006CE7A8 /* XWDragCellCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D461E1F8D1F0020803A /* XWDragCellCollectionView.m */; };
+		E21BB79F1EA87F37006CE7A8 /* SubCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D421E1F8D1F0020803A /* SubCollectionViewCell.m */; };
+		E21BB7A01EA87F37006CE7A8 /* SJSearchTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20DC2A41E23D49500D5E282 /* SJSearchTableView.m */; };
+		E21BB7A11EA87F37006CE7A8 /* SJWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E29D84D21E80DF5400CB5F20 /* SJWebView.m */; };
+		E21BB7A21EA87F37006CE7A8 /* SJWebTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D701E233C6E0020803A /* SJWebTabbar.m */; };
+		E21BB7A31EA87F37006CE7A8 /* SJContextMenuHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E21019DD1E88E4200088DE79 /* SJContextMenuHelper.m */; };
+		E21BB7A41EA87F37006CE7A8 /* CircleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D3E1E1F8D1F0020803A /* CircleLayout.m */; };
+		E21BB7A51EA87F37006CE7A8 /* JiKeScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E20DCCE51E1E4F27003AB27B /* JiKeScrollLabel.m */; };
+		E21BB7A61EA87F37006CE7A8 /* QDRLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21137E11E27663000AF78D0 /* QDRLoginView.m */; };
+		E21BB7A71EA87F37006CE7A8 /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E21848801E1B93D2006FB866 /* BaseViewModel.m */; };
+		E21BB7A81EA87F37006CE7A8 /* SJGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E25295791E49B3C900D29542 /* SJGuideViewController.m */; };
+		E21BB7A91EA87F37006CE7A8 /* SJOptimizationView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2087AE11E1E3A36005D025F /* SJOptimizationView.m */; };
+		E21BB7AA1EA87F37006CE7A8 /* SJWebNaviView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D691E2326070020803A /* SJWebNaviView.m */; };
+		E21BB7AB1EA87F37006CE7A8 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E21848711E1B4EE7006FB866 /* BaseModel.m */; };
+		E21BB7AC1EA87F37006CE7A8 /* SJNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E2087ADE1E1E281C005D025F /* SJNavigationBar.m */; };
+		E21BB7AD1EA87F37006CE7A8 /* SJNoNetView.m in Sources */ = {isa = PBXBuildFile; fileRef = E212271F1E30BA4700E89A7C /* SJNoNetView.m */; };
+		E21BB7AE1EA87F37006CE7A8 /* SJChooseSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2032A1E5C04FB00E1FC19 /* SJChooseSearchViewController.m */; };
+		E21BB7AF1EA87F37006CE7A8 /* ULBCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E21137C51E27574500AF78D0 /* ULBCollectionViewFlowLayout.m */; };
+		E21BB7B01EA87F37006CE7A8 /* SJSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D9D1E23CF280020803A /* SJSearchTableViewCell.m */; };
+		E21BB7B11EA87F37006CE7A8 /* SJWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D5D1E231B580020803A /* SJWebViewController.m */; };
+		E21BB7B21EA87F37006CE7A8 /* QDRBookMarksCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D7F1E2355C10020803A /* QDRBookMarksCollectionViewCell.m */; };
+		E21BB7B31EA87F37006CE7A8 /* SJReadWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20C434D1E9E0B61009AB38F /* SJReadWebView.m */; };
+		E21BB7B41EA87F37006CE7A8 /* QDRRegisteredTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20559331E2789D6003D1E28 /* QDRRegisteredTableView.m */; };
+		E21BB7B51EA87F37006CE7A8 /* SJTransitionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D591E20D7E80020803A /* SJTransitionManager.m */; };
+		E21BB7B61EA87F37006CE7A8 /* PagingCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D401E1F8D1F0020803A /* PagingCollectionViewLayout.m */; };
+		E21BB7B71EA87F37006CE7A8 /* QDRClearCacheView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20A6E0B1E28CC32000D080D /* QDRClearCacheView.m */; };
+		E21BB7B81EA87F37006CE7A8 /* SJManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E252957D1E49D1C300D29542 /* SJManager.m */; };
+		E21BB7B91EA87F37006CE7A8 /* SJImageViewAndButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E20DCD1A1E1F4417003AB27B /* SJImageViewAndButton.m */; };
+		E21BB7BA1EA87F37006CE7A8 /* SJKeywordsCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E21227221E30C3CF00E89A7C /* SJKeywordsCollectionViewCell.m */; };
+		E21BB7BB1EA87F37006CE7A8 /* SJBookMarksHomeCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D8F1E236FAE0020803A /* SJBookMarksHomeCollectionViewCell.m */; };
+		E21BB7BC1EA87F37006CE7A8 /* SJKeywordsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E223B1DC1E248F1D009B0FE4 /* SJKeywordsCollectionView.m */; };
+		E21BB7BD1EA87F37006CE7A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A40FE11E16067F002A733E /* main.m */; };
+		E21BB7BE1EA87F37006CE7A8 /* NSString+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A410281E1647F2002A733E /* NSString+Common.m */; };
+		E21BB7BF1EA87F37006CE7A8 /* FMDBURLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2A3751E8A61B300D0424C /* FMDBURLManager.m */; };
+		E21BB7C01EA87F37006CE7A8 /* SJProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A4102F1E16568C002A733E /* SJProgressHUD.m */; };
+		E21BB7C11EA87F37006CE7A8 /* SJAdvertisingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2A3791E8A6DAC00D0424C /* SJAdvertisingViewController.m */; };
+		E21BB7C21EA87F37006CE7A8 /* SJFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D4D1E1F8D9C0020803A /* SJFocusView.m */; };
+		E21BB7C31EA87F37006CE7A8 /* JiKeScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20DCCE71E1E4F27003AB27B /* JiKeScrollView.m */; };
+		E21BB7C41EA87F37006CE7A8 /* SJTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = E29D84D51E80E40B00CB5F20 /* SJTabView.m */; };
+		E21BB7C51EA87F37006CE7A8 /* QDRBookViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D751E23557E0020803A /* QDRBookViewModel.m */; };
+		E21BB7C61EA87F37006CE7A8 /* SJHomePageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E218489B1E1CA73D006FB866 /* SJHomePageViewModel.m */; };
+		E21BB7C71EA87F37006CE7A8 /* JiKeSignalScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20DCCE91E1E4F27003AB27B /* JiKeSignalScrollView.m */; };
+		E21BB7C81EA87F37006CE7A8 /* SJBookMarksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D8B1E236EA50020803A /* SJBookMarksViewController.m */; };
+		E21BB7C91EA87F37006CE7A8 /* QDRHistoryCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E21137CB1E27581700AF78D0 /* QDRHistoryCollectionViewCell.m */; };
+		E21BB7CA1EA87F37006CE7A8 /* UILabel+LabelHeightAndWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = E223B1DF1E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.m */; };
+		E21BB7CB1EA87F37006CE7A8 /* SJRecommendViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D511E209D240020803A /* SJRecommendViewModel.m */; };
+		E21BB7CC1EA87F37006CE7A8 /* SJBaseNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20B504F1E1CE00F002C006B /* SJBaseNavigationViewController.m */; };
+		E21BB7CD1EA87F37006CE7A8 /* UIButton+ImageTitleSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D641E23253F0020803A /* UIButton+ImageTitleSpacing.m */; };
+		E21BB7CE1EA87F37006CE7A8 /* QDRRegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20559301E2789A3003D1E28 /* QDRRegisteredViewController.m */; };
+		E21BB7CF1EA87F37006CE7A8 /* SJSearchTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D9A1E23814C0020803A /* SJSearchTextField.m */; };
+		E21BB7D01EA87F37006CE7A8 /* QDRUserFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E21137CF1E275F8A00AF78D0 /* QDRUserFeedbackViewController.m */; };
+		E21BB7D11EA87F37006CE7A8 /* SJTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E20DCCF01E1E4FF6003AB27B /* SJTool.m */; };
+		E21BB7D31EA87F37006CE7A8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E218487C1E1B902D006FB866 /* libz.tbd */; };
+		E21BB7D41EA87F37006CE7A8 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E211380F1E276C9E00AF78D0 /* libstdc++.tbd */; };
+		E21BB7D51EA87F37006CE7A8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21138051E276B2F00AF78D0 /* CoreTelephony.framework */; };
+		E21BB7D61EA87F37006CE7A8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E211380D1E276C8F00AF78D0 /* libsqlite3.tbd */; };
+		E21BB7D71EA87F37006CE7A8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E211380B1E276C8800AF78D0 /* CoreGraphics.framework */; };
+		E21BB7D81EA87F37006CE7A8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21137FD1E276AFE00AF78D0 /* SystemConfiguration.framework */; };
+		E21BB7D91EA87F37006CE7A8 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E21138091E276C7B00AF78D0 /* libiconv.tbd */; };
+		E21BB7DA1EA87F37006CE7A8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21138031E276B2600AF78D0 /* Security.framework */; };
+		E21BB7DB1EA87F37006CE7A8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21138071E276B3600AF78D0 /* CFNetwork.framework */; };
+		E21BB7DC1EA87F37006CE7A8 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E21138011E276B1E00AF78D0 /* libc++.tbd */; };
+		E21BB7DD1EA87F37006CE7A8 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E21137FF1E276B1300AF78D0 /* libsqlite3.0.tbd */; };
+		E21BB7DE1EA87F37006CE7A8 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21137F91E27673400AF78D0 /* TencentOpenAPI.framework */; };
+		E21BB7E01EA87F37006CE7A8 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E21137E41E27672300AF78D0 /* libWeChatSDK.a */; };
+		E21BB7E11EA87F37006CE7A8 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E21137E91E27672D00AF78D0 /* libWeiboSDK.a */; };
+		E21BB7E31EA87F37006CE7A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2A40FEE1E16067F002A733E /* LaunchScreen.storyboard */; };
+		E21BB7E41EA87F37006CE7A8 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E21137F31E27672D00AF78D0 /* WeiboSDK.bundle */; };
+		E21BB7E51EA87F37006CE7A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2A40FEC1E16067F002A733E /* Assets.xcassets */; };
+		E21BB7E61EA87F37006CE7A8 /* removejs.js in Resources */ = {isa = PBXBuildFile; fileRef = E2D2A3721E8A186700D0424C /* removejs.js */; };
+		E21BB7E71EA87F37006CE7A8 /* ironhide.cer in Resources */ = {isa = PBXBuildFile; fileRef = E20B50511E1CE24B002C006B /* ironhide.cer */; };
+		E21BB7E81EA87F37006CE7A8 /* addsou.cer in Resources */ = {isa = PBXBuildFile; fileRef = E218487A1E1B7A61006FB866 /* addsou.cer */; };
+		E21BB7E91EA87F37006CE7A8 /* sjtool.js in Resources */ = {isa = PBXBuildFile; fileRef = E251A4371E84B9D200A246C8 /* sjtool.js */; };
+		E21BB7EA1EA87F37006CE7A8 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E21137FA1E27673400AF78D0 /* TencentOpenApi_IOS_Bundle.bundle */; };
+		E21BB7EB1EA87F37006CE7A8 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2068D6C1E2327660020803A /* iconfont.ttf */; };
+		E21BB7FA1EA8930D006CE7A8 /* SJVoiceHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB7F91EA8930D006CE7A8 /* SJVoiceHomeViewController.m */; };
+		E21BB7FB1EA8930D006CE7A8 /* SJVoiceHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB7F91EA8930D006CE7A8 /* SJVoiceHomeViewController.m */; };
+		E21BB8011EA8B9DF006CE7A8 /* SJVoiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB8001EA8B9DF006CE7A8 /* SJVoiceView.m */; };
+		E21BB8021EA8B9DF006CE7A8 /* SJVoiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB8001EA8B9DF006CE7A8 /* SJVoiceView.m */; };
+		E21BB8071EA9A9D0006CE7A8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8061EA9A9D0006CE7A8 /* CoreLocation.framework */; };
+		E21BB8091EA9A9DD006CE7A8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8081EA9A9DD006CE7A8 /* AVFoundation.framework */; };
+		E21BB80B1EA9A9E4006CE7A8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB80A1EA9A9E4006CE7A8 /* AddressBook.framework */; };
+		E21BB80D1EA9A9EA006CE7A8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB80C1EA9A9EA006CE7A8 /* AudioToolbox.framework */; };
+		E21BB80F1EA9A9FE006CE7A8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB80E1EA9A9FE006CE7A8 /* QuartzCore.framework */; };
+		E21BB8111EA9AA02006CE7A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8101EA9AA02006CE7A8 /* UIKit.framework */; };
+		E21BB8131EA9AA08006CE7A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8121EA9AA08006CE7A8 /* Foundation.framework */; };
+		E21BB8201EA9B4F4006CE7A8 /* DIATConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB81B1EA9B4F4006CE7A8 /* DIATConfig.m */; };
+		E21BB8211EA9B4F4006CE7A8 /* DIATConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB81B1EA9B4F4006CE7A8 /* DIATConfig.m */; };
+		E21BB8221EA9B4F4006CE7A8 /* DISRDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB81D1EA9B4F4006CE7A8 /* DISRDataHelper.m */; };
+		E21BB8231EA9B4F4006CE7A8 /* DISRDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB81D1EA9B4F4006CE7A8 /* DISRDataHelper.m */; };
+		E21BB8241EA9B4F4006CE7A8 /* DisrIdentifyObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB81F1EA9B4F4006CE7A8 /* DisrIdentifyObject.m */; };
+		E21BB8251EA9B4F4006CE7A8 /* DisrIdentifyObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB81F1EA9B4F4006CE7A8 /* DisrIdentifyObject.m */; };
+		E21BB8291EA9B518006CE7A8 /* DVoiceTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB8281EA9B518006CE7A8 /* DVoiceTouchView.m */; };
+		E21BB82A1EA9B518006CE7A8 /* DVoiceTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB8281EA9B518006CE7A8 /* DVoiceTouchView.m */; };
+		E21BB82C1EA9B856006CE7A8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8061EA9A9D0006CE7A8 /* CoreLocation.framework */; };
+		E21BB82D1EA9B861006CE7A8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8081EA9A9DD006CE7A8 /* AVFoundation.framework */; };
+		E21BB82E1EA9B866006CE7A8 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB80A1EA9A9E4006CE7A8 /* AddressBook.framework */; };
+		E21BB82F1EA9B86D006CE7A8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB80C1EA9A9EA006CE7A8 /* AudioToolbox.framework */; };
+		E21BB8301EA9B879006CE7A8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB80E1EA9A9FE006CE7A8 /* QuartzCore.framework */; };
+		E21BB8311EA9B87D006CE7A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8101EA9AA02006CE7A8 /* UIKit.framework */; };
+		E21BB8321EA9B881006CE7A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8121EA9AA08006CE7A8 /* Foundation.framework */; };
+		E21BB8371EA9BB73006CE7A8 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8361EA9BB73006CE7A8 /* iflyMSC.framework */; };
+		E21BB8381EA9BB73006CE7A8 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8361EA9BB73006CE7A8 /* iflyMSC.framework */; };
+		E21BB83A1EA9BC16006CE7A8 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8391EA9BC16006CE7A8 /* Contacts.framework */; };
+		E21BB83E1EA9EE63006CE7A8 /* SJVoiceTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB83D1EA9EE63006CE7A8 /* SJVoiceTopView.m */; };
+		E21BB83F1EA9EE63006CE7A8 /* SJVoiceTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB83D1EA9EE63006CE7A8 /* SJVoiceTopView.m */; };
+		E21BB8401EAA167C006CE7A8 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8391EA9BC16006CE7A8 /* Contacts.framework */; };
 		E223B1DD1E248F1D009B0FE4 /* SJKeywordsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E223B1DC1E248F1D009B0FE4 /* SJKeywordsCollectionView.m */; };
 		E223B1E01E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = E223B1DF1E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.m */; };
 		E251A4381E84B9D200A246C8 /* sjtool.js in Resources */ = {isa = PBXBuildFile; fileRef = E251A4371E84B9D200A246C8 /* sjtool.js */; };
@@ -123,12 +279,19 @@
 		E2A410261E1647CB002A733E /* NSObject+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A410251E1647CB002A733E /* NSObject+Common.m */; };
 		E2A410291E1647F2002A733E /* NSString+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A410281E1647F2002A733E /* NSString+Common.m */; };
 		E2A410301E16568C002A733E /* SJProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A4102F1E16568C002A733E /* SJProgressHUD.m */; };
+		E2CD5B311EAD9D2600D7B910 /* SJVoiceNoKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CD5B301EAD9D2600D7B910 /* SJVoiceNoKeyView.m */; };
+		E2CD5B321EADC49200D7B910 /* SJVoiceNoKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CD5B301EAD9D2600D7B910 /* SJVoiceNoKeyView.m */; };
+		E2CD5B361EADE05D00D7B910 /* SJVoiceHistroyTable.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CD5B351EADE05D00D7B910 /* SJVoiceHistroyTable.m */; };
+		E2CD5B391EADE33C00D7B910 /* SJVoiceHistroyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CD5B381EADE33C00D7B910 /* SJVoiceHistroyTableViewCell.m */; };
+		E2CD5B3A1EADE34100D7B910 /* SJVoiceHistroyTable.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CD5B351EADE05D00D7B910 /* SJVoiceHistroyTable.m */; };
+		E2CD5B3B1EADE34400D7B910 /* SJVoiceHistroyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CD5B381EADE33C00D7B910 /* SJVoiceHistroyTableViewCell.m */; };
 		E2D203271E5AE60700E1FC19 /* SJSearchCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D203261E5AE60700E1FC19 /* SJSearchCollectionView.m */; };
 		E2D2032B1E5C04FB00E1FC19 /* SJChooseSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2032A1E5C04FB00E1FC19 /* SJChooseSearchViewController.m */; };
 		E2D2A3731E8A186700D0424C /* removejs.js in Resources */ = {isa = PBXBuildFile; fileRef = E2D2A3721E8A186700D0424C /* removejs.js */; };
 		E2D2A3761E8A61B300D0424C /* FMDBURLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2A3751E8A61B300D0424C /* FMDBURLManager.m */; };
 		E2D2A37A1E8A6DAC00D0424C /* SJAdvertisingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2A3791E8A6DAC00D0424C /* SJAdvertisingViewController.m */; };
 		E2D2A37D1E8A6FC600D0424C /* SJAdvertisingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2A37C1E8A6FC600D0424C /* SJAdvertisingTableViewCell.m */; };
+		F671808AD562906B6320B8B8 /* libPods-addsouVoice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B51FEC6E67BABA53E208653 /* libPods-addsouVoice.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,8 +313,10 @@
 
 /* Begin PBXFileReference section */
 		0ED304D9AC38470A828CFA5B /* libPods-addsou.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-addsou.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A034257E588C3B532955159 /* Pods-addsou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-addsou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-addsou/Pods-addsou.debug.xcconfig"; sourceTree = "<group>"; };
-		946898102415D47CEBC60D90 /* Pods-addsou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-addsou.release.xcconfig"; path = "Pods/Target Support Files/Pods-addsou/Pods-addsou.release.xcconfig"; sourceTree = "<group>"; };
+		2F45FD12742E51C90B3EAA60 /* Pods-addsouVoice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-addsouVoice.debug.xcconfig"; path = "Pods/Target Support Files/Pods-addsouVoice/Pods-addsouVoice.debug.xcconfig"; sourceTree = "<group>"; };
+		3B339A127FD933B12D49567B /* Pods-addsou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-addsou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-addsou/Pods-addsou.debug.xcconfig"; sourceTree = "<group>"; };
+		4B51FEC6E67BABA53E208653 /* libPods-addsouVoice.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-addsouVoice.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BDC600F78BA2C3569520E0E /* Pods-addsouVoice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-addsouVoice.release.xcconfig"; path = "Pods/Target Support Files/Pods-addsouVoice/Pods-addsouVoice.release.xcconfig"; sourceTree = "<group>"; };
 		E205592F1E2789A3003D1E28 /* QDRRegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDRRegisteredViewController.h; sourceTree = "<group>"; };
 		E20559301E2789A3003D1E28 /* QDRRegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDRRegisteredViewController.m; sourceTree = "<group>"; };
 		E20559321E2789D6003D1E28 /* QDRRegisteredTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDRRegisteredTableView.h; sourceTree = "<group>"; };
@@ -234,6 +399,8 @@
 		E20B50511E1CE24B002C006B /* ironhide.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = ironhide.cer; sourceTree = "<group>"; };
 		E20B50541E1CEF8E002C006B /* SJHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJHomePageViewController.h; sourceTree = "<group>"; };
 		E20B50551E1CEF8E002C006B /* SJHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJHomePageViewController.m; sourceTree = "<group>"; };
+		E20C434C1E9E0B61009AB38F /* SJReadWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJReadWebView.h; sourceTree = "<group>"; };
+		E20C434D1E9E0B61009AB38F /* SJReadWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJReadWebView.m; sourceTree = "<group>"; };
 		E20D7B9D1E515B1200020CF4 /* SJBookMarksLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJBookMarksLayout.h; sourceTree = "<group>"; };
 		E20D7B9E1E515B1200020CF4 /* SJBookMarksLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJBookMarksLayout.m; sourceTree = "<group>"; };
 		E20DC2A31E23D49500D5E282 /* SJSearchTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJSearchTableView.h; sourceTree = "<group>"; };
@@ -336,6 +503,34 @@
 		E21848831E1B9433006FB866 /* SJHistoryViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJHistoryViewModel.m; sourceTree = "<group>"; };
 		E218489A1E1CA73D006FB866 /* SJHomePageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJHomePageViewModel.h; sourceTree = "<group>"; };
 		E218489B1E1CA73D006FB866 /* SJHomePageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJHomePageViewModel.m; sourceTree = "<group>"; };
+		E21BB7671EA5CAD1006CE7A8 /* UIButton+runtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+runtime.h"; sourceTree = "<group>"; };
+		E21BB7681EA5CAD1006CE7A8 /* UIButton+runtime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+runtime.m"; sourceTree = "<group>"; };
+		E21BB7F11EA87F37006CE7A8 /* addsouVoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = addsouVoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E21BB7F21EA87F38006CE7A8 /* addsouVoice.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = addsouVoice.plist; path = /Users/yangzhaoxin/Desktop/addsou/addsouVoice.plist; sourceTree = "<absolute>"; };
+		E21BB7F81EA8930D006CE7A8 /* SJVoiceHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVoiceHomeViewController.h; sourceTree = "<group>"; };
+		E21BB7F91EA8930D006CE7A8 /* SJVoiceHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVoiceHomeViewController.m; sourceTree = "<group>"; };
+		E21BB7FF1EA8B9DF006CE7A8 /* SJVoiceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVoiceView.h; sourceTree = "<group>"; };
+		E21BB8001EA8B9DF006CE7A8 /* SJVoiceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVoiceView.m; sourceTree = "<group>"; };
+		E21BB8061EA9A9D0006CE7A8 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		E21BB8081EA9A9DD006CE7A8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E21BB80A1EA9A9E4006CE7A8 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		E21BB80C1EA9A9EA006CE7A8 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E21BB80E1EA9A9FE006CE7A8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E21BB8101EA9AA02006CE7A8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E21BB8121EA9AA08006CE7A8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E21BB8191EA9B4F4006CE7A8 /* Definition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Definition.h; sourceTree = "<group>"; };
+		E21BB81A1EA9B4F4006CE7A8 /* DIATConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIATConfig.h; sourceTree = "<group>"; };
+		E21BB81B1EA9B4F4006CE7A8 /* DIATConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIATConfig.m; sourceTree = "<group>"; };
+		E21BB81C1EA9B4F4006CE7A8 /* DISRDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DISRDataHelper.h; sourceTree = "<group>"; };
+		E21BB81D1EA9B4F4006CE7A8 /* DISRDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DISRDataHelper.m; sourceTree = "<group>"; };
+		E21BB81E1EA9B4F4006CE7A8 /* DisrIdentifyObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisrIdentifyObject.h; sourceTree = "<group>"; };
+		E21BB81F1EA9B4F4006CE7A8 /* DisrIdentifyObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisrIdentifyObject.m; sourceTree = "<group>"; };
+		E21BB8271EA9B518006CE7A8 /* DVoiceTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVoiceTouchView.h; sourceTree = "<group>"; };
+		E21BB8281EA9B518006CE7A8 /* DVoiceTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVoiceTouchView.m; sourceTree = "<group>"; };
+		E21BB8361EA9BB73006CE7A8 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
+		E21BB8391EA9BC16006CE7A8 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
+		E21BB83C1EA9EE63006CE7A8 /* SJVoiceTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVoiceTopView.h; sourceTree = "<group>"; };
+		E21BB83D1EA9EE63006CE7A8 /* SJVoiceTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVoiceTopView.m; sourceTree = "<group>"; };
 		E223B1DB1E248F1D009B0FE4 /* SJKeywordsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJKeywordsCollectionView.h; sourceTree = "<group>"; };
 		E223B1DC1E248F1D009B0FE4 /* SJKeywordsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJKeywordsCollectionView.m; sourceTree = "<group>"; };
 		E223B1DE1E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+LabelHeightAndWidth.h"; sourceTree = "<group>"; };
@@ -380,6 +575,12 @@
 		E2A410281E1647F2002A733E /* NSString+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Common.m"; sourceTree = "<group>"; };
 		E2A4102E1E16568C002A733E /* SJProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJProgressHUD.h; sourceTree = "<group>"; };
 		E2A4102F1E16568C002A733E /* SJProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJProgressHUD.m; sourceTree = "<group>"; };
+		E2CD5B2F1EAD9D2600D7B910 /* SJVoiceNoKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVoiceNoKeyView.h; sourceTree = "<group>"; };
+		E2CD5B301EAD9D2600D7B910 /* SJVoiceNoKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVoiceNoKeyView.m; sourceTree = "<group>"; };
+		E2CD5B341EADE05D00D7B910 /* SJVoiceHistroyTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVoiceHistroyTable.h; sourceTree = "<group>"; };
+		E2CD5B351EADE05D00D7B910 /* SJVoiceHistroyTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVoiceHistroyTable.m; sourceTree = "<group>"; };
+		E2CD5B371EADE33C00D7B910 /* SJVoiceHistroyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVoiceHistroyTableViewCell.h; sourceTree = "<group>"; };
+		E2CD5B381EADE33C00D7B910 /* SJVoiceHistroyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVoiceHistroyTableViewCell.m; sourceTree = "<group>"; };
 		E2D203251E5AE60700E1FC19 /* SJSearchCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJSearchCollectionView.h; sourceTree = "<group>"; };
 		E2D203261E5AE60700E1FC19 /* SJSearchCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJSearchCollectionView.m; sourceTree = "<group>"; };
 		E2D203291E5C04FB00E1FC19 /* SJChooseSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJChooseSearchViewController.h; sourceTree = "<group>"; };
@@ -391,19 +592,60 @@
 		E2D2A3791E8A6DAC00D0424C /* SJAdvertisingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJAdvertisingViewController.m; sourceTree = "<group>"; };
 		E2D2A37B1E8A6FC600D0424C /* SJAdvertisingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJAdvertisingTableViewCell.h; sourceTree = "<group>"; };
 		E2D2A37C1E8A6FC600D0424C /* SJAdvertisingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJAdvertisingTableViewCell.m; sourceTree = "<group>"; };
+		FB648ADD54CB2DA2046AA3AD /* Pods-addsou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-addsou.release.xcconfig"; path = "Pods/Target Support Files/Pods-addsou/Pods-addsou.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E21BB7D21EA87F37006CE7A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E21BB83A1EA9BC16006CE7A8 /* Contacts.framework in Frameworks */,
+				E21BB7D71EA87F37006CE7A8 /* CoreGraphics.framework in Frameworks */,
+				E21BB8131EA9AA08006CE7A8 /* Foundation.framework in Frameworks */,
+				E21BB8111EA9AA02006CE7A8 /* UIKit.framework in Frameworks */,
+				E21BB80F1EA9A9FE006CE7A8 /* QuartzCore.framework in Frameworks */,
+				E21BB7D81EA87F37006CE7A8 /* SystemConfiguration.framework in Frameworks */,
+				E21BB80D1EA9A9EA006CE7A8 /* AudioToolbox.framework in Frameworks */,
+				E21BB80B1EA9A9E4006CE7A8 /* AddressBook.framework in Frameworks */,
+				E21BB8091EA9A9DD006CE7A8 /* AVFoundation.framework in Frameworks */,
+				E21BB7D51EA87F37006CE7A8 /* CoreTelephony.framework in Frameworks */,
+				E21BB8071EA9A9D0006CE7A8 /* CoreLocation.framework in Frameworks */,
+				E21BB7D31EA87F37006CE7A8 /* libz.tbd in Frameworks */,
+				E21BB7D41EA87F37006CE7A8 /* libstdc++.tbd in Frameworks */,
+				E21BB7D61EA87F37006CE7A8 /* libsqlite3.tbd in Frameworks */,
+				E21BB7D91EA87F37006CE7A8 /* libiconv.tbd in Frameworks */,
+				E21BB7DA1EA87F37006CE7A8 /* Security.framework in Frameworks */,
+				E21BB7DB1EA87F37006CE7A8 /* CFNetwork.framework in Frameworks */,
+				E21BB7DC1EA87F37006CE7A8 /* libc++.tbd in Frameworks */,
+				E21BB7DD1EA87F37006CE7A8 /* libsqlite3.0.tbd in Frameworks */,
+				E21BB8381EA9BB73006CE7A8 /* iflyMSC.framework in Frameworks */,
+				E21BB7DE1EA87F37006CE7A8 /* TencentOpenAPI.framework in Frameworks */,
+				E21BB7E01EA87F37006CE7A8 /* libWeChatSDK.a in Frameworks */,
+				E21BB7E11EA87F37006CE7A8 /* libWeiboSDK.a in Frameworks */,
+				F671808AD562906B6320B8B8 /* libPods-addsouVoice.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E2A40FDA1E16067F002A733E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E21BB8401EAA167C006CE7A8 /* Contacts.framework in Frameworks */,
+				E211380C1E276C8800AF78D0 /* CoreGraphics.framework in Frameworks */,
+				E21BB8321EA9B881006CE7A8 /* Foundation.framework in Frameworks */,
+				E21BB8311EA9B87D006CE7A8 /* UIKit.framework in Frameworks */,
+				E21BB8301EA9B879006CE7A8 /* QuartzCore.framework in Frameworks */,
+				E21137FE1E276AFE00AF78D0 /* SystemConfiguration.framework in Frameworks */,
+				E21BB82F1EA9B86D006CE7A8 /* AudioToolbox.framework in Frameworks */,
+				E21BB82E1EA9B866006CE7A8 /* AddressBook.framework in Frameworks */,
+				E21BB82D1EA9B861006CE7A8 /* AVFoundation.framework in Frameworks */,
+				E21138061E276B2F00AF78D0 /* CoreTelephony.framework in Frameworks */,
+				E21BB82C1EA9B856006CE7A8 /* CoreLocation.framework in Frameworks */,
 				E218487D1E1B902D006FB866 /* libz.tbd in Frameworks */,
 				E21138101E276C9E00AF78D0 /* libstdc++.tbd in Frameworks */,
-				E21138061E276B2F00AF78D0 /* CoreTelephony.framework in Frameworks */,
+				E21BB8371EA9BB73006CE7A8 /* iflyMSC.framework in Frameworks */,
 				E211380E1E276C8F00AF78D0 /* libsqlite3.tbd in Frameworks */,
-				E211380C1E276C8800AF78D0 /* CoreGraphics.framework in Frameworks */,
-				E21137FE1E276AFE00AF78D0 /* SystemConfiguration.framework in Frameworks */,
 				E211380A1E276C7B00AF78D0 /* libiconv.tbd in Frameworks */,
 				E21138041E276B2600AF78D0 /* Security.framework in Frameworks */,
 				E21138081E276B3600AF78D0 /* CFNetwork.framework in Frameworks */,
@@ -413,6 +655,7 @@
 				6E229D094702789128006845 /* libPods-addsou.a in Frameworks */,
 				E21137E71E27672300AF78D0 /* libWeChatSDK.a in Frameworks */,
 				E21137F61E27672D00AF78D0 /* libWeiboSDK.a in Frameworks */,
+				86DB9B32AB6337322EFF31E1 /* libPods-addsou.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,8 +679,10 @@
 		95316D3935B45336A05ED77A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6A034257E588C3B532955159 /* Pods-addsou.debug.xcconfig */,
-				946898102415D47CEBC60D90 /* Pods-addsou.release.xcconfig */,
+				3B339A127FD933B12D49567B /* Pods-addsou.debug.xcconfig */,
+				FB648ADD54CB2DA2046AA3AD /* Pods-addsou.release.xcconfig */,
+				2F45FD12742E51C90B3EAA60 /* Pods-addsouVoice.debug.xcconfig */,
+				8BDC600F78BA2C3569520E0E /* Pods-addsouVoice.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -491,6 +736,7 @@
 		E2068D5B1E231B3F0020803A /* 网页 */ = {
 			isa = PBXGroup;
 			children = (
+				E20C434B1E9E0B31009AB38F /* 刷阅读量 */,
 				E21019DF1E88E4270088DE79 /* 网页帮助类 */,
 				E2068D5C1E231B580020803A /* SJWebViewController.h */,
 				E2068D5D1E231B580020803A /* SJWebViewController.m */,
@@ -721,10 +967,20 @@
 		E20B50531E1CEF6A002C006B /* 主页 */ = {
 			isa = PBXGroup;
 			children = (
+				E21BB7F41EA88977006CE7A8 /* 语音主页 */,
 				E20B50541E1CEF8E002C006B /* SJHomePageViewController.h */,
 				E20B50551E1CEF8E002C006B /* SJHomePageViewController.m */,
 			);
 			name = "主页";
+			sourceTree = "<group>";
+		};
+		E20C434B1E9E0B31009AB38F /* 刷阅读量 */ = {
+			isa = PBXGroup;
+			children = (
+				E20C434C1E9E0B61009AB38F /* SJReadWebView.h */,
+				E20C434D1E9E0B61009AB38F /* SJReadWebView.m */,
+			);
+			name = "刷阅读量";
 			sourceTree = "<group>";
 		};
 		E20DCCE01E1E4F16003AB27B /* 图片和文字滚动 */ = {
@@ -936,6 +1192,70 @@
 			name = "主页";
 			sourceTree = "<group>";
 		};
+		E21BB7F31EA8852A006CE7A8 /* addsouVoice */ = {
+			isa = PBXGroup;
+			children = (
+				E21BB7F21EA87F38006CE7A8 /* addsouVoice.plist */,
+			);
+			name = addsouVoice;
+			sourceTree = "<group>";
+		};
+		E21BB7F41EA88977006CE7A8 /* 语音主页 */ = {
+			isa = PBXGroup;
+			children = (
+				E2CD5B331EADE03900D7B910 /* 历史记录view */,
+				E2CD5B2E1EAD9CFC00D7B910 /* 无关键词时的图 */,
+				E21BB83B1EA9EB71006CE7A8 /* 导航顶部两个按钮 */,
+				E21BB8261EA9B50B006CE7A8 /* 语音按钮 */,
+				E21BB8181EA9B4F4006CE7A8 /* DPublic */,
+				E21BB7F81EA8930D006CE7A8 /* SJVoiceHomeViewController.h */,
+				E21BB7F91EA8930D006CE7A8 /* SJVoiceHomeViewController.m */,
+				E21BB7FF1EA8B9DF006CE7A8 /* SJVoiceView.h */,
+				E21BB8001EA8B9DF006CE7A8 /* SJVoiceView.m */,
+			);
+			name = "语音主页";
+			sourceTree = "<group>";
+		};
+		E21BB8141EA9AEF7006CE7A8 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				E21BB8361EA9BB73006CE7A8 /* iflyMSC.framework */,
+			);
+			name = SDK;
+			sourceTree = "<group>";
+		};
+		E21BB8181EA9B4F4006CE7A8 /* DPublic */ = {
+			isa = PBXGroup;
+			children = (
+				E21BB8191EA9B4F4006CE7A8 /* Definition.h */,
+				E21BB81A1EA9B4F4006CE7A8 /* DIATConfig.h */,
+				E21BB81B1EA9B4F4006CE7A8 /* DIATConfig.m */,
+				E21BB81C1EA9B4F4006CE7A8 /* DISRDataHelper.h */,
+				E21BB81D1EA9B4F4006CE7A8 /* DISRDataHelper.m */,
+				E21BB81E1EA9B4F4006CE7A8 /* DisrIdentifyObject.h */,
+				E21BB81F1EA9B4F4006CE7A8 /* DisrIdentifyObject.m */,
+			);
+			path = DPublic;
+			sourceTree = "<group>";
+		};
+		E21BB8261EA9B50B006CE7A8 /* 语音按钮 */ = {
+			isa = PBXGroup;
+			children = (
+				E21BB8271EA9B518006CE7A8 /* DVoiceTouchView.h */,
+				E21BB8281EA9B518006CE7A8 /* DVoiceTouchView.m */,
+			);
+			name = "语音按钮";
+			sourceTree = "<group>";
+		};
+		E21BB83B1EA9EB71006CE7A8 /* 导航顶部两个按钮 */ = {
+			isa = PBXGroup;
+			children = (
+				E21BB83C1EA9EE63006CE7A8 /* SJVoiceTopView.h */,
+				E21BB83D1EA9EE63006CE7A8 /* SJVoiceTopView.m */,
+			);
+			name = "导航顶部两个按钮";
+			sourceTree = "<group>";
+		};
 		E223B1D71E23F1FB009B0FE4 /* 关键词搜索引擎 */ = {
 			isa = PBXGroup;
 			children = (
@@ -997,12 +1317,14 @@
 		E2A40FD41E16067F002A733E = {
 			isa = PBXGroup;
 			children = (
+				E21BB8141EA9AEF7006CE7A8 /* SDK */,
 				E2A40FDF1E16067F002A733E /* addsou */,
 				E2A40FF91E16067F002A733E /* addsouTests */,
 				E2A410041E16067F002A733E /* addsouUITests */,
 				E2A40FDE1E16067F002A733E /* Products */,
 				95316D3935B45336A05ED77A /* Pods */,
 				F42996F9A3ECB3A4A5138A77 /* Frameworks */,
+				E21BB7F31EA8852A006CE7A8 /* addsouVoice */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1012,6 +1334,7 @@
 				E2A40FDD1E16067F002A733E /* addsou.app */,
 				E2A40FF61E16067F002A733E /* addsouTests.xctest */,
 				E2A410011E16067F002A733E /* addsouUITests.xctest */,
+				E21BB7F11EA87F37006CE7A8 /* addsouVoice.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1193,6 +1516,8 @@
 				E223B1DF1E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.m */,
 				E217DF911E7B7F3D00DECCBA /* UIImage+InsetEdge.h */,
 				E217DF921E7B7F3D00DECCBA /* UIImage+InsetEdge.m */,
+				E21BB7671EA5CAD1006CE7A8 /* UIButton+runtime.h */,
+				E21BB7681EA5CAD1006CE7A8 /* UIButton+runtime.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -1208,6 +1533,26 @@
 				E20DCD1A1E1F4417003AB27B /* SJImageViewAndButton.m */,
 			);
 			name = "自定义控件";
+			sourceTree = "<group>";
+		};
+		E2CD5B2E1EAD9CFC00D7B910 /* 无关键词时的图 */ = {
+			isa = PBXGroup;
+			children = (
+				E2CD5B2F1EAD9D2600D7B910 /* SJVoiceNoKeyView.h */,
+				E2CD5B301EAD9D2600D7B910 /* SJVoiceNoKeyView.m */,
+			);
+			name = "无关键词时的图";
+			sourceTree = "<group>";
+		};
+		E2CD5B331EADE03900D7B910 /* 历史记录view */ = {
+			isa = PBXGroup;
+			children = (
+				E2CD5B341EADE05D00D7B910 /* SJVoiceHistroyTable.h */,
+				E2CD5B351EADE05D00D7B910 /* SJVoiceHistroyTable.m */,
+				E2CD5B371EADE33C00D7B910 /* SJVoiceHistroyTableViewCell.h */,
+				E2CD5B381EADE33C00D7B910 /* SJVoiceHistroyTableViewCell.m */,
+			);
+			name = "历史记录view";
 			sourceTree = "<group>";
 		};
 		E2D203281E5C04D900E1FC19 /* 选择搜索引擎 */ = {
@@ -1233,6 +1578,14 @@
 		F42996F9A3ECB3A4A5138A77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E21BB8391EA9BC16006CE7A8 /* Contacts.framework */,
+				E21BB8121EA9AA08006CE7A8 /* Foundation.framework */,
+				E21BB8101EA9AA02006CE7A8 /* UIKit.framework */,
+				E21BB80E1EA9A9FE006CE7A8 /* QuartzCore.framework */,
+				E21BB80C1EA9A9EA006CE7A8 /* AudioToolbox.framework */,
+				E21BB80A1EA9A9E4006CE7A8 /* AddressBook.framework */,
+				E21BB8081EA9A9DD006CE7A8 /* AVFoundation.framework */,
+				E21BB8061EA9A9D0006CE7A8 /* CoreLocation.framework */,
 				E211380F1E276C9E00AF78D0 /* libstdc++.tbd */,
 				E211380D1E276C8F00AF78D0 /* libsqlite3.tbd */,
 				E211380B1E276C8800AF78D0 /* CoreGraphics.framework */,
@@ -1245,6 +1598,7 @@
 				E21137FD1E276AFE00AF78D0 /* SystemConfiguration.framework */,
 				E218487C1E1B902D006FB866 /* libz.tbd */,
 				0ED304D9AC38470A828CFA5B /* libPods-addsou.a */,
+				4B51FEC6E67BABA53E208653 /* libPods-addsouVoice.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1252,6 +1606,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E21BB76D1EA87F37006CE7A8 /* addsouVoice */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E21BB7EE1EA87F37006CE7A8 /* Build configuration list for PBXNativeTarget "addsouVoice" */;
+			buildPhases = (
+				1BB978EDAB1E090077A601FC /* [CP] Check Pods Manifest.lock */,
+				E21BB76F1EA87F37006CE7A8 /* Sources */,
+				E21BB7D21EA87F37006CE7A8 /* Frameworks */,
+				E21BB7E21EA87F37006CE7A8 /* Resources */,
+				E179703742F77927D91C22E8 /* [CP] Embed Pods Frameworks */,
+				828C635EBF3E801C841EAF5A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = addsouVoice;
+			productName = addsou;
+			productReference = E21BB7F11EA87F37006CE7A8 /* addsouVoice.app */;
+			productType = "com.apple.product-type.application";
+		};
 		E2A40FDC1E16067F002A733E /* addsou */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E2A4100A1E16067F002A733E /* Build configuration list for PBXNativeTarget "addsou" */;
@@ -1317,6 +1691,9 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "杨兆欣";
 				TargetAttributes = {
+					E21BB76D1EA87F37006CE7A8 = {
+						DevelopmentTeam = 4A7RJ4UA42;
+					};
 					E2A40FDC1E16067F002A733E = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 4A7RJ4UA42;
@@ -1355,6 +1732,7 @@
 			projectRoot = "";
 			targets = (
 				E2A40FDC1E16067F002A733E /* addsou */,
+				E21BB76D1EA87F37006CE7A8 /* addsouVoice */,
 				E2A40FF51E16067F002A733E /* addsouTests */,
 				E2A410001E16067F002A733E /* addsouUITests */,
 			);
@@ -1362,6 +1740,22 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E21BB7E21EA87F37006CE7A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E21BB7E31EA87F37006CE7A8 /* LaunchScreen.storyboard in Resources */,
+				E21BB7E41EA87F37006CE7A8 /* WeiboSDK.bundle in Resources */,
+				E21BB7E51EA87F37006CE7A8 /* Assets.xcassets in Resources */,
+				E21BB7E61EA87F37006CE7A8 /* removejs.js in Resources */,
+				E21BB7E71EA87F37006CE7A8 /* ironhide.cer in Resources */,
+				E21BB7E81EA87F37006CE7A8 /* addsou.cer in Resources */,
+				E21BB7E91EA87F37006CE7A8 /* sjtool.js in Resources */,
+				E21BB7EA1EA87F37006CE7A8 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
+				E21BB7EB1EA87F37006CE7A8 /* iconfont.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E2A40FDB1E16067F002A733E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1395,6 +1789,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1BB978EDAB1E090077A601FC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		2E17C212FA45D607A79E4362 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1425,6 +1834,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-addsou/Pods-addsou-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		828C635EBF3E801C841EAF5A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-addsouVoice/Pods-addsouVoice-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C1AF953410278BE00D6F20E6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1440,9 +1864,139 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-addsou/Pods-addsou-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E179703742F77927D91C22E8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-addsouVoice/Pods-addsouVoice-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E21BB76F1EA87F37006CE7A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E21BB7701EA87F37006CE7A8 /* SJHomePageLayout.m in Sources */,
+				E21BB7711EA87F37006CE7A8 /* SJSearchView.m in Sources */,
+				E21BB7721EA87F37006CE7A8 /* SJBookMarksVC.m in Sources */,
+				E21BB7731EA87F37006CE7A8 /* SJGuidePageViewController.m in Sources */,
+				E21BB7741EA87F37006CE7A8 /* SJUserTableViewCell.m in Sources */,
+				E21BB7751EA87F37006CE7A8 /* FMDBManager.m in Sources */,
+				E21BB7761EA87F37006CE7A8 /* SJHomePageCollectionViewCell.m in Sources */,
+				E21BB7771EA87F37006CE7A8 /* SJHistoryViewModel.m in Sources */,
+				E21BB7781EA87F37006CE7A8 /* JiKeScrollImageView.m in Sources */,
+				E21BB7791EA87F37006CE7A8 /* QDRBookMarkView.m in Sources */,
+				E21BB77A1EA87F37006CE7A8 /* SJUserViewController.m in Sources */,
+				E21BB77B1EA87F37006CE7A8 /* SJWebSettingViewController.m in Sources */,
+				E21BB77C1EA87F37006CE7A8 /* NSObject+Common.m in Sources */,
+				E2CD5B3A1EADE34100D7B910 /* SJVoiceHistroyTable.m in Sources */,
+				E21BB77D1EA87F37006CE7A8 /* SJPhoneViewController.m in Sources */,
+				E21BB77E1EA87F37006CE7A8 /* BRPlaceholderTextView.m in Sources */,
+				E21BB77F1EA87F37006CE7A8 /* SJUserTableHeaderFooterView.m in Sources */,
+				E21BB7801EA87F37006CE7A8 /* SJLoginViewModel.m in Sources */,
+				E21BB7811EA87F37006CE7A8 /* AppDelegate.m in Sources */,
+				E21BB7821EA87F37006CE7A8 /* SJModel.m in Sources */,
+				E21BB7831EA87F37006CE7A8 /* SJChooseSmallSearchViewController.m in Sources */,
+				E21BB7841EA87F37006CE7A8 /* CardLayout.m in Sources */,
+				E21BB7851EA87F37006CE7A8 /* UIImage+InsetEdge.m in Sources */,
+				E21BB7861EA87F37006CE7A8 /* SJSearchViewModel.m in Sources */,
+				E21BB7871EA87F37006CE7A8 /* SJAdvertisingTableViewCell.m in Sources */,
+				E21BB7881EA87F37006CE7A8 /* QDRSwipeView.m in Sources */,
+				E21BB7891EA87F37006CE7A8 /* UIView+SetRect.m in Sources */,
+				E21BB78A1EA87F37006CE7A8 /* SJSearchViewController.m in Sources */,
+				E21BB78B1EA87F37006CE7A8 /* SJDateView.m in Sources */,
+				E21BB78C1EA87F37006CE7A8 /* UIButton+runtime.m in Sources */,
+				E21BB78D1EA87F37006CE7A8 /* SJBaseViewController.m in Sources */,
+				E21BB78E1EA87F37006CE7A8 /* SJShareView.m in Sources */,
+				E21BB8231EA9B4F4006CE7A8 /* DISRDataHelper.m in Sources */,
+				E21BB83F1EA9EE63006CE7A8 /* SJVoiceTopView.m in Sources */,
+				E21BB7FB1EA8930D006CE7A8 /* SJVoiceHomeViewController.m in Sources */,
+				E21BB78F1EA87F37006CE7A8 /* UIView+Frame.m in Sources */,
+				E21BB7901EA87F37006CE7A8 /* JKCountDownButton.m in Sources */,
+				E21BB7911EA87F37006CE7A8 /* CYLineLayout.m in Sources */,
+				E21BB7921EA87F37006CE7A8 /* SJBookMarksLayout.m in Sources */,
+				E21BB7931EA87F37006CE7A8 /* SJHomePageViewController.m in Sources */,
+				E21BB7941EA87F37006CE7A8 /* QDRAboutUsViewController.m in Sources */,
+				E21BB7951EA87F37006CE7A8 /* SJSearchCollectionView.m in Sources */,
+				E21BB7961EA87F37006CE7A8 /* QDRUserFeedbackTableView.m in Sources */,
+				E21BB7971EA87F37006CE7A8 /* SJNoBookView.m in Sources */,
+				E21BB7981EA87F37006CE7A8 /* SJBookMarksHomeView.m in Sources */,
+				E21BB8251EA9B4F4006CE7A8 /* DisrIdentifyObject.m in Sources */,
+				E21BB7991EA87F37006CE7A8 /* QDRLoginViewController.m in Sources */,
+				E21BB79A1EA87F37006CE7A8 /* SJNavcView.m in Sources */,
+				E21BB79B1EA87F37006CE7A8 /* SJNetManager.m in Sources */,
+				E21BB79C1EA87F37006CE7A8 /* SJHistroyViewController.m in Sources */,
+				E21BB8211EA9B4F4006CE7A8 /* DIATConfig.m in Sources */,
+				E21BB79D1EA87F37006CE7A8 /* SJAgreementViewController.m in Sources */,
+				E21BB79E1EA87F37006CE7A8 /* XWDragCellCollectionView.m in Sources */,
+				E21BB79F1EA87F37006CE7A8 /* SubCollectionViewCell.m in Sources */,
+				E21BB7A01EA87F37006CE7A8 /* SJSearchTableView.m in Sources */,
+				E21BB7A11EA87F37006CE7A8 /* SJWebView.m in Sources */,
+				E21BB7A21EA87F37006CE7A8 /* SJWebTabbar.m in Sources */,
+				E21BB7A31EA87F37006CE7A8 /* SJContextMenuHelper.m in Sources */,
+				E21BB7A41EA87F37006CE7A8 /* CircleLayout.m in Sources */,
+				E21BB7A51EA87F37006CE7A8 /* JiKeScrollLabel.m in Sources */,
+				E2CD5B3B1EADE34400D7B910 /* SJVoiceHistroyTableViewCell.m in Sources */,
+				E21BB7A61EA87F37006CE7A8 /* QDRLoginView.m in Sources */,
+				E21BB7A71EA87F37006CE7A8 /* BaseViewModel.m in Sources */,
+				E21BB7A81EA87F37006CE7A8 /* SJGuideViewController.m in Sources */,
+				E21BB7A91EA87F37006CE7A8 /* SJOptimizationView.m in Sources */,
+				E21BB7AA1EA87F37006CE7A8 /* SJWebNaviView.m in Sources */,
+				E21BB7AB1EA87F37006CE7A8 /* BaseModel.m in Sources */,
+				E21BB7AC1EA87F37006CE7A8 /* SJNavigationBar.m in Sources */,
+				E21BB7AD1EA87F37006CE7A8 /* SJNoNetView.m in Sources */,
+				E21BB7AE1EA87F37006CE7A8 /* SJChooseSearchViewController.m in Sources */,
+				E21BB7AF1EA87F37006CE7A8 /* ULBCollectionViewFlowLayout.m in Sources */,
+				E21BB7B01EA87F37006CE7A8 /* SJSearchTableViewCell.m in Sources */,
+				E21BB7B11EA87F37006CE7A8 /* SJWebViewController.m in Sources */,
+				E21BB7B21EA87F37006CE7A8 /* QDRBookMarksCollectionViewCell.m in Sources */,
+				E21BB7B31EA87F37006CE7A8 /* SJReadWebView.m in Sources */,
+				E21BB7B41EA87F37006CE7A8 /* QDRRegisteredTableView.m in Sources */,
+				E21BB7B51EA87F37006CE7A8 /* SJTransitionManager.m in Sources */,
+				E21BB7B61EA87F37006CE7A8 /* PagingCollectionViewLayout.m in Sources */,
+				E21BB7B71EA87F37006CE7A8 /* QDRClearCacheView.m in Sources */,
+				E21BB82A1EA9B518006CE7A8 /* DVoiceTouchView.m in Sources */,
+				E21BB7B81EA87F37006CE7A8 /* SJManager.m in Sources */,
+				E21BB7B91EA87F37006CE7A8 /* SJImageViewAndButton.m in Sources */,
+				E21BB7BA1EA87F37006CE7A8 /* SJKeywordsCollectionViewCell.m in Sources */,
+				E21BB7BB1EA87F37006CE7A8 /* SJBookMarksHomeCollectionViewCell.m in Sources */,
+				E21BB7BC1EA87F37006CE7A8 /* SJKeywordsCollectionView.m in Sources */,
+				E2CD5B321EADC49200D7B910 /* SJVoiceNoKeyView.m in Sources */,
+				E21BB7BD1EA87F37006CE7A8 /* main.m in Sources */,
+				E21BB7BE1EA87F37006CE7A8 /* NSString+Common.m in Sources */,
+				E21BB7BF1EA87F37006CE7A8 /* FMDBURLManager.m in Sources */,
+				E21BB7C01EA87F37006CE7A8 /* SJProgressHUD.m in Sources */,
+				E21BB7C11EA87F37006CE7A8 /* SJAdvertisingViewController.m in Sources */,
+				E21BB7C21EA87F37006CE7A8 /* SJFocusView.m in Sources */,
+				E21BB7C31EA87F37006CE7A8 /* JiKeScrollView.m in Sources */,
+				E21BB7C41EA87F37006CE7A8 /* SJTabView.m in Sources */,
+				E21BB8021EA8B9DF006CE7A8 /* SJVoiceView.m in Sources */,
+				E21BB7C51EA87F37006CE7A8 /* QDRBookViewModel.m in Sources */,
+				E21BB7C61EA87F37006CE7A8 /* SJHomePageViewModel.m in Sources */,
+				E21BB7C71EA87F37006CE7A8 /* JiKeSignalScrollView.m in Sources */,
+				E21BB7C81EA87F37006CE7A8 /* SJBookMarksViewController.m in Sources */,
+				E21BB7C91EA87F37006CE7A8 /* QDRHistoryCollectionViewCell.m in Sources */,
+				E21BB7CA1EA87F37006CE7A8 /* UILabel+LabelHeightAndWidth.m in Sources */,
+				E21BB7CB1EA87F37006CE7A8 /* SJRecommendViewModel.m in Sources */,
+				E21BB7CC1EA87F37006CE7A8 /* SJBaseNavigationViewController.m in Sources */,
+				E21BB7CD1EA87F37006CE7A8 /* UIButton+ImageTitleSpacing.m in Sources */,
+				E21BB7CE1EA87F37006CE7A8 /* QDRRegisteredViewController.m in Sources */,
+				E21BB7CF1EA87F37006CE7A8 /* SJSearchTextField.m in Sources */,
+				E21BB7D01EA87F37006CE7A8 /* QDRUserFeedbackViewController.m in Sources */,
+				E21BB7D11EA87F37006CE7A8 /* SJTool.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E2A40FD91E16067F002A733E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1460,6 +2014,7 @@
 				E21137B21E27120E00AF78D0 /* SJUserViewController.m in Sources */,
 				E27AA37D1E823DA60001C763 /* SJWebSettingViewController.m in Sources */,
 				E2A410261E1647CB002A733E /* NSObject+Common.m in Sources */,
+				E2CD5B361EADE05D00D7B910 /* SJVoiceHistroyTable.m in Sources */,
 				E21138141E27827200AF78D0 /* SJPhoneViewController.m in Sources */,
 				E21137D71E27602100AF78D0 /* BRPlaceholderTextView.m in Sources */,
 				E21137B91E27126900AF78D0 /* SJUserTableHeaderFooterView.m in Sources */,
@@ -1475,8 +2030,12 @@
 				E2068D4A1E1F8D1F0020803A /* UIView+SetRect.m in Sources */,
 				E2068D941E237EC80020803A /* SJSearchViewController.m in Sources */,
 				E2087ADC1E1E1BDB005D025F /* SJDateView.m in Sources */,
+				E21BB7691EA5CAD1006CE7A8 /* UIButton+runtime.m in Sources */,
 				E20B504C1E1CD0FF002C006B /* SJBaseViewController.m in Sources */,
 				E2068D881E2359560020803A /* SJShareView.m in Sources */,
+				E21BB8221EA9B4F4006CE7A8 /* DISRDataHelper.m in Sources */,
+				E21BB83E1EA9EE63006CE7A8 /* SJVoiceTopView.m in Sources */,
+				E21BB7FA1EA8930D006CE7A8 /* SJVoiceHomeViewController.m in Sources */,
 				E20DCCDF1E1E4EE6003AB27B /* UIView+Frame.m in Sources */,
 				E21137DB1E27602D00AF78D0 /* JKCountDownButton.m in Sources */,
 				E2068D821E2355C10020803A /* CYLineLayout.m in Sources */,
@@ -1487,10 +2046,12 @@
 				E21137D31E275FD100AF78D0 /* QDRUserFeedbackTableView.m in Sources */,
 				E21227161E2CB8BE00E89A7C /* SJNoBookView.m in Sources */,
 				E25295881E4C53BB00D29542 /* SJBookMarksHomeView.m in Sources */,
+				E21BB8241EA9B4F4006CE7A8 /* DisrIdentifyObject.m in Sources */,
 				E21137DF1E2765EB00AF78D0 /* QDRLoginViewController.m in Sources */,
 				E21137C11E27537300AF78D0 /* SJNavcView.m in Sources */,
 				E2A410221E1645D8002A733E /* SJNetManager.m in Sources */,
 				E21137BD1E2752AA00AF78D0 /* SJHistroyViewController.m in Sources */,
+				E21BB8201EA9B4F4006CE7A8 /* DIATConfig.m in Sources */,
 				E213B8181E681491007E37F3 /* SJAgreementViewController.m in Sources */,
 				E2068D4B1E1F8D1F0020803A /* XWDragCellCollectionView.m in Sources */,
 				E2068D491E1F8D1F0020803A /* SubCollectionViewCell.m in Sources */,
@@ -1500,6 +2061,7 @@
 				E21019DE1E88E4200088DE79 /* SJContextMenuHelper.m in Sources */,
 				E2068D471E1F8D1F0020803A /* CircleLayout.m in Sources */,
 				E20DCCEB1E1E4F27003AB27B /* JiKeScrollLabel.m in Sources */,
+				E2CD5B391EADE33C00D7B910 /* SJVoiceHistroyTableViewCell.m in Sources */,
 				E21137E21E27663000AF78D0 /* QDRLoginView.m in Sources */,
 				E21848811E1B93D2006FB866 /* BaseViewModel.m in Sources */,
 				E252957A1E49B3C900D29542 /* SJGuideViewController.m in Sources */,
@@ -1513,15 +2075,18 @@
 				E2068D9E1E23CF280020803A /* SJSearchTableViewCell.m in Sources */,
 				E2068D5E1E231B580020803A /* SJWebViewController.m in Sources */,
 				E2068D831E2355C10020803A /* QDRBookMarksCollectionViewCell.m in Sources */,
+				E20C434E1E9E0B61009AB38F /* SJReadWebView.m in Sources */,
 				E20559341E2789D6003D1E28 /* QDRRegisteredTableView.m in Sources */,
 				E2068D5A1E20D7E80020803A /* SJTransitionManager.m in Sources */,
 				E2068D481E1F8D1F0020803A /* PagingCollectionViewLayout.m in Sources */,
 				E20A6E0C1E28CC32000D080D /* QDRClearCacheView.m in Sources */,
+				E21BB8291EA9B518006CE7A8 /* DVoiceTouchView.m in Sources */,
 				E252957E1E49D1C300D29542 /* SJManager.m in Sources */,
 				E20DCD1B1E1F4417003AB27B /* SJImageViewAndButton.m in Sources */,
 				E21227231E30C3CF00E89A7C /* SJKeywordsCollectionViewCell.m in Sources */,
 				E2068D901E236FAE0020803A /* SJBookMarksHomeCollectionViewCell.m in Sources */,
 				E223B1DD1E248F1D009B0FE4 /* SJKeywordsCollectionView.m in Sources */,
+				E2CD5B311EAD9D2600D7B910 /* SJVoiceNoKeyView.m in Sources */,
 				E2A40FE21E16067F002A733E /* main.m in Sources */,
 				E2A410291E1647F2002A733E /* NSString+Common.m in Sources */,
 				E2D2A3761E8A61B300D0424C /* FMDBURLManager.m in Sources */,
@@ -1530,6 +2095,7 @@
 				E2068D4E1E1F8D9C0020803A /* SJFocusView.m in Sources */,
 				E20DCCEC1E1E4F27003AB27B /* JiKeScrollView.m in Sources */,
 				E29D84D61E80E40B00CB5F20 /* SJTabView.m in Sources */,
+				E21BB8011EA8B9DF006CE7A8 /* SJVoiceView.m in Sources */,
 				E2068D761E23557E0020803A /* QDRBookViewModel.m in Sources */,
 				E218489C1E1CA73D006FB866 /* SJHomePageViewModel.m in Sources */,
 				E20DCCED1E1E4F27003AB27B /* JiKeSignalScrollView.m in Sources */,
@@ -1589,6 +2155,77 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E21BB7EF1EA87F37006CE7A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F45FD12742E51C90B3EAA60 /* Pods-addsouVoice.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				CODE_SIGN_ENTITLEMENTS = addsou/addsou.entitlements;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 4A7RJ4UA42;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/addsou/ThirdPartySDK/TencentSDK",
+					"$(PROJECT_DIR)",
+					"$(SRCROOT)/iflyMSC.framework",
+				);
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"VERSIONS=2",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/addsouVoice.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/addsou/ThirdPartySDK/微信SDK",
+					"$(PROJECT_DIR)/addsou/ThirdPartySDK/libWeiboSDK",
+					"$(SRCROOT)/iflyMSC.framework",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.TheGreatCivilizatio.addsou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E21BB7F01EA87F37006CE7A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8BDC600F78BA2C3569520E0E /* Pods-addsouVoice.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				CODE_SIGN_ENTITLEMENTS = addsou/addsou.entitlements;
+				DEVELOPMENT_TEAM = 4A7RJ4UA42;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/addsou/ThirdPartySDK/TencentSDK",
+					"$(PROJECT_DIR)",
+					"$(SRCROOT)/iflyMSC.framework",
+				);
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"VERSIONS=2",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/addsouVoice.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/addsou/ThirdPartySDK/微信SDK",
+					"$(PROJECT_DIR)/addsou/ThirdPartySDK/libWeiboSDK",
+					"$(SRCROOT)/iflyMSC.framework",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.TheGreatCivilizatio.addsou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		E2A410081E16067F002A733E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1679,17 +2316,25 @@
 		};
 		E2A4100B1E16067F002A733E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A034257E588C3B532955159 /* Pods-addsou.debug.xcconfig */;
+			baseConfigurationReference = 3B339A127FD933B12D49567B /* Pods-addsou.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = addsou/addsou.entitlements;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 4A7RJ4UA42;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/addsou/ThirdPartySDK/TencentSDK",
+					"$(PROJECT_DIR)",
+					"$(SRCROOT)/iflyMSC.framework",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"VERSIONS=1",
+				);
 				INFOPLIST_FILE = addsou/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1697,6 +2342,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/addsou/ThirdPartySDK/微信SDK",
 					"$(PROJECT_DIR)/addsou/ThirdPartySDK/libWeiboSDK",
+					"$(SRCROOT)/iflyMSC.framework",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TheGreatCivilization.addsou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1706,16 +2352,24 @@
 		};
 		E2A4100C1E16067F002A733E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 946898102415D47CEBC60D90 /* Pods-addsou.release.xcconfig */;
+			baseConfigurationReference = FB648ADD54CB2DA2046AA3AD /* Pods-addsou.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = addsou/addsou.entitlements;
 				DEVELOPMENT_TEAM = 4A7RJ4UA42;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/addsou/ThirdPartySDK/TencentSDK",
+					"$(PROJECT_DIR)",
+					"$(SRCROOT)/iflyMSC.framework",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"VERSIONS=1",
+				);
 				INFOPLIST_FILE = addsou/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1723,6 +2377,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/addsou/ThirdPartySDK/微信SDK",
 					"$(PROJECT_DIR)/addsou/ThirdPartySDK/libWeiboSDK",
+					"$(SRCROOT)/iflyMSC.framework",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.TheGreatCivilization.addsou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1783,6 +2438,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E21BB7EE1EA87F37006CE7A8 /* Build configuration list for PBXNativeTarget "addsouVoice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E21BB7EF1EA87F37006CE7A8 /* Debug */,
+				E21BB7F01EA87F37006CE7A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E2A40FD81E16067F002A733E /* Build configuration list for PBXProject "addsou" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

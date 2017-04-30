@@ -28,4 +28,7 @@
 // 手机号验证
 -(BOOL)isMobilePhoneNumber;
 
+// 删除标点符号
++ (NSString *)stringDeleteString:(NSString *)str;
+
 @end

@@ -23,4 +23,6 @@ typedef NS_ENUM(NSUInteger, GuideViewStyle) {
 
 @property (nonatomic, assign) CGRect bookFrame;    // 书签按钮的位置
 
+@property (nonatomic, assign) CGRect voiceFrame;      // 语音按钮位置
+
 @end

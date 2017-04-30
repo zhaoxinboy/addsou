@@ -60,6 +60,7 @@
 }
 
 - (void)closeSelf{
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -188,9 +189,6 @@
 }
 
 - (void)dealloc{
-    if (self.dataArray.count == 0) {
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
-    }
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"deleteBookMarksCell" object:nil];
 }
 

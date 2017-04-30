@@ -37,17 +37,19 @@ static AFHTTPSessionManager *manager = nil;
         
         manager = [AFHTTPSessionManager manager];
         manager.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+//        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", @"application/json", @"text/json", @"charset=UTF-8", @"text/plain", @"text/javascript",@"application/text",@"application/html", nil];
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         manager.responseSerializer = [AFJSONResponseSerializer serializer];
 //        manager.securityPolicy = securityPolicy;
         [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+//        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     });
     return manager;
 }
 
 + (id)GET:(NSString *)path parameters:(NSDictionary *)params completionHandle:(void(^)(id responseObj, NSError *error))completionHandle{
     NSString *token = (NSString *)UserDefaultObjectForKey(LOCAL_READ_TOKEN);
-    if (token) {
+    if (token && ![path isEqualToString:URLACTICLE]) {
         DLog(@"token:   %@", token)
         [manager.requestSerializer setValue:token forHTTPHeaderField:@"Authorization"];
     }
@@ -61,7 +63,7 @@ static AFHTTPSessionManager *manager = nil;
         NSMutableDictionary *dic = (NSMutableDictionary *)responseObject;
         NSString *status = [dic objectForKey:@"status"];
         DLog(@"请求路径 %@\n服务器返回内容 %@", path, dic)
-        if ([[dic objectForKey:@"status"] isEqualToString:@"0"]) { // 服务器返回status字段为0表示成功获取数据
+        if ([[dic objectForKey:@"status"] isEqualToString:@"0"] || [[dic objectForKey:@"code"] isEqualToString:@"0"]) { // 服务器返回status字段为0表示成功获取数据
             completionHandle(responseObject, nil);
         }else if ([status isEqualToString:@"3001"]||
             [status isEqualToString:@"3002"]||

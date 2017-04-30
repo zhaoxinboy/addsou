@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) UIBezierPath *bezierPathSearch;      // 搜索按钮的贝塞尔曲线
 
+@property (nonatomic, strong) UIBezierPath *bezierPathVoice;      // 语音按钮贝塞尔路径
+
 @property (nonatomic, strong) UIImageView *searchImageView;      // 搜索按钮提示图
 
 @property (nonatomic, strong) UIBezierPath *bezierPathBook;        // 书签按钮的贝塞尔曲线
@@ -38,6 +40,17 @@
     UserDefaultSetObjectForKey(str, LOCAL_READ_FIRSTOPEN)
     UserDefaultSetObjectForKey(@"1", LOCAL_READ_FIRST)
     UserDefaultSetObjectForKey(@"1", LOCAL_READ_FIRSTGUIDE)
+}
+
+- (UIBezierPath *)bezierPathVoice{
+    if (!_bezierPathVoice) {
+        _bezierPathVoice = [UIBezierPath bezierPathWithRect:self.view.bounds];
+        CGRect frame = [SJManager sharedManager].voiceFrame;
+        frame.origin.x = frame.origin.x - 10;
+        frame.size.width = frame.size.width + 20;
+        [_bezierPathVoice appendPath:[[UIBezierPath bezierPathWithRect:frame] bezierPathByReversingPath]];
+    }
+    return _bezierPathVoice;
 }
 
 - (UIBezierPath *)bezierPathChange{
@@ -168,7 +181,11 @@
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     switch (sender.tag) {
         case GuideViewStyle1:
-            shapeLayer.path = _bezierPathSearch.CGPath;
+            if (VERSIONS == 2) {
+                shapeLayer.path = _bezierPathVoice.CGPath;
+            }else if (VERSIONS == 1){
+                shapeLayer.path = _bezierPathSearch.CGPath;
+            }
             shapeLayer.lineWidth = SJ_ADAPTER_HEIGHT(15);
             shapeLayer.strokeColor = kRGBAColor(0, 0, 0, 0.3).CGColor;
             self.view.layer.mask = shapeLayer;
@@ -208,6 +225,9 @@
     self.searchFrame = [SJManager sharedManager].searchFrame;
     self.bookFrame = [SJManager sharedManager].bookFrame;
     self.changeFrame = [SJManager sharedManager].changeFrame;
+    self.voiceFrame = [SJManager sharedManager].voiceFrame;
+    
+    [self bezierPathVoice];
     
     [self bezierPathChange];
     [self changeImageView];

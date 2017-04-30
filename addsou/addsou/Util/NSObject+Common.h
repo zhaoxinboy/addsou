@@ -60,4 +60,7 @@ typedef NS_ENUM(NSUInteger, SearchWebUrlStyle) {
 // 提取关键字
 + (NSMutableArray *)extractKeyWord;
 
+// 随机数
+- (NSInteger)getRandomNumber:(NSInteger)from to:(NSInteger)to;
+
 @end

@@ -83,6 +83,10 @@
                 // 更改本地数据防止数据错乱
                 [self.dataArr replaceObjectAtIndex:(sender.tag - 3000) withObject:model];
                 sender.selected = YES;
+                if (VERSIONS == 2) {
+                    //发送通知
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"SJVoiceHomeViewController" object:nil];
+                }
             }
         }];
     }else{
@@ -93,10 +97,13 @@
                 // 更改本地数据防止数据错乱
                 [self.dataArr replaceObjectAtIndex:(sender.tag - 3000) withObject:model];
                 sender.selected = NO;
+                if (VERSIONS == 2) {
+                    //发送通知
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"SJVoiceHomeViewController" object:nil];
+                }
             }
         }];
     }
-
 }
 
 - (SJSearchViewModel *)searchVM{

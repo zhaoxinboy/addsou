@@ -447,9 +447,8 @@
 }
 
 - (void)dealloc{
-    [[NSNotificationCenter defaultCenter] removeObserver:@"collectionViewCellJump" name:nil object:self];
-    [[NSNotificationCenter defaultCenter] removeObserver:@"JiKeScrollViewJump" name:nil object:self];
-    [[NSNotificationCenter defaultCenter] removeObserver:@"focusViewRefresh" name:nil object:self];
+    // 移除全部通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -501,8 +500,19 @@
     [self getNetWork];
     
     
+    
+    // 从后台进入前台的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(someMethod:)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
+
+    
     // cell跳转通知
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(collectionViewCellJump:) name:@"collectionViewCellJump" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(collectionViewCellJump:)
+                                                 name:@"collectionViewCellJump"
+                                               object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(JiKeScrollViewJump:) name:@"JiKeScrollViewJump" object:nil];
     
@@ -510,7 +520,13 @@
     
     
     
+    
     // Do any additional setup after loading the view.
+}
+
+// 从后台进入前台
+- (void)someMethod:(NSNotification *)notification{
+    [self getHomePageTime];
 }
 
 //定位
@@ -522,7 +538,6 @@
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
         locationManager.distanceFilter = 1000.0f;
     }
-    
 }
 
 // 添加或者删除链接后，刷新关注列表
@@ -557,18 +572,7 @@
     SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:model.appurl andAppImageUrlStr:[NSString stringWithFormat:@"%@%@", URLPATH, model.applogopath] andSuperCode:model.supercode withAppName:model.appname];
     [self.navigationController pushViewController:vc animated:YES];
 }
-//- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
-//    return [SJTransitionManager transitionWithTransitionType:XWCircleSpreadTransitionTypePresent];
-//}
-//
-//- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
-//    return [SJTransitionManager transitionWithTransitionType:XWCircleSpreadTransitionTypeDismiss];
-//}
-//
-//
-////- (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator{
-////    return _interactiveTransition.interation ? _interactiveTransition : nil;
-////}
+
 
 #pragma mark - <UICollectionViewDelegate,UICollectionViewDataSource>
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {

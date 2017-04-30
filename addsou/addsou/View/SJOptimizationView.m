@@ -62,6 +62,33 @@
     return _logoIamgeView;
 }
 
+- (UIButton *)xuduBtn{
+    if (!_xuduBtn) {
+        _xuduBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_xuduBtn setImage:[UIImage imageNamed:@"xudu"] forState:UIControlStateNormal];
+        _xuduBtn.layer.masksToBounds = YES;
+        _xuduBtn.layer.cornerRadius = SJ_ADAPTER_WIDTH(58) / 2;
+        [_xuduBtn addTarget:self action:@selector(xuduJump) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_xuduBtn];
+        [_xuduBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(SJ_ADAPTER_WIDTH(58), SJ_ADAPTER_WIDTH(58)));
+            make.right.mas_equalTo(-SJ_ADAPTER_WIDTH(13));
+            make.top.mas_equalTo(SJ_ADAPTER_HEIGHT(36));
+        }];
+    }
+    return _xuduBtn;
+}
+
+- (void)xuduJump{
+    // 用户需要续读时跳转，不需要时不跳转
+    if (!UserDefaultObjectForKey(LOCAL_READ_READURL)) {
+        return;
+    }
+    if (self.xuduDelegate && [self.xuduDelegate respondsToSelector:@selector(xuduJump2Web)]) {
+        [self.xuduDelegate xuduJump2Web];
+    }
+}
+
 - (UIView *)lineView{
     if (!_lineView) {
         _lineView = [UIView new];
@@ -132,6 +159,9 @@
         [self titleLabel];
         [self textLabel];
         [self logoIamgeView];
+        if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SHUCHENG]) {
+            [self xuduBtn];
+        }
         [self lineView];
         [self guessLabel];
         [self changeBtn];

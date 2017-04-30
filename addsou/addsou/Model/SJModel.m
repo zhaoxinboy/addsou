@@ -30,6 +30,24 @@
 
 @end
 
+@implementation SJArticleModel
+
+//定义两个数组对象中的元素，对应的解析类
++ (NSDictionary *)mj_objectClassInArray{
+    return @{@"data":[SJArticleUrlModel class]};
+}
+
+@end
+
+@implementation SJArticleUrlModel
+
++(NSDictionary *)replacedKeyFromPropertyName
+{
+    return @{@"urlid":@"id"};
+}
+
+@end
+
 @implementation SJHomeAddressModel
 
 //定义两个数组对象中的元素，对应的解析类

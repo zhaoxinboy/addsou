@@ -163,5 +163,12 @@
     return YES;
 }
 
+// 去除标点符号
++ (NSString *)stringDeleteString:(NSString *)str{
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"，。、【】”+（）*=《》！？"];
+    NSString *newStr1 = [str stringByTrimmingCharactersInSet:set];
+    return newStr1;
+}
+
 
 @end

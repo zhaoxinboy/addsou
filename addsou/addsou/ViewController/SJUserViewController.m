@@ -28,6 +28,8 @@
 
 @implementation SJUserViewController{
     NSIndexPath *SindexPath;
+    
+    NSInteger versions;   // targets号
 }
 
 - (QDRClearCacheView *)goOutView{
@@ -110,6 +112,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    versions = [[NSString stringWithFormat:@"%d", VERSIONS] integerValue];
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(SJUserViewControllerRefresh:) name:@"SJUserViewController" object:nil];
     
     
@@ -129,9 +135,18 @@
 
 #pragma mark - <UITableViewDelegate, UITableViewDataSource>
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSInteger i = 7;
+    NSInteger i;
+    if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SOUJIA]) {
+        i = (versions == 1) ? 7 : 6;
+    }else{
+        i = (versions == 1) ? 6 : 5;
+    }
     if (![UserDefaultObjectForKey(LOCAL_READ_ISLOGIN) isEqualToString:NOLOGIN]) {
-        i = 8;
+        if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SOUJIA]) {
+            i = (versions == 1) ? 8 : 7;
+        }else{
+            i = (versions == 1) ? 7 : 6;
+        }
     }
     return i;
 }
@@ -145,38 +160,80 @@
     // 被选中不变色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    if (indexPath.row == 0) {
-        cell.leftLabel.text = @"浏览记录";
-        cell.rightLabel.text = @"";
-    }else if (indexPath.row == 1){
-        cell.leftLabel.text = @"搜索引擎";
-        if (!UserDefaultObjectForKey(LOCAL_READ_SEARCH)) {
-            UserDefaultSetObjectForKey(BAIDUSEARCH, LOCAL_READ_SEARCH)
+    if (versions == 1) {
+        if (indexPath.row == 0) {
+            cell.leftLabel.text = @"浏览记录";
+            cell.rightLabel.text = @"";
+        }else if (indexPath.row == 1){
+            cell.leftLabel.text = @"搜索引擎";
+            if (!UserDefaultObjectForKey(LOCAL_READ_SEARCH)) {
+                UserDefaultSetObjectForKey(BAIDUSEARCH, LOCAL_READ_SEARCH)
+            }
+            if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:BAIDUSEARCH]) {
+                cell.rightLabel.text = @"百度";
+            }else if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:SOUGOUSEARCH]){
+                cell.rightLabel.text = @"搜狗";
+            }else if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:BIYINGSEARCH]){
+                cell.rightLabel.text = @"必应";
+            }else if([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:QIHUSEARCH]){
+                cell.rightLabel.text = @"360";
+            }
+        }else if (indexPath.row == 2){
+            cell.leftLabel.text = @"广告过滤";
+        }else if (indexPath.row == 3){
+            cell.leftLabel.text = @"用户反馈";
+        }else if (indexPath.row == 4){
+            cell.leftLabel.text = @"赞我一下";
+        }else if (indexPath.row == 5){
+            if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SOUJIA]) {
+                cell.leftLabel.text = @"关于搜加";
+            }else{
+                cell.leftLabel.text = @"关于阅览室";
+            }
+            cell.rightLabel.text = [NSString stringWithFormat:@"v%@", APPVERSION];
+        }else if (indexPath.row == 6){
+            cell.leftLabel.text = @"清除缓存";
+            cell.rightLabel.text = [NSString stringWithFormat:@"%0.2f M", [self sdFolderSize]];
+        }else if (indexPath.row == 7){
+            cell.leftLabel.text = @"退出登录";
+            cell.rightLabel.text = @"";
         }
-        if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:BAIDUSEARCH]) {
-            cell.rightLabel.text = @"百度";
-        }else if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:SOUGOUSEARCH]){
-            cell.rightLabel.text = @"搜狗";
-        }else if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:BIYINGSEARCH]){
-            cell.rightLabel.text = @"必应";
-        }else if([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:QIHUSEARCH]){
-            cell.rightLabel.text = @"360";
+    }else if (versions == 2){
+        if (indexPath.row == 0){
+            cell.leftLabel.text = @"搜索引擎";
+            if (!UserDefaultObjectForKey(LOCAL_READ_SEARCH)) {
+                UserDefaultSetObjectForKey(BAIDUSEARCH, LOCAL_READ_SEARCH)
+            }
+            if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:BAIDUSEARCH]) {
+                cell.rightLabel.text = @"百度";
+            }else if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:SOUGOUSEARCH]){
+                cell.rightLabel.text = @"搜狗";
+            }else if ([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:BIYINGSEARCH]){
+                cell.rightLabel.text = @"必应";
+            }else if([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:QIHUSEARCH]){
+                cell.rightLabel.text = @"360";
+            }
+        }else if (indexPath.row == 1){
+            cell.leftLabel.text = @"广告过滤";
+        }else if (indexPath.row == 2){
+            cell.leftLabel.text = @"用户反馈";
+        }else if (indexPath.row == 3){
+            cell.leftLabel.text = @"赞我一下";
+        }else if (indexPath.row == 4){
+            if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SOUJIA]) {
+                cell.leftLabel.text = @"关于搜加";
+            }else{
+                cell.leftLabel.text = @"关于阅览室";
+            }
+            cell.rightLabel.text = [NSString stringWithFormat:@"v%@", APPVERSION];
+        }else if (indexPath.row == 5){
+            cell.leftLabel.text = @"清除缓存";
+            cell.rightLabel.text = [NSString stringWithFormat:@"%0.2f M", [self sdFolderSize]];
+        }else if (indexPath.row == 6){
+            cell.leftLabel.text = @"退出登录";
+            cell.rightLabel.text = @"";
         }
-    }else if (indexPath.row == 2){
-        cell.leftLabel.text = @"广告过滤";
-    }else if (indexPath.row == 3){
-        cell.leftLabel.text = @"用户反馈";
-    }else if (indexPath.row == 4){
-        cell.leftLabel.text = @"赞我一下";
-    }else if (indexPath.row == 5){
-        cell.leftLabel.text = @"关于搜加";
-        cell.rightLabel.text = [NSString stringWithFormat:@"v%@", APPVERSION];
-    }else if (indexPath.row == 6){
-        cell.leftLabel.text = @"清除缓存";
-        cell.rightLabel.text = [NSString stringWithFormat:@"%0.2f M", [self sdFolderSize]];
-    }else if (indexPath.row == 7){
-        cell.leftLabel.text = @"退出登录";
-        cell.rightLabel.text = @"";
+
     }
     
     
@@ -186,22 +243,42 @@
 // 点击方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     self.indexPath = indexPath;
-    if (indexPath.row == 6) {
-        if ([self sdFolderSize] == 0) {
-            [self showSuccessMsg:@"已经清理的很干净了"];
+    if (versions == 1) {
+        if (indexPath.row == 6) {
+            if ([self sdFolderSize] == 0) {
+                [self showSuccessMsg:@"已经清理的很干净了"];
+            }else{
+                SindexPath = indexPath;
+                [self clearView];
+                [_clearView openSelf];
+            }
+        }else if(indexPath.row == 7){
+            [self goOutView];
+            [_goOutView openSelf];
+        }else if (indexPath.row == 4){
+            // 跳转到APPSTORE
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1195055909?mt=8"]];
         }else{
-            SindexPath = indexPath;
-            [self clearView];
-            [_clearView openSelf];
+            [self.sideMenuViewController hideMenuViewController];
         }
-    }else if(indexPath.row == 7){
-        [self goOutView];
-        [_goOutView openSelf];
-    }else if (indexPath.row == 4){
-        // 跳转到APPSTORE
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1195055909?mt=8"]];
-    }else{
-        [self.sideMenuViewController hideMenuViewController];
+    }else if(versions == 2){
+        if (indexPath.row == 5) {
+            if ([self sdFolderSize] == 0) {
+                [self showSuccessMsg:@"已经清理的很干净了"];
+            }else{
+                SindexPath = indexPath;
+                [self clearView];
+                [_clearView openSelf];
+            }
+        }else if(indexPath.row == 6){
+            [self goOutView];
+            [_goOutView openSelf];
+        }else if (indexPath.row == 3){
+            // 跳转到APPSTORE
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1195055909?mt=8"]];
+        }else{
+            [self.sideMenuViewController hideMenuViewController];
+        }
     }
     self.indexPath = [NSIndexPath indexPathForRow:100 inSection:100];
 }
@@ -233,30 +310,33 @@
             make.size.mas_equalTo(CGSizeMake(kWindowW, SJ_ADAPTER_HEIGHT(210)));
         }];
         [_headerView.headerImageView sd_setImageWithURL:[NSURL URLWithString:UserDefaultObjectForKey(LOCAL_READ_HEADERURL)] placeholderImage:[UIImage imageNamed:LOCAL_READ_PLACEIMAGE]];
-        [_headerView.headerBtn addTarget:self action:@selector(aboutLogin) forControlEvents:UIControlEventTouchUpInside];
-        [_headerView.logBtn addTarget:self action:@selector(aboutLogin) forControlEvents:UIControlEventTouchUpInside];
+        if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SOUJIA] && (VERSIONS == 1)) {
+            [_headerView.headerBtn addTarget:self action:@selector(aboutLogin) forControlEvents:UIControlEventTouchUpInside];
+            [_headerView.logBtn addTarget:self action:@selector(aboutLogin) forControlEvents:UIControlEventTouchUpInside];
+        }
     }
     _headerView.backgroundColor = kRGBColor(236, 236, 236);
     
-    // 登录状态
-    __weak typeof (self) wself = self;
-    if (![UserDefaultObjectForKey(LOCAL_READ_ISLOGIN) isEqualToString:NOLOGIN]) {
-        [self.loginVM getUserInfoByUserid:[UserDefaultObjectForKey(LOCAL_READ_USERID) integerValue] NetCompleteHandle:^(NSError *error) {
-            if (wself.loginVM.isLoginModel.username) {
-                if ([UserDefaultObjectForKey(LOCAL_READ_ISLOGIN) isEqualToString:PHONELOGIN]) {
-                    _headerView.nameLabel.text = wself.loginVM.isLoginModel.username;
-                }else{
-                    _headerView.nameLabel.text = wself.loginVM.isLoginModel.nickname;
+    if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SOUJIA] && (VERSIONS == 1)) {
+        // 登录状态
+        __weak typeof (self) wself = self;
+        if (![UserDefaultObjectForKey(LOCAL_READ_ISLOGIN) isEqualToString:NOLOGIN]) {
+            [self.loginVM getUserInfoByUserid:[UserDefaultObjectForKey(LOCAL_READ_USERID) integerValue] NetCompleteHandle:^(NSError *error) {
+                if (wself.loginVM.isLoginModel.username) {
+                    if ([UserDefaultObjectForKey(LOCAL_READ_ISLOGIN) isEqualToString:PHONELOGIN]) {
+                        _headerView.nameLabel.text = wself.loginVM.isLoginModel.username;
+                    }else{
+                        _headerView.nameLabel.text = wself.loginVM.isLoginModel.nickname;
+                    }
+                    _headerView.logBtn.alpha = 0;
+                    _headerView.nameLabel.alpha = 1;
                 }
-                _headerView.logBtn.alpha = 0;
-                _headerView.nameLabel.alpha = 1;
-            }
-        }];
-    }else{
-        _headerView.logBtn.alpha = 1;
-        _headerView.nameLabel.alpha = 0;
+            }];
+        }else{
+            _headerView.logBtn.alpha = 1;
+            _headerView.nameLabel.alpha = 0;
+        }
     }
-    
     return headerView;
 }
 

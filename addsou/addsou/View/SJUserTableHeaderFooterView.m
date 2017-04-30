@@ -27,15 +27,25 @@
     if (!_headerImageView) {
         _headerImageView = [[UIImageView alloc] init];
         _headerImageView.layer.masksToBounds = YES;
-        _headerImageView.layer.cornerRadius = 24;
+        if (VERSIONS == 2) {
+            _headerImageView.layer.cornerRadius = 34;
+        }else if (VERSIONS == 1){
+            _headerImageView.layer.cornerRadius = 24;
+        }
         _headerImageView.layer.borderColor = [UIColor whiteColor].CGColor;
         _headerImageView.layer.borderWidth = 2;
         _headerImageView.contentMode = UIViewContentModeScaleAspectFill;
         [self addSubview:_headerImageView];
         [_headerImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(SJ_ADAPTER_WIDTH(20));
-            make.top.mas_equalTo(SJ_ADAPTER_WIDTH(85));
-            make.size.mas_equalTo(CGSizeMake(48, 48));
+            if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SOUJIA] && (VERSIONS == 1)) {
+                make.left.mas_equalTo(SJ_ADAPTER_WIDTH(20));
+                make.top.mas_equalTo(SJ_ADAPTER_WIDTH(85));
+                make.size.mas_equalTo(CGSizeMake(48, 48));
+            }else if (VERSIONS == 2){
+                make.left.mas_equalTo(kWindowW / 2 - 20 - 34);
+                make.centerY.mas_equalTo(0);
+                make.size.mas_equalTo(CGSizeMake(68, 68));
+            }
         }];
     }
     return _headerImageView;
@@ -91,9 +101,11 @@
     if (self = [super init]) {
         [self bottomImageView];
         [self headerImageView];
-        [self headerBtn];
-        [self logBtn];
-        [self nameLabel];
+        if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SOUJIA] && (VERSIONS == 1)) {
+            [self headerBtn];
+            [self logBtn];
+            [self nameLabel];
+        }
     }
     return self;
 }

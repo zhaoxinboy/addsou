@@ -101,7 +101,11 @@
 
 - (NSArray *)imageArray{
     if (!_imageArray) {
-        _imageArray = @[@"one", @"two", @"three"];
+        if (VERSIONS == 1) {
+            _imageArray = @[@"one", @"two", @"three"];
+        }else if (VERSIONS == 2) {
+            _imageArray = @[@"yuyin-", @"guanzhu", @"three"];
+        }
     }
     return _imageArray;
 }
@@ -160,11 +164,21 @@
     _pageControl.currentPage = pageNo;
     
     if (pageNo == 0) {
-        _label1.text = @"个性化推荐";
-        _label2.text = @"智能模式 想你所想 全新体验";
+        if (VERSIONS == 1) {
+            _label1.text = @"个性化推荐";
+            _label2.text = @"智能模式 想你所想 全新体验";
+        }else if (VERSIONS == 2){
+            _label1.text = @"智能语音";
+            _label2.text = @"全新升级 极致体验";
+        }
     }else if (pageNo == 1){
-        _label1.text = @"关键词记忆";
-        _label2.text = @"省时 省心 省力 记忆不丢失";
+        if (VERSIONS == 1) {
+            _label1.text = @"私人订制";
+            _label2.text = @"您的喜好 自己掌握";
+        }else if (VERSIONS == 2) {
+            _label1.text = @"关键词记忆";
+            _label2.text = @"省时 省心 省力 记忆不丢失";
+        }
     }else if (pageNo == 2){
         _label1.text = @"标签记录";
         _label2.text = @"记忆中的所想 一键直达";
