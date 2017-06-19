@@ -1,9 +1,9 @@
 //
-//  DIATConfig.m
-//  DVoiceSend
+//  SJVoiceConfig.m
+//  addsou
 //
-//  Created by DUCHENGWEN on 2016/10/26.
-//  Copyright © 2016年 DCW. All rights reserved.
+//  Created by 杨兆欣 on 2017/5/10.
+//  Copyright © 2017年 杨兆欣. All rights reserved.
 //
 
 #define PUTONGHUA   @"mandarin"
@@ -12,13 +12,11 @@
 #define ENGLISH     @"en_us"
 #define CHINESE     @"zh_cn";
 
-#import "DIATConfig.h"
+#import "SJVoiceConfig.h"
 
+@implementation SJVoiceConfig
 
-
-@implementation DIATConfig
-
--(id)init {
+- (id)init {
     self  = [super init];
     if (self) {
         [self defaultSetting];
@@ -28,17 +26,17 @@
 }
 
 
-+(DIATConfig *)sharedInstance {
-    static DIATConfig  * instance = nil;
++ (SJVoiceConfig *)sharedInstance {
+    static SJVoiceConfig  *instance = nil;
     static dispatch_once_t predict;
     dispatch_once(&predict, ^{
-        instance = [[DIATConfig alloc] init];
+        instance = [[SJVoiceConfig alloc] init];
     });
     return instance;
 }
 
 
--(void)defaultSetting {
+- (void)defaultSetting {
     _speechTimeout = @"30000";
     _vadEos = @"3000";
     _vadBos = @"3000";
@@ -83,8 +81,6 @@
 +(NSString *)noDot {
     return @"0";
 }
-
-
 
 
 @end

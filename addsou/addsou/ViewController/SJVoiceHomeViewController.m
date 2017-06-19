@@ -23,29 +23,18 @@
 #import "SJNoNetView.h"
 #import "SJGuideViewController.h"
 #import "SJVoiceView.h"
-#import "DisrIdentifyObject.h"
 #import "DVoiceTouchView.h"
-#import "SJVoiceTopView.h"
 #import "NSString+Common.h"
 #import "SJVoiceNoKeyView.h"
 #import "SJVoiceHistroyTable.h"
 #import "SJSearchCollectionView.h"
+#import "SJVoiceHelper.h"
 
-@interface SJVoiceHomeViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, UIScrollViewDelegate, CLLocationManagerDelegate, removeDelegate, SJVoiceViewDelegate, isrIdentifyDelegate, SJVoiceTopViewDelegate, UIScrollViewDelegate, searchCollectionIndexPathDelegate, SJVoiceHistroyTabelDelegate>
+@interface SJVoiceHomeViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, CLLocationManagerDelegate, removeDelegate, SJVoiceViewDelegate, UIScrollViewDelegate, searchCollectionIndexPathDelegate, SJVoiceHistroyTabelDelegate>
 
 @property (nonatomic, strong) SJNavigationBar *sjNavigationBar;   /* 导航栏 */
 
-@property (nonatomic, strong) SJVoiceTopView *topView;      // 上部按钮
-
-@property (nonatomic, strong) UIScrollView *scrollView;
-
 @property (nonatomic, strong) SJSearchCollectionView *searchView;      // 搜索结果
-
-@property (nonatomic, strong) SJVoiceNoKeyView *noKeyView;      // 无历史记录图
-
-@property (nonatomic, strong) SJVoiceHistroyTable *hisTableView;      // 历史记录
-
-@property (nonatomic, strong) SJFocusView *focusView;   /* 关注视图 */
 
 @property (nonatomic, strong) SJVoiceView *voiceView;      // 语音视图
 
@@ -57,17 +46,7 @@
 
 @property (nonatomic, strong) SJNoNetView *noNetView;   /* 无网络图 */
 
-
-@property (nonatomic, strong) UIImageView     *voiceIconImage;
-@property (nonatomic, strong) UILabel         *voiceIocnTitleLable;
-@property (nonatomic, strong) UIView          *voiceImageSuperView;
-@property (nonatomic, assign) BOOL            voiceIsCancel;
-@property (nonatomic, assign) BOOL            voiceRecognitionIsEnd;
-@property (nonatomic, assign) BOOL            touchIsEnd;
-
-@property (nonatomic, strong) UIImage         *normalImage;
-@property (nonatomic, strong) UIImage         *selectedImage;
-@property (nonatomic, copy)   NSString        *voiceString;
+@property (nonatomic, strong) SJVoiceHelper *voiceHelper;      // 语音帮助类
 
 @end
 
@@ -82,12 +61,14 @@
 
 #pragma mark - 语音相关
 -(void)touchDidBegan{
-    if (!self.voiceIconImage) {
+    if (!self.voiceHelper.voiceIconImage) {
         
         UIView *voiceImageSuperView = [[UIView alloc] init];
+        voiceImageSuperView.layer.masksToBounds = YES;
+        voiceImageSuperView.layer.cornerRadius = 10;
         [self.view addSubview:voiceImageSuperView];
-        voiceImageSuperView.backgroundColor = COLOR_RGBA(0, 0, 0, 0.6);
-        self.voiceImageSuperView = voiceImageSuperView;
+        voiceImageSuperView.backgroundColor = kRGBAColor(0, 0, 0, 0.6);
+        self.voiceHelper.voiceImageSuperView = voiceImageSuperView;
         __weak typeof(self)weakSelf = self;
         [voiceImageSuperView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.equalTo(weakSelf.view);
@@ -96,15 +77,19 @@
         
         
         UIImageView *voiceIconImage = [[UIImageView alloc] init];
-        self.voiceIconImage = voiceIconImage;
+        self.voiceHelper.voiceIconImage = voiceIconImage;
         [voiceImageSuperView addSubview:voiceIconImage];
         [voiceIconImage mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.left.equalTo(voiceImageSuperView).insets(UIEdgeInsetsMake(20, 35, 0, 0));
             make.size.mas_equalTo(CGSizeMake(70, 70));
         }];
         
+        self.voiceHelper.voiceTuBeView = [[SJVoiceTuBeView alloc] initWithframe:CGRectMake(0, 0, 70, 70) VoiceColor:[UIColor whiteColor] volumeColor:[UIColor whiteColor] isColid:YES lineWidth:2];
+        [voiceIconImage addSubview:self.voiceHelper.voiceTuBeView];
+        
+        
         UILabel *voiceIocnTitleLable = [[UILabel alloc] init];
-        self.voiceIocnTitleLable = voiceIocnTitleLable;
+        self.voiceHelper.voiceIocnTitleLable = voiceIocnTitleLable;
         [voiceIconImage addSubview:voiceIocnTitleLable];
         voiceIocnTitleLable.textColor = [UIColor whiteColor];
         voiceIocnTitleLable.font = [UIFont systemFontOfSize:12];
@@ -114,17 +99,16 @@
             make.centerX.equalTo(voiceImageSuperView);
         }];
     }
-    self.voiceImageSuperView.hidden = NO;
-    self.voiceIconImage.image = [UIImage imageNamed:@"语音 1"];
-    self.voiceIocnTitleLable.text = @"松开搜索，上滑取消";
-    self.voiceIsCancel = NO;
-    self.voiceString = [[NSString alloc] init];
-    self.voiceRecognitionIsEnd = NO;
-    self.touchIsEnd = NO;
-    [_voiceView.voiceBtn.voiceButton setImage:[UIImage imageNamed:@"kaishiyuyin"] forState:UIControlStateNormal];
+    self.voiceHelper.voiceImageSuperView.hidden = NO;
+    self.voiceHelper.voiceIconImage.image = [UIImage imageNamed:@""];
+    self.voiceHelper.voiceIocnTitleLable.text = @"松开搜索，上滑取消";
+    self.voiceHelper.voiceIsCancel = NO;
+    self.voiceHelper.voiceString = [[NSString alloc] init];
+    self.voiceHelper.voiceRecognitionIsEnd = NO;
+    self.voiceHelper.touchIsEnd = NO;
 //    [_voiceView.voiceBtn.voiceButton setTitle:@"松开发送" forState:UIControlStateNormal];
-    [[DisrIdentifyObject sharedInstance] detectionStart];
-    [[DisrIdentifyObject sharedInstance] startBtnHandler];
+    [self.voiceHelper.identifyHelper detectionStart];
+    [self.voiceHelper.identifyHelper startBtnHandler];
 }
 
 -(void)setSelectedImage:(UIImage *)selectedImage{
@@ -139,126 +123,37 @@
     
 }
 
-//语音回调
-- (void) onResultsStringisrIdentifyDelegate:(NSString*) results isLast:(BOOL)isLast{
-    self.voiceRecognitionIsEnd = isLast;
-    if ([results length] > 0) {
-        self.voiceString =  [self.voiceString stringByAppendingString:results];
-        
-    }
-    if (isLast && self.touchIsEnd) {
-        if (!self.voiceIsCancel && [self.voiceString length] > 0) {
-            self.voiceString = [NSString stringDeleteString:self.voiceString];
-            _voiceView.voiceLabel.text = self.voiceString;
-            
-        }
-    }
-}
-
 - (void) onVolumeChangedImgisrIdentifyDelegate: (UIImage*)Img{
-    if (!self.voiceIsCancel) {
-        self.voiceIconImage.image = Img;
-    }
-    
-}
-//错误信息
-- (void) onErrorStringisrIdentifyDelegate:(IFlySpeechError *)error{
-    __weak typeof(self) wself = self;
-    DLog(@"语音错误信息====%@", error.errorDesc);
-    if ([error.errorDesc isEqualToString:@"没有说话"]) {
-        [self showSuccessMsg:@"录音时间太短！"];
-        _voiceView.voiceLabel.text = @"点击说话";
-    }else if([error.errorDesc isEqualToString:@"服务正常"] && ![NSString isBlankString:self.voiceString]){
-        _voiceView.voiceLabel.text = self.voiceString;
-        // 获取搜索结果
-        [self.searchVM getSearchResultFromNetWithStr:self.voiceString CompleteHandle:^(NSError *error) {
-            if (wself.searchVM.dataArr.count == 0) {
-                wself.searchView.alpha = 0;
-                wself.hisTableView.alpha = 1;
-                SJManager *sjManager = [SJManager sharedManager];
-                NSString *str = self.voiceString;
-                str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                SJSearchModel *model = [SJSearchModel new];
-                for (int i = 0; i < sjManager.searchArr.count; i++) {
-                    model = nil;
-                    model = sjManager.searchArr[i];
-                    if ([model.searchEngine isEqualToString:UserDefaultObjectForKey(LOCAL_READ_SEARCH)]){
-                        break;
-                    }
-                }
-                SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:[NSString keywordWithSearchWebUrl:str searchWebUrlStyle:[model.searchEngine integerValue]] andAppImageUrlStr:model.searchImageStr andSuperCode:nil withAppName:model.searchTitle];
-                [self.navigationController pushViewController:vc animated:YES];
-            }else{
-                wself.searchView.alpha = 1;
-                wself.hisTableView.alpha = 0;
-                
-                [wself.searchView.dataArr removeAllObjects];
-                [wself.searchView.dataArr addObjectsFromArray:wself.searchVM.dataArr];
-                DLog(@"%@", wself.searchView.dataArr)
-                [wself.searchView reloadCollectionView];
-                
-                if (wself.searchVM.dataArr.count == 1) {
-                    SJHomeAddressDataModel *model = (SJHomeAddressDataModel *)wself.searchVM.dataArr[0];
-                    [wself searchCollectionIndexPathRow:0 model:model];
-                }
-            }
-        }];
-        
-    }else{
-        self.searchView.alpha = 0;
-        self.hisTableView.alpha = 1;
-        [self showSuccessMsg:@"未能获取到语音信息，请重试！"];
-        _voiceView.voiceLabel.text = @"点击说话";
-    }
+//    if (!self.voiceIsCancel) {
+//        self.voiceIconImage.image = Img;
+//    }
     
 }
 
 -(void)touchupglide{
-    self.voiceIsCancel = YES;
-    self.voiceIocnTitleLable.text = @"松开手指，取消搜索";
-    self.voiceIconImage.image = [UIImage imageNamed:@"松开"];
+    self.voiceHelper.voiceIsCancel = YES;
+    self.voiceHelper.voiceIocnTitleLable.text = @"松开手指，取消搜索";
+    self.voiceHelper.voiceTuBeView.hidden = YES;
+    self.voiceHelper.voiceIconImage.image = [UIImage imageNamed:@"松开"];
 }
 
 -(void)touchDown{
-    self.voiceIsCancel = NO;
-    self.voiceIconImage.image = [UIImage imageNamed:@"语音 1"];
-    self.voiceIocnTitleLable.text = @"松开搜索，上滑取消";
+    self.voiceHelper.voiceIsCancel = NO;
+    self.voiceHelper.voiceTuBeView.hidden = NO;
+    self.voiceHelper.voiceIocnTitleLable.text = @"松开搜索，上滑取消";
+    self.voiceHelper.voiceIconImage.image = [UIImage imageNamed:@""];
 }
 
 -(void)touchDidEnd{
-    self.voiceImageSuperView.hidden = YES;
-    if (self.voiceIsCancel==YES) {
-        [[DisrIdentifyObject sharedInstance] detectionStart];
+    self.voiceHelper.voiceImageSuperView.hidden = YES;
+    if (self.voiceHelper.voiceIsCancel==YES) {
+        [self.voiceHelper.identifyHelper detectionStart];
     }else{
-        [[DisrIdentifyObject sharedInstance] stopListening];
+        [self.voiceHelper.identifyHelper stopListening];
     }
-    self.touchIsEnd = YES;
-    [_voiceView.voiceBtn.voiceButton setImage:[UIImage imageNamed:@"yuyin"] forState:UIControlStateNormal];
-//    [_voiceView.voiceBtn.voiceButton setTitle:@"按住说话" forState:UIControlStateNormal];
-    
+    self.voiceHelper.touchIsEnd = YES;
 }
 
-
-#pragma mark - 顶部两个按钮的代理事件
-- (void)changeVoiceTop:(UIButton *)sender {
-    if (sender.tag == 100002) {
-        [_scrollView setContentOffset:CGPointMake(kWindowW, 0) animated:YES];
-    }else if(sender.tag == 100001) {
-        [_scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
-    }
-}
-
-#pragma mark - 滚动代理  scroll减速完毕调用
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    //获取滚动位置
-    //页码
-    int pageNo= scrollView.contentOffset.x / scrollView.frame.size.width;
-    if (pageNo == 0) {
-        [_topView changeTopBtn:_topView.btn1];
-    }else if (pageNo == 1) {
-        [_topView changeTopBtn:_topView.btn2];
-    }
-}
 
 #pragma mark - 搜索代理方法
 // collectionview点击代理方法
@@ -283,6 +178,79 @@
 
 #pragma mark - 懒加载
 
+- (SJVoiceHelper *)voiceHelper{
+    if (!_voiceHelper) {
+        _voiceHelper = [SJVoiceHelper sharedInstance];
+        __weak typeof(self)wself = self;
+        //结果block
+        _voiceHelper.resultBlock = ^(NSString *resultStr, BOOL isLast) {
+            if ([resultStr length] > 0) {
+                wself.voiceHelper.voiceString =  [wself.voiceHelper.voiceString stringByAppendingString:resultStr];
+                
+            }
+            if (isLast && wself.voiceHelper.touchIsEnd) {
+                if (!wself.voiceHelper.voiceIsCancel && [wself.voiceHelper.voiceString length] > 0) {
+                    wself.voiceHelper.voiceString = [NSString stringDeleteString:wself.voiceHelper.voiceString];
+                    wself.voiceView.voiceLabel.text = wself.voiceHelper.voiceString;
+                }
+            }
+        };
+        // 错误block
+        _voiceHelper.errorBlock = ^(IFlySpeechError *error) {
+            DLog(@"语音错误信息====%@", error.errorDesc);
+            if ([error.errorDesc isEqualToString:@"没有说话"]) {
+                [wself showSuccessMsg:@"录音时间太短！"];
+                wself.voiceView.voiceLabel.text = @"点击说话";
+            }else if([error.errorDesc isEqualToString:@"服务正常"] && ![NSString isBlankString:wself.voiceHelper.voiceString]){
+                wself.voiceView.voiceLabel.text = wself.voiceHelper.voiceString;
+                // 获取搜索结果
+                [wself.searchVM getSearchResultFromNetWithStr:wself.voiceHelper.voiceString CompleteHandle:^(NSError *error) {
+                    if (wself.searchVM.dataArr.count == 0) {
+                        wself.searchView.alpha = 0;
+                        [wself.voiceView isHiddenLabel:YES and:NO];
+                        SJManager *sjManager = [SJManager sharedManager];
+                        NSString *str = wself.voiceHelper.voiceString;
+                        str = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                        SJSearchModel *model = [SJSearchModel new];
+                        for (int i = 0; i < sjManager.searchArr.count; i++) {
+                            model = nil;
+                            model = sjManager.searchArr[i];
+                            if ([model.searchEngine isEqualToString:UserDefaultObjectForKey(LOCAL_READ_SEARCH)]){
+                                break;
+                            }
+                        }
+                        SJWebViewController *vc = [[SJWebViewController alloc] initWithUrlStr:[NSString keywordWithSearchWebUrl:str searchWebUrlStyle:[model.searchEngine integerValue]] andAppImageUrlStr:model.searchImageStr andSuperCode:nil withAppName:model.searchTitle];
+                        [wself.navigationController pushViewController:vc animated:YES];
+                    }else{
+                        wself.searchView.alpha = 1;
+                        
+                        [wself.voiceView isHiddenLabel:YES and:YES];
+                        [wself.searchView.dataArr removeAllObjects];
+                        [wself.searchView.dataArr addObjectsFromArray:wself.searchVM.dataArr];
+                        DLog(@"%@", wself.searchView.dataArr)
+                        [wself.searchView reloadCollectionView];
+                        
+                        if (wself.searchVM.dataArr.count == 1) {
+                            SJHomeAddressDataModel *model = (SJHomeAddressDataModel *)wself.searchVM.dataArr[0];
+                            [wself searchCollectionIndexPathRow:0 model:model];
+                        }
+                    }
+                }];
+                
+            }else{
+                wself.searchView.alpha = 0;
+                [wself showSuccessMsg:@"未能获取到语音信息，请重试！"];
+                wself.voiceView.voiceLabel.text = @"点击说话";
+            }
+        };
+        // 改变block
+        _voiceHelper.imageChangeBlock = ^(CGFloat i) {
+            [wself.voiceHelper.voiceTuBeView.topView updateVoiceViewWithVolume:i];
+        };
+    }
+    return _voiceHelper;
+}
+
 - (SJSearchCollectionView *)searchView{
     if (!_searchView) {
         UICollectionViewFlowLayout *myLayout = [[UICollectionViewFlowLayout alloc] init];
@@ -302,82 +270,18 @@
         _searchView = [[SJSearchCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:myLayout];
         _searchView.alpha = 0;
         _searchView.clickDelegate = self;
-        [_scrollView addSubview:_searchView];
+        [self.view addSubview:_searchView];
         [_searchView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.mas_equalTo(0);
+            make.top.mas_equalTo(64);
+            make.left.mas_equalTo(0);
             make.size.mas_equalTo(CGSizeMake(kWindowW, kWindowH - 64 - SJ_ADAPTER_HEIGHT(210)));
         }];
     }
     return _searchView;
 }
 
-- (SJVoiceHistroyTable *)hisTableView{
-    if (!_hisTableView) {
-        _hisTableView = [[SJVoiceHistroyTable alloc] initWithFrame:CGRectMake(0, 0, kWindowW, kWindowH - 64 - SJ_ADAPTER_HEIGHT(210)) style:UITableViewStylePlain];
-        _hisTableView.tableDelegate = self;
-        [_scrollView addSubview:_hisTableView];
-    }
-    return _hisTableView;
-}
-
-- (SJVoiceNoKeyView *)noKeyView{
-    if (!_noKeyView) {
-        _noKeyView = [[SJVoiceNoKeyView alloc] init];
-        _noKeyView.alpha = 0;
-        [_scrollView addSubview:_noKeyView];
-        [_noKeyView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.mas_equalTo(0);
-            make.size.mas_equalTo(CGSizeMake(kWindowW, kWindowH - 64 - SJ_ADAPTER_HEIGHT(210)));
-        }];
-    }
-    return _noKeyView;
-}
-
-- (SJFocusView *)focusView{
-    if (!_focusView) {
-        _focusView = [[SJFocusView alloc] initWithFrame:CGRectMake(kWindowW, 0, kWindowW, kWindowH - 64 - SJ_ADAPTER_HEIGHT(210))];
-    }
-    return _focusView;
-}
-
-- (UIScrollView *)scrollView{
-    if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, kWindowW, kWindowH - 64 - SJ_ADAPTER_HEIGHT(210))];
-        _scrollView.contentSize = CGSizeMake(kWindowW * 2, kWindowH - 64 - SJ_ADAPTER_HEIGHT(210));//设置内容大小
-        _scrollView.backgroundColor = [UIColor clearColor];
-        _scrollView.bounces = NO; // 不可回弹
-        _scrollView.pagingEnabled = YES;//是否分页
-        _scrollView.delegate = self;
-        _scrollView.showsHorizontalScrollIndicator = NO;
-        _scrollView.showsVerticalScrollIndicator = NO;
-        _scrollView.alwaysBounceVertical = NO;
-        [self.view addSubview:_scrollView];
-        
-        [_scrollView addSubview:_focusView];
-        
-        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
-        
-    }
-    return _scrollView;
-}
-
-
-
-- (SJVoiceTopView *)topView{
-    if (!_topView) {
-        _topView = [[SJVoiceTopView alloc] initWithFrame:CGRectMake(kWindowW / 2 - 50, 30, 100, 30)];
-        [self.sjNavigationBar addSubview:_topView];
-        _topView.topDelegate = self;
-    }
-    return _topView;
-}
-
 - (SJVoiceView *)voiceView{
     if (!_voiceView) {
-        
-        [[DisrIdentifyObject sharedInstance] initRecognizer];
-        [DisrIdentifyObject sharedInstance].delegate = self;
-        
         _voiceView = [[SJVoiceView alloc] init];
         _voiceView.voiceDelegate = self;
         [self.view addSubview:_voiceView];
@@ -388,23 +292,27 @@
         _voiceView.voiceBtn.touchBegan = ^(){
             //开始长按
             [weakSelf touchDidBegan];
+            
+            [weakSelf.voiceView changeTimerWithBool:YES];
         };
         _voiceView.voiceBtn.upglide = ^(){
             //在区域内
             [weakSelf touchupglide];
+            
+            [weakSelf.voiceView changeTimerWithBool:NO];
         };
         _voiceView.voiceBtn.down = ^(){
             //不在区域内
             [weakSelf touchDown];
+            
+            [weakSelf.voiceView changeTimerWithBool:YES];
         };
         _voiceView.voiceBtn.touchEnd = ^(){
             //松开
             [weakSelf touchDidEnd];
+            [weakSelf.voiceView changeTimerWithBool:NO];
+            
         };
-        [_voiceView.voiceBtn.voiceButton setImage:[UIImage imageNamed:@"yuyin"] forState:UIControlStateNormal];
-//        [_voiceView.voiceBtn.voiceButton setTitle:@"按住说话" forState:UIControlStateNormal];
-//        [_voiceView.voiceBtn.voiceButton setTitleColor:COLOR_RGB(105, 105, 105) forState:UIControlStateNormal];
-//        _voiceView.voiceBtn.voiceButton.backgroundColor=[UIColor yellowColor];
     }
     return _voiceView;
 }
@@ -473,8 +381,6 @@
         // 获取时间显示
         [_sjNavigationBar.dateView dateViewGetDate];
         _sjNavigationBar.centerLabel.hidden = YES;
-        _sjNavigationBar.dateView.hidden = YES;
-        
     }
     return _sjNavigationBar;
 }
@@ -620,73 +526,54 @@
         [self.loginVM postFirstRegistWithSign:LOCAL_READ_UUID andSerialnumber:LOCAL_READ_UUID companyid:LOCAL_READ_COMPANYID NetCompleteHandle:^(NSError *error) {
             [wself.homeVM getDataFromNetWithUserId:[UserDefaultObjectForKey(LOCAL_READ_USERID) integerValue] CompleteHandle:^(NSError *error) {
                 [wself.homeVM getAddressDataFromNetWithUserId:[[[NSUserDefaults standardUserDefaults] objectForKey:LOCAL_READ_USERID] integerValue] CompleteHandle:^(NSError *error) {
-                    [wself.historyVM getHistoryByUseridWithUserid:[[NSUserDefaults standardUserDefaults] objectForKey:LOCAL_READ_USERID] CompleteHandle:^(NSError *error) {
-                        [_activityView stopAnimating];
-                        if ((!wself.recommendVM.dataArr || !wself.recommendVM.dataArr.count) && (!wself.homeVM.dataArr || !wself.homeVM.dataArr.count)){
-                            //array是空或nil
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                [wself addNoInternet];
-                            });
-                        }else{
-                            // 回到主线程刷新UI
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                // 定位
-                                [wself InitLocation];
-                                [locationManager requestWhenInUseAuthorization];
-                                [locationManager startUpdatingLocation];
+                    [_activityView stopAnimating];
+                    if ((!wself.recommendVM.dataArr || !wself.recommendVM.dataArr.count) && (!wself.homeVM.dataArr || !wself.homeVM.dataArr.count)){
+                        //array是空或nil
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [wself addNoInternet];
+                        });
+                    }else{
+                        // 回到主线程刷新UI
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            // 定位
+                            [wself InitLocation];
+                            [locationManager requestWhenInUseAuthorization];
+                            [locationManager startUpdatingLocation];
+                            
+                            isrelodfocusView = 1;
+                            
+                            // 进入引导流程图
+                            if (!UserDefaultObjectForKey(LOCAL_READ_FIRSTGUIDE)){
+                                wself.voiceView.hidden = NO;
                                 
-                                isrelodfocusView = 1;
+                                [wself searchView];
                                 
-                                // 进入引导流程图
-                                if (!UserDefaultObjectForKey(LOCAL_READ_FIRSTGUIDE)){
-                                    [wself focusView];
-                                    [wself.focusView dragCellCollectionView:nil newDataArrayAfterMove:@[wself.homeVM.dataArr]];
-                                    [wself.focusView.homeCollectionV reloadData];
-                                    [wself scrollView];
-                                    
-                                    if (!wself.historyVM.dataArr.count) {
-                                        [wself noKeyView];
-                                        wself.noKeyView.alpha = 1;
-                                        if (wself.hisTableView) {
-                                            wself.hisTableView.alpha = 0;
-                                        }
-                                    }else{
-                                        [wself hisTableView];
-                                        [wself.hisTableView getDataArrWithArr:wself.historyVM.dataArr];
-                                        wself.hisTableView.alpha = 1;
-                                        if (wself.noKeyView) {
-                                            wself.noKeyView.alpha = 0;
-                                        }
-                                    }
-                                    [wself searchView];
-                                    
-                                    // 把要展示的按钮的位置传入，用于绘制贝塞尔曲线
-                                    
-                                    // 没图   不想做  注释掉
-                                    
-//                                    CGRect voiceFrame = [_voiceView convertRect:_voiceView.voiceBtn.frame toView:self.view];
-//                                    [SJManager sharedManager].voiceFrame = voiceFrame;
-//                                    
-//                                    [self.view setNeedsLayout];
-//                                    [self.view layoutIfNeeded];
-//                                    // 把要展示的按钮的位置传入，用于绘制贝塞尔曲线
-//                                    [SJManager sharedManager].bookFrame = [_voiceView convertRect:_voiceView.bookBtn.frame toView:self.view];
-//                                    [SJManager sharedManager].searchFrame = [_voiceView convertRect:_voiceView.searchBtn.frame toView:self.view];
-//                                    
-//                                    SJGuideViewController *vc=[[SJGuideViewController alloc] init];
-//                                    vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-//                                    
-//                                    [wself presentViewController:vc animated:NO completion:nil];
-                                    
-                                    NSString *str = [NSString stringWithFormat:@"%@%@", APPVERSION, APPBUILDVERSION];
-                                    UserDefaultSetObjectForKey(str, LOCAL_READ_FIRSTOPEN)
-                                    UserDefaultSetObjectForKey(@"1", LOCAL_READ_FIRST)
-                                    UserDefaultSetObjectForKey(@"1", LOCAL_READ_FIRSTGUIDE)
-                                    
-                                }
-                            });
-                        }
-                    }];
+                                // 把要展示的按钮的位置传入，用于绘制贝塞尔曲线
+                                
+                                // 没图   不想做  注释掉
+                                
+                                //                                    CGRect voiceFrame = [_voiceView convertRect:_voiceView.voiceBtn.frame toView:self.view];
+                                //                                    [SJManager sharedManager].voiceFrame = voiceFrame;
+                                //
+                                //                                    [self.view setNeedsLayout];
+                                //                                    [self.view layoutIfNeeded];
+                                //                                    // 把要展示的按钮的位置传入，用于绘制贝塞尔曲线
+                                //                                    [SJManager sharedManager].bookFrame = [_voiceView convertRect:_voiceView.bookBtn.frame toView:self.view];
+                                //                                    [SJManager sharedManager].searchFrame = [_voiceView convertRect:_voiceView.searchBtn.frame toView:self.view];
+                                //
+                                //                                    SJGuideViewController *vc=[[SJGuideViewController alloc] init];
+                                //                                    vc.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+                                //
+                                //                                    [wself presentViewController:vc animated:NO completion:nil];
+                                
+                                NSString *str = [NSString stringWithFormat:@"%@%@", APPVERSION, APPBUILDVERSION];
+                                UserDefaultSetObjectForKey(str, LOCAL_READ_FIRSTOPEN)
+                                UserDefaultSetObjectForKey(@"1", LOCAL_READ_FIRST)
+                                UserDefaultSetObjectForKey(@"1", LOCAL_READ_FIRSTGUIDE)
+                                
+                            }
+                        });
+                    }
                 }];
             }];
         }];
@@ -694,46 +581,27 @@
         [self.loginVM postDataFromWithUserName:[[NSUserDefaults standardUserDefaults] objectForKey:LOCAL_READ_USERNAME] passWord:[[NSUserDefaults standardUserDefaults] objectForKey:LOCAL_READ_PASSWORD] NetCompleteHandle:^(NSError *error) {
             [wself.homeVM getDataFromNetWithUserId:[[[NSUserDefaults standardUserDefaults] objectForKey:LOCAL_READ_USERID] integerValue] CompleteHandle:^(NSError *error) {
                 [wself.homeVM getAddressDataFromNetWithUserId:[[[NSUserDefaults standardUserDefaults] objectForKey:LOCAL_READ_USERID] integerValue] CompleteHandle:^(NSError *error) {
-                    [wself.historyVM getHistoryByUseridWithUserid:[[NSUserDefaults standardUserDefaults] objectForKey:LOCAL_READ_USERID] CompleteHandle:^(NSError *error) {
-                        [_activityView stopAnimating];
-                        if ((!wself.recommendVM.dataArr || !wself.recommendVM.dataArr.count) && (!wself.homeVM.dataArr || !wself.homeVM.dataArr.count)){
-                            //array是空或nil
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                [wself addNoInternet];
-                            });
-                        }else{
-                            // 回到主线程刷新UI
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                
-                                [wself focusView];
-                                [wself.focusView dragCellCollectionView:nil newDataArrayAfterMove:@[wself.homeVM.dataArr]];
-                                [wself.focusView.homeCollectionV reloadData];
-                                [wself scrollView];
-                                if (!wself.historyVM.dataArr.count) {
-                                    [wself noKeyView];
-                                    wself.noKeyView.alpha = 1;
-                                    if (wself.hisTableView) {
-                                        wself.hisTableView.alpha = 0;
-                                    }
-                                }else{
-                                    [wself hisTableView];
-                                    [wself.hisTableView getDataArrWithArr:wself.historyVM.dataArr];
-                                    wself.hisTableView.alpha = 1;
-                                    if (wself.noKeyView) {
-                                        wself.noKeyView.alpha = 0;
-                                    }
-                                }
-                                [wself searchView];
-                                // 定位
-                                [wself InitLocation];
-                                [locationManager requestWhenInUseAuthorization];
-                                [locationManager startUpdatingLocation];
-                                
-                                isrelodfocusView = 1;
-                                
-                            });
-                        }
-                    }];
+                    [_activityView stopAnimating];
+                    if ((!wself.recommendVM.dataArr || !wself.recommendVM.dataArr.count) && (!wself.homeVM.dataArr || !wself.homeVM.dataArr.count)){
+                        //array是空或nil
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [wself addNoInternet];
+                        });
+                    }else{
+                        // 回到主线程刷新UI
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            wself.voiceView.hidden = NO;
+                            
+                            [wself searchView];
+                            // 定位
+                            [wself InitLocation];
+                            [locationManager requestWhenInUseAuthorization];
+                            [locationManager startUpdatingLocation];
+                            
+                            isrelodfocusView = 1;
+                            
+                        });
+                    }
                 }];
             }];
         }];
@@ -755,6 +623,9 @@
         [noInternetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.mas_equalTo(0);
         }];
+    }
+    if (_voiceView) {
+        _voiceView.hidden = YES;
     }
 }
 
@@ -781,47 +652,18 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    __weak typeof(self)wself = self;
-    if (isrelodfocusView == 1) {
-        [self.homeVM getAddressDataFromNetWithUserId:[[[NSUserDefaults standardUserDefaults] objectForKey:LOCAL_READ_USERID] integerValue] CompleteHandle:^(NSError *error) {
-            [wself.focusView dragCellCollectionView:nil newDataArrayAfterMove:@[wself.homeVM.dataArr]];
-            [wself.focusView.homeCollectionV reloadData];
-        }];
-        
-        [self.historyVM getHistoryByUseridWithUserid:UserDefaultObjectForKey(LOCAL_READ_USERID) CompleteHandle:^(NSError *error) {
-            if (!wself.historyVM.dataArr.count) {
-                [wself noKeyView];
-                wself.noKeyView.alpha = 1;
-                if (wself.hisTableView) {
-                    wself.hisTableView.alpha = 0;
-                }
-            }else{
-                [wself hisTableView];
-                [wself.hisTableView getDataArrWithArr:wself.historyVM.dataArr];
-                if (_searchView.alpha == 0) {
-                    wself.hisTableView.alpha = 1;
-                }else if (_searchView.alpha == 1){
-                    wself.hisTableView.alpha = 0;
-                }
-                if (wself.noKeyView) {
-                    wself.noKeyView.alpha = 0;
-                }
-            }
-        }];
-        
-    }
-    
-    
-    
     self.navigationController.navigationBarHidden = NO; // 使右滑返回手势可用
     self.navigationController.navigationBar.hidden = YES; // 隐藏导航栏
+    
+    self.voiceView.voiceLabel.text = @"点击说话";
 }
 
+// 视图即将消失，关闭话筒
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    if (_focusView && _focusView.homeCollectionV.isEditing) {
-        [_focusView.homeCollectionV xw_stopEditingModel];
-    }
+    
+    [self.voiceView changeTimerWithBool:NO];
+    [self touchDidEnd];
 }
 
 
@@ -868,8 +710,8 @@
     [self.activityView startAnimating];//活动指示器开始
     
     [self sjNavigationBar];
-    [self topView];
-    [self  voiceView];
+    [self voiceView];
+    [self voiceHelper];
     [self getNetWork];
     
     
@@ -906,10 +748,7 @@
 
 // 添加或者删除链接后，刷新关注列表
 - (void)focusViewRefresh:(NSNotification *)noti{
-    [self.homeVM getAddressDataFromNetWithUserId:[[[NSUserDefaults standardUserDefaults] objectForKey:LOCAL_READ_USERID] integerValue] CompleteHandle:^(NSError *error) {
-        [self.focusView dragCellCollectionView:nil newDataArrayAfterMove:@[self.homeVM.dataArr]];
-        [self.focusView.homeCollectionV reloadData];
-    }];
+    
 }
 
 - (void)dealloc{

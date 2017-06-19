@@ -1,31 +1,31 @@
 //
-//  DisrIdentifyObject.m
-//  DVoiceSend
+//  SJVoiceIdentifyHelper.m
+//  addsou
 //
-//  Created by DUCHENGWEN on 2016/10/25.
-//  Copyright © 2016年 DCW. All rights reserved.
+//  Created by 杨兆欣 on 2017/5/10.
+//  Copyright © 2017年 杨兆欣. All rights reserved.
 //
 
-#import "DisrIdentifyObject.h"
+#import "SJVoiceIdentifyHelper.h"
+#import "SJVoiceConfig.h"
+#import "SJVoiceDataHelper.h"
 
-@implementation DisrIdentifyObject
+@implementation SJVoiceIdentifyHelper
 
+static SJVoiceIdentifyHelper *isrIdentifydObj = nil;
 
-static DisrIdentifyObject *isrIdentifydObj = nil;
-
-+ (DisrIdentifyObject*) sharedInstance
-{
-    @synchronized (self)
-    {
-        if (isrIdentifydObj == nil)
-        {
++ (SJVoiceIdentifyHelper *)sharedInstance {
+    @synchronized (self) {
+        if (isrIdentifydObj == nil) {
             isrIdentifydObj = [[self alloc] init];
         }
     }
     return isrIdentifydObj;
 }
+
+
 -(void)detectionStart{
-    if ([DIATConfig sharedInstance].haveView == NO) {//无界面
+    if ([SJVoiceConfig sharedInstance].haveView == NO) {//无界面
         [_iFlySpeechRecognizer cancel]; //取消识别
         [_iFlySpeechRecognizer setDelegate:nil];
         [_iFlySpeechRecognizer setParameter:@"" forKey:[IFlySpeechConstant PARAMS]];
@@ -45,7 +45,7 @@ static DisrIdentifyObject *isrIdentifydObj = nil;
 - (void)startBtnHandler {
     
     
-    if ([DIATConfig sharedInstance].haveView == NO) {//无界面
+    if ([SJVoiceConfig sharedInstance].haveView == NO) {//无界面
         
         [_iFlySpeechRecognizer cancel];
         
@@ -68,7 +68,7 @@ static DisrIdentifyObject *isrIdentifydObj = nil;
             NSLog(@"启动识别服务失败，请稍后重试");
         }
     }else {
-      
+        
         
         //设置音频来源为麦克风
         [_iflyRecognizerView setParameter:IFLY_AUDIO_SOURCE_MIC forKey:@"audio_source"];
@@ -89,38 +89,44 @@ static DisrIdentifyObject *isrIdentifydObj = nil;
  音量回调函数
  volume 0－30
  ****/
-- (void) onVolumeChanged: (int)volume
+- (void) onVolumeChanged:(int)volume
 {
-    //    NSLog(@"声音==%d",volume);
-    if (volume>5&&volume<=10){
-        [self.delegate onVolumeChangedImgisrIdentifyDelegate:[UIImage imageNamed:@"语音 2"]];
-        return;
-    }else if (volume>10&&volume<=15){
-        [self.delegate onVolumeChangedImgisrIdentifyDelegate:[UIImage imageNamed:@"语音 3"]];
-        return;
-    }else if (volume>15&&volume<=20){
-        [self.delegate onVolumeChangedImgisrIdentifyDelegate:[UIImage imageNamed:@"语音 4"]];
-        return;
-    }else if (volume>20&&volume<=25){
-        [self.delegate onVolumeChangedImgisrIdentifyDelegate:[UIImage imageNamed:@"语音 5"]];
-        return;
-    }else if (volume>25&&volume<=30){
-        [self.delegate onVolumeChangedImgisrIdentifyDelegate:[UIImage imageNamed:@"语音 6"]];
-        return;
-    }else{
-        [self.delegate onVolumeChangedImgisrIdentifyDelegate:[UIImage imageNamed:@"语音 1"]];
-        return;
+    CGFloat m = (CGFloat)volume / 30.0;
+    NSString *str = [NSString stringWithFormat:@"%.1f", m];
+    CGFloat i = str.floatValue;
+    NSLog(@"%f", i);
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onImageChangeWith:)]) {
+        [self.delegate onImageChangeWith:i];
     }
+    
+    
+    //    NSLog(@"声音==%d",volume);
+//    if (volume>5&&volume<=10){
+//        [self.delegate onVolumeChangedImgisrIdentifyDelegate:[UIImage imageNamed:@"语音 2"]];
+//        return;
+//    }else if (volume>10&&volume<=15){
+//        [self.delegate onVolumeChangedImgisrIdentifyDelegate:[UIImage imageNamed:@"语音 3"]];
+//        return;
+//    }else if (volume>15&&volume<=20){
+//        [self.delegate onVolumeChangedImgisrIdentifyDelegate:[UIImage imageNamed:@"语音 4"]];
+//        return;
+//    }else if (volume>20&&volume<=25){
+//        [self.delegate onVolumeChangedImgisrIdentifyDelegate:[UIImage imageNamed:@"语音 5"]];
+//        return;
+//    }else if (volume>25&&volume<=30){
+//        [self.delegate onVolumeChangedImgisrIdentifyDelegate:[UIImage imageNamed:@"语音 6"]];
+//        return;
+//    }else{
+//        [self.delegate onVolumeChangedImgisrIdentifyDelegate:[UIImage imageNamed:@"语音 1"]];
+//        return;
+//    }
     
 }
 /**
  设置识别参数
  ****/
--(void)initRecognizer
-{
- 
-    
-    if ([DIATConfig sharedInstance].haveView == NO) {//无界面
+-(void)initRecognizer {
+    if ([SJVoiceConfig sharedInstance].haveView == NO) {//无界面
         
         //单例模式，无UI的实例
         if (_iFlySpeechRecognizer == nil) {
@@ -134,7 +140,7 @@ static DisrIdentifyObject *isrIdentifydObj = nil;
         _iFlySpeechRecognizer.delegate = self;
         
         if (_iFlySpeechRecognizer != nil) {
-            DIATConfig *instance = [DIATConfig sharedInstance];
+            SJVoiceConfig *instance = [SJVoiceConfig sharedInstance];
             
             //设置最长录音时间
             [_iFlySpeechRecognizer setParameter:instance.speechTimeout forKey:[IFlySpeechConstant SPEECH_TIMEOUT]];
@@ -148,12 +154,12 @@ static DisrIdentifyObject *isrIdentifydObj = nil;
             //设置采样率，推荐使用16K
             [_iFlySpeechRecognizer setParameter:instance.sampleRate forKey:[IFlySpeechConstant SAMPLE_RATE]];
             
-            if ([instance.language isEqualToString:[DIATConfig chinese]]) {
+            if ([instance.language isEqualToString:[SJVoiceConfig chinese]]) {
                 //设置语言
                 [_iFlySpeechRecognizer setParameter:instance.language forKey:[IFlySpeechConstant LANGUAGE]];
                 //设置方言
                 [_iFlySpeechRecognizer setParameter:instance.accent forKey:[IFlySpeechConstant ACCENT]];
-            }else if ([instance.language isEqualToString:[DIATConfig english]]) {
+            }else if ([instance.language isEqualToString:[SJVoiceConfig english]]) {
                 [_iFlySpeechRecognizer setParameter:instance.language forKey:[IFlySpeechConstant LANGUAGE]];
             }
             //设置是否返回标点符号
@@ -176,7 +182,7 @@ static DisrIdentifyObject *isrIdentifydObj = nil;
         _iflyRecognizerView.delegate = self;
         
         if (_iflyRecognizerView != nil) {
-            DIATConfig *instance = [DIATConfig sharedInstance];
+            SJVoiceConfig *instance = [SJVoiceConfig sharedInstance];
             //设置最长录音时间
             [_iflyRecognizerView setParameter:instance.speechTimeout forKey:[IFlySpeechConstant SPEECH_TIMEOUT]];
             //设置后端点
@@ -188,12 +194,12 @@ static DisrIdentifyObject *isrIdentifydObj = nil;
             
             //设置采样率，推荐使用16K
             [_iflyRecognizerView setParameter:instance.sampleRate forKey:[IFlySpeechConstant SAMPLE_RATE]];
-            if ([instance.language isEqualToString:[DIATConfig chinese]]) {
+            if ([instance.language isEqualToString:[SJVoiceConfig chinese]]) {
                 //设置语言
                 [_iflyRecognizerView setParameter:instance.language forKey:[IFlySpeechConstant LANGUAGE]];
                 //设置方言
                 [_iflyRecognizerView setParameter:instance.accent forKey:[IFlySpeechConstant ACCENT]];
-            }else if ([instance.language isEqualToString:[DIATConfig english]]) {
+            }else if ([instance.language isEqualToString:[SJVoiceConfig english]]) {
                 //设置语言
                 [_iflyRecognizerView setParameter:instance.language forKey:[IFlySpeechConstant LANGUAGE]];
             }
@@ -211,10 +217,10 @@ static DisrIdentifyObject *isrIdentifydObj = nil;
  0     听写正确
  other 听写出错
  ****/
-- (void) onError:(IFlySpeechError *) error
-{
-    [self.delegate onErrorStringisrIdentifyDelegate:error];
-    
+- (void) onError:(IFlySpeechError *)error {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onErrorString:)]) {
+        [self.delegate onErrorString:error];
+    }
 }
 
 /**
@@ -222,8 +228,7 @@ static DisrIdentifyObject *isrIdentifydObj = nil;
  results：听写结果
  isLast：表示最后一次
  ****/
-- (void) onResults:(NSArray *) results isLast:(BOOL)isLast
-{
+- (void) onResults:(NSArray *)results isLast:(BOOL)isLast {
     
     NSMutableString *resultString = [[NSMutableString alloc] init];
     NSDictionary *dic = results[0];
@@ -231,11 +236,12 @@ static DisrIdentifyObject *isrIdentifydObj = nil;
         [resultString appendFormat:@"%@",key];
     }
     
-    NSString * resultFromJson =  [DISRDataHelper stringFromJson:resultString];
-    NSLog(@"语音语音===%@",resultFromJson);
-    [self.delegate onResultsStringisrIdentifyDelegate:[NSString stringWithFormat:@"%@",resultFromJson] isLast:isLast];
+    NSString * resultFromJson =  [SJVoiceDataHelper stringFromJson:resultString];
+    DLog(@"语音语音===%@",resultFromJson);
     
-    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(onResultsString:isLast:)]) {
+        [self.delegate onResultsString:[NSString stringWithFormat:@"%@", resultFromJson] isLast:isLast];
+    }
 }
 
 
@@ -253,7 +259,7 @@ static DisrIdentifyObject *isrIdentifydObj = nil;
     for (NSString *key in dic) {
         [result appendFormat:@"%@",key];
     }
-   
+    
 }
 
 -(void)stopListening{

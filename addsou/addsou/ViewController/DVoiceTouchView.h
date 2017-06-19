@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Masonry.h"
 
 @interface DVoiceTouchView : UIView
 
@@ -19,5 +18,12 @@
 
 @property (nonatomic) int areaY;//设置识别高度
 @property (nonatomic) int clickTime;//设置长按时间
+
+
+
+- (void)pgq_reateVoiceTopViewWithVoiceColor:(UIColor *)fColor volumeColor:(UIColor *)vColor isColid:(BOOL)isColid lineWidth:(CGFloat)lineWidth;
+
+- (void)updateVoiceViewWithVolume:(float)volume;
+
 
 @end

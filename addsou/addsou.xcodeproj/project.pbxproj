@@ -37,11 +37,27 @@
 		E2068D981E237F8D0020803A /* SJSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D971E237F8D0020803A /* SJSearchView.m */; };
 		E2068D9B1E23814C0020803A /* SJSearchTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D9A1E23814C0020803A /* SJSearchTextField.m */; };
 		E2068D9E1E23CF280020803A /* SJSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2068D9D1E23CF280020803A /* SJSearchTableViewCell.m */; };
+		E20819A91EC563FC001242B7 /* SJCorrugatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20819A81EC563FC001242B7 /* SJCorrugatedView.m */; };
+		E20819AA1EC56400001242B7 /* SJCorrugatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20819A81EC563FC001242B7 /* SJCorrugatedView.m */; };
 		E2087AD51E1DEBD8005D025F /* SJHomePageLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E2087AD41E1DEBD8005D025F /* SJHomePageLayout.m */; };
 		E2087AD91E1DEF4C005D025F /* SJHomePageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2087AD81E1DEF4C005D025F /* SJHomePageCollectionViewCell.m */; };
 		E2087ADC1E1E1BDB005D025F /* SJDateView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2087ADB1E1E1BDB005D025F /* SJDateView.m */; };
 		E2087ADF1E1E281C005D025F /* SJNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E2087ADE1E1E281C005D025F /* SJNavigationBar.m */; };
 		E2087AE21E1E3A36005D025F /* SJOptimizationView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2087AE11E1E3A36005D025F /* SJOptimizationView.m */; };
+		E208E6331EC2C0520021F55C /* SJVoiceTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E208E6321EC2C0520021F55C /* SJVoiceTopView.m */; };
+		E208E6341EC2C0570021F55C /* SJVoiceTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E208E6321EC2C0520021F55C /* SJVoiceTopView.m */; };
+		E208E6371EC2E5D70021F55C /* SJVoiceIdentifyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E208E6361EC2E5D70021F55C /* SJVoiceIdentifyHelper.m */; };
+		E208E63A1EC2F1230021F55C /* SJVoiceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E208E6391EC2F1230021F55C /* SJVoiceConfig.m */; };
+		E208E63D1EC2F3CC0021F55C /* SJVoiceDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E208E63C1EC2F3CC0021F55C /* SJVoiceDataHelper.m */; };
+		E208E63E1EC2F3D10021F55C /* SJVoiceIdentifyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E208E6361EC2E5D70021F55C /* SJVoiceIdentifyHelper.m */; };
+		E208E63F1EC2F3D40021F55C /* SJVoiceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E208E6391EC2F1230021F55C /* SJVoiceConfig.m */; };
+		E208E6401EC2F3D60021F55C /* SJVoiceDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E208E63C1EC2F3CC0021F55C /* SJVoiceDataHelper.m */; };
+		E208E6431EC2FACA0021F55C /* SJVoiceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E208E6421EC2FACA0021F55C /* SJVoiceHelper.m */; };
+		E208E6441EC2FACE0021F55C /* SJVoiceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E208E6421EC2FACA0021F55C /* SJVoiceHelper.m */; };
+		E208E6471EC319C30021F55C /* SJVoiceBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = E208E6461EC319C30021F55C /* SJVoiceBottomView.m */; };
+		E208E6481EC319C90021F55C /* SJVoiceBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = E208E6461EC319C30021F55C /* SJVoiceBottomView.m */; };
+		E208E64C1EC323A70021F55C /* SJVoiceTuBeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E208E64B1EC323A70021F55C /* SJVoiceTuBeView.m */; };
+		E208E64D1EC323AA0021F55C /* SJVoiceTuBeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E208E64B1EC323A70021F55C /* SJVoiceTuBeView.m */; };
 		E20A6E081E28C274000D080D /* QDRAboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E20A6E071E28C274000D080D /* QDRAboutUsViewController.m */; };
 		E20A6E0C1E28CC32000D080D /* QDRClearCacheView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20A6E0B1E28CC32000D080D /* QDRClearCacheView.m */; };
 		E20A6E101E28CC56000D080D /* QDRSwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E20A6E0F1E28CC56000D080D /* QDRSwipeView.m */; };
@@ -237,12 +253,6 @@
 		E21BB80F1EA9A9FE006CE7A8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB80E1EA9A9FE006CE7A8 /* QuartzCore.framework */; };
 		E21BB8111EA9AA02006CE7A8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8101EA9AA02006CE7A8 /* UIKit.framework */; };
 		E21BB8131EA9AA08006CE7A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8121EA9AA08006CE7A8 /* Foundation.framework */; };
-		E21BB8201EA9B4F4006CE7A8 /* DIATConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB81B1EA9B4F4006CE7A8 /* DIATConfig.m */; };
-		E21BB8211EA9B4F4006CE7A8 /* DIATConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB81B1EA9B4F4006CE7A8 /* DIATConfig.m */; };
-		E21BB8221EA9B4F4006CE7A8 /* DISRDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB81D1EA9B4F4006CE7A8 /* DISRDataHelper.m */; };
-		E21BB8231EA9B4F4006CE7A8 /* DISRDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB81D1EA9B4F4006CE7A8 /* DISRDataHelper.m */; };
-		E21BB8241EA9B4F4006CE7A8 /* DisrIdentifyObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB81F1EA9B4F4006CE7A8 /* DisrIdentifyObject.m */; };
-		E21BB8251EA9B4F4006CE7A8 /* DisrIdentifyObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB81F1EA9B4F4006CE7A8 /* DisrIdentifyObject.m */; };
 		E21BB8291EA9B518006CE7A8 /* DVoiceTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB8281EA9B518006CE7A8 /* DVoiceTouchView.m */; };
 		E21BB82A1EA9B518006CE7A8 /* DVoiceTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB8281EA9B518006CE7A8 /* DVoiceTouchView.m */; };
 		E21BB82C1EA9B856006CE7A8 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8061EA9A9D0006CE7A8 /* CoreLocation.framework */; };
@@ -255,11 +265,11 @@
 		E21BB8371EA9BB73006CE7A8 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8361EA9BB73006CE7A8 /* iflyMSC.framework */; };
 		E21BB8381EA9BB73006CE7A8 /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8361EA9BB73006CE7A8 /* iflyMSC.framework */; };
 		E21BB83A1EA9BC16006CE7A8 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8391EA9BC16006CE7A8 /* Contacts.framework */; };
-		E21BB83E1EA9EE63006CE7A8 /* SJVoiceTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB83D1EA9EE63006CE7A8 /* SJVoiceTopView.m */; };
-		E21BB83F1EA9EE63006CE7A8 /* SJVoiceTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = E21BB83D1EA9EE63006CE7A8 /* SJVoiceTopView.m */; };
 		E21BB8401EAA167C006CE7A8 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E21BB8391EA9BC16006CE7A8 /* Contacts.framework */; };
 		E223B1DD1E248F1D009B0FE4 /* SJKeywordsCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E223B1DC1E248F1D009B0FE4 /* SJKeywordsCollectionView.m */; };
 		E223B1E01E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = E223B1DF1E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.m */; };
+		E23DE4311EF4C77D00A48FA2 /* LaunchScreen2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23DE4301EF4C77D00A48FA2 /* LaunchScreen2.storyboard */; };
+		E23DE4321EF4C77D00A48FA2 /* LaunchScreen2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E23DE4301EF4C77D00A48FA2 /* LaunchScreen2.storyboard */; };
 		E251A4381E84B9D200A246C8 /* sjtool.js in Resources */ = {isa = PBXBuildFile; fileRef = E251A4371E84B9D200A246C8 /* sjtool.js */; };
 		E252957A1E49B3C900D29542 /* SJGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E25295791E49B3C900D29542 /* SJGuideViewController.m */; };
 		E252957E1E49D1C300D29542 /* SJManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E252957D1E49D1C300D29542 /* SJManager.m */; };
@@ -372,6 +382,8 @@
 		E2068D9A1E23814C0020803A /* SJSearchTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJSearchTextField.m; sourceTree = "<group>"; };
 		E2068D9C1E23CF280020803A /* SJSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJSearchTableViewCell.h; sourceTree = "<group>"; };
 		E2068D9D1E23CF280020803A /* SJSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJSearchTableViewCell.m; sourceTree = "<group>"; };
+		E20819A71EC563FC001242B7 /* SJCorrugatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJCorrugatedView.h; sourceTree = "<group>"; };
+		E20819A81EC563FC001242B7 /* SJCorrugatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJCorrugatedView.m; sourceTree = "<group>"; };
 		E2087AD31E1DEBD8005D025F /* SJHomePageLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SJHomePageLayout.h; path = addsou/ViewController/SJHomePageLayout.h; sourceTree = SOURCE_ROOT; };
 		E2087AD41E1DEBD8005D025F /* SJHomePageLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SJHomePageLayout.m; path = addsou/ViewController/SJHomePageLayout.m; sourceTree = SOURCE_ROOT; };
 		E2087AD71E1DEF4C005D025F /* SJHomePageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJHomePageCollectionViewCell.h; sourceTree = "<group>"; };
@@ -382,6 +394,20 @@
 		E2087ADE1E1E281C005D025F /* SJNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJNavigationBar.m; sourceTree = "<group>"; };
 		E2087AE01E1E3A36005D025F /* SJOptimizationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJOptimizationView.h; sourceTree = "<group>"; };
 		E2087AE11E1E3A36005D025F /* SJOptimizationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJOptimizationView.m; sourceTree = "<group>"; };
+		E208E6311EC2C0520021F55C /* SJVoiceTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVoiceTopView.h; sourceTree = "<group>"; };
+		E208E6321EC2C0520021F55C /* SJVoiceTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVoiceTopView.m; sourceTree = "<group>"; };
+		E208E6351EC2E5D70021F55C /* SJVoiceIdentifyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVoiceIdentifyHelper.h; sourceTree = "<group>"; };
+		E208E6361EC2E5D70021F55C /* SJVoiceIdentifyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVoiceIdentifyHelper.m; sourceTree = "<group>"; };
+		E208E6381EC2F1230021F55C /* SJVoiceConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVoiceConfig.h; sourceTree = "<group>"; };
+		E208E6391EC2F1230021F55C /* SJVoiceConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVoiceConfig.m; sourceTree = "<group>"; };
+		E208E63B1EC2F3CC0021F55C /* SJVoiceDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVoiceDataHelper.h; sourceTree = "<group>"; };
+		E208E63C1EC2F3CC0021F55C /* SJVoiceDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVoiceDataHelper.m; sourceTree = "<group>"; };
+		E208E6411EC2FACA0021F55C /* SJVoiceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVoiceHelper.h; sourceTree = "<group>"; };
+		E208E6421EC2FACA0021F55C /* SJVoiceHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVoiceHelper.m; sourceTree = "<group>"; };
+		E208E6451EC319C30021F55C /* SJVoiceBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVoiceBottomView.h; sourceTree = "<group>"; };
+		E208E6461EC319C30021F55C /* SJVoiceBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVoiceBottomView.m; sourceTree = "<group>"; };
+		E208E64A1EC323A70021F55C /* SJVoiceTuBeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVoiceTuBeView.h; sourceTree = "<group>"; };
+		E208E64B1EC323A70021F55C /* SJVoiceTuBeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVoiceTuBeView.m; sourceTree = "<group>"; };
 		E20A6E061E28C274000D080D /* QDRAboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDRAboutUsViewController.h; sourceTree = "<group>"; };
 		E20A6E071E28C274000D080D /* QDRAboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDRAboutUsViewController.m; sourceTree = "<group>"; };
 		E20A6E0A1E28CC32000D080D /* QDRClearCacheView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDRClearCacheView.h; sourceTree = "<group>"; };
@@ -518,23 +544,15 @@
 		E21BB80E1EA9A9FE006CE7A8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E21BB8101EA9AA02006CE7A8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E21BB8121EA9AA08006CE7A8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		E21BB8191EA9B4F4006CE7A8 /* Definition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Definition.h; sourceTree = "<group>"; };
-		E21BB81A1EA9B4F4006CE7A8 /* DIATConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIATConfig.h; sourceTree = "<group>"; };
-		E21BB81B1EA9B4F4006CE7A8 /* DIATConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIATConfig.m; sourceTree = "<group>"; };
-		E21BB81C1EA9B4F4006CE7A8 /* DISRDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DISRDataHelper.h; sourceTree = "<group>"; };
-		E21BB81D1EA9B4F4006CE7A8 /* DISRDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DISRDataHelper.m; sourceTree = "<group>"; };
-		E21BB81E1EA9B4F4006CE7A8 /* DisrIdentifyObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisrIdentifyObject.h; sourceTree = "<group>"; };
-		E21BB81F1EA9B4F4006CE7A8 /* DisrIdentifyObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisrIdentifyObject.m; sourceTree = "<group>"; };
 		E21BB8271EA9B518006CE7A8 /* DVoiceTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVoiceTouchView.h; sourceTree = "<group>"; };
 		E21BB8281EA9B518006CE7A8 /* DVoiceTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVoiceTouchView.m; sourceTree = "<group>"; };
 		E21BB8361EA9BB73006CE7A8 /* iflyMSC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = iflyMSC.framework; sourceTree = "<group>"; };
 		E21BB8391EA9BC16006CE7A8 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
-		E21BB83C1EA9EE63006CE7A8 /* SJVoiceTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJVoiceTopView.h; sourceTree = "<group>"; };
-		E21BB83D1EA9EE63006CE7A8 /* SJVoiceTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJVoiceTopView.m; sourceTree = "<group>"; };
 		E223B1DB1E248F1D009B0FE4 /* SJKeywordsCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJKeywordsCollectionView.h; sourceTree = "<group>"; };
 		E223B1DC1E248F1D009B0FE4 /* SJKeywordsCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJKeywordsCollectionView.m; sourceTree = "<group>"; };
 		E223B1DE1E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+LabelHeightAndWidth.h"; sourceTree = "<group>"; };
 		E223B1DF1E24BC60009B0FE4 /* UILabel+LabelHeightAndWidth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LabelHeightAndWidth.m"; sourceTree = "<group>"; };
+		E23DE4301EF4C77D00A48FA2 /* LaunchScreen2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen2.storyboard; sourceTree = "<group>"; };
 		E251A4371E84B9D200A246C8 /* sjtool.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = sjtool.js; sourceTree = "<group>"; };
 		E25295781E49B3C900D29542 /* SJGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJGuideViewController.h; sourceTree = "<group>"; };
 		E25295791E49B3C900D29542 /* SJGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJGuideViewController.m; sourceTree = "<group>"; };
@@ -600,11 +618,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E21BB80F1EA9A9FE006CE7A8 /* QuartzCore.framework in Frameworks */,
 				E21BB83A1EA9BC16006CE7A8 /* Contacts.framework in Frameworks */,
 				E21BB7D71EA87F37006CE7A8 /* CoreGraphics.framework in Frameworks */,
 				E21BB8131EA9AA08006CE7A8 /* Foundation.framework in Frameworks */,
 				E21BB8111EA9AA02006CE7A8 /* UIKit.framework in Frameworks */,
-				E21BB80F1EA9A9FE006CE7A8 /* QuartzCore.framework in Frameworks */,
 				E21BB7D81EA87F37006CE7A8 /* SystemConfiguration.framework in Frameworks */,
 				E21BB80D1EA9A9EA006CE7A8 /* AudioToolbox.framework in Frameworks */,
 				E21BB80B1EA9A9E4006CE7A8 /* AddressBook.framework in Frameworks */,
@@ -886,6 +904,15 @@
 			name = "搜索页面";
 			sourceTree = "<group>";
 		};
+		E20819A61EC563DE001242B7 /* 波纹视图 */ = {
+			isa = PBXGroup;
+			children = (
+				E20819A71EC563FC001242B7 /* SJCorrugatedView.h */,
+				E20819A81EC563FC001242B7 /* SJCorrugatedView.m */,
+			);
+			name = "波纹视图";
+			sourceTree = "<group>";
+		};
 		E2087AD61E1DEF36005D025F /* 主页 */ = {
 			isa = PBXGroup;
 			children = (
@@ -904,6 +931,36 @@
 				E2087AE11E1E3A36005D025F /* SJOptimizationView.m */,
 			);
 			name = "主页";
+			sourceTree = "<group>";
+		};
+		E208E6301EC2C01B0021F55C /* 话筒视图 */ = {
+			isa = PBXGroup;
+			children = (
+				E20819A61EC563DE001242B7 /* 波纹视图 */,
+				E208E6491EC3237F0021F55C /* 贝塞尔曲线话筒 */,
+				E208E6351EC2E5D70021F55C /* SJVoiceIdentifyHelper.h */,
+				E208E6361EC2E5D70021F55C /* SJVoiceIdentifyHelper.m */,
+				E208E6381EC2F1230021F55C /* SJVoiceConfig.h */,
+				E208E6391EC2F1230021F55C /* SJVoiceConfig.m */,
+				E208E63B1EC2F3CC0021F55C /* SJVoiceDataHelper.h */,
+				E208E63C1EC2F3CC0021F55C /* SJVoiceDataHelper.m */,
+				E208E6411EC2FACA0021F55C /* SJVoiceHelper.h */,
+				E208E6421EC2FACA0021F55C /* SJVoiceHelper.m */,
+			);
+			name = "话筒视图";
+			sourceTree = "<group>";
+		};
+		E208E6491EC3237F0021F55C /* 贝塞尔曲线话筒 */ = {
+			isa = PBXGroup;
+			children = (
+				E208E6311EC2C0520021F55C /* SJVoiceTopView.h */,
+				E208E6321EC2C0520021F55C /* SJVoiceTopView.m */,
+				E208E6451EC319C30021F55C /* SJVoiceBottomView.h */,
+				E208E6461EC319C30021F55C /* SJVoiceBottomView.m */,
+				E208E64A1EC323A70021F55C /* SJVoiceTuBeView.h */,
+				E208E64B1EC323A70021F55C /* SJVoiceTuBeView.m */,
+			);
+			name = "贝塞尔曲线话筒";
 			sourceTree = "<group>";
 		};
 		E20A6E051E28C266000D080D /* 关于我们 */ = {
@@ -1203,11 +1260,10 @@
 		E21BB7F41EA88977006CE7A8 /* 语音主页 */ = {
 			isa = PBXGroup;
 			children = (
+				E208E6301EC2C01B0021F55C /* 话筒视图 */,
 				E2CD5B331EADE03900D7B910 /* 历史记录view */,
 				E2CD5B2E1EAD9CFC00D7B910 /* 无关键词时的图 */,
-				E21BB83B1EA9EB71006CE7A8 /* 导航顶部两个按钮 */,
 				E21BB8261EA9B50B006CE7A8 /* 语音按钮 */,
-				E21BB8181EA9B4F4006CE7A8 /* DPublic */,
 				E21BB7F81EA8930D006CE7A8 /* SJVoiceHomeViewController.h */,
 				E21BB7F91EA8930D006CE7A8 /* SJVoiceHomeViewController.m */,
 				E21BB7FF1EA8B9DF006CE7A8 /* SJVoiceView.h */,
@@ -1224,20 +1280,6 @@
 			name = SDK;
 			sourceTree = "<group>";
 		};
-		E21BB8181EA9B4F4006CE7A8 /* DPublic */ = {
-			isa = PBXGroup;
-			children = (
-				E21BB8191EA9B4F4006CE7A8 /* Definition.h */,
-				E21BB81A1EA9B4F4006CE7A8 /* DIATConfig.h */,
-				E21BB81B1EA9B4F4006CE7A8 /* DIATConfig.m */,
-				E21BB81C1EA9B4F4006CE7A8 /* DISRDataHelper.h */,
-				E21BB81D1EA9B4F4006CE7A8 /* DISRDataHelper.m */,
-				E21BB81E1EA9B4F4006CE7A8 /* DisrIdentifyObject.h */,
-				E21BB81F1EA9B4F4006CE7A8 /* DisrIdentifyObject.m */,
-			);
-			path = DPublic;
-			sourceTree = "<group>";
-		};
 		E21BB8261EA9B50B006CE7A8 /* 语音按钮 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1245,15 +1287,6 @@
 				E21BB8281EA9B518006CE7A8 /* DVoiceTouchView.m */,
 			);
 			name = "语音按钮";
-			sourceTree = "<group>";
-		};
-		E21BB83B1EA9EB71006CE7A8 /* 导航顶部两个按钮 */ = {
-			isa = PBXGroup;
-			children = (
-				E21BB83C1EA9EE63006CE7A8 /* SJVoiceTopView.h */,
-				E21BB83D1EA9EE63006CE7A8 /* SJVoiceTopView.m */,
-			);
-			name = "导航顶部两个按钮";
 			sourceTree = "<group>";
 		};
 		E223B1D71E23F1FB009B0FE4 /* 关键词搜索引擎 */ = {
@@ -1358,6 +1391,7 @@
 				E2A40FE31E16067F002A733E /* AppDelegate.h */,
 				E2A40FE41E16067F002A733E /* AppDelegate.m */,
 				E2A40FEC1E16067F002A733E /* Assets.xcassets */,
+				E23DE4301EF4C77D00A48FA2 /* LaunchScreen2.storyboard */,
 				E2A40FEE1E16067F002A733E /* LaunchScreen.storyboard */,
 				E2A4101E1E1612C3002A733E /* PrefixHeader.pch */,
 				E2A40FE01E16067F002A733E /* Supporting Files */,
@@ -1750,6 +1784,7 @@
 				E21BB7E61EA87F37006CE7A8 /* removejs.js in Resources */,
 				E21BB7E71EA87F37006CE7A8 /* ironhide.cer in Resources */,
 				E21BB7E81EA87F37006CE7A8 /* addsou.cer in Resources */,
+				E23DE4321EF4C77D00A48FA2 /* LaunchScreen2.storyboard in Resources */,
 				E21BB7E91EA87F37006CE7A8 /* sjtool.js in Resources */,
 				E21BB7EA1EA87F37006CE7A8 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				E21BB7EB1EA87F37006CE7A8 /* iconfont.ttf in Resources */,
@@ -1766,6 +1801,7 @@
 				E2D2A3731E8A186700D0424C /* removejs.js in Resources */,
 				E20B50521E1CE24B002C006B /* ironhide.cer in Resources */,
 				E218487B1E1B7A61006FB866 /* addsou.cer in Resources */,
+				E23DE4311EF4C77D00A48FA2 /* LaunchScreen2.storyboard in Resources */,
 				E251A4381E84B9D200A246C8 /* sjtool.js in Resources */,
 				E21137FC1E27673400AF78D0 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				E2068D6D1E2327660020803A /* iconfont.ttf in Resources */,
@@ -1892,14 +1928,17 @@
 				E21BB7731EA87F37006CE7A8 /* SJGuidePageViewController.m in Sources */,
 				E21BB7741EA87F37006CE7A8 /* SJUserTableViewCell.m in Sources */,
 				E21BB7751EA87F37006CE7A8 /* FMDBManager.m in Sources */,
+				E208E6341EC2C0570021F55C /* SJVoiceTopView.m in Sources */,
 				E21BB7761EA87F37006CE7A8 /* SJHomePageCollectionViewCell.m in Sources */,
 				E21BB7771EA87F37006CE7A8 /* SJHistoryViewModel.m in Sources */,
+				E208E6481EC319C90021F55C /* SJVoiceBottomView.m in Sources */,
 				E21BB7781EA87F37006CE7A8 /* JiKeScrollImageView.m in Sources */,
 				E21BB7791EA87F37006CE7A8 /* QDRBookMarkView.m in Sources */,
 				E21BB77A1EA87F37006CE7A8 /* SJUserViewController.m in Sources */,
 				E21BB77B1EA87F37006CE7A8 /* SJWebSettingViewController.m in Sources */,
 				E21BB77C1EA87F37006CE7A8 /* NSObject+Common.m in Sources */,
 				E2CD5B3A1EADE34100D7B910 /* SJVoiceHistroyTable.m in Sources */,
+				E208E63E1EC2F3D10021F55C /* SJVoiceIdentifyHelper.m in Sources */,
 				E21BB77D1EA87F37006CE7A8 /* SJPhoneViewController.m in Sources */,
 				E21BB77E1EA87F37006CE7A8 /* BRPlaceholderTextView.m in Sources */,
 				E21BB77F1EA87F37006CE7A8 /* SJUserTableHeaderFooterView.m in Sources */,
@@ -1913,30 +1952,29 @@
 				E21BB7871EA87F37006CE7A8 /* SJAdvertisingTableViewCell.m in Sources */,
 				E21BB7881EA87F37006CE7A8 /* QDRSwipeView.m in Sources */,
 				E21BB7891EA87F37006CE7A8 /* UIView+SetRect.m in Sources */,
+				E208E64D1EC323AA0021F55C /* SJVoiceTuBeView.m in Sources */,
 				E21BB78A1EA87F37006CE7A8 /* SJSearchViewController.m in Sources */,
 				E21BB78B1EA87F37006CE7A8 /* SJDateView.m in Sources */,
 				E21BB78C1EA87F37006CE7A8 /* UIButton+runtime.m in Sources */,
 				E21BB78D1EA87F37006CE7A8 /* SJBaseViewController.m in Sources */,
 				E21BB78E1EA87F37006CE7A8 /* SJShareView.m in Sources */,
-				E21BB8231EA9B4F4006CE7A8 /* DISRDataHelper.m in Sources */,
-				E21BB83F1EA9EE63006CE7A8 /* SJVoiceTopView.m in Sources */,
 				E21BB7FB1EA8930D006CE7A8 /* SJVoiceHomeViewController.m in Sources */,
 				E21BB78F1EA87F37006CE7A8 /* UIView+Frame.m in Sources */,
 				E21BB7901EA87F37006CE7A8 /* JKCountDownButton.m in Sources */,
 				E21BB7911EA87F37006CE7A8 /* CYLineLayout.m in Sources */,
 				E21BB7921EA87F37006CE7A8 /* SJBookMarksLayout.m in Sources */,
+				E208E63F1EC2F3D40021F55C /* SJVoiceConfig.m in Sources */,
 				E21BB7931EA87F37006CE7A8 /* SJHomePageViewController.m in Sources */,
 				E21BB7941EA87F37006CE7A8 /* QDRAboutUsViewController.m in Sources */,
 				E21BB7951EA87F37006CE7A8 /* SJSearchCollectionView.m in Sources */,
 				E21BB7961EA87F37006CE7A8 /* QDRUserFeedbackTableView.m in Sources */,
 				E21BB7971EA87F37006CE7A8 /* SJNoBookView.m in Sources */,
 				E21BB7981EA87F37006CE7A8 /* SJBookMarksHomeView.m in Sources */,
-				E21BB8251EA9B4F4006CE7A8 /* DisrIdentifyObject.m in Sources */,
 				E21BB7991EA87F37006CE7A8 /* QDRLoginViewController.m in Sources */,
 				E21BB79A1EA87F37006CE7A8 /* SJNavcView.m in Sources */,
 				E21BB79B1EA87F37006CE7A8 /* SJNetManager.m in Sources */,
+				E20819AA1EC56400001242B7 /* SJCorrugatedView.m in Sources */,
 				E21BB79C1EA87F37006CE7A8 /* SJHistroyViewController.m in Sources */,
-				E21BB8211EA9B4F4006CE7A8 /* DIATConfig.m in Sources */,
 				E21BB79D1EA87F37006CE7A8 /* SJAgreementViewController.m in Sources */,
 				E21BB79E1EA87F37006CE7A8 /* XWDragCellCollectionView.m in Sources */,
 				E21BB79F1EA87F37006CE7A8 /* SubCollectionViewCell.m in Sources */,
@@ -1948,6 +1986,7 @@
 				E21BB7A51EA87F37006CE7A8 /* JiKeScrollLabel.m in Sources */,
 				E2CD5B3B1EADE34400D7B910 /* SJVoiceHistroyTableViewCell.m in Sources */,
 				E21BB7A61EA87F37006CE7A8 /* QDRLoginView.m in Sources */,
+				E208E6441EC2FACE0021F55C /* SJVoiceHelper.m in Sources */,
 				E21BB7A71EA87F37006CE7A8 /* BaseViewModel.m in Sources */,
 				E21BB7A81EA87F37006CE7A8 /* SJGuideViewController.m in Sources */,
 				E21BB7A91EA87F37006CE7A8 /* SJOptimizationView.m in Sources */,
@@ -1974,6 +2013,7 @@
 				E2CD5B321EADC49200D7B910 /* SJVoiceNoKeyView.m in Sources */,
 				E21BB7BD1EA87F37006CE7A8 /* main.m in Sources */,
 				E21BB7BE1EA87F37006CE7A8 /* NSString+Common.m in Sources */,
+				E208E6401EC2F3D60021F55C /* SJVoiceDataHelper.m in Sources */,
 				E21BB7BF1EA87F37006CE7A8 /* FMDBURLManager.m in Sources */,
 				E21BB7C01EA87F37006CE7A8 /* SJProgressHUD.m in Sources */,
 				E21BB7C11EA87F37006CE7A8 /* SJAdvertisingViewController.m in Sources */,
@@ -2007,14 +2047,17 @@
 				E2068D561E20D47F0020803A /* SJGuidePageViewController.m in Sources */,
 				E21137B61E27123E00AF78D0 /* SJUserTableViewCell.m in Sources */,
 				E2068D7A1E2355990020803A /* FMDBManager.m in Sources */,
+				E208E6331EC2C0520021F55C /* SJVoiceTopView.m in Sources */,
 				E2087AD91E1DEF4C005D025F /* SJHomePageCollectionViewCell.m in Sources */,
 				E21848841E1B9433006FB866 /* SJHistoryViewModel.m in Sources */,
+				E208E6471EC319C30021F55C /* SJVoiceBottomView.m in Sources */,
 				E20DCCEA1E1E4F27003AB27B /* JiKeScrollImageView.m in Sources */,
 				E2068D841E2355C10020803A /* QDRBookMarkView.m in Sources */,
 				E21137B21E27120E00AF78D0 /* SJUserViewController.m in Sources */,
 				E27AA37D1E823DA60001C763 /* SJWebSettingViewController.m in Sources */,
 				E2A410261E1647CB002A733E /* NSObject+Common.m in Sources */,
 				E2CD5B361EADE05D00D7B910 /* SJVoiceHistroyTable.m in Sources */,
+				E208E6371EC2E5D70021F55C /* SJVoiceIdentifyHelper.m in Sources */,
 				E21138141E27827200AF78D0 /* SJPhoneViewController.m in Sources */,
 				E21137D71E27602100AF78D0 /* BRPlaceholderTextView.m in Sources */,
 				E21137B91E27126900AF78D0 /* SJUserTableHeaderFooterView.m in Sources */,
@@ -2028,30 +2071,29 @@
 				E2D2A37D1E8A6FC600D0424C /* SJAdvertisingTableViewCell.m in Sources */,
 				E20A6E101E28CC56000D080D /* QDRSwipeView.m in Sources */,
 				E2068D4A1E1F8D1F0020803A /* UIView+SetRect.m in Sources */,
+				E208E64C1EC323A70021F55C /* SJVoiceTuBeView.m in Sources */,
 				E2068D941E237EC80020803A /* SJSearchViewController.m in Sources */,
 				E2087ADC1E1E1BDB005D025F /* SJDateView.m in Sources */,
 				E21BB7691EA5CAD1006CE7A8 /* UIButton+runtime.m in Sources */,
 				E20B504C1E1CD0FF002C006B /* SJBaseViewController.m in Sources */,
 				E2068D881E2359560020803A /* SJShareView.m in Sources */,
-				E21BB8221EA9B4F4006CE7A8 /* DISRDataHelper.m in Sources */,
-				E21BB83E1EA9EE63006CE7A8 /* SJVoiceTopView.m in Sources */,
 				E21BB7FA1EA8930D006CE7A8 /* SJVoiceHomeViewController.m in Sources */,
 				E20DCCDF1E1E4EE6003AB27B /* UIView+Frame.m in Sources */,
 				E21137DB1E27602D00AF78D0 /* JKCountDownButton.m in Sources */,
 				E2068D821E2355C10020803A /* CYLineLayout.m in Sources */,
 				E20D7B9F1E515B1200020CF4 /* SJBookMarksLayout.m in Sources */,
+				E208E63A1EC2F1230021F55C /* SJVoiceConfig.m in Sources */,
 				E20B50561E1CEF8E002C006B /* SJHomePageViewController.m in Sources */,
 				E20A6E081E28C274000D080D /* QDRAboutUsViewController.m in Sources */,
 				E2D203271E5AE60700E1FC19 /* SJSearchCollectionView.m in Sources */,
 				E21137D31E275FD100AF78D0 /* QDRUserFeedbackTableView.m in Sources */,
 				E21227161E2CB8BE00E89A7C /* SJNoBookView.m in Sources */,
 				E25295881E4C53BB00D29542 /* SJBookMarksHomeView.m in Sources */,
-				E21BB8241EA9B4F4006CE7A8 /* DisrIdentifyObject.m in Sources */,
 				E21137DF1E2765EB00AF78D0 /* QDRLoginViewController.m in Sources */,
 				E21137C11E27537300AF78D0 /* SJNavcView.m in Sources */,
 				E2A410221E1645D8002A733E /* SJNetManager.m in Sources */,
+				E20819A91EC563FC001242B7 /* SJCorrugatedView.m in Sources */,
 				E21137BD1E2752AA00AF78D0 /* SJHistroyViewController.m in Sources */,
-				E21BB8201EA9B4F4006CE7A8 /* DIATConfig.m in Sources */,
 				E213B8181E681491007E37F3 /* SJAgreementViewController.m in Sources */,
 				E2068D4B1E1F8D1F0020803A /* XWDragCellCollectionView.m in Sources */,
 				E2068D491E1F8D1F0020803A /* SubCollectionViewCell.m in Sources */,
@@ -2063,6 +2105,7 @@
 				E20DCCEB1E1E4F27003AB27B /* JiKeScrollLabel.m in Sources */,
 				E2CD5B391EADE33C00D7B910 /* SJVoiceHistroyTableViewCell.m in Sources */,
 				E21137E21E27663000AF78D0 /* QDRLoginView.m in Sources */,
+				E208E6431EC2FACA0021F55C /* SJVoiceHelper.m in Sources */,
 				E21848811E1B93D2006FB866 /* BaseViewModel.m in Sources */,
 				E252957A1E49B3C900D29542 /* SJGuideViewController.m in Sources */,
 				E2087AE21E1E3A36005D025F /* SJOptimizationView.m in Sources */,
@@ -2089,6 +2132,7 @@
 				E2CD5B311EAD9D2600D7B910 /* SJVoiceNoKeyView.m in Sources */,
 				E2A40FE21E16067F002A733E /* main.m in Sources */,
 				E2A410291E1647F2002A733E /* NSString+Common.m in Sources */,
+				E208E63D1EC2F3CC0021F55C /* SJVoiceDataHelper.m in Sources */,
 				E2D2A3761E8A61B300D0424C /* FMDBURLManager.m in Sources */,
 				E2A410301E16568C002A733E /* SJProgressHUD.m in Sources */,
 				E2D2A37A1E8A6DAC00D0424C /* SJAdvertisingViewController.m in Sources */,
@@ -2185,7 +2229,7 @@
 					"$(PROJECT_DIR)/addsou/ThirdPartySDK/libWeiboSDK",
 					"$(SRCROOT)/iflyMSC.framework",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.TheGreatCivilizatio.addsou;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dawenming.yusou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2220,7 +2264,7 @@
 					"$(PROJECT_DIR)/addsou/ThirdPartySDK/libWeiboSDK",
 					"$(SRCROOT)/iflyMSC.framework",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.TheGreatCivilizatio.addsou;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dawenming.yusou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

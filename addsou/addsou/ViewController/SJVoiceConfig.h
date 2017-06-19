@@ -1,29 +1,27 @@
 //
-//  DIATConfig.h
-//  DVoiceSend
+//  SJVoiceConfig.h
+//  addsou
 //
-//  Created by DUCHENGWEN on 2016/10/26.
-//  Copyright © 2016年 DCW. All rights reserved.
+//  Created by 杨兆欣 on 2017/5/10.
+//  Copyright © 2017年 杨兆欣. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import "iflyMSC/IFlyMSC.h"
-#import "Definition.h"
-#import "DIATConfig.h"
-#import "DISRDataHelper.h"
-
-@interface DIATConfig : NSObject
-
-+(DIATConfig *)sharedInstance;
 
 
-+(NSString *)mandarin;
-+(NSString *)cantonese;
-+(NSString *)henanese;
-+(NSString *)chinese;
-+(NSString *)english;
-+(NSString *)lowSampleRate;
-+(NSString *)highSampleRate;
+@interface SJVoiceConfig : NSObject
+
++(SJVoiceConfig *)sharedInstance;
+
+
++(NSString *)mandarin;  // 普通话
++(NSString *)cantonese; // 广东话
++(NSString *)henanese;  // 河南话
++(NSString *)chinese;   // 中文
++(NSString *)english;   // 英文
++(NSString *)lowSampleRate; // 低采样率
++(NSString *)highSampleRate;    // 高采样率
 +(NSString *)isDot;
 +(NSString *)noDot;
 
@@ -51,7 +49,6 @@
 @property (nonatomic, assign) BOOL haveView;
 @property (nonatomic, strong) NSArray *accentIdentifer;
 @property (nonatomic, strong) NSArray *accentNickName;
-
 
 
 @end

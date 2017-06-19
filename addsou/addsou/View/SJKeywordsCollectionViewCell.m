@@ -73,6 +73,9 @@
         [self imageView];
         [self titleLabel];
         [self stateBtn];
+        if (VERSIONS == 2) {
+            self.stateBtn.hidden = YES;
+        }
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleShake:) name:KeywordsEditStateChanged object:nil];
     }
     return self;

@@ -38,6 +38,8 @@
 #define QIHUSEARCH                      @"3"            // 360搜索
 
 
+#define PQ_PI 3.14159265359
+#define PQ_RADIANS(number)  ((PQ_PI * number)/ 180)
 
 // 极光推送ID
 #define APSJPUSH                        @"fe3475d65dcfd02ee6696a9b"

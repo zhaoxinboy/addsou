@@ -7,10 +7,24 @@
 //
 
 #import "DVoiceTouchView.h"
-
+#import "SJVoiceTuBeView.h"
 
 
 @interface DVoiceTouchView ()
+
+@property (nonatomic, strong) SJVoiceTuBeView *voiceView;      // 放话筒的视图
+/**
+ *  线宽
+ */
+@property (nonatomic, assign) CGFloat lineWidth;
+/**
+ *  线的颜色
+ */
+@property (nonatomic, strong) UIColor * lineColor;
+/**
+ *  话筒颜色
+ */
+@property (nonatomic, strong) UIColor * colidColor;
 
 @property (nonatomic, assign) BOOL     isBegan;
 @property (nonatomic, strong) NSTimer  *timer;
@@ -25,13 +39,16 @@
     if (self) {
         self.isBegan = NO;
         self.areaY=-40;
-        self.clickTime=0.5;
+        self.clickTime = 0.5;
+        
+        
         UIButton *voiceButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [self addSubview:voiceButton];
         voiceButton.titleLabel.font = [UIFont systemFontOfSize:14];
         voiceButton.userInteractionEnabled = NO;
         self.voiceButton = voiceButton;
-        self.voiceButton.layer.masksToBounds = YES;
+        
+        self.voiceButton.layer.masksToBounds = NO;
         self.voiceButton.layer.cornerRadius = self.width / 2;
         [voiceButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self);
@@ -51,7 +68,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event{
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:self.clickTime target:self selector:@selector(timeAction) userInfo:nil repeats:NO];
-    NSLog(@"++++++++++++++++++开始");
+    DLog(@"++++++++++++++++++开始");
     
     self.timer = timer;
     
@@ -74,7 +91,7 @@
             
             NSLog(@"上滑");
         }
-        NSLog(@"%@",NSStringFromCGPoint([anchTouch locationInView:self]));
+        DLog(@"%@",NSStringFromCGPoint([anchTouch locationInView:self]));
     }
 }
 
@@ -88,26 +105,36 @@
     self.voiceButton.selected = NO;
     [self.timer invalidate];
     self.timer = nil;
-    NSLog(@"+++++++++++++++++取消");
+    DLog(@"+++++++++++++++++取消");
 }
 
 -(void)timeAction{
     if (self.touchBegan) {
         self.touchBegan();
     }
-    NSLog(@"++++++++++++执行");
+    DLog(@"++++++++++++执行");
     self.voiceButton.selected = YES;
     [self.timer invalidate];
-    NSLog(@"++++++++++++执行");
+    DLog(@"++++++++++++执行");
     
 }
 
--(UIButton *)buttonWithImagename:(NSString *)imageName  forControlEvents:(UIControlEvents)controlEvents  title:(NSString *)title{
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self addSubview:button];
-    [button setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-    [button setTitle:title forState:UIControlStateNormal];
-    return button;
+
+- (void)pgq_reateVoiceTopViewWithVoiceColor:(UIColor *)fColor volumeColor:(UIColor *)vColor isColid:(BOOL)isColid lineWidth:(CGFloat)lineWidth {
+    //设置线宽
+    self.lineWidth = lineWidth;
+    //设置颜色
+    self.lineColor = fColor;
+    self.colidColor = vColor;
+    
+    self.voiceView = [[SJVoiceTuBeView alloc] initWithframe:CGRectMake(self.width / 4, self.height / 4, self.width / 2, self.height / 2) VoiceColor:self.lineColor volumeColor:self.colidColor isColid:isColid lineWidth:self.lineWidth];
+    [self.voiceButton addSubview:self.voiceView];
 }
+
+
+- (void)updateVoiceViewWithVolume:(float)volume{
+    [self.voiceView.topView updateVoiceViewWithVolume:volume];
+}
+
 
 @end

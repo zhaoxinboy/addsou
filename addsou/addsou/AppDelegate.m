@@ -379,25 +379,22 @@
             QDRAboutUsViewController *aboutVC = [[QDRAboutUsViewController alloc] init];
             [vc pushViewController:aboutVC animated:NO];
         }
-    }else if (VERSIONS == 2){
+
+    }else if (VERSIONS == 2) {
         if (userVC.intBtn == 1) {//注册登录
             QDRLoginViewController *loginVC = [[QDRLoginViewController alloc] init];
             [vc pushViewController:loginVC animated:NO];
-        }else if (userVC.indexPath.row == 0){ // 搜索引擎
+        }else if (userVC.indexPath.row == 0) {//浏览记录
+            SJHistroyViewController *histroyVC = [[SJHistroyViewController alloc] init];
+            [vc pushViewController:histroyVC animated:NO];
+        }else if (userVC.indexPath.row == 1){ // 搜索引擎
             SJChooseSearchViewController *chooseVC = [[SJChooseSearchViewController alloc] init];
             [vc pushViewController:chooseVC animated:NO];
-        }else if (userVC.indexPath.row == 1){  // 广告相关
+        }else if (userVC.indexPath.row == 2){  // 广告相关
             SJAdvertisingViewController *adVC = [[SJAdvertisingViewController alloc] init];
             [vc pushViewController:adVC animated:NO];
-        }else if (userVC.indexPath.row == 2){  // 用户反馈
-            QDRUserFeedbackViewController *feedVC = [[QDRUserFeedbackViewController alloc] init];
-            [vc pushViewController:feedVC animated:NO];
-        }else if (userVC.indexPath.row == 4){
-            QDRAboutUsViewController *aboutVC = [[QDRAboutUsViewController alloc] init];
-            [vc pushViewController:aboutVC animated:NO];
         }
     }
-    
     DLog(@"willHideMenuViewController: %@", NSStringFromClass([menuViewController class]));
 }
 

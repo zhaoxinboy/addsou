@@ -137,15 +137,15 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger i;
     if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SOUJIA]) {
-        i = (versions == 1) ? 7 : 6;
+        i = VERSIONS == 2 ? 4 : 7;
     }else{
-        i = (versions == 1) ? 6 : 5;
+        i = VERSIONS == 2 ? 3 : 6;
     }
     if (![UserDefaultObjectForKey(LOCAL_READ_ISLOGIN) isEqualToString:NOLOGIN]) {
         if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SOUJIA]) {
-            i = (versions == 1) ? 8 : 7;
+            i = 8;
         }else{
-            i = (versions == 1) ? 7 : 6;
+            i = 7;
         }
     }
     return i;
@@ -160,7 +160,7 @@
     // 被选中不变色
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    if (versions == 1) {
+    if (VERSIONS == 1) {
         if (indexPath.row == 0) {
             cell.leftLabel.text = @"浏览记录";
             cell.rightLabel.text = @"";
@@ -198,8 +198,12 @@
             cell.leftLabel.text = @"退出登录";
             cell.rightLabel.text = @"";
         }
-    }else if (versions == 2){
-        if (indexPath.row == 0){
+
+    }else if (VERSIONS == 2) {
+        if (indexPath.row == 0) {
+            cell.leftLabel.text = @"浏览记录";
+            cell.rightLabel.text = @"";
+        }else if (indexPath.row == 1){
             cell.leftLabel.text = @"搜索引擎";
             if (!UserDefaultObjectForKey(LOCAL_READ_SEARCH)) {
                 UserDefaultSetObjectForKey(BAIDUSEARCH, LOCAL_READ_SEARCH)
@@ -213,37 +217,21 @@
             }else if([UserDefaultObjectForKey(LOCAL_READ_SEARCH) isEqualToString:QIHUSEARCH]){
                 cell.rightLabel.text = @"360";
             }
-        }else if (indexPath.row == 1){
-            cell.leftLabel.text = @"广告过滤";
         }else if (indexPath.row == 2){
-            cell.leftLabel.text = @"用户反馈";
+            cell.leftLabel.text = @"广告过滤";
         }else if (indexPath.row == 3){
-            cell.leftLabel.text = @"赞我一下";
-        }else if (indexPath.row == 4){
-            if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SOUJIA]) {
-                cell.leftLabel.text = @"关于搜加";
-            }else{
-                cell.leftLabel.text = @"关于阅览室";
-            }
-            cell.rightLabel.text = [NSString stringWithFormat:@"v%@", APPVERSION];
-        }else if (indexPath.row == 5){
             cell.leftLabel.text = @"清除缓存";
             cell.rightLabel.text = [NSString stringWithFormat:@"%0.2f M", [self sdFolderSize]];
-        }else if (indexPath.row == 6){
-            cell.leftLabel.text = @"退出登录";
-            cell.rightLabel.text = @"";
         }
 
     }
-    
-    
     return cell;
 }
 
 // 点击方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     self.indexPath = indexPath;
-    if (versions == 1) {
+    if (VERSIONS == 1) {
         if (indexPath.row == 6) {
             if ([self sdFolderSize] == 0) {
                 [self showSuccessMsg:@"已经清理的很干净了"];
@@ -261,8 +249,8 @@
         }else{
             [self.sideMenuViewController hideMenuViewController];
         }
-    }else if(versions == 2){
-        if (indexPath.row == 5) {
+    }else if (VERSIONS == 2) {
+        if (indexPath.row == 3) {
             if ([self sdFolderSize] == 0) {
                 [self showSuccessMsg:@"已经清理的很干净了"];
             }else{
@@ -270,16 +258,11 @@
                 [self clearView];
                 [_clearView openSelf];
             }
-        }else if(indexPath.row == 6){
-            [self goOutView];
-            [_goOutView openSelf];
-        }else if (indexPath.row == 3){
-            // 跳转到APPSTORE
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1195055909?mt=8"]];
         }else{
             [self.sideMenuViewController hideMenuViewController];
         }
     }
+    
     self.indexPath = [NSIndexPath indexPathForRow:100 inSection:100];
 }
 

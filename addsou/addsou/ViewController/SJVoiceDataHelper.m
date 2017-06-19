@@ -1,14 +1,14 @@
 //
-//  DISRDataHelper.m
-//  DVoiceSend
+//  SJVoiceDataHelper.m
+//  addsou
 //
-//  Created by DUCHENGWEN on 2016/10/26.
-//  Copyright © 2016年 DCW. All rights reserved.
+//  Created by 杨兆欣 on 2017/5/10.
+//  Copyright © 2017年 杨兆欣. All rights reserved.
 //
 
-#import "DISRDataHelper.h"
+#import "SJVoiceDataHelper.h"
 
-@implementation DISRDataHelper
+@implementation SJVoiceDataHelper
 
 /**
  解析命令词返回的结果
@@ -131,7 +131,6 @@
     }
     return tempStr;
 }
-
 
 
 @end

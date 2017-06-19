@@ -1,75 +1,137 @@
 //
-//  SJVoiceTopView.m
+//  SJVoiceTubeView.m
 //  addsou
 //
-//  Created by 杨兆欣 on 2017/4/21.
+//  Created by 杨兆欣 on 2017/5/10.
 //  Copyright © 2017年 杨兆欣. All rights reserved.
 //
 
 #import "SJVoiceTopView.h"
 
+@interface SJVoiceTopView ()
+
+/**
+ *  话筒线的view
+ */
+@property (nonatomic,strong) UIView * outsideLineView;
+/**
+ *  话筒线的layer
+ */
+@property (nonatomic,strong,nullable) CAShapeLayer * outsideLineLayer;
+/**
+ *  话筒view
+ */
+@property (nonatomic,strong) UIView * colidView;
+/**
+ *  话筒layer
+ */
+@property (nonatomic,strong,nullable) CAShapeLayer * colidLayer;
+/**
+ *  圆弧view
+ */
+@property (nonatomic,strong) UIView * arcView;
+/**
+ *  圆弧layer
+ */
+@property (nonatomic,strong,nullable) CAShapeLayer * arcLayer;
+/**
+ *  线宽
+ */
+@property (nonatomic,assign) CGFloat lineWidth;
+/**
+ *  线的颜色
+ */
+@property (nonatomic,strong) UIColor * lineColor;
+/**
+ *  话筒颜色
+ */
+@property (nonatomic,strong) UIColor * colidColor;
+
+
+@end
+
 @implementation SJVoiceTopView
 
-- (UIButton *)btn1{
-    if (!_btn1) {
-        _btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
-        _btn1.titleLabel.font = [UIFont systemFontOfSize:14];
-        [_btn1 setTitle:@"搜加" forState:UIControlStateNormal];
-        [_btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [_btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
-        _btn1.tag = 100001;
-        [_btn1 addTarget:self action:@selector(changeTopBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:_btn1];
-        [_btn1 mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.mas_equalTo(0);
-            make.centerY.mas_equalTo(0);
-            make.size.mas_equalTo(CGSizeMake(50, 30));
-        }];
-    }
-    return _btn1;
-}
-
-- (UIButton *)btn2{
-    if (!_btn2) {
-        _btn2 = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_btn2 setTitle:@"关注" forState:UIControlStateNormal];
-        _btn2.alpha = 0.5;
-        _btn2.titleLabel.font = [UIFont systemFontOfSize:14];
-        [_btn2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [_btn2 setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
-        _btn2.tag = 100002;
-        [_btn2 addTarget:self action:@selector(changeTopBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:_btn2];
-        [_btn2 mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.mas_equalTo(0);
-            make.centerY.mas_equalTo(0);
-            make.size.mas_equalTo(CGSizeMake(50, 30));
-        }];
-    }
-    return _btn2;
-}
-
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame lineWidth:(CGFloat)lineWidth lineColor:(UIColor*)lColor colidColor:(UIColor*)cColor
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self btn1];
-        [self btn2];
+        
+        self.lineColor = lColor;
+        self.colidColor = cColor;
+        self.lineWidth = lineWidth;
+        [self setUp];
+        
     }
     return self;
 }
 
-- (void)changeTopBtn:(UIButton *)sender{
-    if ((sender.tag == 100001) && (sender.alpha == 0.5)) {
-        sender.alpha = 1;
-        _btn2.alpha = 0.5;
-    }else if ((sender.tag == 100002) && (sender.alpha == 0.5)){
-        sender.alpha = 1;
-        _btn1.alpha = 0.5;
+- (void)setUp{
+    
+    //话筒内部
+    self.colidView = [[UIView alloc] initWithFrame:CGRectMake(self.width * 0.38, self.height * 0.15, self.width * 0.24, self.height * 0.7)];
+    self.colidView.layer.cornerRadius = self.colidView.width * 0.4;
+    self.colidView.clipsToBounds = YES;
+    self.colidLayer = [self drawOutSideLine:CGRectMake(0, 0, self.colidView.width, 0) color:self.colidColor isFill:YES];
+    [self.colidView.layer addSublayer:self.colidLayer];
+    [self addSubview:self.colidView];
+    
+    //话筒边框
+    self.outsideLineView = [[UIView alloc] initWithFrame:CGRectMake(self.width * 0.38, self.height * 0.15, self.width * 0.24, self.height * 0.7)];
+    self.outsideLineLayer = [self drawOutSideLine:CGRectMake(0, 0, self.outsideLineView.width, self.outsideLineView.height) color:self.lineColor isFill:NO];
+    [self.outsideLineView.layer addSublayer:self.outsideLineLayer];
+    [self addSubview:self.outsideLineView];
+    
+    
+    //    NSLog(@"---%f",self.width);
+    
+    //话筒弧
+    self.arcView = [[UIView alloc] initWithFrame:CGRectMake(0, self.height * 0.09, self.width, self.height * 0.6)];
+    self.arcLayer = [self drawARCLine:self.arcView.center frame:self.arcView.frame color:self.lineColor];
+    [self.arcView.layer addSublayer:self.arcLayer];
+    [self addSubview:self.arcView];
+}
+
+- (CAShapeLayer*)drawARCLine:(CGPoint)point frame:(CGRect)frame color:(UIColor*)color{
+    CAShapeLayer * Layer = [CAShapeLayer new];
+    Layer.fillColor = nil; //这个是填充颜色
+    Layer.strokeColor = color.CGColor; //这个边框颜色
+    Layer.frame = frame; //这个是大小
+    Layer.lineWidth = self.lineWidth; //这个是线宽
+    Layer.lineCap = kCALineCapRound; //这个我也不知道
+    //这个就是画图
+    Layer.path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(point.x, point.y) radius:frame.size.width*0.3 startAngle:PQ_RADIANS(-5) endAngle:PQ_RADIANS(185) clockwise:YES].CGPath;
+    return Layer;
+}
+
+- (CAShapeLayer*)drawOutSideLine:(CGRect)frame color:(UIColor*)color isFill:(BOOL)fill {
+    CAShapeLayer * Layer = [CAShapeLayer new];
+    if (fill) {
+        Layer.fillColor = color.CGColor;
+        Layer.strokeColor = nil;
     }
-    if (self.topDelegate && [self.topDelegate respondsToSelector:@selector(changeVoiceTop:)]) {
-        [self.topDelegate changeVoiceTop:sender];
+    else{
+        Layer.fillColor = nil; //这个是填充颜色
+        Layer.strokeColor = color.CGColor; //这个边框颜色
     }
+    
+    Layer.frame = frame; //这个是大小
+    Layer.lineWidth = self.lineWidth; //这个是线宽
+    Layer.lineCap = kCALineCapRound; //这个我也不知道
+    //这个就是画图
+    Layer.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, frame.size.width, frame.size.height)  cornerRadius:frame.size.width * 0.4].CGPath;
+    return Layer;
+}
+
+
+- (void)updateVoiceViewWithVolume:(float)volume{
+    CGFloat height = self.colidView.height;
+    CGFloat newHeight = height * volume;
+    CGFloat width = self.colidView.width;
+    
+    //    NSLog(@"%f",newHeight);
+    self.colidLayer.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, height - newHeight , width , newHeight) cornerRadius:0].CGPath;
+    
 }
 
 
