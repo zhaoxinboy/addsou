@@ -20,4 +20,6 @@
 
 @property (nonatomic, strong) UILabel *nameLabel;   /* 名称属性  */
 
+@property (nonatomic, strong) UIButton *qiandaoBtn;      // 签到
+
 @end

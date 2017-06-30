@@ -8,7 +8,70 @@
 
 #import "SJUserTableHeaderFooterView.h"
 
+@interface SJUserTableHeaderFooterView ()
+
+@property (nonatomic, strong) NSString *isQianDao;      // 当天是否签到
+
+@end
+
 @implementation SJUserTableHeaderFooterView
+
+- (UIButton *)qiandaoBtn {
+    if (!_qiandaoBtn) {
+        _qiandaoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _qiandaoBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+        [_qiandaoBtn setTitle:@"签到" forState:UIControlStateNormal];
+        _qiandaoBtn.backgroundColor = kRGBColor(43, 43, 43);
+        _qiandaoBtn.layer.cornerRadius = 12;
+        _qiandaoBtn.layer.masksToBounds = YES;
+        [_qiandaoBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        if (VERSIONS == 1) {
+            [self addSubview:_qiandaoBtn];
+        }
+        [_qiandaoBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(74, 24));
+            make.top.mas_equalTo(40);
+            make.right.mas_equalTo(-70);
+        }];
+        
+    }
+    return _qiandaoBtn;
+}
+
+- (void)qiandao {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setValue:UserDefaultObjectForKey(LOCAL_READ_USERID) forKey:@"userid"];
+    __weak typeof (self) wself = self;
+    NSString *path = [NSString stringWithFormat:@"%@/addSign", URLPATH];
+    [SJNetManager POST:path parameters:dic completionHandle:^(id responseObj, NSError *error) {
+        NSMutableDictionary *dic = (NSMutableDictionary *)responseObj;
+        NSString *status = [dic objectForKey:@"status"];
+        if ([status isEqualToString:@"0"]) {
+            NSString *str = [NSString stringWithFormat:@"%@/getSignByUserid?userid=%@", URLPATH, UserDefaultObjectForKey(LOCAL_READ_USERID)];
+            __weak typeof (self) wself = self;
+            [SJNetManager GET:str parameters:nil completionHandle:^(id responseObj, NSError *error) {
+                NSMutableDictionary *dic = (NSMutableDictionary *)responseObj;
+                NSString *status = [dic objectForKey:@"status"];
+                if ([status isEqualToString:@"0"]) {
+                    NSString *str = dic[@"data"][@"continuecount"];
+                    NSInteger i = [str integerValue];
+                    if (i > 0) {
+                        [wself.qiandaoBtn setTitle:[NSString stringWithFormat:@"连续%@天", str] forState:UIControlStateNormal];
+                        if ([NSString isBlankString:wself.isQianDao]) {
+                            [wself showSuccessMsg:@"成功签到!"];
+                            wself.isQianDao = @"1";
+                        }else {
+                            [wself showSuccessMsg:@"您已签到，请明天再来吧!"];
+                        }
+                        
+                        
+                    }
+                }
+                
+            }];
+        }
+    }];
+}
 
 - (UIImageView *)bottomImageView{
     if (!_bottomImageView) {
@@ -105,6 +168,21 @@
             [self headerBtn];
             [self logBtn];
             [self nameLabel];
+            [self qiandaoBtn];
+            NSString *str = [NSString stringWithFormat:@"%@/getSignByUserid?userid=%@",  URLPATH, UserDefaultObjectForKey(LOCAL_READ_USERID)];
+            __weak typeof (self) wself = self;
+            [SJNetManager GET:str parameters:nil completionHandle:^(id responseObj, NSError *error) {
+                NSMutableDictionary *dic = (NSMutableDictionary *)responseObj;
+                NSString *status = [dic objectForKey:@"status"];
+                if ([status isEqualToString:@"0"]) {
+                    NSString *str = dic[@"data"][@"continuecount"];
+                    NSInteger i = [str integerValue];
+                    if (i > 0) {
+                        [wself.qiandaoBtn setTitle:[NSString stringWithFormat:@"连续%@天", str] forState:UIControlStateNormal];
+                    }
+                }
+                
+            }];
         }
     }
     return self;

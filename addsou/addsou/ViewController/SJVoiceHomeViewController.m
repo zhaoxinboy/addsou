@@ -536,9 +536,12 @@
                         // 回到主线程刷新UI
                         dispatch_async(dispatch_get_main_queue(), ^{
                             // 定位
-                            [wself InitLocation];
-                            [locationManager requestWhenInUseAuthorization];
-                            [locationManager startUpdatingLocation];
+                            if (VERSIONS == 1) {
+                                [wself InitLocation];
+                                [locationManager requestWhenInUseAuthorization];
+                                [locationManager startUpdatingLocation];
+                            }
+                            
                             
                             isrelodfocusView = 1;
                             
@@ -593,10 +596,14 @@
                             wself.voiceView.hidden = NO;
                             
                             [wself searchView];
-                            // 定位
-                            [wself InitLocation];
-                            [locationManager requestWhenInUseAuthorization];
-                            [locationManager startUpdatingLocation];
+                            
+                            if (VERSIONS == 1) {
+                                // 定位
+                                [wself InitLocation];
+                                [locationManager requestWhenInUseAuthorization];
+                                [locationManager startUpdatingLocation];
+                            }
+                            
                             
                             isrelodfocusView = 1;
                             

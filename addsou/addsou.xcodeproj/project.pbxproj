@@ -297,6 +297,8 @@
 		E2CD5B3B1EADE34400D7B910 /* SJVoiceHistroyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2CD5B381EADE33C00D7B910 /* SJVoiceHistroyTableViewCell.m */; };
 		E2D203271E5AE60700E1FC19 /* SJSearchCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D203261E5AE60700E1FC19 /* SJSearchCollectionView.m */; };
 		E2D2032B1E5C04FB00E1FC19 /* SJChooseSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2032A1E5C04FB00E1FC19 /* SJChooseSearchViewController.m */; };
+		E2D26BA71F02614F0091824D /* SJQdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D26BA61F02614F0091824D /* SJQdViewController.m */; };
+		E2D26BA81F0264910091824D /* SJQdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D26BA61F02614F0091824D /* SJQdViewController.m */; };
 		E2D2A3731E8A186700D0424C /* removejs.js in Resources */ = {isa = PBXBuildFile; fileRef = E2D2A3721E8A186700D0424C /* removejs.js */; };
 		E2D2A3761E8A61B300D0424C /* FMDBURLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2A3751E8A61B300D0424C /* FMDBURLManager.m */; };
 		E2D2A37A1E8A6DAC00D0424C /* SJAdvertisingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D2A3791E8A6DAC00D0424C /* SJAdvertisingViewController.m */; };
@@ -603,6 +605,8 @@
 		E2D203261E5AE60700E1FC19 /* SJSearchCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJSearchCollectionView.m; sourceTree = "<group>"; };
 		E2D203291E5C04FB00E1FC19 /* SJChooseSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJChooseSearchViewController.h; sourceTree = "<group>"; };
 		E2D2032A1E5C04FB00E1FC19 /* SJChooseSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJChooseSearchViewController.m; sourceTree = "<group>"; };
+		E2D26BA51F02614F0091824D /* SJQdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SJQdViewController.h; sourceTree = "<group>"; };
+		E2D26BA61F02614F0091824D /* SJQdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SJQdViewController.m; sourceTree = "<group>"; };
 		E2D2A3721E8A186700D0424C /* removejs.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = removejs.js; sourceTree = "<group>"; };
 		E2D2A3741E8A61B300D0424C /* FMDBURLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBURLManager.h; sourceTree = "<group>"; };
 		E2D2A3751E8A61B300D0424C /* FMDBURLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBURLManager.m; sourceTree = "<group>"; };
@@ -1077,6 +1081,7 @@
 		E21137AF1E27115600AF78D0 /* 注册登录界面 */ = {
 			isa = PBXGroup;
 			children = (
+				E2D26BA41F02612A0091824D /* 签到 */,
 				E2D2A3771E8A6D7100D0424C /* 广告开关 */,
 				E2D203281E5C04D900E1FC19 /* 选择搜索引擎 */,
 				E20A6E051E28C266000D080D /* 关于我们 */,
@@ -1598,6 +1603,15 @@
 			name = "选择搜索引擎";
 			sourceTree = "<group>";
 		};
+		E2D26BA41F02612A0091824D /* 签到 */ = {
+			isa = PBXGroup;
+			children = (
+				E2D26BA51F02614F0091824D /* SJQdViewController.h */,
+				E2D26BA61F02614F0091824D /* SJQdViewController.m */,
+			);
+			name = "签到";
+			sourceTree = "<group>";
+		};
 		E2D2A3771E8A6D7100D0424C /* 广告开关 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1936,6 +1950,7 @@
 				E21BB7791EA87F37006CE7A8 /* QDRBookMarkView.m in Sources */,
 				E21BB77A1EA87F37006CE7A8 /* SJUserViewController.m in Sources */,
 				E21BB77B1EA87F37006CE7A8 /* SJWebSettingViewController.m in Sources */,
+				E2D26BA81F0264910091824D /* SJQdViewController.m in Sources */,
 				E21BB77C1EA87F37006CE7A8 /* NSObject+Common.m in Sources */,
 				E2CD5B3A1EADE34100D7B910 /* SJVoiceHistroyTable.m in Sources */,
 				E208E63E1EC2F3D10021F55C /* SJVoiceIdentifyHelper.m in Sources */,
@@ -2055,6 +2070,7 @@
 				E2068D841E2355C10020803A /* QDRBookMarkView.m in Sources */,
 				E21137B21E27120E00AF78D0 /* SJUserViewController.m in Sources */,
 				E27AA37D1E823DA60001C763 /* SJWebSettingViewController.m in Sources */,
+				E2D26BA71F02614F0091824D /* SJQdViewController.m in Sources */,
 				E2A410261E1647CB002A733E /* NSObject+Common.m in Sources */,
 				E2CD5B361EADE05D00D7B910 /* SJVoiceHistroyTable.m in Sources */,
 				E208E6371EC2E5D70021F55C /* SJVoiceIdentifyHelper.m in Sources */,

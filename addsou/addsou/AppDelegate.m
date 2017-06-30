@@ -21,6 +21,7 @@
 #import "SJAdvertisingViewController.h"
 #import "SJVoiceHomeViewController.h"
 #import "iflyMSC/IFlyMSC.h"
+#import "SJQdViewController.h"
 
 
 @interface AppDelegate ()
@@ -359,6 +360,11 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];//菜单栏字体颜色
     SJUserViewController *userVC = (SJUserViewController *)menuViewController;
     SJBaseNavigationViewController *vc = (SJBaseNavigationViewController *)sideMenu.contentViewController;
+    if (userVC.qiandaoBtn == 1) {
+        //签到相关
+        SJQdViewController *qdvc = [[SJQdViewController alloc] init];
+        [vc pushViewController:qdvc animated:NO];
+    }
     if (VERSIONS == 1) {
         if (userVC.intBtn == 1) {//注册登录
             QDRLoginViewController *loginVC = [[QDRLoginViewController alloc] init];

@@ -296,6 +296,7 @@
         if ([LOCAL_READ_ISOTHER isEqualToString:LOCAL_READ_SOUJIA] && (VERSIONS == 1)) {
             [_headerView.headerBtn addTarget:self action:@selector(aboutLogin) forControlEvents:UIControlEventTouchUpInside];
             [_headerView.logBtn addTarget:self action:@selector(aboutLogin) forControlEvents:UIControlEventTouchUpInside];
+            [_headerView.qiandaoBtn addTarget:self action:@selector(qiandao) forControlEvents:UIControlEventTouchUpInside];
         }
     }
     _headerView.backgroundColor = kRGBColor(236, 236, 236);
@@ -321,6 +322,13 @@
         }
     }
     return headerView;
+}
+
+// 签到相关
+- (void)qiandao {
+    self.qiandaoBtn = 1;
+    [self.sideMenuViewController hideMenuViewController];
+    self.qiandaoBtn = 0;
 }
 
 // 登录相关

@@ -12,6 +12,8 @@
 
 @property (nonatomic, assign) NSInteger intBtn;   /* 选择注册按钮 */
 
+@property (nonatomic, assign) NSInteger qiandaoBtn;      // 签到
+
 @property (nonatomic, strong) NSIndexPath *indexPath;   /* 选择哪一行哪一列 */
 
 @end

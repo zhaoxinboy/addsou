@@ -118,10 +118,10 @@
 
 
 // 服务器地址
-//#define URLPATH @"http://www.ironhide.top:8266"  // 线下
+#define URLPATH @"http://115.28.92.250:8266"  // 线下
 //#define URLPATH @"http://60.205.170.90:8081"    // 线上
 //#define URLPATH @"https://app.addsou.com"          //线上https
-#define URLPATH @"http://app.addsou.com"        // 线上http
+//#define URLPATH @"http://app.addsou.com"        // 线上http
 
 #define URLACTICLE  @"http://120.27.27.204/url/l"   // 获取文章接口
 
